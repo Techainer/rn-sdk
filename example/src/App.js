@@ -23,9 +23,9 @@ const createFragment = viewId =>
     UIManager?.LivenessViewManager?.Commands?.create.toString(),
     [viewId],
   );
-const privateKey = "privateKey"
+const privateKey = ""
 
-const publicKey = "publicKey"
+const publicKey = ""
 
 export default function App() {
   const [status, setStatus] = useState(false);
@@ -74,9 +74,9 @@ export default function App() {
             onEvent={(data) => {
               console.log('===sendEvent===', data.nativeEvent?.data);
             }}
-            requestid={'requestid'}
-            appId={'appId'}
-            baseUrl={'baseUrl'}
+            requestid={''}
+            appId={''}
+            baseUrl={''}
             privateKey={privateKey}
             publicKey={publicKey}
           />

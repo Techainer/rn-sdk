@@ -24,8 +24,6 @@ class LivenessRn: NSObject {
     if (clientTransactionId != nil && clientTransactionId != "") {
       self.clientTransactionId = clientTransactionId!
     }
-    print(privateKey)
-    Networking.shared.setup(appId: appId, logLevel: .debug, url: self.baseURL, publicKey: publicKey, privateKey: privateKey)
     print("setup SS")
   }
   
