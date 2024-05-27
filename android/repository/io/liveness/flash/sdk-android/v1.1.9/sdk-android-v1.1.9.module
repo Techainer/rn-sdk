@@ -98,14 +98,8 @@
           "group": "com.otaliastudios",
           "module": "cameraview",
           "version": {
-            "requires": "2.7.2"
-          },
-          "excludes": [
-            {
-              "group": "com.github.tsocial",
-              "module": "CameraView"
-            }
-          ]
+            "requires": "2.7.0"
+          }
         },
         {
           "group": "org.bouncycastle",
