@@ -47,6 +47,12 @@
       <artifactId>cameraview</artifactId>
       <version>2.7.2</version>
       <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>CameraView</artifactId>
+          <groupId>com.github.tsocial</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>

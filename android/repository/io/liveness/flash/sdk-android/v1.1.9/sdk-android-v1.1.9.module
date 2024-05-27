@@ -99,7 +99,13 @@
           "module": "cameraview",
           "version": {
             "requires": "2.7.2"
-          }
+          },
+          "excludes": [
+            {
+              "group": "com.github.tsocial",
+              "module": "CameraView"
+            }
+          ]
         },
         {
           "group": "org.bouncycastle",
