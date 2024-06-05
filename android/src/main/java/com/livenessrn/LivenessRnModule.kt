@@ -27,9 +27,9 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
   }
 
   private var deviceId = ""
-  private var appId = ""
+  private var appId = "com.pvc.test"
   private var secret = "ABCDEFGHIJKLMNOP"
-  private var baseURL = "https://face-matching.vietplus.eu"
+  private var baseURL = "https://ekyc-sandbox.eidas.vn/face-matching"
   private var clientTransactionId = "TEST"
 
   @ReactMethod
@@ -44,6 +44,18 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
     if (clientTransactionId != null && clientTransactionId != "") {
       this.clientTransactionId = clientTransactionId
     }
+  }
+
+  @ReactMethod
+  fun setConfigSDK(appId: String? = null, clientTransactionId: String? = null, baseURL: String? = null, publicKey: String? = null, privateKey: String? = null) {
+    LiveNessSDK.setConfigSDK(
+      reactApplicationContext.currentActivity!!,
+      LivenessRequest(
+        appId = appId, clientTransactionId = clientTransactionId,
+        baseURL = baseURL, publicKey = publicKey, privateKey = privateKey,
+        isDebug = true
+      )
+    )
   }
 
   @ReactMethod
@@ -64,10 +76,11 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun registerFace(image: String? = null, callback: Callback? = null) {
+    val activity = reactApplicationContext.currentActivity as FragmentActivity
     currentActivity!!.runOnUiThread {
       LiveNessSDK.registerFace(
-        reactApplicationContext.currentActivity as FragmentActivity,
-        getLivenessRequest(image),
+        activity,
+        image!!,
         object : CallbackLivenessListener {
           override fun onCallbackLiveness(data: LivenessModel?) {
             val resultData: WritableMap = WritableNativeMap()
@@ -84,88 +97,75 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  @ReactMethod
-  fun startLiveNess(callback: Callback? = null) {
-//    currentActivity!!.runOnUiThread {
-//      LiveNessSDK.startLiveNess(
-//        reactApplicationContext.currentActivity as FragmentActivity,
-//        getLivenessRequest(),
-//        object : CallbackLivenessListener {
-//          override fun onCallbackLiveness(data: LivenessModel?) {
-//            Log.d("CALLBACK DATA", "$data")
-//            val resultData: WritableMap = WritableNativeMap()
-//            resultData.putInt("status", data?.status ?: -1)
-//            resultData.putString("data", "${data?.data ?: ""}")
-//            resultData.putString("message", "${data?.message ?: ""}")
-//            resultData.putString("code", "${data?.code ?: ""}")
-//            resultData.putString("pathVideo", "${data?.pathVideo ?: ""}")
-//            resultData.putString("faceImage", "${data?.faceImage ?: ""}")
-//            resultData.putString("livenessImage", "${data?.livenessImage ?: ""}")
-//            callback?.invoke(resultData)
-//            callback?.invoke(resultData)
-//          }
-//        })
+//  private fun getLivenessRequest(image: String? = null): LivenessRequest {
+//    val privateKey = "-----BEGIN PRIVATE KEY-----\n" +
+//      "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtZW3L3TiJ7+Hb\n" +
+//      "KlEXd3pkjKiwjk9fZgmFAWzKirkjdBHS9YnM7tp8tUNIHGb87o6ZjkcnNOhbdlRw\n" +
+//      "L8Zl/eAu1J7UQ85smzw+5L36wsQB9YHQw4dikWin7M355qNn0IIxhWA3iqUFEhWN\n" +
+//      "czYco+W6+w59IAtYVRmRnDUUC/UjPdPYnwd3rz7i0Hea4r7Q/4AicDVN6p3duIwg\n" +
+//      "+SDVxJomlpsdc+fj/3oOrfdvUS00VVngUUOlswSnSMvKcRmM8NKcaSGKq2bt9AxN\n" +
+//      "iZsI+4mjWfnsYq0Ms5RQBBF0xju/rWez664x/KVX7j9XhCvq8BGflJ91donYFuMA\n" +
+//      "Xgy5q5NjAgMBAAECggEAIswYHLFoh0X8rV7wpyTzCvqvX78vbpWrk2WVz4/HV7YT\n" +
+//      "XaKo5NeKQTyfI/mPMXMuauKCpPuZJcG5cEomJpGsS7mfpjl1U5ZToMuG1KwBaeM7\n" +
+//      "CgozQTStLAX50AzY/hx6BDYf+QV52GqoqJpWYakCkWOQpMupezCY0P/oJv2/VDLf\n" +
+//      "lbGNN1ZvscK+sf80UyvdWArNI54TtD4DbSj3n0O67qd3S4JACAV1V4yOhPQMOrpk\n" +
+//      "IlnKpOS2jUMq1JJEzt3msLmXx1LaIB2wte4DqDlwd7XW2XdX3hSY27o4y24Axa6N\n" +
+//      "WnCc/HymM+LwkXWYqgWQhh+ey7JtTF2et29UsX/ZAQKBgQDZdiqKCWCF8e2Ndgbk\n" +
+//      "jtvEov9kWLvsqJo6x391/cBoa4SEiO7xS8D+Lm+Ym8SuffnCWOKqMZxnmVnDUHwf\n" +
+//      "h8LF+k69LydMP8vKCKzD0LGN0EZ6xup8D6m8jU3omT2yZGssyoxXYQznUcn5CViY\n" +
+//      "L9eQVXw4YLSe63D9VIqMxm9/ZQKBgQDMIBjfDHIW1b53wT2FMLIMZR8eiTUXAHPQ\n" +
+//      "Mp2zZ14AKoSUp1THDnuTmnHzWgn6/7pKWz+hk45LG8JXHnOMX3GFzvG9aQMkRuuD\n" +
+//      "Sd7VipCCp1o4dsoSrHIJ5TiQJOZaQgureesHdOAeP0STxGVOmX7DFhUxSzwjAZz2\n" +
+//      "FDHwrHNPJwKBgQDN/1Q4wr0+5XiE4uOQq4uf8FBCPJR4kRbYy5cArMoRoJg9/IFs\n" +
+//      "7rf5kP+B7z0Xlpp78jt1wd1Jfkk77ghGzhJB/OWN7Rcq8dwYnLMcI5uunTfGopwJ\n" +
+//      "vcSqqqi8yD1buiiUm6LqOzNABYhwctwL/nYTcgdkWKeBS8MTF3zP8kI4yQKBgQCl\n" +
+//      "+IcgfPca+ApZRuclr7VlfKcz5e4j2LtSEoXFRIva6LdKQ1AcVftGxbJXYuNwkZPA\n" +
+//      "N7diQh7VlSmMOndLMKOWX/CQyJzEV2HRKzQjPvpHMZmbBYNCcbJ7t0Qpd8dQphjl\n" +
+//      "AUmHk5FTJrA00eBpa0b1irQKk5i/AeXE9CCzBxTuywKBgA3wbWbuhSe/kL3QOuuG\n" +
+//      "GBtH5E7FsHQ++PphMcdpeSVaA6yiVc/3Iu2d+p+Nda3VGiqD6/uVVRWDxcE3u3eQ\n" +
+//      "88Xwl6yudl9moadaaYydjWB3wIP9lZKW7MzV86HJnXvr4JNsre0JqO+OBDSI3YUb\n" +
+//      "8Ywxgfrp5wx1/7VYTLOdROUh\n" +
+//      "-----END PRIVATE KEY-----"
+//    val public_key = "-----BEGIN CERTIFICATE-----\n" +
+//      "MIIE8jCCA9qgAwIBAgIQVAESDxKv/JtHV15tvtt1UjANBgkqhkiG9w0BAQsFADAr\n" +
+//      "MQ0wCwYDVQQDDARJLUNBMQ0wCwYDVQQKDARJLUNBMQswCQYDVQQGEwJWTjAeFw0y\n" +
+//      "MzA2MDcwNjU1MDNaFw0yNjA2MDkwNjU1MDNaMIHlMQswCQYDVQQGEwJWTjESMBAG\n" +
+//      "A1UECAwJSMOgIE7hu5lpMRowGAYDVQQHDBFRdeG6rW4gSG/DoG5nIE1haTFCMEAG\n" +
+//      "A1UECgw5Q8OUTkcgVFkgQ1AgROG7ikNIIFbhu6QgVsOAIEPDlE5HIE5HSOG7hiBT\n" +
+//      "4buQIFFVQU5HIFRSVU5HMUIwQAYDVQQDDDlDw5RORyBUWSBDUCBE4buKQ0ggVuG7\n" +
+//      "pCBWw4AgQ8OUTkcgTkdI4buGIFPhu5AgUVVBTkcgVFJVTkcxHjAcBgoJkiaJk/Is\n" +
+//      "ZAEBDA5NU1Q6MDExMDE4ODA2NTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\n" +
+//      "ggEBAJO6JDU+kNEUIiO6m75LOfgHkwGExYFv0tILHInS9CkK2k0FjmvU8VYJ0cQA\n" +
+//      "sGGabpHIwfh07llLfK3TUZlhnlFZYRrYvuexlLWQydjHYPqT+1c3iYaiXXcOqEjm\n" +
+//      "OupCj71m93ThFrYzzI2Zx07jccRptAAZrWMjI+30vJN7SDxhYsD1uQxYhUkx7psq\n" +
+//      "MqD4/nOyaWzZHLU94kTAw5lhAlVOMu3/6pXhIltX/097Wji1eyYqHFu8w7q3B5yW\n" +
+//      "gJYugEZfplaeLLtcTxok4VbQCb3cXTOSFiQYJ3nShlBd89AHxaVE+eqJaMuGj9z9\n" +
+//      "rdIoGr9LHU/P6KF+/SLwxpsYgnkCAwEAAaOCAVUwggFRMAwGA1UdEwEB/wQCMAAw\n" +
+//      "HwYDVR0jBBgwFoAUyCcJbMLE30fqGfJ3KXtnXEOxKSswgZUGCCsGAQUFBwEBBIGI\n" +
+//      "MIGFMDIGCCsGAQUFBzAChiZodHRwczovL3Jvb3RjYS5nb3Yudm4vY3J0L3ZucmNh\n" +
+//      "MjU2LnA3YjAuBggrBgEFBQcwAoYiaHR0cHM6Ly9yb290Y2EuZ292LnZuL2NydC9J\n" +
+//      "LUNBLnA3YjAfBggrBgEFBQcwAYYTaHR0cDovL29jc3AuaS1jYS52bjA0BgNVHSUE\n" +
+//      "LTArBggrBgEFBQcDAgYIKwYBBQUHAwQGCisGAQQBgjcKAwwGCSqGSIb3LwEBBTAj\n" +
+//      "BgNVHR8EHDAaMBigFqAUhhJodHRwOi8vY3JsLmktY2Eudm4wHQYDVR0OBBYEFE6G\n" +
+//      "FFM4HXne9mnFBZInWzSBkYNLMA4GA1UdDwEB/wQEAwIE8DANBgkqhkiG9w0BAQsF\n" +
+//      "AAOCAQEAH5ifoJzc8eZegzMPlXswoECq6PF3kLp70E7SlxaO6RJSP5Y324ftXnSW\n" +
+//      "0RlfeSr/A20Y79WDbA7Y3AslehM4kbMr77wd3zIij5VQ1sdCbOvcZXyeO0TJsqmQ\n" +
+//      "b46tVnayvpJYW1wbui6smCrTlNZu+c1lLQnVsSrAER76krZXaOZhiHD45csmN4dk\n" +
+//      "Y0T848QTx6QN0rubEW36Mk6/npaGU6qw6yF7UMvQO7mPeqdufVX9duUJav+WBJ/I\n" +
+//      "Y/EdqKp20cAT9vgNap7Bfgv5XN9PrE+Yt0C1BkxXnfJHA7L9hcoYrknsae/Fa2IP\n" +
+//      "99RyIXaHLJyzSTKLRUhEVqrycM0UXg==\n" +
+//      "-----END CERTIFICATE-----"
+//    if (deviceId.isNullOrEmpty()) {
+//      if (LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity!!)?.isNotEmpty() == true) {
+//        deviceId = LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity!!).toString()
+//      }
 //    }
-  }
-
-  private fun getLivenessRequest(image: String? = null): LivenessRequest {
-    Log.d("checkLiveNessFlash", "checkLiveNessFlash==== 3= $image")
-    val privateKey = "-----BEGIN PRIVATE KEY-----\n" +
-      "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAxJOlDUyio4nz\n" +
-      "JzykUPihuBnpume0Y5Fzo0bj6Xi6DD/Jjp5r8RxcgdqLUuNUe0vHqmMqgP1t6ZK0\n" +
-      "0+lDRrjaSk8b7xjv9L7dm986SyZEs8Bgtqel4Tw3DkHj2i1c13zeUj6OgKPrYBqd\n" +
-      "28EDSLQw+Cf8gYxiY2VMoEUDZ7cV0jrT6U/VDI4aDl9b8XrVUwtbAuN8t86gZVrY\n" +
-      "gpIG9HLnEQZXJKFG2jXFktrDgm1wlfN5ve/qBRhMHimIDwCgsYT7ll/I7eaMEhLF\n" +
-      "/+nylvVWbpPvLMXA8E9EBbCTkLmh5XMXK6N0uxidJ8GHeAF0lP1YMT4ctDd1sfxI\n" +
-      "C0a56m/tAgMBAAECggEAIHv/9Xx8QZwVjyg5i+cpPvdrRnvnJfrxc+877wRVF+Ug\n" +
-      "irLB96a2BNDNJ1VcgcwVRRxtgagjDPajhl1/nZq5Y+/JzQdJyIYR8/5ka8pmNIWm\n" +
-      "EaY2Mjn2j8CTUfZeVprpq/1oFVOQTAXx9lAmAoup8eaftmmOYrYlR/hqKNy9eauc\n" +
-      "2DiHOpO0Eh1TkU8pydte3xbUzyurJz1o+pvg9mRMeaGLrEnocu2mW9oy488TdNIO\n" +
-      "oGeOOW4AV/XYzv4TtXWqUM6HcSVA3IcZAFBdi6IeQYKuObrfd9iphONcpklb+PFV\n" +
-      "5XRmEKEQyhjd19AucVbGERhe+3l2NyiL13T6RLJxcQKBgQDnIAzvppgFRNNnROYV\n" +
-      "jY8WfU7g7lQ0syh6e3ANIc5vSqRspwJiPK6u+PaoUtjqvVoIjig9owDVK+yy7nR4\n" +
-      "fPoUxZjCX0x+N5KE+UEmH/WaKl+twpYkVIjD43FFEX0448qqkKJ5uwhkHEXu9uwH\n" +
-      "q1dUOh4YlL85BIErkmdMv+e6RwKBgQDVg7UTPpz95WyJCwU0TO5QC6cfzzB1a5ol\n" +
-      "z3gOt5f+SACNINg9Er6M+gewTq5ZWXIr8+EET9HfxvIeICqOXMzcotMM9l0Gv1AL\n" +
-      "uitjw82KMJRsDWi01OWcrhLC/2MY18H8A2Bgl4Eo4vEHrW2yWz8obNSPDNCECY7z\n" +
-      "BBAMS92qKwKBgHJCbwK+2iKortY7wn9fNyDIHAmo6OoQs+8xPOjREKwGO5kXS19j\n" +
-      "XnxTyiTWqDQMHglitdQa1FuOVnry1ZOHPV6tfOKCmF9Be+bPDn0ZiaKIVjqhmvYk\n" +
-      "8GPe+e1KQxyvyE5gKGKDqxdKvuvvGCqGcyrJfH1sc8htSKpQu06/BIEbAoGBAIyD\n" +
-      "oxVJLZRB+k2uPPyQbH2tTY03k1KTP90GTqKQ3KxxwjselHCM925b1deH0GHo5aRb\n" +
-      "WYi25w34JbsBvD/4frHtTivHrq0UFp/BI3ECmTAKjIMXyALJ4VpdjOdbn2HoDDfI\n" +
-      "GRM4Yb4ArFM7JWgteMEn7jM+YbOjfrobwFv3SagFAoGBAImAsluYshbRa/IfVIJy\n" +
-      "FgtmWmX/tWXRIRcLB/Y8GhreHg/U/dJPk4tXJChNixNYAL9c9EIrsUw3n20nrutv\n" +
-      "qJXxXrtZdIF5Rl7HiuKtnMheYwmbYEz6hAfbO04px13RbjjS3kcGofOPa3u0q8s2\n" +
-      "6DNOTXIFuW/9FIrD32skm7hY\n" +
-      "-----END PRIVATE KEY-----"
-    val public_key = "-----BEGIN CERTIFICATE-----\n" +
-      "MIIDjzCCAnegAwIBAgIEPhgWFTANBgkqhkiG9w0BAQsFADBbMScwJQYDVQQDDB5SZWdlcnkgU2Vs\n" +
-      "Zi1TaWduZWQgQ2VydGlmaWNhdGUxIzAhBgNVBAoMGlJlZ2VyeSwgaHR0cHM6Ly9yZWdlcnkuY29t\n" +
-      "MQswCQYDVQQGEwJVQTAgFw0yNDA0MTEwMDAwMDBaGA8yMTI0MDQxMTAzMTMwOVowUTEdMBsGA1UE\n" +
-      "AwwUcXVhbmd0cnVuZ3F0cy5jb20udm4xIzAhBgNVBAoMGlJlZ2VyeSwgaHR0cHM6Ly9yZWdlcnku\n" +
-      "Y29tMQswCQYDVQQGEwJVQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIfK7LjzjqCo\n" +
-      "VSzXz/ROHc2IyBMc89GwnR0slF1Lenavs+r+lnjFAxkVonBRTjtMj1pWqlACnd3qiIAD/8GbSagG\n" +
-      "qsV43BDPbioDibWg/9wln82VLwEQohjLTl7VJtKuRAIUcg2nY4r5LNzpdClJx+k7zrIVDKSO8tRa\n" +
-      "onU1dU6KLSmC2ZOzT10zrK4qmjvN/LFp0rlXJtdw++MUOIM9kccyi+3MK7iiraNV7Tlazy9xF0OZ\n" +
-      "ytzgSX5R+oHE3aUS0M+W4p/dhihvLKjiejuw46E0dqEKxaqMJHXj2Qei1Ky1RrdRBNB0oQLCoUGx\n" +
-      "KRaYw1CbZ7QWAgnrbqTvs1Y8pwUCAwEAAaNjMGEwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8E\n" +
-      "BAMCAYYwHQYDVR0OBBYEFIlsqZHH0jmPvIjlF4YARXnamm7AMB8GA1UdIwQYMBaAFIlsqZHH0jmP\n" +
-      "vIjlF4YARXnamm7AMA0GCSqGSIb3DQEBCwUAA4IBAQBfSk1XtHU8ix87g+lVzRQrEf7qsqWiwkN9\n" +
-      "TW05qaPDMoMEoe/MW0YJZ+QwgvGMNLkEWjz/v0p1fVFF6kIolbo1o+1P6D4RCWvyB8S5zV9Mv+aR\n" +
-      "1uWbAYiAA2uql/NrIJ3V1pJhIgRgDsRNuVP8MhNZc6DgJQLZOMKLwXsNHDtGOHk+ZcPiyWcjb4a3\n" +
-      "voZCp4HN8+V2umO+QGuESZhTLihBnXv9HTpKxwWu4tK/4dgngDYM3UmChRjD/H7A3aYV4Xyxkqw2\n" +
-      "rnd2LAr/zUEhFkbs21iG3DF0cHGKI15YzIq5pEhb9l4ePcCIgWgnJDNJPA/QhxpRB1XhP4bpK8kP\n" +
-      "GJ8f\n" +
-      "-----END CERTIFICATE-----\n"
-    if (deviceId.isNullOrEmpty()) {
-      deviceId = UUID.randomUUID().toString()
-    }
-    return LivenessRequest(
-      duration = 600, privateKey = privateKey,
-      appId = appId,
-      imageFace = image,
-      deviceId = deviceId, clientTransactionId = clientTransactionId, secret = secret,
-      baseURL = baseURL, publicKey = public_key
-    )
-  }
+//    return LivenessRequest(
+//      duration = 600, privateKey = privateKey,
+//      appId = appId,
+//      imageFace = image,
+//      deviceId = deviceId, clientTransactionId = clientTransactionId, secret = secret,
+//      baseURL = baseURL, publicKey = public_key
+//    )
+//  }
 }

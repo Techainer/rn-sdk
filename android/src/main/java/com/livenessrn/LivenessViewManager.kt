@@ -110,7 +110,6 @@ class LivenessViewManager(
     myFragment.arguments = bundle
 
     val activity = reactContext?.currentActivity as FragmentActivity
-    LiveNessSDK.setConfigSDK(activity, getLivenessRequest())
     activity.supportFragmentManager
       .beginTransaction()
       .replace(reactNativeViewId, myFragment, reactNativeViewId.toString())

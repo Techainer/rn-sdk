@@ -42,11 +42,11 @@
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 245971,
-          "sha512": "1fd5f43de612b022a2d24985333c2f6e5255825c60aefb04514e3ff399652c9bd246a366fbf02f6bb086160440e3f9e787eafa68d249f99ef9945b56ea653a52",
-          "sha256": "8b88b8eed0a202b3661acd4585c5397173320def98e21f6aa4e2e7a63b35eef1",
-          "sha1": "a6a664ec4969151cad10e96029de662b360b3a81",
-          "md5": "337d2beb2c5189066075a9d1c0735a34"
+          "size": 246499,
+          "sha512": "f786b99fed0ff220b0f2de5376de11b720a935d84ca8662ae09f8c56d436805faf585dcb9b6ff1d270efa8f194a9cc4384df914167b2dc34319850e4bc8a80cb",
+          "sha256": "91303efa63de687d826760f55e69fe2749ccc7a54b35b387c3517b56f4896078",
+          "sha1": "c5eab58aeec8b1aa4ebe7fed0fe6241d8cf1379d",
+          "md5": "b33476f7f4bfa0e02880977e1bdc8250"
         }
       ]
     },
@@ -78,13 +78,6 @@
           "module": "appcompat",
           "version": {
             "requires": "1.4.1"
-          }
-        },
-        {
-          "group": "androidx.constraintlayout",
-          "module": "constraintlayout",
-          "version": {
-            "requires": "2.1.3"
           }
         },
         {
@@ -127,11 +120,11 @@
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 245971,
-          "sha512": "1fd5f43de612b022a2d24985333c2f6e5255825c60aefb04514e3ff399652c9bd246a366fbf02f6bb086160440e3f9e787eafa68d249f99ef9945b56ea653a52",
-          "sha256": "8b88b8eed0a202b3661acd4585c5397173320def98e21f6aa4e2e7a63b35eef1",
-          "sha1": "a6a664ec4969151cad10e96029de662b360b3a81",
-          "md5": "337d2beb2c5189066075a9d1c0735a34"
+          "size": 246499,
+          "sha512": "f786b99fed0ff220b0f2de5376de11b720a935d84ca8662ae09f8c56d436805faf585dcb9b6ff1d270efa8f194a9cc4384df914167b2dc34319850e4bc8a80cb",
+          "sha256": "91303efa63de687d826760f55e69fe2749ccc7a54b35b387c3517b56f4896078",
+          "sha1": "c5eab58aeec8b1aa4ebe7fed0fe6241d8cf1379d",
+          "md5": "b33476f7f4bfa0e02880977e1bdc8250"
         }
       ]
     },
@@ -147,11 +140,11 @@
         {
           "name": "sdk-android-v1.1.9-sources.jar",
           "url": "sdk-android-v1.1.9-sources.jar",
-          "size": 74266,
-          "sha512": "59590cf1d940d2e0321a3ff6b5efee43e412f8ca5908cdfd27f52ecb758bffa8d2b161fcac6570eb456a6117ef29b3ea7bd7614f92ff29e8a589bf14ea66a3d4",
-          "sha256": "cafdc045155dbbace92d36b4a3ab5e3f768fdc956826d3c0c79256ec64133691",
-          "sha1": "8a2336a83b16e1c7d2e8db324a2ed7cc7906b993",
-          "md5": "64dace270b5aa98a4f24b3038bfabc51"
+          "size": 70441,
+          "sha512": "c22edb5c9e46e6b63f25d50275c6c0c71d383d7fac1b5a1be145f0ce3e2efbd2b6f77c78532ae215b83e8f2faae5bfdf541c2eba3acaf22fc014ef1a993cc6c3",
+          "sha256": "ed24a09f4cf3f7058161730258e914dd9276f428312834b02e65750acd6b8cf1",
+          "sha1": "e04ea7b5bf10e962e9c7f5dd023eee4a35cea019",
+          "md5": "3ccb31cbccb2557fe1af94a10ccadf37"
         }
       ]
     }

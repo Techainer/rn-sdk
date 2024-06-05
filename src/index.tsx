@@ -39,6 +39,22 @@ export function configure(
   );
 }
 
+export function setConfigSDK(
+  appId: String,
+  clientTransactionId: String = '',
+  baseURL: String = '',
+  publicKey: String,
+  privateKey: String
+) {
+  LivenessRn.setConfigSDK(
+    appId,
+    clientTransactionId,
+    baseURL,
+    publicKey,
+    privateKey
+  );
+}
+
 export function getDeviceId(
   callback: ActionCallback | undefined | null = null
 ) {

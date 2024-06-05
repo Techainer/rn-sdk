@@ -14,7 +14,12 @@ import {
 
 import {
   LivenessView,
+  registerFace,
+  setConfigSDK,
+  getDeviceId,
 } from 'liveness-rn';
+
+import imageData from './Imagetest'
 
 const createFragment = viewId =>
   UIManager.dispatchViewManagerCommand(
@@ -23,8 +28,10 @@ const createFragment = viewId =>
     UIManager?.LivenessViewManager?.Commands?.create.toString(),
     [viewId],
   );
-const privateKey = ""
 
+const appId = ""
+const baseUrl = ""
+const privateKey = ""
 const publicKey = ""
 
 export default function App() {
@@ -41,9 +48,25 @@ export default function App() {
     }
   }, [ref.current, status]);
 
+  useEffect(() => {
+    setConfigSDK(appId, '', baseUrl, publicKey, privateKey)
+  }, []);
+
   const onStartLiveNess = () => {
-    setStatus(true);
+    setStatus(!status);
   };
+
+  const onRegisterFace = () => {
+    registerFace(imageData, data => {
+      console.log('onRegisterFace', data);
+    });
+  };
+
+  const onGetDeviceId = () => {
+    getDeviceId(data => {
+      console.log('getDeviceId', data);
+    })
+  }
 
   const handleLayout = e => {
     const { height, width } = e.nativeEvent.layout;
@@ -75,13 +98,15 @@ export default function App() {
               console.log('===sendEvent===', data.nativeEvent?.data);
             }}
             requestid={''}
-            appId={''}
-            baseUrl={''}
-            privateKey={privateKey}
-            publicKey={publicKey}
           />
         </View>
       )}
+      <TouchableOpacity onPress={onGetDeviceId} style={styles.btn_liveness}>
+        <Text>Get DeviceId</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onRegisterFace} style={styles.btn_liveness}>
+        <Text>Start register face</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={onStartLiveNess} style={styles.btn_liveness}>
         <Text>Start LiveNess</Text>
       </TouchableOpacity>
