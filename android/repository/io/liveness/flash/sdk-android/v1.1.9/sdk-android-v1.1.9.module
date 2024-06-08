@@ -42,11 +42,11 @@
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 246499,
-          "sha512": "f786b99fed0ff220b0f2de5376de11b720a935d84ca8662ae09f8c56d436805faf585dcb9b6ff1d270efa8f194a9cc4384df914167b2dc34319850e4bc8a80cb",
-          "sha256": "91303efa63de687d826760f55e69fe2749ccc7a54b35b387c3517b56f4896078",
-          "sha1": "c5eab58aeec8b1aa4ebe7fed0fe6241d8cf1379d",
-          "md5": "b33476f7f4bfa0e02880977e1bdc8250"
+          "size": 246605,
+          "sha512": "062f2107e290be2b81e88477c15c83ee4d40bfee342c09f6f685f12e11c582adb78f4cb139aba7ab64d9cb476d98166d04e948f5ea2606d48057f23ac3b8c32a",
+          "sha256": "144f13eadac021ff081a276030e762a1f74e0bd4d987ebde9adfe0a2fe10dcd3",
+          "sha1": "c6a107c4d6c8bd8291dc26638d0188f8ff06eaca",
+          "md5": "a0aacc1e6475671e82f85d9313064f69"
         }
       ]
     },
@@ -88,6 +88,13 @@
           }
         },
         {
+          "group": "com.otaliastudios",
+          "module": "cameraview",
+          "version": {
+            "requires": "2.7.2"
+          }
+        },
+        {
           "group": "org.bouncycastle",
           "module": "bcpkix-jdk15on",
           "version": {
@@ -107,24 +114,17 @@
           "version": {
             "requires": "1.16.0"
           }
-        },
-        {
-          "group": "com.trustvision",
-          "module": "tv_sdk",
-          "version": {
-            "requires": "2.1.0.4"
-          }
         }
       ],
       "files": [
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 246499,
-          "sha512": "f786b99fed0ff220b0f2de5376de11b720a935d84ca8662ae09f8c56d436805faf585dcb9b6ff1d270efa8f194a9cc4384df914167b2dc34319850e4bc8a80cb",
-          "sha256": "91303efa63de687d826760f55e69fe2749ccc7a54b35b387c3517b56f4896078",
-          "sha1": "c5eab58aeec8b1aa4ebe7fed0fe6241d8cf1379d",
-          "md5": "b33476f7f4bfa0e02880977e1bdc8250"
+          "size": 246605,
+          "sha512": "062f2107e290be2b81e88477c15c83ee4d40bfee342c09f6f685f12e11c582adb78f4cb139aba7ab64d9cb476d98166d04e948f5ea2606d48057f23ac3b8c32a",
+          "sha256": "144f13eadac021ff081a276030e762a1f74e0bd4d987ebde9adfe0a2fe10dcd3",
+          "sha1": "c6a107c4d6c8bd8291dc26638d0188f8ff06eaca",
+          "md5": "a0aacc1e6475671e82f85d9313064f69"
         }
       ]
     },
@@ -140,11 +140,11 @@
         {
           "name": "sdk-android-v1.1.9-sources.jar",
           "url": "sdk-android-v1.1.9-sources.jar",
-          "size": 70441,
-          "sha512": "c22edb5c9e46e6b63f25d50275c6c0c71d383d7fac1b5a1be145f0ce3e2efbd2b6f77c78532ae215b83e8f2faae5bfdf541c2eba3acaf22fc014ef1a993cc6c3",
-          "sha256": "ed24a09f4cf3f7058161730258e914dd9276f428312834b02e65750acd6b8cf1",
-          "sha1": "e04ea7b5bf10e962e9c7f5dd023eee4a35cea019",
-          "md5": "3ccb31cbccb2557fe1af94a10ccadf37"
+          "size": 70489,
+          "sha512": "7c20b9444439ddc6791088c7e6411c402e6438a5211a8697b5a9e016653e5570f24bebc95faea7b47f797d8a455fd4b61dca8b429c0d1a040b9aa9068278d500",
+          "sha256": "da12d65dfc64273e3ab71ff6a642e14bf4c61b2e935f183b23008f0bea688b5d",
+          "sha1": "882fa0e90085c1c6645f367fb5e5586b40e9f150",
+          "md5": "ca0da545e9a98a71f0cf81fac1fca047"
         }
       ]
     }

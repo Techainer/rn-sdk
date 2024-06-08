@@ -11,21 +11,11 @@ class LivenessRn: NSObject {
   var secret = "ABCDEFGHIJKLMNOP"
   var baseURL = "https://face-matching.vietplus.eu"
   var clientTransactionId = "TEST"
-  
-    @objc(configure:publicKey:privateKey:secret:baseURL:clientTransactionId:)
-    func configure(appId: String, publicKey: String, privateKey: String, secret: String? = nil, baseURL: String? = nil, clientTransactionId: String? = "") {
-    self.appId = appId
-    if (secret != nil && secret != "") {
-      self.secret = secret!
+    
+    @objc(setConfigSDK:clientTransactionId:baseURL:publicKey:privateKey:)
+    func setConfigSDK(appId: String, clientTransactionId: String, baseURL: String, publicKey: String, privateKey: String) {
+        Networking.shared.setup(appId: appId, logLevel: .debug, url: baseURL, publicKey: publicKey, privateKey: privateKey)
     }
-    if (baseURL != nil && baseURL != "") {
-      self.baseURL = baseURL!
-    }
-    if (clientTransactionId != nil && clientTransactionId != "") {
-      self.clientTransactionId = clientTransactionId!
-    }
-    print("setup SS")
-  }
   
   @objc(getDeviceId:)
   func getDeviceId(callback: RCTResponseSenderBlock? = nil) -> Void {
@@ -66,9 +56,4 @@ class LivenessRn: NSObject {
         }
       }
     }
-  
-  @objc(startLiveNess:withCallback:)
-  func startLiveNess(previewView: UIView, callback: RCTResponseSenderBlock? = nil) {
-    
-  }
 }

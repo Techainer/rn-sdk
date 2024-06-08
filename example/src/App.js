@@ -36,6 +36,7 @@ const publicKey = ""
 
 export default function App() {
   const [status, setStatus] = useState(false);
+  const [clientTransactionId, setClientTransactionId] = useState('');
   const [layout, setLayout] = useState({ width: 0, height: 0 });
   const ref = useRef(null);
 
@@ -49,8 +50,8 @@ export default function App() {
   }, [ref.current, status]);
 
   useEffect(() => {
-    setConfigSDK(appId, '', baseUrl, publicKey, privateKey)
-  }, []);
+    setConfigSDK(appId, clientTransactionId, baseUrl, publicKey, privateKey)
+  }, [clientTransactionId]);
 
   const onStartLiveNess = () => {
     setStatus(!status);
@@ -59,6 +60,11 @@ export default function App() {
   const onRegisterFace = () => {
     registerFace(imageData, data => {
       console.log('onRegisterFace', data);
+      if (data?.status == '200') {
+        setClientTransactionId(data?.data)
+      } else {
+        // log error
+      }
     });
   };
 
@@ -97,7 +103,12 @@ export default function App() {
             onEvent={(data) => {
               console.log('===sendEvent===', data.nativeEvent?.data);
             }}
-            requestid={''}
+            requestid={clientTransactionId}
+            appId={appId}
+            baseUrl={baseUrl}
+            privateKey={privateKey}
+            publicKey={publicKey}
+            debugging={true}
           />
         </View>
       )}

@@ -19,4 +19,5 @@
   RCT_EXPORT_VIEW_PROPERTY(baseUrl, NSString)
   RCT_EXPORT_VIEW_PROPERTY(privateKey, NSString)
   RCT_EXPORT_VIEW_PROPERTY(publicKey, NSString)
+RCT_EXPORT_VIEW_PROPERTY(debugging, BOOL)
 @end

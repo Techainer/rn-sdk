@@ -20,6 +20,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   var privateKey = ""
   var publicKey = ""
   var secret = "ABCDEFGHIJKLMNOP"
+    var debugging = false
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -83,25 +84,35 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     @objc func setPublicKey(_ val: NSString) {
       self.publicKey = val as String
     }
+    
+    @objc func setDebugging(_ val: Bool) {
+        self.debugging = val as Bool
+      }
   
   func liveness(liveness: LivenessUtilityDetector, didFail withError: LivenessError) {
     pushEvent(data: withError)
   }
   
-  func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, livenesScore: Float, faceMatchingScore: Float, result: Bool, message: String, videoURL: URL?, response: LivenessResult?) {
-      pushEvent(data: ["message": message, "verificationImage": verificationImage, "result": result, "livenesScore": livenesScore, "videoURL": videoURL ?? "", "request_id": response?.request_id ?? "", "status": response?.status ?? "", "success": response?.succes ?? "", "code": response?.code ?? "", "data": response?.data ?? ""])
-//      Request id, message, status, success
-  }
+    func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, livenesScore: Float, faceMatchingScore: Float, result: Bool, message: String, videoURL: URL?, response: LivenessResult?) {
+          let imageData = verificationImage.pngData()!
+          let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+          let data = response?.data
+          let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": result, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": response?.status ?? "", "success": response?.succes ?? "", "code": response?.code ?? "", "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data ?? ""]
+          
+          pushEvent(data: dataRes)
+    //      Request id, message, status, success
+      }
+    
     func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
-        if action == .smile{
-            pushEvent(data: ["message": "check smile", "action": action.rawValue])
-        } else if action == .fetchConfig{
-            pushEvent(data: ["message": "start check smile", "action": action.rawValue])
-        } else if action == .detectingFace{
-            pushEvent(data: ["message": "detect face", "action": action.rawValue])
-        } else{
-            pushEvent(data: ["message": "done smile", "action": action.rawValue])
-        }
+//        if action == .smile{
+//            pushEvent(data: ["message": "check smile", "action": action.rawValue])
+//        } else if action == .fetchConfig{
+//            pushEvent(data: ["message": "start check smile", "action": action.rawValue])
+//        } else if action == .detectingFace{
+//            pushEvent(data: ["message": "detect face", "action": action.rawValue])
+//        } else{
+//            pushEvent(data: ["message": "done smile", "action": action.rawValue])
+//        }
     }
     
     
