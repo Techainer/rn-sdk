@@ -88,13 +88,6 @@
           }
         },
         {
-          "group": "com.otaliastudios",
-          "module": "cameraview",
-          "version": {
-            "requires": "2.7.2"
-          }
-        },
-        {
           "group": "org.bouncycastle",
           "module": "bcpkix-jdk15on",
           "version": {
@@ -113,6 +106,13 @@
           "module": "commons-codec",
           "version": {
             "requires": "1.16.0"
+          }
+        },
+        {
+          "group": "com.trustvision",
+          "module": "tv_sdk",
+          "version": {
+            "requires": "2.1.0.4"
           }
         }
       ],
