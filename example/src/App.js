@@ -87,7 +87,7 @@ const publicKey = "-----BEGIN CERTIFICATE-----\n" +
 "Y0T848QTx6QN0rubEW36Mk6/npaGU6qw6yF7UMvQO7mPeqdufVX9duUJav+WBJ/I\n" +
 "Y/EdqKp20cAT9vgNap7Bfgv5XN9PrE+Yt0C1BkxXnfJHA7L9hcoYrknsae/Fa2IP\n" +
 "99RyIXaHLJyzSTKLRUhEVqrycM0UXg==\n" +
-"-----END CERTIFICATE-----"
+"-----END CERTIFICATE-----\n"
 
 export default function App() {
   const [status, setStatus] = useState(false);
