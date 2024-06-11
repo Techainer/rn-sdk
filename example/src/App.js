@@ -158,7 +158,7 @@ export default function App() {
             onEvent={(data) => {
               console.log('===sendEvent===', data.nativeEvent?.data);
             }}
-            requestid={clientTransactionId}
+            requestid={''}
             appId={appId}
             baseUrl={baseUrl}
             privateKey={privateKey}

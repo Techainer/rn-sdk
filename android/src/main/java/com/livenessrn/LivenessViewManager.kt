@@ -15,7 +15,6 @@ import com.facebook.react.uimanager.ViewGroupManager
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.uimanager.annotations.ReactPropGroup
 import com.liveness.sdk.core.LiveNessSDK
-import com.liveness.sdk.core.MainLiveNessActivity
 import com.liveness.sdk.core.model.LivenessRequest
 
 
@@ -104,16 +103,24 @@ class LivenessViewManager(
     val parentView = root.findViewById<ViewGroup>(reactNativeViewId)
     setupLayout(parentView)
 
-    val bundle = Bundle()
-    bundle.putString("KEY_BUNDLE_SCREEN", "")
-    val myFragment = MainLiveNessActivity()
-    myFragment.arguments = bundle
+//    val bundle = Bundle()
+//    bundle.putString("KEY_BUNDLE_SCREEN", "")
+//    val myFragment = MainLiveNessActivity()
+//    myFragment.arguments = bundle
+
 
     val activity = reactContext?.currentActivity as FragmentActivity
-    activity.supportFragmentManager
-      .beginTransaction()
-      .replace(reactNativeViewId, myFragment, reactNativeViewId.toString())
-      .commit()
+
+    LiveNessSDK.startLiveNess(
+      activity,
+      getLivenessRequest(),
+      activity.supportFragmentManager,
+      reactNativeViewId, null)
+
+//    activity.supportFragmentManager
+//      .beginTransaction()
+//      .replace(reactNativeViewId, myFragment, reactNativeViewId.toString())
+//      .commit()
   }
 
   fun setupLayout(view: View) {
