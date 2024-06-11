@@ -97,10 +97,9 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, livenesScore: Float, faceMatchingScore: Float, result: Bool, message: String, videoURL: URL?, response: LivenessResult?) {
           let imageData = verificationImage.pngData()!
           let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-          let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
           let data = response?.data
         if(response?.status == 200) {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": result, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": response?.status ?? "", "success": response?.succes ?? "", "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data ?? ""]
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": result, "livenesScore": data!["livenesScore"] as? String ?? "", "request_id": response?.request_id ?? "", "status": response?.status ?? "", "success": response?.succes ?? "", "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data ?? ""]
             
             pushEvent(data: dataRes)
         } else {
@@ -112,15 +111,15 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
       }
     
     func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
-//        if action == .smile{
-//            pushEvent(data: ["message": "check smile", "action": action.rawValue])
-//        } else if action == .fetchConfig{
-//            pushEvent(data: ["message": "start check smile", "action": action.rawValue])
-//        } else if action == .detectingFace{
-//            pushEvent(data: ["message": "detect face", "action": action.rawValue])
-//        } else{
-//            pushEvent(data: ["message": "done smile", "action": action.rawValue])
-//        }
+        if action == .smile{
+            pushEvent(data: ["message": "check smile", "action": action.rawValue])
+        } else if action == .fetchConfig{
+            pushEvent(data: ["message": "start check smile", "action": action.rawValue])
+        } else if action == .detectingFace{
+            pushEvent(data: ["message": "detect face", "action": action.rawValue])
+        } else{
+            pushEvent(data: ["message": "done smile", "action": action.rawValue])
+        }
     }
     
     
