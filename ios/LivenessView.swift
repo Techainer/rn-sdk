@@ -8,6 +8,7 @@
 import Foundation
 import React
 import UIKit
+import LocalAuthentication
 @_implementationOnly import LivenessUtility
 
 @available(iOS 13.0, *)
@@ -44,7 +45,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
         let response = try await Networking.shared.initTransaction(additionParam: ["clientTransactionId": self.requestid], clientTransactionId: self.requestid)
         if response.status == 200 {
           self.transactionId = response.data
-            self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: true, delegate: self, livenessMode: .twoDimension, isWink: false, isOnlyLiveness: true)
+            self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: true, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension, isWink: false, isOnlyLiveness: true)
             
           try self.livenessDetector?.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
         } else {
@@ -99,12 +100,10 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
           let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
           let data = response?.data
         if(response?.status == 200) {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": result, "livenesScore": data!["livenesScore"] as? String ?? "", "request_id": response?.request_id ?? "", "status": response?.status ?? "", "success": response?.succes ?? "", "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data ?? ""]
-            
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": "200", "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
         } else {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": result, "livenesScore": livenesScore, "status": response?.status ?? "", "success": response?.succes ?? "", "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data ?? ""]
-            
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "livenesScore": livenesScore, "status": response?.status as Any, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
         }
         //      Request id, message, status, success
@@ -123,7 +122,15 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     }
     
     
-    func stopLiveness() {
-        livenessDetector?.stopLiveness()
+  func stopLiveness() {
+    livenessDetector?.stopLiveness()
+  }
+
+  var faceIDAvailable: Bool {
+    if #available(iOS 11.0, *) {
+      let context = LAContext()
+      return (context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: nil) && context.biometryType == .faceID)
     }
+    return false
+  }
 }
