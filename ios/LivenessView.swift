@@ -101,11 +101,11 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
           let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
           let data = response?.data
         if(response?.status == 200) {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "code": 200, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": "200", "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "code": 200, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": true, "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
             livenessDetector?.stopLiveness()
         } else {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "code": 101, "livenesScore": livenesScore, "status": response?.status as Any, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "code": 101, "livenesScore": livenesScore, "status": false, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
         }
         //      Request id, message, status, success
