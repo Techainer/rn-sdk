@@ -22,6 +22,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   var publicKey = ""
   var secret = "ABCDEFGHIJKLMNOP"
     var debugging = false
+    var isDoneSmile = false
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -100,10 +101,11 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
           let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
           let data = response?.data
         if(response?.status == 200) {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": "200", "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "code": 200, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": "200", "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
+            livenessDetector?.stopLiveness()
         } else {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "livenesScore": livenesScore, "status": response?.status as Any, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
+            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "code": 101, "livenesScore": livenesScore, "status": response?.status as Any, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
             pushEvent(data: dataRes)
         }
         //      Request id, message, status, success
@@ -111,12 +113,16 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     
     func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
         if action == .smile{
+            isDoneSmile = false
             pushEvent(data: ["message": "check smile", "action": action.rawValue])
         } else if action == .fetchConfig{
+            isDoneSmile = false
             pushEvent(data: ["message": "start check smile", "action": action.rawValue])
         } else if action == .detectingFace{
+            isDoneSmile = false
             pushEvent(data: ["message": "detect face", "action": action.rawValue])
-        } else{
+        } else if isDoneSmile == false{
+            isDoneSmile = true
             pushEvent(data: ["message": "done smile", "action": action.rawValue])
         }
     }

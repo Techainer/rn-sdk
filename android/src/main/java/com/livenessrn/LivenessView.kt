@@ -20,10 +20,10 @@ class LivenessView @JvmOverloads constructor(
     override fun onCallbackLiveness(livenessModel: LivenessModel?) {
       if (livenessModel != null && livenessModel.status != null && livenessModel.status == 200) {
         val map = Arguments.createMap()
-        map.putInt("status", livenessModel.status ?: -1)
+        map.putBoolean("status", true)
+        map.putInt("code", 200)
         map.putString("message", livenessModel.message ?: "")
         map.putString("request_id", livenessModel.requestId ?: "")
-        map.putString("code", livenessModel.code ?: "")
         map.putBoolean("success", true)
         map.putString("pathVideo", livenessModel.pathVideo ?: "")
         map.putString("faceImage", livenessModel.faceImage ?: "")
@@ -44,9 +44,9 @@ class LivenessView @JvmOverloads constructor(
           map.putInt("action", livenessModel?.action ?: -1)
           map.putString("message", livenessModel?.message ?: "")
         } else {
-          map.putInt("status", livenessModel?.status ?: -1)
+          map.putBoolean("status", false)
+          map.putInt("code", 101)
           map.putString("message", livenessModel?.message ?: "")
-          map.putString("code", livenessModel?.code ?: "")
         }
         callNativeEvent(map)
       }
