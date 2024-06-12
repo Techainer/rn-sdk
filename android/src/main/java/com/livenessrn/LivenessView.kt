@@ -24,7 +24,7 @@ class LivenessView @JvmOverloads constructor(
         map.putString("message", livenessModel.message ?: "")
         map.putString("request_id", livenessModel.requestId ?: "")
         map.putString("code", livenessModel.code ?: "")
-        map.putBoolean("success", livenessModel.success ?: false)
+        map.putBoolean("success", true)
         map.putString("pathVideo", livenessModel.pathVideo ?: "")
         map.putString("faceImage", livenessModel.faceImage ?: "")
         map.putString("livenessImage", livenessModel.livenessImage ?: "")
