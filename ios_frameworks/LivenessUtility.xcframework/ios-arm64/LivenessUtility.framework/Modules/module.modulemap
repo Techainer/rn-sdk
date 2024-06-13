@@ -1,7 +1,7 @@
 framework module LivenessUtility {
   umbrella header "LivenessUtility.h"
-
   export *
+
   module * { export * }
 }
 

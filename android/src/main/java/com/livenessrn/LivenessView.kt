@@ -42,7 +42,8 @@ class LivenessView @JvmOverloads constructor(
         val map = Arguments.createMap()
         if (livenessModel?.action != null) {
           map.putInt("action", livenessModel?.action ?: -1)
-          map.putString("message", livenessModel?.message ?: "")
+          map.putString("message", "${livenessModel?.message}")
+          map.putString("livenessImage", "${livenessModel?.livenessImage}")
         } else {
           map.putBoolean("status", false)
           map.putInt("code", 101)

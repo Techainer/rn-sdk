@@ -1,71 +1,28 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name LivenessUtility
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name LivenessUtility
 import ARKit
 import AVFoundation
 import CoreGraphics
 import CoreMedia
 import CoreVideo
-import CryptoSwift
 import Foundation
-import KeychainSwift
 @_exported import LivenessUtility
 import Metal
 import MetalKit
 import MobileCoreServices
-import ObjectMapper
-import SignManager
 import Swift
 import UIKit
 import Vision
 import _Concurrency
 import _StringProcessing
-@_inheritsConvenienceInitializers @available(iOS 13.0, *)
-@objc public class Networking : ObjectiveC.NSObject {
-  @objc public static let shared: LivenessUtility.Networking
-  @objc public func setup(appId: Swift.String, logLevel: LivenessUtility.LogLevel = .debug, url: Swift.String, publicKey: Swift.String, privateKey: Swift.String)
-  @objc public func generateDeviceInfor(additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], ownerId: Swift.String = "") -> LivenessUtility.LivenessResponse
-  @objc public func resetDeviceInfo()
-  @objc override dynamic public init()
-  @objc deinit
-}
-@available(iOS 13.0, *)
-extension LivenessUtility.Networking {
-  #if compiler(>=5.3) && $AsyncAwait
-  public func doThermalFaceAntiSpoofingCheck(normalImage: UIKit.UIImage, thermalImage: UIKit.UIImage) async throws -> [Swift.String : Any]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  public func doFaceAntiSpoofingCheck(image: UIKit.UIImage) async throws -> [Swift.String : Any]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  public func doFlashFaceAntiSpoofingCheck(image: UIKit.UIImage, color: Swift.Int) async throws -> [Swift.String : Any]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  @objc dynamic public func initTransaction(duration: Swift.Int = 30, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], clientTransactionId: Swift.String = "") async throws -> LivenessUtility.LivenessResponse
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  @objc dynamic public func registerFace(faceImage: UIKit.UIImage, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:]) async throws -> LivenessUtility.LivenessResponse
-  #endif
-}
-public struct MultipartRequest {
-  public let boundary: Swift.String
-  public init(boundary: Swift.String = UUID().uuidString)
-  public mutating func add(key: Swift.String, value: Swift.String)
-  public mutating func add(key: Swift.String, fileName: Swift.String, fileMimeType: Swift.String, fileData: Foundation.Data)
-  public var httpContentTypeHeadeValue: Swift.String {
-    get
-  }
-  public var httpBody: Foundation.Data {
-    get
-  }
-}
+import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessCalculator : ObjectiveC.NSObject {
   public var isValidating: Swift.Bool
   public var additionHeader: [Swift.String : Swift.String]
   public var additionParam: [Swift.String : Any]
-  @objc public func calculateLiveness(transactionId: Swift.String = "", frame: ARKit.ARFrame, onDone: ((Swift.Bool, Swift.Float, Swift.Float, Swift.Bool, Swift.String, UIKit.UIImage) -> Swift.Void)?)
+  @objc public func calculateLiveness(frame: ARKit.ARFrame, onDone: ((UIKit.UIImage, UIKit.UIImage) -> Swift.Void)?)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -98,27 +55,13 @@ public struct MultipartRequest {
   public class func clearStoredLogs()
   @objc deinit
 }
-public struct TOTP {
-  public init()
-  public func generateRange(degree: Swift.Int, digits: LivenessUtility.OTPDigits = .six, secret: Foundation.Data, at date: Foundation.Date = .init()) throws -> [Swift.String]
-  public func generate(digits: LivenessUtility.OTPDigits = .six, secret: Foundation.Data, offset: Swift.Int = 0, at date: Foundation.Date = .init()) throws -> Swift.String
-}
-public enum OTPDigits : Swift.Int {
-  case six
-  case seven
-  case eight
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 public struct ConfigData {
   public var isActiveSmile: Swift.Bool
+  public var isActiveWink: Swift.Bool
 }
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessUtil : ObjectiveC.NSObject {
-  @objc public class func createLivenessDetector(previewView: UIKit.UIView, threshold: LivenessUtility.LivenessUtilitySensitivityThreshold = .medium, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = false, delegate: (any LivenessUtility.LivenessUtilityDetectorDelegate)?, livenessMode: LivenessUtility.LivenessMode = .threeDimension, additionParam: [Swift.String : Any] = [:], additionHeader: [Swift.String : Swift.String] = [:]) -> LivenessUtility.LivenessUtilityDetector
+  @objc public class func createLivenessDetector(previewView: UIKit.UIView, threshold: LivenessUtility.LivenessUtilitySensitivityThreshold = .medium, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = false, delegate: (any LivenessUtility.LivenessUtilityDetectorDelegate)?, livenessMode: LivenessUtility.LivenessMode = .threeDimension, isWink: Swift.Bool = false, delayErrorTime: Foundation.TimeInterval = 3, isOnlyLiveness: Swift.Bool = false, additionParam: [Swift.String : Any] = [:], additionHeader: [Swift.String : Swift.String] = [:]) -> LivenessUtility.LivenessUtilityDetector
   @objc override dynamic public init()
   @objc deinit
 }
@@ -126,14 +69,14 @@ public struct ConfigData {
 @objc public protocol LivenessUtilityDetectorDelegate {
   @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, startLivenessAction action: LivenessUtility.LivenessAction)
   @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFail withError: LivenessUtility.LivenessError)
-  @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, livenesScore: Swift.Float, faceMatchingScore: Swift.Float, result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?)
+  @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, thermalImage: UIKit.UIImage?, videoURL: Foundation.URL?)
 }
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessUtilityDetector : ObjectiveC.NSObject {
   weak public var delegate: (any LivenessUtility.LivenessUtilityDetectorDelegate)?
   public var cardId: Swift.String
-  public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
-  public func stopLiveness()
+  @objc public func getVerificationRequiresAndStartSession() throws
+  @objc public func stopLiveness()
   @objc override dynamic public init()
   @objc deinit
 }
@@ -143,50 +86,6 @@ public struct ConfigData {
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
-    get
-  }
-}
-public func base32Encode(_ data: Foundation.Data) -> Swift.String
-public func base32HexEncode(_ data: Foundation.Data) -> Swift.String
-public func base32DecodeToData(_ string: Swift.String) -> Foundation.Data?
-public func base32HexDecodeToData(_ string: Swift.String) -> Foundation.Data?
-public func base32Encode(_ array: [Swift.UInt8]) -> Swift.String
-public func base32HexEncode(_ array: [Swift.UInt8]) -> Swift.String
-public func base32Decode(_ string: Swift.String) -> [Swift.UInt8]?
-public func base32HexDecode(_ string: Swift.String) -> [Swift.UInt8]?
-extension Swift.String {
-  public var base32DecodedData: Foundation.Data? {
-    get
-  }
-  public var base32EncodedString: Swift.String {
-    get
-  }
-  public func base32DecodedString(_ encoding: Swift.String.Encoding = .utf8) -> Swift.String?
-  public var base32HexDecodedData: Foundation.Data? {
-    get
-  }
-  public var base32HexEncodedString: Swift.String {
-    get
-  }
-  public func base32HexDecodedString(_ encoding: Swift.String.Encoding = .utf8) -> Swift.String?
-}
-extension Foundation.Data {
-  public var base32EncodedString: Swift.String {
-    get
-  }
-  public var base32EncodedData: Foundation.Data {
-    get
-  }
-  public var base32DecodedData: Foundation.Data? {
-    get
-  }
-  public var base32HexEncodedString: Swift.String {
-    get
-  }
-  public var base32HexEncodedData: Foundation.Data {
-    get
-  }
-  public var base32HexDecodedData: Foundation.Data? {
     get
   }
 }
@@ -240,9 +139,9 @@ extension Foundation.Data {
 }
 @available(iOS 13.0, *)
 @objc public class DepthLivenessDetector : LivenessUtility.LivenessUtilityDetector {
-  @objc public init(previewView: UIKit.UIView, threshold: LivenessUtility.LivenessUtilitySensitivityThreshold = .high, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = true, transactionId: Swift.String = "")
+  @objc public init(previewView: UIKit.UIView, threshold: LivenessUtility.LivenessUtilitySensitivityThreshold = .high, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = true)
   @objc public func startLivenessDetection()
-  override public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
+  @objc override public func getVerificationRequiresAndStartSession() throws
   @objc override public func stopLiveness()
   @objc deinit
 }
@@ -257,34 +156,9 @@ extension LivenessUtility.DepthLivenessDetector : ARKit.ARSCNViewDelegate {
   @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didAdd node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
   @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didUpdate node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
 }
-@objc @objcMembers public class LivenessResponse : ObjectiveC.NSObject, ObjectMapper.Mappable {
-  @objc public var status: Swift.Int
-  @objc public var data: Swift.String
-  @objc public var signature: Swift.String
-  required public init?(map: ObjectMapper.Map)
-  public func mapping(map: ObjectMapper.Map)
-  @objc deinit
-}
-@objc @objcMembers public class LivenessResult : ObjectiveC.NSObject, ObjectMapper.Mappable {
-  @objc public var status: Swift.Int
-  @objc public var data: [Swift.String : Any]
-  @objc public var signature: Swift.String
-  @objc public var livenesScore: Swift.Float
-  @objc public var faceMatchingScore: Swift.Float
-  @objc public var succes: Swift.Bool
-  @objc public var sim: Swift.Float
-  @objc public var livenessType: Swift.String
-  @objc public var mess: Swift.String
-  required public init?(map: ObjectMapper.Map)
-  public func mapping(map: ObjectMapper.Map)
-  @objc deinit
-}
 extension LivenessUtility.LogLevel : Swift.Equatable {}
 extension LivenessUtility.LogLevel : Swift.Hashable {}
 extension LivenessUtility.LogLevel : Swift.RawRepresentable {}
-extension LivenessUtility.OTPDigits : Swift.Equatable {}
-extension LivenessUtility.OTPDigits : Swift.Hashable {}
-extension LivenessUtility.OTPDigits : Swift.RawRepresentable {}
 extension LivenessUtility.LivenessMode : Swift.Equatable {}
 extension LivenessUtility.LivenessMode : Swift.Hashable {}
 extension LivenessUtility.LivenessMode : Swift.RawRepresentable {}

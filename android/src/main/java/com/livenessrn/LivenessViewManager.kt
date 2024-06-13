@@ -21,14 +21,8 @@ import com.liveness.sdk.core.model.LivenessRequest
 class LivenessViewManager(
   private val reactContext: ReactApplicationContext
 ) : ViewGroupManager<LivenessView>() {
-
-  private var requestId: String = ""
-  private var appId: String = "com.qts.test"
   private var deviceId = ""
   private var secret = "ABCDEFGHIJKLMNOP"
-  private var baseURL = ""
-  private var privateKey = ""
-  private var publicKey = ""
   private var debugging = false
 
   private var propWidth: Int? = null
@@ -72,31 +66,6 @@ class LivenessViewManager(
     if (index == 1) propHeight = value
   }
 
-  @ReactProp(name = "requestid")
-  fun setRequestid(view: FrameLayout, requestid: String) {
-    this.requestId = requestid
-  }
-
-  @ReactProp(name = "appId")
-  fun setAppId(view: FrameLayout, appId: String) {
-    this.appId = appId
-  }
-
-  @ReactProp(name = "baseUrl")
-  fun setBaseUrl(view: FrameLayout, baseUrl: String) {
-    this.baseURL = baseUrl
-  }
-
-  @ReactProp(name = "privateKey")
-  fun setPrivateKey(view: FrameLayout, privateKey: String) {
-    this.privateKey = privateKey
-  }
-
-  @ReactProp(name = "publicKey")
-  fun setPublicKey(view: FrameLayout, publicKey: String) {
-    this.publicKey = publicKey
-  }
-
   @ReactProp(name = "debugging")
   fun setDebugging(view: FrameLayout, debugging: Boolean) {
     this.debugging = debugging
@@ -109,11 +78,6 @@ class LivenessViewManager(
     val parentView = root.findViewById<ViewGroup>(reactNativeViewId)
     setupLayout(parentView)
 
-//    val bundle = Bundle()
-//    bundle.putString("KEY_BUNDLE_SCREEN", "")
-//    val myFragment = MainLiveNessActivity()
-//    myFragment.arguments = bundle
-
 
     val activity = reactContext?.currentActivity as FragmentActivity
 
@@ -122,11 +86,6 @@ class LivenessViewManager(
       getLivenessRequest(),
       activity.supportFragmentManager,
       reactNativeViewId, null)
-
-//    activity.supportFragmentManager
-//      .beginTransaction()
-//      .replace(reactNativeViewId, myFragment, reactNativeViewId.toString())
-//      .commit()
   }
 
   fun setupLayout(view: View) {
@@ -171,14 +130,8 @@ class LivenessViewManager(
       deviceId = LiveNessSDK.getDeviceId(activity)!!
     }
 
-    val optionRequest: HashMap<String, String> = HashMap()
-    optionRequest["requestId"] = this.requestId
-    optionRequest["clientTransactionId"] = this.requestId
     return LivenessRequest(
-      duration = 600, privateKey = privateKey,
-      appId = this.appId, isDebug = debugging,
-      deviceId = deviceId, clientTransactionId = this.requestId, secret = secret,
-      baseURL = baseURL, publicKey = publicKey
+      duration = 600, isDebug = debugging, secret = secret
     )
   }
 }

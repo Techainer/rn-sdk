@@ -156,13 +156,11 @@ export default function App() {
               }
             }
             onEvent={(data) => {
-              console.log('===sendEvent===', data.nativeEvent?.data);
+              // console.log('===sendEvent===', data.nativeEvent?.data);
+              if (data.nativeEvent?.data?.action == 8 ) {
+                console.log('===sendEvent===', data.nativeEvent?.data);
+              }
             }}
-            requestid={''}
-            appId={appId}
-            baseUrl={baseUrl}
-            privateKey={privateKey}
-            publicKey={publicKey}
             debugging={true}
           />
         </View>
@@ -187,8 +185,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   view_camera: {
+    flex: 1,
     width: '100%',
-    height: 400,
+    height: '100%',
     backgroundColor: 'red',
     marginBottom: 24,
   },

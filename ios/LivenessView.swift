@@ -15,46 +15,28 @@ import LocalAuthentication
 class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   var transactionId = ""
   var livenessDetector: LivenessUtilityDetector?
-  var requestid = ""
-  var appId = ""
-  var baseUrl = ""
-  var privateKey = ""
-  var publicKey = ""
-  var secret = "ABCDEFGHIJKLMNOP"
-    var debugging = false
-    var isDoneSmile = false
+  var debugging = false
+  var isDoneSmile = false
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-//    setupView()
+    setupView()
   }
  
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-//    setupView()
+    setupView()
   }
-    
-    private func setupConfig() {
-        Networking.shared.setup(appId: appId, logLevel: .debug, url: self.baseUrl, publicKey: self.publicKey, privateKey: self.privateKey)
-        setupView()
-    }
  
   private func setupView() {
     // in here you can configure your view
     Task {
-      do {
-        let response = try await Networking.shared.initTransaction(additionParam: ["clientTransactionId": self.requestid], clientTransactionId: self.requestid)
-        if response.status == 200 {
-          self.transactionId = response.data
-            self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: true, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension, isWink: false, isOnlyLiveness: true)
-            
-          try self.livenessDetector?.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
-        } else {
-          pushEvent(data: ["status" : response.status, "data": response.data, "signature": response.signature])
+        do {
+            self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
+            try self.livenessDetector?.getVerificationRequiresAndStartSession()
+        } catch {
+            pushEvent(data: error)
         }
-      } catch {
-        pushEvent(data: error)
-      }
     }
   }
   
@@ -66,66 +48,46 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   }
   
   @objc var onEvent: RCTBubblingEventBlock?
-  
-  @objc func setRequestid(_ val: NSString) {
-      self.requestid = val as String
+    
+  @objc func setDebugging(_ val: Bool) {
+    self.debugging = val as Bool
   }
-    
-  @objc func setAppId(_ val: NSString) {
-    self.appId = val as String
-  }
-    
-  @objc func setBaseUrl(_ val: NSString) {
-    self.baseUrl = val as String
-      self.setupConfig()
-  }
-    
-    @objc func setPrivateKey(_ val: NSString) {
-      self.privateKey = val as String
-    }
-    
-    @objc func setPublicKey(_ val: NSString) {
-      self.publicKey = val as String
-    }
-    
-    @objc func setDebugging(_ val: Bool) {
-        self.debugging = val as Bool
-      }
   
   func liveness(liveness: LivenessUtilityDetector, didFail withError: LivenessError) {
     pushEvent(data: withError)
   }
-  
-    func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, livenesScore: Float, faceMatchingScore: Float, result: Bool, message: String, videoURL: URL?, response: LivenessResult?) {
-          let imageData = verificationImage.pngData()!
-          let livenessImage = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-          let data = response?.data
-        if(response?.status == 200) {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": true, "code": 200, "livenesScore": livenesScore, "request_id": response?.request_id ?? "", "status": true, "success": true, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
-            pushEvent(data: dataRes)
-            livenessDetector?.stopLiveness()
+    func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
+        let image1 = verificationImage.pngData()!
+        let livenessImage = image1.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        
+        if faceIDAvailable == true {
+            if thermalImage != nil {
+                let image2 = thermalImage?.pngData()!
+                let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+                pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? ""])
+            }
         } else {
-            let dataRes: [String: Any] = ["message": message, "livenessImage": livenessImage, "result": false, "code": 101, "livenesScore": livenesScore, "status": false, "success": false, "livenessType": data!["livenessType"] as? String ?? "", "faceMatchingScore": data!["faceMatchingScore"] as? String ?? "", "data": response?.data as Any]
-            pushEvent(data: dataRes)
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
         }
-        //      Request id, message, status, success
-      }
-    
-    func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
-        if action == .smile{
-            isDoneSmile = false
-            pushEvent(data: ["message": "check smile", "action": action.rawValue])
-        } else if action == .fetchConfig{
-            isDoneSmile = false
-            pushEvent(data: ["message": "start check smile", "action": action.rawValue])
-        } else if action == .detectingFace{
-            isDoneSmile = false
-            pushEvent(data: ["message": "detect face", "action": action.rawValue])
-        } else if isDoneSmile == false{
-            isDoneSmile = true
-            pushEvent(data: ["message": "done smile", "action": action.rawValue])
-        }
+        livenessDetector?.stopLiveness()
     }
+    
+  func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
+    if action == .smile{
+      isDoneSmile = false
+      pushEvent(data: ["message": "check smile", "action": action.rawValue])
+    } else if action == .fetchConfig{
+      isDoneSmile = false
+      pushEvent(data: ["message": "start check smile", "action": action.rawValue])
+    } else if action == .detectingFace{
+      isDoneSmile = false
+      pushEvent(data: ["message": "detect face", "action": action.rawValue])
+    } else if isDoneSmile == false{
+      isDoneSmile = true
+//      pushEvent(data: ["message": "done smile", "action": action.rawValue])
+      print("done smile")
+    }
+  }
     
     
   func stopLiveness() {
