@@ -162,15 +162,10 @@ export default function App() {
               }
             }}
             debugging={true}
+            isThreeDimension={false}
           />
         </View>
       )}
-      <TouchableOpacity onPress={onGetDeviceId} style={styles.btn_liveness}>
-        <Text>Get DeviceId</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onRegisterFace} style={styles.btn_liveness}>
-        <Text>Start register face</Text>
-      </TouchableOpacity>
       <TouchableOpacity onPress={onStartLiveNess} style={styles.btn_liveness}>
         <Text>Start LiveNess</Text>
       </TouchableOpacity>

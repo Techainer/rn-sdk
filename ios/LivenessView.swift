@@ -16,6 +16,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   var transactionId = ""
   var livenessDetector: LivenessUtilityDetector?
   var debugging = false
+  var isThreeDimension = false
   var isDoneSmile = false
   
   override init(frame: CGRect) {
@@ -31,12 +32,16 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   private func setupView() {
     // in here you can configure your view
     Task {
-        do {
-            self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
-            try self.livenessDetector?.getVerificationRequiresAndStartSession()
-        } catch {
-            pushEvent(data: error)
+      do {
+        if self.isThreeDimension == true {
+          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
+        } else {
+          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: .twoDimension)
         }
+        try self.livenessDetector?.getVerificationRequiresAndStartSession()
+      } catch {
+        pushEvent(data: error)
+      }
     }
   }
   
@@ -52,25 +57,34 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   @objc func setDebugging(_ val: Bool) {
     self.debugging = val as Bool
   }
+
+  @objc func setIsThreeDimension(_ val: Bool) {
+    self.isThreeDimension = val as Bool
+  }
   
   func liveness(liveness: LivenessUtilityDetector, didFail withError: LivenessError) {
     pushEvent(data: withError)
   }
-    func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
-        let image1 = verificationImage.pngData()!
-        let livenessImage = image1.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-        
-        if faceIDAvailable == true {
-            if thermalImage != nil {
-                let image2 = thermalImage?.pngData()!
-                let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-                pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? ""])
-            }
+  
+  func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
+    Task {
+      let image1 = verificationImage.pngData()!
+      let livenessImage = image1.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+      if faceIDAvailable == true {
+        if thermalImage != nil {
+          let image2 = thermalImage?.pngData()!
+          let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+          pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? ""])
         } else {
-            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
+          pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
         }
-        livenessDetector?.stopLiveness()
+      } else {
+        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
+      }
+//      pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
+      livenessDetector?.stopLiveness()
     }
+  }
     
   func liveness(liveness: LivenessUtilityDetector, startLivenessAction action: LivenessAction) {
     if action == .smile{

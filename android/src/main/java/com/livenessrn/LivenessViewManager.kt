@@ -24,6 +24,7 @@ class LivenessViewManager(
   private var deviceId = ""
   private var secret = "ABCDEFGHIJKLMNOP"
   private var debugging = false
+  private var isThreeDimension = false
 
   private var propWidth: Int? = null
   private var propHeight: Int? = null
@@ -69,6 +70,11 @@ class LivenessViewManager(
   @ReactProp(name = "debugging")
   fun setDebugging(view: FrameLayout, debugging: Boolean) {
     this.debugging = debugging
+  }
+
+  @ReactProp(name = "isThreeDimension")
+  fun setIsThreeDimension(view: FrameLayout, isThreeDimension: Boolean) {
+    this.isThreeDimension = isThreeDimension
   }
 
   /**
