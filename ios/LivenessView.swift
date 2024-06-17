@@ -13,27 +13,26 @@ import LocalAuthentication
 
 @available(iOS 13.0, *)
 class LivenessView: UIView, LivenessUtilityDetectorDelegate {
-  var transactionId = ""
   var livenessDetector: LivenessUtilityDetector?
   var debugging = false
-  var isThreeDimension = false
+//  var isThreeDimension = false
   var isDoneSmile = false
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setupView()
+//    setupView()
   }
  
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    setupView()
+//    setupView()
   }
  
   private func setupView() {
     // in here you can configure your view
     Task {
       do {
-        if self.isThreeDimension == true {
+        if isThreeDimension == true {
           self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
         } else {
           self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: .twoDimension)
@@ -58,8 +57,10 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     self.debugging = val as Bool
   }
 
-  @objc func setIsThreeDimension(_ val: Bool) {
-    self.isThreeDimension = val as Bool
+  @objc var isThreeDimension = false {
+    didSet {
+      self.setupView()
+    }
   }
   
   func liveness(liveness: LivenessUtilityDetector, didFail withError: LivenessError) {

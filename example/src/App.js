@@ -162,7 +162,7 @@ export default function App() {
               }
             }}
             debugging={true}
-            isThreeDimension={false}
+            isThreeDimension={true}
           />
         </View>
       )}
