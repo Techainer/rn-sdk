@@ -81,12 +81,12 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
         if thermalImage != nil {
           let image2 = thermalImage?.pngData()!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-          pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? ""])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? ""])
         } else {
-          pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "videoURL": videoURL?.absoluteString ?? ""])
         }
       } else {
-        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
+        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "videoURL": videoURL?.absoluteString ?? ""])
       }
 //      pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
       livenessDetector?.stopLiveness()
