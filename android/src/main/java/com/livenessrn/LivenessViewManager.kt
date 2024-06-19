@@ -1,6 +1,7 @@
 package com.livenessrn
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Choreographer
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class LivenessViewManager(
   private var deviceId = ""
   private var secret = "ABCDEFGHIJKLMNOP"
   private var debugging = false
+  private var minFaceSize: Float = 0.15F
   private var isThreeDimension = false
 
   private var propWidth: Int? = null
@@ -65,6 +67,11 @@ class LivenessViewManager(
   fun setStyle(view: FrameLayout, index: Int, value: Int) {
     if (index == 0) propWidth = value
     if (index == 1) propHeight = value
+  }
+
+  @ReactProp(name = "minFaceSize")
+  fun setMinFaceSize(view: FrameLayout, minFaceSize: Float) {
+    this.minFaceSize = minFaceSize
   }
 
   @ReactProp(name = "debugging")
@@ -137,7 +144,7 @@ class LivenessViewManager(
     }
 
     return LivenessRequest(
-      duration = 600, isDebug = debugging, secret = secret
+      duration = 600, isDebug = debugging, secret = secret, mMinFaceSize = this.minFaceSize
     )
   }
 }

@@ -17,6 +17,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   var debugging = false
 //  var isThreeDimension = false
   var isDoneSmile = false
+    var minFaceSize = 0.25
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -33,9 +34,9 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     Task {
       do {
         if isThreeDimension == true {
-          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
+          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: minFaceSize, debugging: self.debugging, delegate: self, livenessMode: faceIDAvailable ? .threeDimension : .twoDimension)
         } else {
-          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: 0.25, debugging: self.debugging, delegate: self, livenessMode: .twoDimension)
+          self.livenessDetector = LivenessUtil.createLivenessDetector(previewView: self, threshold: .low,delay: 0, smallFaceThreshold: minFaceSize, debugging: self.debugging, delegate: self, livenessMode: .twoDimension)
         }
         try self.livenessDetector?.getVerificationRequiresAndStartSession()
       } catch {
@@ -56,10 +57,15 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   @objc func setDebugging(_ val: Bool) {
     self.debugging = val as Bool
   }
+    
+  @objc func setMinFaceSize(_ val: Double) {
+    self.minFaceSize = val
+      self.setupView()
+  }
 
   @objc var isThreeDimension = false {
     didSet {
-      self.setupView()
+//      self.setupView()
     }
   }
   

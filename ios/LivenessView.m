@@ -20,5 +20,6 @@
   // RCT_EXPORT_VIEW_PROPERTY(privateKey, NSString)
   // RCT_EXPORT_VIEW_PROPERTY(publicKey, NSString)
   RCT_EXPORT_VIEW_PROPERTY(debugging, BOOL)
+  RCT_EXPORT_VIEW_PROPERTY(minFaceSize, double)
   RCT_EXPORT_VIEW_PROPERTY(isThreeDimension, BOOL)
 @end
