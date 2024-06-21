@@ -29,6 +29,7 @@ class LivenessView @JvmOverloads constructor(
         map.putString("faceImage", livenessModel.faceImage ?: "")
         map.putString("livenessImage", livenessModel.livenessImage ?: "")
         map.putString("transactionID", livenessModel.transactionID ?: "")
+        map.putString("videoURL", livenessModel.pathVideo ?: "")
 
         if (livenessModel.data != null) {
           val mapData = Arguments.createMap()
@@ -44,6 +45,7 @@ class LivenessView @JvmOverloads constructor(
           map.putInt("action", livenessModel?.action ?: -1)
           map.putString("message", "${livenessModel?.message}")
           map.putString("livenessImage", "${livenessModel?.livenessImage}")
+          map.putString("videoURL", livenessModel.pathVideo ?: "")
         } else {
           map.putBoolean("status", false)
           map.putInt("code", 101)
