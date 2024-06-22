@@ -161,7 +161,7 @@ export default function App() {
                 console.log('===sendEvent===', data.nativeEvent?.data);
               }
             }}
-            debugging={true}
+            debugging={false}
             minFaceSize={0.4}
             isThreeDimension={true}
           />
