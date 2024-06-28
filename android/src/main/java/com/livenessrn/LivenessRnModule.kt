@@ -50,14 +50,14 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun setConfigSDK(appId: String? = null, clientTransactionId: String? = null, baseURL: String? = null, publicKey: String? = null, privateKey: String? = null) {
-    LiveNessSDK.setConfigSDK(
-      reactApplicationContext.currentActivity!!,
-      LivenessRequest(
-        appId = appId, clientTransactionId = clientTransactionId,
-        baseURL = baseURL, publicKey = publicKey, privateKey = privateKey,
-        isDebug = true
-      )
-    )
+//    LiveNessSDK.setConfigSDK(
+//      reactApplicationContext.currentActivity!!,
+//      LivenessRequest(
+//        appId = appId, clientTransactionId = clientTransactionId,
+//        baseURL = baseURL, publicKey = publicKey, privateKey = privateKey,
+//        isDebug = true
+//      )
+//    )
   }
 
   @ReactMethod

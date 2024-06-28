@@ -12,11 +12,11 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3B7CEF21B6B3B2B880147F12 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */; };
-		73EEF9A0111E07406EE63BE2 /* Pods_LivenessRnExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E992C9470BC5109E0718BF6 /* Pods_LivenessRnExample.framework */; };
+		4CF27A0B073224D54876B196 /* Pods_LivenessRnExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2310A314083F1402317A9D78 /* Pods_LivenessRnExample.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		AB9DFC10502708E07ADA1C35 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383459EDEED2E932753F9E04 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */; };
 		DBE707262BF5073A00C27D20 /* com.qts.test.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707242BF5073A00C27D20 /* com.qts.test.txt */; };
 		DBE707272BF5073A00C27D20 /* eid.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707252BF5073A00C27D20 /* eid.txt */; };
+		DDE3ADEFB33E3444881867A7 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381DFC67E62681CE693AD24D /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,11 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LivenessRnExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LivenessRnExample/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = LivenessRnExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		383459EDEED2E932753F9E04 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample_LivenessRnExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E992C9470BC5109E0718BF6 /* Pods_LivenessRnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2310A314083F1402317A9D78 /* Pods_LivenessRnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		381DFC67E62681CE693AD24D /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample_LivenessRnExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LivenessRnExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA555DB8B8454ED9ECDBAA38 /* Pods-LivenessRnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.release.xcconfig"; sourceTree = "<group>"; };
+		DB093D232C2D610F00E6E719 /* LivenessRnExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LivenessRnExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB30AC572BE9267F00204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB30AC5E2BE927E300204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB30AC632BE928E600204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9DFC10502708E07ADA1C35 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */,
+				DDE3ADEFB33E3444881867A7 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73EEF9A0111E07406EE63BE2 /* Pods_LivenessRnExample.framework in Frameworks */,
+				4CF27A0B073224D54876B196 /* Pods_LivenessRnExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +123,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */,
+				DB093D232C2D610F00E6E719 /* LivenessRnExample-Bridging-Header.h */,
 			);
 			name = LivenessRnExample;
 			sourceTree = "<group>";
@@ -136,8 +138,8 @@
 				DBF48FDA2BE8B10C00CED3BC /* LivenessUtility.xcframework */,
 				DBF48FD42BE8B0E800CED3BC /* CoreModules.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5E992C9470BC5109E0718BF6 /* Pods_LivenessRnExample.framework */,
-				383459EDEED2E932753F9E04 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */,
+				2310A314083F1402317A9D78 /* Pods_LivenessRnExample.framework */,
+				381DFC67E62681CE693AD24D /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,7 +253,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -596,6 +598,7 @@
 				PRODUCT_NAME = LivenessRnExample;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "LivenessRnExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -690,6 +693,7 @@
 				PRODUCT_NAME = LivenessRnExample;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "LivenessRnExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

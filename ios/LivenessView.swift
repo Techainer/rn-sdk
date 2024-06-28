@@ -75,18 +75,22 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   
   func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
     Task {
-      let image1 = verificationImage.pngData()!
-      let livenessImage = image1.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        let compressData = verificationImage.jpegData(compressionQuality: 0.5)
+        let compressedImage = UIImage(data: compressData!)
+        let image1 = compressedImage?.pngData()!
+        let livenessImage = image1?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
       if faceIDAvailable == true {
         if thermalImage != nil {
-          let image2 = thermalImage?.pngData()!
+            let compressDataThermal = thermalImage?.jpegData(compressionQuality: 0.5)
+            let compressedImageThermal = UIImage(data: compressDataThermal!)
+          let image2 = compressedImageThermal?.pngData()!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? ""])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? ""])
         } else {
-            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "videoURL": videoURL?.absoluteString ?? ""])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? ""])
         }
       } else {
-        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage, "videoURL": videoURL?.absoluteString ?? ""])
+        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? ""])
       }
 //      pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
       livenessDetector?.stopLiveness()
