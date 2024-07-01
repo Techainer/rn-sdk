@@ -75,13 +75,13 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   
   func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
     Task {
-        let compressData = verificationImage.jpegData(compressionQuality: 0.5)
+        let compressData = verificationImage.jpegData(compressionQuality: 0.25)
         let compressedImage = UIImage(data: compressData!)
         let image1 = compressedImage?.pngData()!
         let livenessImage = image1?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
       if faceIDAvailable == true {
         if thermalImage != nil {
-            let compressDataThermal = thermalImage?.jpegData(compressionQuality: 0.5)
+            let compressDataThermal = thermalImage?.jpegData(compressionQuality: 0.25)
             let compressedImageThermal = UIImage(data: compressDataThermal!)
           let image2 = compressedImageThermal?.pngData()!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
