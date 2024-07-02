@@ -8,11 +8,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeMap
-import com.liveness.sdk.core.LiveNessSDK
-import com.liveness.sdk.core.model.LivenessModel
-import com.liveness.sdk.core.model.LivenessRequest
-import com.liveness.sdk.core.utils.CallbackAPIListener
-import com.liveness.sdk.core.utils.CallbackLivenessListener
+import io.liveness.flash.core.LiveNessSDKBio
+import io.liveness.flash.core.model.LivenessModelBio
+import io.liveness.flash.core.utils.CallbackAPIListenerBio
+import io.liveness.flash.core.utils.CallbackLivenessListenerBio
 import org.json.JSONObject
 import java.util.UUID
 
@@ -63,7 +62,7 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun getDeviceId(callback: Callback? = null) {
     currentActivity!!.runOnUiThread {
-      val mDeviceId = LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity as FragmentActivity)
+      val mDeviceId = LiveNessSDKBio.getDeviceId(reactApplicationContext.currentActivity as FragmentActivity)
       val resultData: WritableMap = WritableNativeMap()
       if (mDeviceId?.isNotEmpty() == true) {
         deviceId = mDeviceId
@@ -80,10 +79,10 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
   fun  initTransaction(callback: Callback? = null) {
     val activity = reactApplicationContext.currentActivity as FragmentActivity
     currentActivity!!.runOnUiThread {
-      LiveNessSDK.initTransaction(
+      LiveNessSDKBio.initTransaction(
         activity,
-        LiveNessSDK.getLivenessRequest()!!,
-        object : CallbackAPIListener {
+        LiveNessSDKBio.getLivenessRequest()!!,
+        object : CallbackAPIListenerBio {
           override fun onCallbackResponse(data: String?) {
             var result: JSONObject? = null
             if (!data.isNullOrEmpty()) {
@@ -115,11 +114,11 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
   fun registerFace(image: String? = null, callback: Callback? = null) {
     val activity = reactApplicationContext.currentActivity as FragmentActivity
     currentActivity!!.runOnUiThread {
-      LiveNessSDK.registerFace(
+      LiveNessSDKBio.registerFace(
         activity,
         image!!,
-        object : CallbackLivenessListener {
-          override fun onCallbackLiveness(data: LivenessModel?) {
+        object : CallbackLivenessListenerBio {
+          override fun onCallbackLiveness(data: LivenessModelBio?) {
             val resultData: WritableMap = WritableNativeMap()
             Log.d("LivenessModel", "$data")
             if (data?.status == 200) {

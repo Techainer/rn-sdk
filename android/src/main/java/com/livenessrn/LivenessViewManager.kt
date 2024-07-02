@@ -15,14 +15,14 @@ import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.ViewGroupManager
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.uimanager.annotations.ReactPropGroup
-import com.liveness.sdk.core.LiveNessSDK
-import com.liveness.sdk.core.model.LivenessRequest
+import io.liveness.flash.core.LiveNessSDKBio
+import io.liveness.flash.core.model.LivenessRequestBio
 
 
 class LivenessViewManager(
   private val reactContext: ReactApplicationContext
 ) : ViewGroupManager<LivenessView>() {
-  private var deviceId = ""
+//  private var deviceId = ""
   private var secret = "ABCDEFGHIJKLMNOP"
   private var debugging = false
   private var minFaceSize: Float = 0.15F
@@ -94,7 +94,7 @@ class LivenessViewManager(
 
     val activity = reactContext?.currentActivity as FragmentActivity
 
-    LiveNessSDK.startLiveNess(
+    LiveNessSDKBio.startLiveNess(
       activity,
       getLivenessRequest(),
       activity.supportFragmentManager,
@@ -136,14 +136,14 @@ class LivenessViewManager(
 
   }
 
-  private fun getLivenessRequest(): LivenessRequest {
+  private fun getLivenessRequest(): LivenessRequestBio {
     val activity = reactContext?.currentActivity as FragmentActivity
 
-    if (LiveNessSDK.getDeviceId(activity)?.isNotEmpty() == true) {
-      deviceId = LiveNessSDK.getDeviceId(activity)!!
-    }
+//    if (LiveNessSDKBio.getDeviceId(activity)?.isNotEmpty() == true) {
+//      deviceId = LiveNessSDKBio.getDeviceId(activity)!!
+//    }
 
-    return LivenessRequest(
+    return LivenessRequestBio(
       duration = 600, isDebug = debugging, secret = secret, mMinFaceSize = this.minFaceSize
     )
   }

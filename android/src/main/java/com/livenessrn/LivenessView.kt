@@ -7,17 +7,17 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.events.RCTEventEmitter
-import com.liveness.sdk.core.LiveNessSDK
-import com.liveness.sdk.core.model.LivenessModel
-import com.liveness.sdk.core.utils.CallbackLivenessListener
+import io.liveness.flash.core.LiveNessSDKBio
+import io.liveness.flash.core.model.LivenessModelBio
+import io.liveness.flash.core.utils.CallbackLivenessListenerBio
 
 
 class LivenessView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
-  private val callBack = object : CallbackLivenessListener {
-    override fun onCallbackLiveness(livenessModel: LivenessModel?) {
+  private val callBack = object : CallbackLivenessListenerBio {
+    override fun onCallbackLiveness(livenessModel: LivenessModelBio?) {
       if (livenessModel != null && livenessModel.status != null && livenessModel.status == 200) {
         val map = Arguments.createMap()
         map.putBoolean("status", true)
@@ -57,7 +57,7 @@ class LivenessView @JvmOverloads constructor(
   }
 
   init {
-    LiveNessSDK.setCallbackListener(callBack)
+    LiveNessSDKBio.setCallbackListener(callBack)
   }
 
   fun callNativeEvent(map: WritableMap) {
