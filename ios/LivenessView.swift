@@ -73,7 +73,7 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     pushEvent(data: withError)
   }
   
-  func liveness(liveness: LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, videoURL: URL?) {
+  func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, color: String?, videoURL: URL?) {
     Task {
         let compressData = verificationImage.jpegData(compressionQuality: 0.25)
         let compressedImage = UIImage(data: compressData!)
@@ -85,12 +85,12 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
             let compressedImageThermal = UIImage(data: compressDataThermal!)
           let image2 = compressedImageThermal?.pngData()!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? ""])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? "", "color": color ?? ""])
         } else {
-            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? ""])
+            pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? "", "color": color ?? ""])
         }
       } else {
-        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? ""])
+        pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "videoURL": videoURL?.absoluteString ?? "", "color": color ?? ""])
       }
 //      pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage])
       livenessDetector?.stopLiveness()

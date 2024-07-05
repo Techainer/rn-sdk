@@ -403,7 +403,7 @@ SWIFT_PROTOCOL("_TtP15LivenessUtility31LivenessUtilityDetectorDelegate_") SWIFT_
 @optional
 - (void)livenessWithLiveness:(LivenessUtilityDetector * _Nonnull)liveness startLivenessAction:(enum LivenessAction)action;
 - (void)livenessWithLiveness:(LivenessUtilityDetector * _Nonnull)liveness didFail:(enum LivenessError)withError;
-- (void)livenessWithLiveness:(LivenessUtilityDetector * _Nonnull)liveness didFinish:(UIImage * _Nonnull)verificationImage thermalImage:(UIImage * _Nullable)thermalImage videoURL:(NSURL * _Nullable)videoURL;
+- (void)livenessWithLiveness:(LivenessUtilityDetector * _Nonnull)liveness didFinish:(UIImage * _Nonnull)verificationImage thermalImage:(UIImage * _Nullable)thermalImage color:(NSString * _Nullable)color videoURL:(NSURL * _Nullable)videoURL;
 @end
 
 typedef SWIFT_ENUM(NSInteger, LivenessUtilitySensitivityThreshold, open) {

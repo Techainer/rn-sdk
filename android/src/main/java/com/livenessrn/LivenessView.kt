@@ -45,7 +45,8 @@ class LivenessView @JvmOverloads constructor(
           map.putInt("action", livenessModel?.action ?: -1)
           map.putString("message", "${livenessModel?.message}")
           map.putString("livenessImage", "${livenessModel?.livenessImage}")
-          map.putString("videoURL", livenessModel.pathVideo ?: "")
+          map.putString("videoURL", "${livenessModel.pathVideo}")
+          map.putString("color", "${livenessModel.bgColor}")
         } else {
           map.putBoolean("status", false)
           map.putInt("code", 101)

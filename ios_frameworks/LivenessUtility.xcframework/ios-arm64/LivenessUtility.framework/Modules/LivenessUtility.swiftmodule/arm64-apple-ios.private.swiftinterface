@@ -70,7 +70,7 @@ public struct ConfigData {
 @objc public protocol LivenessUtilityDetectorDelegate {
   @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, startLivenessAction action: LivenessUtility.LivenessAction)
   @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFail withError: LivenessUtility.LivenessError)
-  @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, thermalImage: UIKit.UIImage?, videoURL: Foundation.URL?)
+  @objc optional func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, thermalImage: UIKit.UIImage?, color: Swift.String?, videoURL: Foundation.URL?)
 }
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessUtilityDetector : ObjectiveC.NSObject {

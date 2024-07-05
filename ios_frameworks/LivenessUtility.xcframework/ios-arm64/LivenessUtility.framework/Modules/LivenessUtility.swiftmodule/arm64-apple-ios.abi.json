@@ -2137,7 +2137,7 @@
           {
             "kind": "Function",
             "name": "liveness",
-            "printedName": "liveness(liveness:didFinish:thermalImage:videoURL:)",
+            "printedName": "liveness(liveness:didFinish:thermalImage:color:videoURL:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2173,6 +2173,20 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
                 "printedName": "Foundation.URL?",
                 "children": [
                   {
@@ -2186,13 +2200,13 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@LivenessUtility@objc(pl)LivenessUtilityDetectorDelegate(im)livenessWithLiveness:didFinish:thermalImage:videoURL:",
-            "mangledName": "$s15LivenessUtility0aB16DetectorDelegateP8livenessAD9didFinish12thermalImage8videoURLyAA0abC0C_So7UIImageCAKSg10Foundation0K0VSgtF",
+            "usr": "c:@M@LivenessUtility@objc(pl)LivenessUtilityDetectorDelegate(im)livenessWithLiveness:didFinish:thermalImage:color:videoURL:",
+            "mangledName": "$s15LivenessUtility0aB16DetectorDelegateP8livenessAD9didFinish12thermalImage5color8videoURLyAA0abC0C_So7UIImageCALSgSSSg10Foundation0L0VSgtF",
             "moduleName": "LivenessUtility",
             "genericSig": "<τ_0_0 where τ_0_0 : LivenessUtility.LivenessUtilityDetectorDelegate>",
             "sugared_genericSig": "<Self where Self : LivenessUtility.LivenessUtilityDetectorDelegate>",
             "protocolReq": true,
-            "objc_name": "livenessWithLiveness:didFinish:thermalImage:videoURL:",
+            "objc_name": "livenessWithLiveness:didFinish:thermalImage:color:videoURL:",
             "declAttributes": [
               "Optional",
               "ObjC"
@@ -6063,357 +6077,371 @@
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 2605,
+      "offset": 2620,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 2710,
+      "offset": 2725,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 2745,
+      "offset": 2760,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 2783,
+      "offset": 2798,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 2913,
+      "offset": 2928,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 2953,
+      "offset": 2968,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 2985,
+      "offset": 3000,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3024,
+      "offset": 3039,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3073,
+      "offset": 3088,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3115,
+      "offset": 3130,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 3293,
+      "offset": 3308,
       "length": 30,
       "value": "\"com.IDCardReader.WriterQueue\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3385,
+      "offset": 3400,
       "length": 2,
       "value": "72"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3444,
+      "offset": 3459,
       "length": 6,
       "value": "100000"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3506,
+      "offset": 3521,
       "length": 6,
       "value": "100000"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 3658,
+      "offset": 3673,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 3694,
+      "offset": 3709,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 3720,
+      "offset": 3735,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 3754,
+      "offset": 3769,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 3819,
+      "offset": 3834,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 3839,
+      "offset": 3854,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 3882,
+      "offset": 3897,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 3926,
+      "offset": 3941,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 3961,
+      "offset": 3976,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 3996,
+      "offset": 4011,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 4039,
+      "offset": 4054,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 4355,
+      "offset": 4370,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 4378,
+      "offset": 4393,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 4500,
+      "offset": 4515,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 4707,
+      "offset": 4722,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 4867,
+      "offset": 4882,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 5591,
+      "offset": 5606,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 5696,
+      "offset": 5711,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 5702,
+      "offset": 5717,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 5820,
+      "offset": 5835,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 5824,
+      "offset": 5839,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 5950,
+      "offset": 5965,
       "length": 14,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 5963,
+      "offset": 5978,
       "length": 70,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 6140,
+      "offset": 6155,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 6458,
+      "offset": 6473,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6748,
+      "offset": 6763,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6761,
+      "offset": 6776,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6942,
+      "offset": 6957,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6955,
+      "offset": 6970,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7069,
+      "offset": 7084,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7186,
+      "offset": 7201,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 7806,
+      "offset": 7821,
       "length": 22,
       "value": "\"Calculating liveness\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7862,
+      "offset": 7877,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7894,
+      "offset": 7909,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "StringLiteral",
-      "offset": 8973,
+      "offset": 8369,
+      "length": 16,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
+      "kind": "StringLiteral",
+      "offset": 8384,
+      "length": 17,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
+      "kind": "StringLiteral",
+      "offset": 9022,
       "length": 17,
       "value": "\"Deinit liveness\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9068,
+      "offset": 9117,
       "length": 14,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/LivenessUtilityDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9068,
+      "offset": 9117,
       "length": 14,
       "value": "1"
     },
@@ -9108,217 +9136,217 @@
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 6282,
+      "offset": 6293,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6646,
+      "offset": 6657,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 6697,
+      "offset": 6708,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 6753,
+      "offset": 6764,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 6797,
+      "offset": 6808,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 7082,
+      "offset": 7093,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 7107,
+      "offset": 7118,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7472,
+      "offset": 7483,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 7576,
+      "offset": 7587,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 7958,
+      "offset": 7969,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 7982,
+      "offset": 7993,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8057,
+      "offset": 8068,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8106,
+      "offset": 8117,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8378,
+      "offset": 8389,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8401,
+      "offset": 8412,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8569,
+      "offset": 8580,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 8592,
+      "offset": 8603,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9360,
+      "offset": 9371,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 9553,
+      "offset": 9564,
       "length": 3,
       "value": "1.2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9576,
+      "offset": 9587,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 9641,
+      "offset": 9652,
       "length": 9,
       "value": "\"Smiling\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9818,
+      "offset": 9829,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 9854,
+      "offset": 9865,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11657,
+      "offset": 11668,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11757,
+      "offset": 11768,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 13000,
+      "offset": 13011,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 13307,
+      "offset": 13318,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 13823,
+      "offset": 13834,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 13969,
+      "offset": 13980,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 14005,
+      "offset": 14016,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/DepthLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 14302,
+      "offset": 14313,
       "length": 1,
       "value": "0"
     }
