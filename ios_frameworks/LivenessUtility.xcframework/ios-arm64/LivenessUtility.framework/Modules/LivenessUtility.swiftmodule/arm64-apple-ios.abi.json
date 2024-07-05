@@ -5391,198 +5391,275 @@
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9682,
+      "offset": 9431,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9902,
+      "offset": 9651,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 9960,
+      "offset": 9709,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 9989,
+      "offset": 9738,
       "length": 3,
       "value": "0.1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 10083,
+      "offset": 9832,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 10143,
+      "offset": 9892,
       "length": 3,
       "value": "1.2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 10157,
+      "offset": 9906,
       "length": 4,
       "value": "1.65"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 10213,
+      "offset": 9962,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 10272,
+      "offset": 10021,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 10876,
+      "offset": 10625,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 10926,
+      "offset": 10675,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11151,
+      "offset": 10900,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11447,
+      "offset": 11196,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 11524,
+      "offset": 11273,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11748,
+      "offset": 11497,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 11896,
+      "offset": 11645,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 11998,
+      "offset": 11747,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12122,
+      "offset": 11871,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12369,
+      "offset": 12118,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12398,
+      "offset": 12147,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12492,
+      "offset": 12241,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12520,
+      "offset": 12269,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 12556,
+      "offset": 12305,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 12651,
+      "offset": 12400,
       "length": 9,
       "value": "\"Smiling\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 12777,
+      "offset": 12526,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 12925,
+      "offset": 12674,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 13275,
+      "offset": 13024,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 13295,
+      "offset": 13044,
       "length": 1,
       "value": "6"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13060,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13104,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13119,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13160,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13174,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13196,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13210,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13232,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13246,
+      "length": 1,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "FloatLiteral",
+      "offset": 13255,
+      "length": 3,
+      "value": "3.0"
+    },
+    {
+      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13288,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
@@ -5593,134 +5670,36 @@
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13355,
-      "length": 2,
-      "value": "13"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13370,
-      "length": 1,
-      "value": "7"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13411,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13425,
-      "length": 2,
-      "value": "11"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13447,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13461,
-      "length": 2,
-      "value": "10"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13483,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13497,
-      "length": 1,
-      "value": "9"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 13506,
-      "length": 3,
-      "value": "3.0"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13539,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13562,
-      "length": 1,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "BooleanLiteral",
-      "offset": 13865,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "FloatLiteral",
-      "offset": 13927,
+      "offset": 13644,
       "length": 3,
       "value": "0.1"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 13974,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "BooleanLiteral",
-      "offset": 14105,
+      "offset": 14007,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 14212,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
-      "kind": "BooleanLiteral",
-      "offset": 14479,
+      "offset": 14246,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "FloatLiteral",
-      "offset": 14743,
+      "offset": 14510,
       "length": 4,
       "value": "0.01"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "BooleanLiteral",
-      "offset": 14881,
+      "offset": 14648,
       "length": 5,
       "value": "false"
     },
@@ -5734,273 +5713,273 @@
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "Array",
-      "offset": 17196,
+      "offset": 16963,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "Array",
-      "offset": 17229,
+      "offset": 16996,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "Array",
-      "offset": 17268,
+      "offset": 17035,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "Array",
-      "offset": 17302,
+      "offset": 17069,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 17742,
+      "offset": 17509,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 17802,
+      "offset": 17569,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 17811,
+      "offset": 17578,
       "length": 51,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 18081,
+      "offset": 17848,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18141,
+      "offset": 17908,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18150,
+      "offset": 17917,
       "length": 51,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 18422,
+      "offset": 18189,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18482,
+      "offset": 18249,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18491,
+      "offset": 18258,
       "length": 51,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 18763,
+      "offset": 18530,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18823,
+      "offset": 18590,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 18832,
+      "offset": 18599,
       "length": 51,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 19749,
+      "offset": 19516,
       "length": 2,
       "value": "13"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 19825,
+      "offset": 19592,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 19957,
+      "offset": 19724,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 19981,
+      "offset": 19748,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 20006,
+      "offset": 19773,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 20018,
+      "offset": 19785,
       "length": 3,
       "value": "200"
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20085,
+      "offset": 19852,
       "length": 39,
       "value": "\"init(coder:) has not been implemented\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20602,
+      "offset": 20369,
       "length": 14,
       "value": "\"Face quality\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20684,
+      "offset": 20451,
       "length": 12,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20692,
+      "offset": 20459,
       "length": 1,
       "value": "\" \n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20740,
+      "offset": 20507,
       "length": 7,
       "value": "\"...\n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20794,
+      "offset": 20561,
       "length": 6,
       "value": "\"Roll\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20873,
+      "offset": 20640,
       "length": 12,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20881,
+      "offset": 20648,
       "length": 1,
       "value": "\" \n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20929,
+      "offset": 20696,
       "length": 7,
       "value": "\"...\n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 20983,
+      "offset": 20750,
       "length": 5,
       "value": "\"Yaw\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21060,
+      "offset": 20827,
       "length": 12,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21068,
+      "offset": 20835,
       "length": 1,
       "value": "\" \n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21116,
+      "offset": 20883,
       "length": 7,
       "value": "\"...\n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21170,
+      "offset": 20937,
       "length": 7,
       "value": "\"Pitch\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21251,
+      "offset": 21018,
       "length": 12,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21259,
+      "offset": 21026,
       "length": 1,
       "value": "\" \n\""
     },
     {
       "filePath": "\/Users\/thainguyen\/Documents\/GitHub\/LivenessUtilPrivate\/LivenessUtility\/LivenessUtility\/VisionLivenessDetector.swift",
       "kind": "StringLiteral",
-      "offset": 21307,
+      "offset": 21074,
       "length": 7,
       "value": "\"...\n\""
     },
