@@ -92,9 +92,6 @@ repositories {
   maven {
     setUrl("$rootDir/repository")
   }
-  maven {
-    setUrl("$rootDir/repo")
-  }
 }
 
 //def kotlin_version = getExtOrDefault("kotlinVersion")

@@ -60,10 +60,6 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LivenessRnExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA555DB8B8454ED9ECDBAA38 /* Pods-LivenessRnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.release.xcconfig"; sourceTree = "<group>"; };
 		DB093D232C2D610F00E6E719 /* LivenessRnExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LivenessRnExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		DB30AC572BE9267F00204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC5E2BE927E300204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC632BE928E600204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC652BE92C5800204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE707242BF5073A00C27D20 /* com.qts.test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = com.qts.test.txt; path = ../../ios/com.qts.test.txt; sourceTree = "<group>"; };
 		DBE707252BF5073A00C27D20 /* eid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eid.txt; path = ../../ios/eid.txt; sourceTree = "<group>"; };
 		DBF48FD42BE8B0E800CED3BC /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,10 +127,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DB30AC652BE92C5800204ECF /* CoreModules.framework */,
-				DB30AC632BE928E600204ECF /* CoreModules.framework */,
-				DB30AC5E2BE927E300204ECF /* CoreModules.framework */,
-				DB30AC572BE9267F00204ECF /* CoreModules.framework */,
 				DBF48FDA2BE8B10C00CED3BC /* LivenessUtility.xcframework */,
 				DBF48FD42BE8B0E800CED3BC /* CoreModules.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,

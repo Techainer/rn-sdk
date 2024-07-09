@@ -42,11 +42,11 @@
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 211170,
-          "sha512": "6acdc37a4037579c1f5d5d8569c30a7bee42264113721ce8b04f9660f1f2d0b825c0a9a3a5323fe27057048d57651d5b70d67202db9e41623f5a9f245c38ee7b",
-          "sha256": "25fb2cd7436b327eb330d6e796517620513adfba2e79cca6aea8e46278bda572",
-          "sha1": "2af6f11a0fc8e1213550ec9d8ceb11877717d709",
-          "md5": "72b780e9089e6e33437e4a8a7737aa16"
+          "size": 202676,
+          "sha512": "a6bab148ffdddd452952d2f3fab9b42dd533ef28687669ce93d12cd05e85895748750dca2dd1e160b37373e236f24dccee1d8a7702fc16250b761161a51f2e1a",
+          "sha256": "e08d91a248068c959a99939376226f6d342277b6f3eec0f2542d6871788908f2",
+          "sha1": "20f59246d51dbadc5b580d58e4c0b4253bc03b02",
+          "md5": "5268c837473f7503cf0bad3e2122aaa1"
         }
       ]
     },
@@ -116,10 +116,10 @@
           }
         },
         {
-          "group": "com.trustvision",
-          "module": "tv_sdk",
+          "group": "com.github.tsocial",
+          "module": "CameraView",
           "version": {
-            "requires": "2.1.0.4"
+            "requires": "v2.7.0.1"
           }
         }
       ],
@@ -127,11 +127,11 @@
         {
           "name": "sdk-android-v1.1.9.aar",
           "url": "sdk-android-v1.1.9.aar",
-          "size": 211170,
-          "sha512": "6acdc37a4037579c1f5d5d8569c30a7bee42264113721ce8b04f9660f1f2d0b825c0a9a3a5323fe27057048d57651d5b70d67202db9e41623f5a9f245c38ee7b",
-          "sha256": "25fb2cd7436b327eb330d6e796517620513adfba2e79cca6aea8e46278bda572",
-          "sha1": "2af6f11a0fc8e1213550ec9d8ceb11877717d709",
-          "md5": "72b780e9089e6e33437e4a8a7737aa16"
+          "size": 202676,
+          "sha512": "a6bab148ffdddd452952d2f3fab9b42dd533ef28687669ce93d12cd05e85895748750dca2dd1e160b37373e236f24dccee1d8a7702fc16250b761161a51f2e1a",
+          "sha256": "e08d91a248068c959a99939376226f6d342277b6f3eec0f2542d6871788908f2",
+          "sha1": "20f59246d51dbadc5b580d58e4c0b4253bc03b02",
+          "md5": "5268c837473f7503cf0bad3e2122aaa1"
         }
       ]
     },
