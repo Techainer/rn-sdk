@@ -75,14 +75,12 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   
   func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, color: String?, videoURL: URL?) {
     Task {
-        let compressData = verificationImage.jpegData(compressionQuality: 0.25)
-        let compressedImage = UIImage(data: compressData!)
+        let compressedImage = self.compressTo(1, image: verificationImage)
         let image1 = compressedImage?.pngData()!
         let livenessImage = image1?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
       if faceIDAvailable == true {
         if thermalImage != nil {
-            let compressDataThermal = thermalImage?.jpegData(compressionQuality: 0.25)
-            let compressedImageThermal = UIImage(data: compressDataThermal!)
+            let compressedImageThermal = self.compressTo(1, image: thermalImage!)
           let image2 = compressedImageThermal?.pngData()!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
             pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? "", "color": color ?? ""])
@@ -126,4 +124,28 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
     }
     return false
   }
+    
+    func compressTo(_ expectedSizeInMb:Int, image: UIImage) -> UIImage? {
+        let sizeInBytes = expectedSizeInMb * 1024 * 1024
+        var needCompress:Bool = true
+        var imgData:Data?
+        var compressingValue:CGFloat = 1.0
+        while (needCompress && compressingValue > 0.0) {
+            if let data:Data = image.jpegData(compressionQuality: compressingValue) {
+                if data.count < sizeInBytes {
+                    needCompress = false
+                    imgData = data
+                } else {
+                    compressingValue -= 0.1
+                }
+            }
+        }
+        if let data = imgData {
+            if (data.count < sizeInBytes) {
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
+
 }
