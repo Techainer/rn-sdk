@@ -76,12 +76,12 @@ class LivenessView: UIView, LivenessUtilityDetectorDelegate {
   func liveness(liveness: LivenessUtility.LivenessUtilityDetector, didFinish verificationImage: UIImage, thermalImage: UIImage?, color: String?, videoURL: URL?) {
     Task {
         let compressedImage = self.compressTo(0.3, image: verificationImage)
-        let image1 = compressedImage?.pngData()!
+        let image1 = compressedImage?.jpegData(compressionQuality: 1)!
         let livenessImage = image1?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
       if faceIDAvailable == true {
         if thermalImage != nil {
             let compressedImageThermal = self.compressTo(0.3, image: thermalImage!)
-          let image2 = compressedImageThermal?.pngData()!
+          let image2 = compressedImageThermal?.jpegData(compressionQuality: 1)!
           let thermalImageBase64 = image2?.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
             pushEvent(data: ["message": "done smile", "action": 8, "livenessImage": livenessImage ?? "", "thermalImage": thermalImageBase64 ?? "", "videoURL": videoURL?.absoluteString ?? "", "color": color ?? ""])
         } else {
