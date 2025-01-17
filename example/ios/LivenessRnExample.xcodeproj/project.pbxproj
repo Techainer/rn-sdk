@@ -573,7 +573,7 @@
 				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = LivenessRnExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Liveness test";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_DYLIB_INSTALL_NAME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,7 +668,7 @@
 				GENERATE_MASTER_OBJECT_FILE = NO;
 				INFOPLIST_FILE = LivenessRnExample/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Liveness test";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_DYLIB_INSTALL_NAME = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
