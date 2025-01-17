@@ -11,17 +11,14 @@ import {
   findNodeHandle,
 } from 'react-native';
 
-
 import { LivenessView } from 'liveness-rn';
 
-import imageData from './Imagetest'
-
-const createFragment = viewId =>
+const createFragment = (viewId) =>
   UIManager.dispatchViewManagerCommand(
     viewId,
     // we are calling the 'create' command
     UIManager?.LivenessViewManager?.Commands?.create.toString(),
-    [viewId],
+    [viewId]
   );
 
 export default function App() {
@@ -30,7 +27,7 @@ export default function App() {
   const ref = useRef(null);
 
   useEffect(() => {
-    if (Platform.OS != 'ios') {
+    if (Platform.OS !== 'ios') {
       const viewId = findNodeHandle(ref?.current);
       if (viewId) {
         createFragment(viewId);
@@ -42,41 +39,39 @@ export default function App() {
     setStatus(!status);
   };
 
-  const handleLayout = e => {
+  const handleLayout = (e) => {
     const { height, width } = e.nativeEvent.layout;
-    if (
-      layout.width === width &&
-      layout.height === height
-    ) {
+    if (layout.width === width && layout.height === height) {
       return;
     }
-    setLayout({width, height})
-  }
+    setLayout({ width, height });
+  };
 
   return (
     <View style={styles.container}>
-        {status && (
+      {status && (
         <View style={styles.view_camera} onLayout={handleLayout}>
           <LivenessView
             ref={ref}
             style={
-              Platform.OS === 'ios' ? styles.view_liveness :
-              {
-                // converts dpi to px, provide desired height
-                height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
-                // converts dpi to px, provide desired width
-                width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
-              }
+              Platform.OS === 'ios'
+                ? styles.view_liveness
+                : {
+                    // converts dpi to px, provide desired height
+                    height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
+                    // converts dpi to px, provide desired width
+                    width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
+                  }
             }
             onEvent={(data) => {
               // console.log('===sendEvent===', data.nativeEvent?.data);
-              if (data.nativeEvent?.data?.action == 8 ) {
+              if (data.nativeEvent?.data?.action === 8) {
                 console.log('===sendEvent===', data.nativeEvent?.data);
               }
             }}
-            debugging={false}
+            debugging={true}
             minFaceSize={0.4}
-            isThreeDimension={false}
+            isThreeDimension={true}
           />
         </View>
       )}
