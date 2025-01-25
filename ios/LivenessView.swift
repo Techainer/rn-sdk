@@ -116,10 +116,10 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
                   calculationMode: .combine,
                   additionHeader: ["header": "header"]
               )
-              viewMask = LivenessMaskView(frame: bounds)
-              viewMask.backgroundColor = UIColor.clear
-              viewMask.layer.zPosition = 1 // Bring viewMask to the top layer
-              addSubview(viewMask)
+            //   viewMask = LivenessMaskView(frame: bounds)
+            //   viewMask.backgroundColor = UIColor.clear
+            //   viewMask.layer.zPosition = 1 // Bring viewMask to the top layer
+            //   addSubview(viewMask)
           } else {
               self.livenessDetector = FlashLiveness.LivenessUtil.createLivenessDetector(
                   previewView: self,

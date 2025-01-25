@@ -21,14 +21,14 @@ PODS:
   - hermes-engine/Pre-built (0.72.10)
   - KeychainSwift (19.0.0)
   - libevent (2.1.12)
-  - liveness-rn (1.0.25):
+  - liveness-rn (1.0.26):
     - FlashLiveness
     - KeychainSwift (~> 19.0)
     - QTSLiveness
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - ObjectMapper (4.4.2)
-  - QTSLiveness (1.1.0):
+  - QTSLiveness (1.2.3):
     - CryptoSwift (~> 1.8.2)
     - KeychainSwift (~> 19.0)
     - ObjectMapper (~> 4.2)
@@ -621,9 +621,9 @@ SPEC CHECKSUMS:
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: 5e95ee3862d12c1ec646ac78d87b3598722959af
+  liveness-rn: d49eab26709463eecce0f87a71a102d375a16f0f
   ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
-  QTSLiveness: adff5945df0f2b302a144d79d241aac088532900
+  QTSLiveness: 67f103a8c87571275f171d6aae87da42b1352131
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
