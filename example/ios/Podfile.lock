@@ -21,7 +21,7 @@ PODS:
   - hermes-engine/Pre-built (0.72.10)
   - KeychainSwift (19.0.0)
   - libevent (2.1.12)
-  - liveness-rn (1.0.31):
+  - liveness-rn (1.0.32):
     - FlashLiveness
     - KeychainSwift (~> 19.0)
     - QTSLiveness
@@ -617,7 +617,7 @@ SPEC CHECKSUMS:
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: c67fc30584083d8d8b681660c169bd09419b8724
+  liveness-rn: 4f6a636729315298ab0379467d775c14f3fb9b2c
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   QTSLiveness: 67ce723c281d0f57b578c6f3c6b423ef933a9641
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
