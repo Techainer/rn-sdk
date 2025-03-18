@@ -28,7 +28,7 @@ PODS:
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - ObjectMapper (4.2.0)
-  - QTSLiveness (1.2.9):
+  - QTSLiveness (1.2.8):
     - CryptoSwift (~> 1.8.2)
     - KeychainSwift (~> 19.0)
     - ObjectMapper (~> 4.2)
@@ -602,7 +602,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FlashLiveness:
-    :commit: b3f5bba820c1d321679df534d6fb85c48a83f05e
+    :commit: 767e0e35a8f89fa65b9aeffa8cc516a2081db823
     :git: https://github.com/stevienguyen1988/FlashLivenessPod.git
 
 SPEC CHECKSUMS:
@@ -619,7 +619,7 @@ SPEC CHECKSUMS:
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   liveness-rn: 4f6a636729315298ab0379467d775c14f3fb9b2c
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  QTSLiveness: 67ce723c281d0f57b578c6f3c6b423ef933a9641
+  QTSLiveness: c2bc53062839bb2b2d4e6c8717a981b1b4c50869
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
@@ -660,4 +660,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d03ea13954c1e4a24b591f2b00269456e55c53c3
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.14.3
