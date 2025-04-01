@@ -299,8 +299,8 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
         let livenessImage = images.images?.first?.imageBase64
         let livenessOriginalImage = images.originalImage.imageBase64
         let dataRes: [String: Any] = [
-            "livenessColorImage": livenessImage ?? "",
-            "livenessOriginalImage": livenessOriginalImage ?? "",
+            "livenessColorImage": resizeBase64Image(base64String: livenessImage ?? "") ?? "",
+            "livenessOriginalImage": resizeBase64Image(base64String: livenessOriginalImage ?? "") ?? "",
             "color": images.images?.first?.colorString ?? "",
         ]
           pushEvent(data: dataRes)
@@ -349,8 +349,8 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
     @available(iOS 15.0, *)
     func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinishLocalLiveness score: Float, maxtrix: [Float], image: UIImage, thermal_image: UIImage, videoURL: URL?){
 //        let livenessImage = saveImageToFile(image: image, isOriginal: false) ?? ""
-        let livenessImage = convertImageToBase64(thermal_image) ?? ""
-        let livenessOriginalImage = convertImageToBase64(image) ?? ""
+      let livenessImage = resizeUIImageToBase64(image: thermal_image) ?? ""
+      let livenessOriginalImage = resizeUIImageToBase64(image: image) ?? ""
        let dataRes: [String: Any] = [
             "livenessThermalImage": livenessImage,
            "livenessOriginalImage": livenessOriginalImage,
@@ -396,6 +396,80 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
         print("convert done")
         return base64String
     }
+  
+  func resizeUIImageToBase64(image: UIImage, limitSizeInKB: Int = 500) -> String? {
+      var compressionQuality: CGFloat = 1.0
+      var compressedData: Data? = image.jpegData(compressionQuality: compressionQuality)
+      
+      // Reduce quality gradually until below limit
+      while let data = compressedData, data.count > limitSizeInKB * 1024, compressionQuality > 0.1 {
+          compressionQuality -= 0.05
+          compressedData = image.jpegData(compressionQuality: compressionQuality)
+      }
+      
+      // Resize only if still above limit
+      var resizedImage = image
+      while let data = compressedData, data.count > limitSizeInKB * 1024 {
+          let newWidth = Int(resizedImage.size.width * 0.9) // Reduce by 10%
+          let newHeight = Int(resizedImage.size.height * 0.9)
+          if let newImage = resizeImage(image: resizedImage, width: newWidth, height: newHeight) {
+              resizedImage = newImage
+              compressionQuality = 1.0 // Reset quality
+              compressedData = resizedImage.jpegData(compressionQuality: compressionQuality)
+          } else {
+              break
+          }
+      }
+      
+      guard let finalData = compressedData else { return nil }
+      return finalData.base64EncodedString()
+  }
+  
+  func resizeBase64Image(base64String: String, limitSizeInKB: Int = 500) -> String? {
+      guard let imageData = Data(base64Encoded: base64String), let image = UIImage(data: imageData) else {
+          print("Invalid Base64 string")
+          return nil
+      }
+      
+      if imageData.count <= limitSizeInKB * 1024 {
+          return base64String // Return original if within limit
+      }
+      
+      var compressionQuality: CGFloat = 1.0
+      var compressedData: Data? = image.jpegData(compressionQuality: compressionQuality)
+      
+      // Reduce quality gradually until below limit
+      while let data = compressedData, data.count > limitSizeInKB * 1024, compressionQuality > 0.1 {
+          compressionQuality -= 0.05
+          compressedData = image.jpegData(compressionQuality: compressionQuality)
+      }
+      
+      // Resize only if still above limit
+      var resizedImage = image
+      while let data = compressedData, data.count > limitSizeInKB * 1024 {
+          let newWidth = Int(resizedImage.size.width * 0.9) // Reduce by 10%
+          let newHeight = Int(resizedImage.size.height * 0.9)
+          if let newImage = resizeImage(image: resizedImage, width: newWidth, height: newHeight) {
+              resizedImage = newImage
+              compressionQuality = 1.0 // Reset quality
+              compressedData = resizedImage.jpegData(compressionQuality: compressionQuality)
+          } else {
+              break
+          }
+      }
+      
+      guard let finalData = compressedData else { return nil }
+      return finalData.base64EncodedString()
+  }
+
+  func resizeImage(image: UIImage, width: Int, height: Int) -> UIImage? {
+      let size = CGSize(width: width, height: height)
+      UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+      image.draw(in: CGRect(origin: .zero, size: size))
+      let newImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      return newImage
+  }
 
 
   func stopLiveness() {

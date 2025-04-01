@@ -277,15 +277,15 @@ export default function App() {
     const subscription = AppState.addEventListener('change', nextAppState => {
       if (Platform.OS === 'ios') {
         // iOS handling
-        if (appState.current === 'active' && 
-            nextAppState.match(/inactive|background/)) {
+        if (appState.current === 'active' &&
+          nextAppState.match(/inactive|background/)) {
           console.log('App has gone to background');
           setStatus(false);
           clear();
         }
 
-        if (appState.current.match(/inactive|background/) && 
-            nextAppState === 'active') {
+        if (appState.current.match(/inactive|background/) &&
+          nextAppState === 'active') {
           console.log('App has come to foreground');
         }
       }
@@ -365,7 +365,7 @@ export default function App() {
     setLayout({ width, height });
   };
 
-  const onCheckFaceId = async ({filePath, fileLiveness, livenessThermalPath, color}) => {
+  const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
     try {
       const res = await loginFaceId({
         filePath: filePath,
@@ -400,19 +400,26 @@ export default function App() {
               console.log('===sendEvent===', data.nativeEvent?.data);
               if (data.nativeEvent?.data?.isFlash == null) {
                 console.log("Original: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessOriginalImage))
+                console.log("liveness 2D: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage))
+                console.log("liveness 3D: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
                 // onCheckFaceId(data.nativeEvent?.data?.livenessOriginalImage, data.nativeEvent?.data?.livenessImage, data.nativeEvent?.data?.color);
                 clear();
                 if (isFlashCamera) {
-                  console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage))
-                  onCheckFaceId({filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessColorImage, color: data.nativeEvent?.data?.color});
+                  // console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage))
+                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessColorImage, color: data.nativeEvent?.data?.color });
                 } else {
-                  console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
-                  onCheckFaceId({filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage});
+                  // console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
+                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage });
                 }
               } else {
                 if (data.nativeEvent?.data?.isFlash) {
                   // Clear hết timeout
                   clear();
+                  setIsFlashCamera(true);
+                } else {
+                  // Clear hết timeout
+                  clear();
+                  setIsFlashCamera(false);
                 }
               }
             }}
