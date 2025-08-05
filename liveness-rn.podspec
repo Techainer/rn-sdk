@@ -15,12 +15,11 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   # s.vendored_frameworks = "ios/FlashLiveness.framework"
   s.source_files = "ios/*.{h,m,mm,swift}"
-  
+
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
-  # s.dependency "QTSLiveness", '~> 1.0.2'
-  s.dependency "QTSLiveness"
-  s.dependency "FlashLiveness"
-  s.dependency 'KeychainSwift', '~> 19.0'
+  # s.dependency "QTSLiveness"
+  # s.dependency "FlashLiveness"
+  # s.dependency 'KeychainSwift', '~> 19.0'
 
   s.vendored_frameworks = 'ios/Frameworks/ekyc_ios_sdk.framework',
                           'ios/Frameworks/FBLPromises.framework',
@@ -43,7 +42,7 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
-  
+
   if respond_to?(:install_modules_dependencies, true)
     install_modules_dependencies(s)
   else
@@ -64,5 +63,5 @@ Pod::Spec.new do |s|
     s.dependency "RCTTypeSafety"
     s.dependency "ReactCommon/turbomodule/core"
    end
-  end    
+  end
 end

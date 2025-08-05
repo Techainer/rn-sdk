@@ -23,12 +23,13 @@ target 'LivenessRnExample' do
   # pod 'QTSCardReader' ,:git => 'https://github.com/trungnguyen1791/QTSCardReader.git'
   # pod 'SVProgressHUD'
   # pod 'Alamofire', '5.8.1'
-  pod 'ObjectMapper', '4.2'
-  pod 'QTSLiveness'
-  pod 'SignManager', '1.0.6'
+  # -------- Framework --------
+  # pod 'ObjectMapper', '4.2'
+  # pod 'QTSLiveness'
+  # pod 'SignManager', '1.0.6'
+  # pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
+  # -------- Framework --------
   # pod 'QTSLiveness', '1.0.2'
-  pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
-
   # Pods for LivenessCloudSample
 
   use_react_native!(
