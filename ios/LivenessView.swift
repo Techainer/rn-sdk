@@ -200,8 +200,7 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
                   mode: .offline,
                   threshold: .low,
                   debugging: debugging,
-                  delegate: self,
-                  brightnessEnable: false
+                  delegate: self
               )
               dataRes = [ "isFlash": true ]
           }
