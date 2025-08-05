@@ -21,7 +21,25 @@ Pod::Spec.new do |s|
   s.dependency "QTSLiveness"
   s.dependency "FlashLiveness"
   s.dependency 'KeychainSwift', '~> 19.0'
-  
+
+  s.vendored_frameworks = 'ios/Frameworks/ekyc_ios_sdk.framework',
+                          'ios/Frameworks/FBLPromises.framework',
+                          'ios/Frameworks/FirebaseCore.framework',
+                          'ios/Frameworks/FirebaseCoreExtension.framework',
+                          'ios/Frameworks/FirebaseCoreInternal.framework',
+                          'ios/Frameworks/FirebaseCrashlytics.framework',
+                          'ios/Frameworks/FirebaseInstallations.framework',
+                          'ios/Frameworks/FirebaseSessions.framework',
+                          'ios/Frameworks/GoogleDataTransport.framework',
+                          'ios/Frameworks/GoogleToolboxForMac.framework',
+                          'ios/Frameworks/GoogleUtilities.framework',
+                          'ios/Frameworks/GTMSessionFetcher.framework',
+                          'ios/Frameworks/nanopb.framework',
+                          'ios/Frameworks/Promises.framework',
+                          'ios/Frameworks/Protobuf.framework',
+                          'ios/Frameworks/TensorFlowLite.framework'
+
+  s.resources = 'ios/Shaders/*.metal'
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
   
