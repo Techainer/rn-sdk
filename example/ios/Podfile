@@ -24,9 +24,9 @@ target 'LivenessRnExample' do
   # pod 'SVProgressHUD'
   # pod 'Alamofire', '5.8.1'
   # -------- Framework --------
-  # pod 'ObjectMapper', '4.2'
-  # pod 'QTSLiveness'
-  # pod 'SignManager', '1.0.6'
+  pod 'ObjectMapper', '4.2'
+  pod 'QTSLiveness'
+  pod 'SignManager', '1.0.6'
   # pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
   # -------- Framework --------
   # pod 'QTSLiveness', '1.0.2'

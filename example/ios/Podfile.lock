@@ -1,5 +1,6 @@
 PODS:
   - boost (1.76.0)
+  - CryptoSwift (1.8.4)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.72.10)
   - FBReactNativeSpec (0.72.10):
@@ -14,10 +15,19 @@ PODS:
   - hermes-engine (0.72.10):
     - hermes-engine/Pre-built (= 0.72.10)
   - hermes-engine/Pre-built (0.72.10)
+  - KeychainSwift (19.0.0)
   - libevent (2.1.12)
   - liveness-rn (1.0.32):
+    - KeychainSwift (~> 19.0)
+    - QTSLiveness
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+  - ObjectMapper (4.2.0)
+  - QTSLiveness (1.2.9):
+    - CryptoSwift (~> 1.8.2)
+    - KeychainSwift (~> 19.0)
+    - ObjectMapper (~> 4.2)
+    - SignManager (~> 1.0.5)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -428,6 +438,7 @@ PODS:
     - React-jsi (= 0.72.10)
     - React-logger (= 0.72.10)
     - React-perflogger (= 0.72.10)
+  - SignManager (1.0.6)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
@@ -440,6 +451,8 @@ DEPENDENCIES:
   - hermes-engine (from `../../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
   - liveness-rn (from `../..`)
+  - ObjectMapper (= 4.2)
+  - QTSLiveness
   - RCT-Folly (from `../../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../../node_modules/react-native/Libraries/TypeSafety`)
@@ -473,12 +486,18 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../../node_modules/react-native/ReactCommon`)
+  - SignManager (= 1.0.6)
   - Yoga (from `../../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - CryptoSwift
     - fmt
+    - KeychainSwift
     - libevent
+    - ObjectMapper
+    - QTSLiveness
+    - SignManager
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -565,14 +584,18 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
+  CryptoSwift: e64e11850ede528a02a0f3e768cec8e9d92ecb90
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: f91d538f197fa71a7d5b77ec2069d49550c0eb96
   FBReactNativeSpec: 823c0b2b45fcdcf3bc002d01c4b531342b8931e3
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: a6a6dedf68595d1a4a04e1c46c2f0697bdee02b7
+  liveness-rn: 75b9c231403dccc55b2210d979dc9a77f857ff11
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  QTSLiveness: 67ce723c281d0f57b578c6f3c6b423ef933a9641
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
@@ -605,9 +628,10 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 40868e0852c0870f360a16b192d57201e9f8998e
   React-utils: e41dd790d396b0bda37339301ea68134ac3c497a
   ReactCommon: 8a1c7eda06387ad98be414c690306465f859df62
+  SignManager: 67d0f04ff3695c1dde7c056bc9ba09de0db2f806
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: 72575d16930844465a3f61ea14c1e58a43923ac2
+PODFILE CHECKSUM: b058bab4287f4ace2e69ac32ed3de739f9a8d5fb
 
 COCOAPODS: 1.16.2
