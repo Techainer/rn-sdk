@@ -17,17 +17,17 @@ class LivenessMaskView: UIView {
             l.removeFromSuperlayer()
         })
         
-        let width: CGFloat = rect.width * 0.9
-        let height = min(width * 1.5, rect.height * 0.85)
+        let width: CGFloat = rect.width * 0.93
+        let height = min(width * 1.7, rect.height * 0.85)
         let xPos = rect.width / 20
-        let yPos = rect.height / 6
+        let yPos = rect.height / 8
         
         let areaViewFrame = CGRect(x: xPos, y: yPos, width: width, height: height)
         let areaViewPath = self.drawAreaViewPath(areaViewFrame)
         
         let path = UIBezierPath(rect: rect)
         path.append(areaViewPath.reversing())
-        let color = UIColor.black.withAlphaComponent(0.88)
+        let color = UIColor.black.withAlphaComponent(0.8)
         color.setFill()
         path.fill()
         path.close()
