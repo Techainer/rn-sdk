@@ -261,6 +261,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               faceAuthView.onResultsLiveness = { [weak self] livenessResult in
                 var result: [String: Any] = handleLivenessResult(livenessResult.rawValue)
 //                self?.pushEvent(data: result)
+                self?.viewMask.instructionText = result["result"] as! String
               }
           }
       }

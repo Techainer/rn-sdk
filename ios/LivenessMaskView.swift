@@ -27,7 +27,7 @@ class LivenessMaskView: UIView {
         
         let path = UIBezierPath(rect: rect)
         path.append(areaViewPath.reversing())
-        let color = UIColor.black.withAlphaComponent(0.8)
+        let color = UIColor.black.withAlphaComponent(0.3)
         color.setFill()
         path.fill()
         path.close()
