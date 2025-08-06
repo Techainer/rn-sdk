@@ -203,6 +203,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                viewMask = LivenessMaskView(frame: bounds)
                viewMask.backgroundColor = UIColor.clear
                viewMask.layer.zPosition = 1
+               viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
                addSubview(viewMask)
             
               handleResultsLiveness()
@@ -223,35 +224,35 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               var result: [String: Any] = [:]
               switch rawValue {
               case 0:
-                  result["result"] = "Valid"
+                  result["result"] = "Hợp lệ"
               case 1:
-                  result["result"] = "A hand is detected."
+                  result["result"] = "Phát hiện bàn tay, vui lòng không che mặt"
               case 2:
-                  result["result"] = "A mask is detected."
+                  result["result"] = "Phát hiện khẩu trang, vui lòng tháo ra"
               case 3:
-                  result["result"] = "Sunglasses are detected."
+                  result["result"] = "Phát hiện kính, vui lòng tháo ra"
               case 4:
-                  result["result"] = "The face is covered."
+                  result["result"] = "Khuôn mặt bị che khuất"
               case 5:
-                  result["result"] = "The face is skew, please set face straight."
+                  result["result"] = "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng"
               case 6:
-                  result["result"] = "The face is small, please move face closer."
+                  result["result"] = "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn"
               case 7:
-                  result["result"] = "No face."
+                  result["result"] = "Hãy đưa mặt vào trong khung hình"
               case 8:
-                  result["result"] = "Glare."
+                  result["result"] = "Khuôn mặt bị lóa sáng"
               case 9:
-                  result["result"] = "Dark."
+                  result["result"] = "Môi trường thiếu sáng"
               case 10:
-                  result["result"] = "Hold face."
+                  result["result"] = "Vui lòng giữ yên khuôn mặt"
               case 11:
-                  result["result"] = "Done."
+                  result["result"] = "Hoàn thành"
               case 12:
-                  result["result"] = "The face is big, please move face closer."
+                  result["result"] = "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn"
               case 13:
                   result["result"] = "Hide mark view."
               default:
-                  result["result"] = "Valid"
+                  result["result"] = "Hợp lệ"
               }
               return result
           }
@@ -259,9 +260,21 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
           if let faceAuthView = mainView as? FaceAuthenticationView {
               print("IsFlash: FaceAuthenticationView")
               faceAuthView.onResultsLiveness = { [weak self] livenessResult in
-                var result: [String: Any] = handleLivenessResult(livenessResult.rawValue)
-//                self?.pushEvent(data: result)
-                self?.viewMask.instructionText = result["result"] as! String
+                let result = handleLivenessResult(livenessResult.rawValue)
+                let newText = result["result"] as? String
+
+                print("Liveness result received: \(newText ?? "nil")")
+                
+                if newText != "Hide mark view." {
+                  DispatchQueue.main.async {
+                    self?.viewMask.instructionText = newText
+                    self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
+                  }
+                } else {
+                  DispatchQueue.main.async {
+                    self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0).cgColor
+                  }
+                }
               }
           }
       }

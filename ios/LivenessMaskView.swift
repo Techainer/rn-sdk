@@ -1,101 +1,149 @@
+import UIKit
+
 class LivenessMaskView: UIView {
-    var textLayer: CATextLayer?
+
+    // MARK: - UI Elements
+    
+    // Sử dụng PaddedLabel tùy chỉnh để giải quyết vấn đề padding
+    private let instructionLabel = PaddedLabel()
+    
+    // Các layer để vẽ giao diện
+    private let overlayLayer = CAShapeLayer()
+    private let ovalStrokeLayer = CAShapeLayer() // Giữ lại để có thể bật/tắt viền trắng
+    
+    // MARK: - Public Properties
+    
     var instructionText: String? {
         didSet {
-            if oldValue != self.instructionText {
-                self.textLayer?.string = self.instructionText
-//                    self.textLayer?.frame = self.bounds
-                self.updateTextLayerLayout(text: self.instructionText ?? "")
-                    self.setNeedsLayout()
-            }
+            // Khi text thay đổi, cập nhật nội dung của label
+            // và yêu cầu hệ thống tính toán lại layout
+            self.instructionLabel.text = self.instructionText
+            self.setNeedsLayout()
         }
     }
-    var areaViewFrame: CGRect = .zero
-    
-    override func draw(_ rect: CGRect) {
-        self.layer.sublayers?.forEach({ (l) in
-            l.removeFromSuperlayer()
-        })
-        
-        let width: CGFloat = rect.width * 0.93
-        let height = min(width * 1.7, rect.height * 0.85)
-        let xPos = rect.width / 20
-        let yPos = rect.height / 8
-        
-        let areaViewFrame = CGRect(x: xPos, y: yPos, width: width, height: height)
-        let areaViewPath = self.drawAreaViewPath(areaViewFrame)
-        
-        let path = UIBezierPath(rect: rect)
-        path.append(areaViewPath.reversing())
-        let color = UIColor.black.withAlphaComponent(0.3)
-        color.setFill()
-        path.fill()
-        path.close()
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.backgroundColor = UIColor.clear.cgColor
-        
-        self.layer.mask = shapeLayer
-        self.areaViewFrame = areaViewFrame
-        
-        self.textLayer = self.drawTextLayer(withText: self.instructionText ?? "Hãy đưa khuôn mặt vào khung hình", rect: CGRect(x: 13.0, y: yPos - 40, width: rect.width, height: 30))
-        self.layer.addSublayer(self.textLayer!)
-        self.textLayer?.isHidden = true
+    var overlayColor: CGColor? {
+        didSet {
+            self.setNeedsLayout()
+        }
     }
     
-    func updateTextLayerLayout(text: String) {
-        guard !text.isEmpty else {
-            self.textLayer?.isHidden = true
+    private(set) var areaViewFrame: CGRect = .zero
+
+    // MARK: - Initialization
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+    }
+    
+    // MARK: - Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let viewBounds = self.bounds
+        
+        // 1. Tính toán frame cho vùng oval
+        let width: CGFloat = viewBounds.width * 0.93
+        let height = min(width * 1.7, viewBounds.height * 0.85)
+        let xPos = (viewBounds.width - width) / 2
+        let yPos = viewBounds.height / 8
+        self.areaViewFrame = CGRect(x: xPos, y: yPos, width: width, height: height)
+        
+        // 2. Cập nhật path (đường vẽ) cho các shape layer
+        let overlayPath = UIBezierPath(rect: viewBounds)
+        let ovalPath = UIBezierPath(ovalIn: self.areaViewFrame)
+        overlayPath.append(ovalPath)
+        overlayLayer.path = overlayPath.cgPath
+        
+        // Cập nhật path cho viền trắng (nếu được sử dụng)
+        ovalStrokeLayer.path = ovalPath.cgPath
+        
+        // 3. Cập nhật frame cho label hướng dẫn
+        updateLabelFrame()
+    }
+
+    // MARK: - Private Methods
+    
+    private func setupViews() {
+        self.backgroundColor = .clear
+        
+        // Cấu hình lớp nền đen mờ
+        overlayLayer.fillRule = .evenOdd
+        overlayLayer.fillColor = overlayColor ?? UIColor.black.withAlphaComponent(0.4).cgColor
+        self.layer.addSublayer(overlayLayer)
+        
+        // Cấu hình lớp vẽ viền trắng cho oval
+//        ovalStrokeLayer.lineWidth = 2.0
+//        ovalStrokeLayer.strokeColor = UIColor.white.cgColor
+//        ovalStrokeLayer.fillColor = UIColor.clear.cgColor
+        // Bỏ comment dòng dưới nếu bạn muốn hiện lại viền trắng
+        // self.layer.addSublayer(ovalStrokeLayer)
+        
+        // Cấu hình PaddedLabel
+        let fontSize: CGFloat = 14.0
+        instructionLabel.font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
+        instructionLabel.textColor = .white
+        instructionLabel.textAlignment = .center
+        instructionLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        // Thiết lập padding cho label
+        instructionLabel.textInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        
+        // Thêm label vào view
+        self.addSubview(instructionLabel)
+    }
+    
+    private func updateLabelFrame() {
+        guard let text = self.instructionLabel.text, !text.isEmpty else {
+            self.instructionLabel.isHidden = true
             return
         }
-        self.textLayer?.isHidden = false
-        guard let textLayer = self.textLayer else {
-            self.textLayer = self.drawTextLayer(withText: text, rect: CGRect(x: 13.0, y: self.areaViewFrame.origin.y - 40, width: self.areaViewFrame.width, height: 30))
-            self.layer.addSublayer(self.textLayer!)
-            return
-        }
-        // Calculate the size of the text
-        let textSize = (text as NSString).size(withAttributes: [.font: UIFont.systemFont(ofSize: textLayer.fontSize)])
         
-        // Update the background layer's frame
-        let padding: CGFloat = 10
+        self.instructionLabel.isHidden = false
         
-        // Update the text layer's frame
-        let rect = self.bounds
-        let textLayerWidth = textSize.width + (padding * 2)
-        textLayer.frame = CGRect(
-            x: rect.width / 2 - textLayerWidth / 2,
-            y: textLayer.frame.origin.y,
-            width: textLayerWidth,
-            height: textSize.height + (padding / 2)
-        )
+        // Lấy kích thước chính xác từ PaddedLabel (đã bao gồm padding)
+        let labelSize = instructionLabel.intrinsicContentSize
         
-        // Center the text
-        textLayer.alignmentMode = .center
+        let labelX = self.bounds.width / 2 - labelSize.width / 2
+        let labelY = self.areaViewFrame.maxY + 10
+        
+        self.instructionLabel.frame = CGRect(origin: CGPoint(x: labelX, y: labelY), size: labelSize)
+        
+        // Bo tròn góc cho label
+        self.instructionLabel.layer.cornerRadius = labelSize.height / 2
+        self.instructionLabel.layer.masksToBounds = true
     }
-    
-    func drawAreaViewPath(_ rect: CGRect) -> UIBezierPath {
-        let areaViewPath = UIBezierPath(ovalIn: rect)
-        areaViewPath.lineWidth = 0.5
-        UIColor.white.setStroke()
-        areaViewPath.stroke()
-        areaViewPath.close()
-        return areaViewPath
+}
+
+
+// MARK: - PaddedLabel Helper Class
+
+/// Một UILabel tùy chỉnh có khả năng xử lý padding (khoảng đệm).
+class PaddedLabel: UILabel {
+
+    var textInsets = UIEdgeInsets.zero {
+        didSet { invalidateIntrinsicContentSize() }
     }
-    
-    func drawTextLayer(withText text: String, rect: CGRect) -> CATextLayer {
-        let textlayer = CATextLayer()
-        let sizeOfText = (text as NSString).boundingRect(with: rect.size, context: nil)
-        textlayer.frame = CGRect(origin: CGPoint(x: rect.width / 2 - sizeOfText.width / 2 - 15, y: rect.origin.y), size: CGSize(width: sizeOfText.width + 30, height: sizeOfText.height + 8))
-        textlayer.fontSize = 14
-        textlayer.alignmentMode = .center
-        textlayer.string = text
-        textlayer.isWrapped = true
-        textlayer.truncationMode = .end
-        textlayer.foregroundColor = UIColor.white.cgColor
-        textlayer.contentsScale = UIScreen.main.scale
-        textlayer.backgroundColor = UIColor.black.cgColor
-        return textlayer
+
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textInsets))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + textInsets.left + textInsets.right,
+                      height: size.height + textInsets.top + textInsets.bottom)
+    }
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let fittingSize = super.sizeThatFits(size)
+        return CGSize(width: fittingSize.width + textInsets.left + textInsets.right,
+                      height: fittingSize.height + textInsets.top + textInsets.bottom)
     }
 }
