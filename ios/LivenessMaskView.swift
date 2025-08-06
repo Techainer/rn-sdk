@@ -21,9 +21,12 @@ class LivenessMaskView: UIView {
             self.setNeedsLayout()
         }
     }
-    var overlayColor: CGColor? {
+
+    var overlayColor: CGColor? = UIColor.black.withAlphaComponent(0.4).cgColor {
         didSet {
-            self.setNeedsLayout()
+            // Cập nhật trực tiếp màu của layer.
+            // Việc này hiệu quả hơn nhiều so với việc gọi setNeedsLayout().
+            self.overlayLayer.fillColor = overlayColor
         }
     }
     
@@ -75,7 +78,7 @@ class LivenessMaskView: UIView {
         
         // Cấu hình lớp nền đen mờ
         overlayLayer.fillRule = .evenOdd
-        overlayLayer.fillColor = overlayColor ?? UIColor.black.withAlphaComponent(0.4).cgColor
+        overlayLayer.fillColor = self.overlayColor
         self.layer.addSublayer(overlayLayer)
         
         // Cấu hình lớp vẽ viền trắng cho oval

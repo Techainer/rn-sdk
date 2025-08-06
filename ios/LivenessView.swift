@@ -267,12 +267,18 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                 
                 if newText != "Hide mark view." {
                   DispatchQueue.main.async {
-                    self?.viewMask.instructionText = newText
-                    self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
+                      // Hiển thị text hướng dẫn
+                      self?.viewMask.instructionText = newText
+                      // Khôi phục lại màu đen mờ mặc định cho overlay
+                      self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
                   }
                 } else {
                   DispatchQueue.main.async {
-                    self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0).cgColor
+                      // Ẩn text đi
+                      self?.viewMask.instructionText = ""
+                      // Làm cho overlay hoàn toàn trong suốt
+                      // Dùng UIColor.clear.cgColor sẽ rõ ràng hơn
+                      self?.viewMask.overlayColor = UIColor.clear.cgColor
                   }
                 }
               }
