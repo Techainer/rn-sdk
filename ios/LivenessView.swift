@@ -199,6 +199,12 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               addSubview(mainView!)
               dataRes = [ "isFlash": true ]
               pushEvent(data: dataRes)
+          
+               viewMask = LivenessMaskView(frame: bounds)
+               viewMask.backgroundColor = UIColor.clear
+               viewMask.layer.zPosition = 1
+               addSubview(viewMask)
+            
               handleResultsLiveness()
               handleResultsExtracted()
           }
@@ -254,7 +260,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               print("IsFlash: FaceAuthenticationView")
               faceAuthView.onResultsLiveness = { [weak self] livenessResult in
                 var result: [String: Any] = handleLivenessResult(livenessResult.rawValue)
-                self?.pushEvent(data: result)
+//                self?.pushEvent(data: result)
               }
           }
       }
@@ -406,7 +412,6 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         // Cập nhật trạng thái mới
         self.isFlashCamera = val as Bool
         currentIsFlash = isFlashCamera
-        resetLivenessDetector()
         self.setupConfig()
   }
     
