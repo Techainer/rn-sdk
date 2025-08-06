@@ -274,8 +274,6 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                   }
                 } else {
                   DispatchQueue.main.async {
-                      // Ẩn text đi
-                      self?.viewMask.instructionText = ""
                       // Làm cho overlay hoàn toàn trong suốt
                       // Dùng UIColor.clear.cgColor sẽ rõ ràng hơn
                       self?.viewMask.overlayColor = UIColor.clear.cgColor
@@ -298,11 +296,9 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                   var result: [String: Any] = [:]
                   result["livenessOriginalImage"] = self?.convertImageToBase64UnderMB(
                       filePath: images.first ?? "")
-                  if self?.enableNewCamera == true {
-                      result["livenessImage"] = self?.convertImageToBase64UnderMB(
-                          filePath: images.last ?? "")
-                      result["color"] = colorString
-                  }
+                  result["livenessImage"] = self?.convertImageToBase64UnderMB(
+                      filePath: images.last ?? "")
+                  result["color"] = colorString
                 self?.pushEvent(data: result)
               }
           }
