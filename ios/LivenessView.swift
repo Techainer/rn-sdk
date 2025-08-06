@@ -9,7 +9,6 @@ import ekyc_ios_sdk
 class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   var mainView: FaceAuthenticationView?
   private var currentIsFlash: Bool = false
-  private var enableNewCamera: Bool = false
   var transactionId = ""
   var livenessDetector: Any?
   private var viewMask: LivenessMaskView!
