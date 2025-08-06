@@ -53,39 +53,39 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun getDeviceId(callback: Callback? = null) {
     currentActivity!!.runOnUiThread {
-      val mDeviceId = LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity as FragmentActivity)
-      val resultData: WritableMap = WritableNativeMap()
-      if (mDeviceId?.isNotEmpty() == true) {
-        deviceId = mDeviceId
-        resultData.putString("deviceId", "$mDeviceId")
-        callback?.invoke(resultData)
-      } else {
-        resultData.putString("deviceId", "empty")
-        callback?.invoke(resultData)
-      }
+      // val mDeviceId = LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity as FragmentActivity)
+      // val resultData: WritableMap = WritableNativeMap()
+      // if (mDeviceId?.isNotEmpty() == true) {
+      //   deviceId = mDeviceId
+      //   resultData.putString("deviceId", "$mDeviceId")
+      //   callback?.invoke(resultData)
+      // } else {
+      //   resultData.putString("deviceId", "empty")
+      //   callback?.invoke(resultData)
+      // }
     }
   }
 
   @ReactMethod
   fun registerFace(image: String? = null, callback: Callback? = null) {
-    currentActivity!!.runOnUiThread {
-      LiveNessSDK.registerFace(
-        reactApplicationContext.currentActivity as FragmentActivity,
-        getLivenessRequest(image),
-        object : CallbackLivenessListener {
-          override fun onCallbackLiveness(data: LivenessModel?) {
-            val resultData: WritableMap = WritableNativeMap()
-            resultData.putInt("status", data?.status ?: -1)
-            resultData.putString("data", "${data?.data ?: ""}")
-            resultData.putString("message", data?.message ?: "")
-            resultData.putString("code", data?.code ?: "")
-            resultData.putString("pathVideo", data?.pathVideo ?: "")
-            resultData.putString("faceImage", data?.faceImage ?: "")
-            resultData.putString("livenessImage", data?.livenessImage ?: "")
-            callback?.invoke(resultData)
-          }
-        })
-    }
+    // currentActivity!!.runOnUiThread {
+    //   LiveNessSDK.registerFace(
+    //     reactApplicationContext.currentActivity as FragmentActivity,
+    //     getLivenessRequest(image),
+    //     object : CallbackLivenessListener {
+    //       override fun onCallbackLiveness(data: LivenessModel?) {
+    //         val resultData: WritableMap = WritableNativeMap()
+    //         resultData.putInt("status", data?.status ?: -1)
+    //         resultData.putString("data", "${data?.data ?: ""}")
+    //         resultData.putString("message", data?.message ?: "")
+    //         resultData.putString("code", data?.code ?: "")
+    //         resultData.putString("pathVideo", data?.pathVideo ?: "")
+    //         resultData.putString("faceImage", data?.faceImage ?: "")
+    //         resultData.putString("livenessImage", data?.livenessImage ?: "")
+    //         callback?.invoke(resultData)
+    //       }
+    //     })
+    // }
   }
 
   @ReactMethod
