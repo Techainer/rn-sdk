@@ -22,6 +22,7 @@ PODS:
     - QTSLiveness
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+    - TensorFlowLiteSwift
   - ObjectMapper (4.2.0)
   - QTSLiveness (1.2.9):
     - CryptoSwift (~> 1.8.2)
@@ -440,6 +441,15 @@ PODS:
     - React-perflogger (= 0.72.10)
   - SignManager (1.0.6)
   - SocketRocket (0.6.1)
+  - TensorFlowLiteC (2.17.0):
+    - TensorFlowLiteC/Core (= 2.17.0)
+  - TensorFlowLiteC/Core (2.17.0)
+  - TensorFlowLiteSwift (2.17.0):
+    - TensorFlowLiteSwift/Core (= 2.17.0)
+  - TensorFlowLiteSwift/Core (2.17.0):
+    - TensorFlowLiteC (= 2.17.0)
+    - TensorFlowLiteSwift/Privacy (= 2.17.0)
+  - TensorFlowLiteSwift/Privacy (2.17.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -499,6 +509,8 @@ SPEC REPOS:
     - QTSLiveness
     - SignManager
     - SocketRocket
+    - TensorFlowLiteC
+    - TensorFlowLiteSwift
 
 EXTERNAL SOURCES:
   boost:
@@ -593,7 +605,7 @@ SPEC CHECKSUMS:
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: 75b9c231403dccc55b2210d979dc9a77f857ff11
+  liveness-rn: 99b9252fe8b6b14076dab8ac99d2d500bec27071
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   QTSLiveness: 67ce723c281d0f57b578c6f3c6b423ef933a9641
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
@@ -630,8 +642,10 @@ SPEC CHECKSUMS:
   ReactCommon: 8a1c7eda06387ad98be414c690306465f859df62
   SignManager: 67d0f04ff3695c1dde7c056bc9ba09de0db2f806
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  TensorFlowLiteC: eac6d689a8d391d1b202dc59e3d9165ba64aaf73
+  TensorFlowLiteSwift: 723fe42222815e72490c79feeff05305530de393
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: b058bab4287f4ace2e69ac32ed3de739f9a8d5fb
+PODFILE CHECKSUM: e23598fed2e3a9765d7eefbc7e1d98ec6bb3b098
 
 COCOAPODS: 1.16.2

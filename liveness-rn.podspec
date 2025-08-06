@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => '12.4' }
+  s.platforms    = { :ios => '13.4' }
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   # s.vendored_frameworks = "ios/FlashLiveness.framework"
   s.source_files = "ios/*.{h,m,mm,swift}"
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
   s.dependency "QTSLiveness"
   # s.dependency "FlashLiveness"
   s.dependency 'KeychainSwift', '~> 19.0'
+  s.dependency 'TensorFlowLiteSwift'
 
   s.vendored_frameworks = 'ios/Frameworks/ekyc_ios_sdk.framework',
                           'ios/Frameworks/FBLPromises.framework',
@@ -35,8 +36,8 @@ Pod::Spec.new do |s|
                           'ios/Frameworks/GTMSessionFetcher.framework',
                           'ios/Frameworks/nanopb.framework',
                           'ios/Frameworks/Promises.framework',
-                          'ios/Frameworks/Protobuf.framework',
-                          'ios/Frameworks/TensorFlowLite.framework'
+                          'ios/Frameworks/Protobuf.framework'
+                          # 'ios/Frameworks/TensorFlowLite.framework'
 
   s.resources = 'ios/Shaders/*.metal'
   s.swift_version = "5.0"

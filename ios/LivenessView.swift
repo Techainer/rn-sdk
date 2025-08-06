@@ -5,13 +5,13 @@ import LocalAuthentication
 import QTSLiveness
 import ekyc_ios_sdk
 
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   var mainView: FaceAuthenticationView?
   private var currentIsFlash: Bool = false
   private var enableNewCamera: Bool = false
   var transactionId = ""
-  var livenessDetector: QTSLiveness.QTSLivenessDetector?
+  var livenessDetector: Any?
   private var viewMask: LivenessMaskView!
   var requestid = ""
   var appId = ""
@@ -152,10 +152,10 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
     
     private func resetLivenessDetector() {
         if !isFlashCamera && checkfaceID(), #available(iOS 15.0, *) {
-          livenessDetector.stopLiveness() // Stop the session for QTSLiveness
+          (livenessDetector as? QTSLiveness.QTSLivenessDetector)?.stopLiveness() // Stop the session for QTSLiveness
           print("QTSLiveness detector stopped and reset.")
         } else {
-          mainView.stopCamera()
+          mainView?.stopCamera()
         }
         
         livenessDetector = nil
@@ -195,8 +195,8 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
             try startSession()
           } else {
               mainView = FaceAuthenticationView(frame: bounds)
-              mainView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-              addSubview(mainView)
+              mainView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+              addSubview(mainView!)
               dataRes = [ "isFlash": true ]
               pushEvent(data: dataRes)
               handleResultsLiveness()
@@ -253,7 +253,8 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
           if let faceAuthView = mainView as? FaceAuthenticationView {
               print("IsFlash: FaceAuthenticationView")
               faceAuthView.onResultsLiveness = { [weak self] livenessResult in
-                  pushEvent(data: handleLivenessResult(livenessResult.rawValue))
+                var result: [String: Any] = handleLivenessResult(livenessResult.rawValue)
+                self?.pushEvent(data: result)
               }
           }
       }
@@ -276,10 +277,70 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                           filePath: images.last ?? "")
                       result["color"] = colorString
                   }
-                  pushEvent(data: result)
+                self?.pushEvent(data: result)
               }
           }
       }
+  
+  func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 400) -> String? {
+      do {
+          // 1. Load the image from the file path
+          guard let image = UIImage(contentsOfFile: filePath) else {
+              throw NSError(
+                  domain: "Invalid Image", code: 1,
+                  userInfo: [NSLocalizedDescriptionKey: "Image not found at path: \(filePath)"])
+          }
+
+          var resizedImage = image
+          var compressionQuality: CGFloat = 1.0
+          var imageData: Data?
+
+          repeat {
+              // 2. Compress the image
+              imageData = resizedImage.jpegData(compressionQuality: compressionQuality)
+
+              // 3. Check size and resize if needed
+              if let data = imageData, data.count > maxSizeInKB * 1024 {
+                  // Reduce compression quality
+                  compressionQuality -= 0.1
+
+                  // Resize the image dimensions if quality is too low
+                  if compressionQuality < 0.1 {
+                      let newWidth = resizedImage.size.width * 0.9
+                      let newHeight = resizedImage.size.height * 0.9
+                      resizedImage = resizeImage(
+                          image: resizedImage, width: newWidth, height: newHeight)
+                      compressionQuality = 1.0  // Reset quality after resizing
+                  }
+              } else {
+                  break
+              }
+          } while imageData == nil || (imageData!.count > maxSizeInKB * 1024)
+
+          // 4. Convert the image data to Base64
+          guard let finalData = imageData else {
+              throw NSError(
+                  domain: "Image Conversion Failed", code: 2,
+                  userInfo: [NSLocalizedDescriptionKey: "Failed to process image"])
+          }
+
+          return finalData.base64EncodedString(options: .lineLength64Characters)
+
+      } catch let error {
+          print("Error: \(error.localizedDescription)")
+          return nil
+      }
+  }
+
+  // Helper function to resize an image
+  func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
+      let newSize = CGSize(width: width, height: height)
+      UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+      image.draw(in: CGRect(origin: .zero, size: newSize))
+      let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      return resizedImage ?? image
+  }
 
   private func startSession() throws {
       guard let detector = livenessDetector else {
@@ -338,7 +399,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   @objc func setIsFlashCamera(_ val: Bool) {
         print("9999")
     
-        if currentIsFlash == isFlash && mainView != nil {
+        if currentIsFlash == val && mainView != nil {
             return
         }
 
@@ -348,20 +409,6 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         resetLivenessDetector()
         self.setupConfig()
   }
-    
-  func liveness(_ liveness: FlashLiveness.LivenessUtilityDetector, didFinishWithFaceImages images: FlashLiveness.LivenessFaceImages) {
-//        let livenessImage = images.images?.first?.imagePath?.absoluteString
-//        let livenessOriginalImage = images.originalImage.imagePath?.absoluteString
-        let livenessImage = images.images?.first?.imageBase64
-        let livenessOriginalImage = images.originalImage.imageBase64
-        let dataRes: [String: Any] = [
-            "livenessColorImage": resizeBase64Image(base64String: livenessImage ?? "") ?? "",
-            "livenessOriginalImage": resizeBase64Image(base64String: livenessOriginalImage ?? "") ?? "",
-            "color": images.images?.first?.colorString ?? "",
-        ]
-          pushEvent(data: dataRes)
-        (livenessDetector as! LivenessUtilityDetector).stopLiveness()
-    }
     
     @available(iOS 15.0, *)
     func liveness(liveness: QTSLivenessDetector, didFail withError: QTSLivenessError) {
