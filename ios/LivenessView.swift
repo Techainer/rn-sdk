@@ -295,7 +295,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                   var result: [String: Any] = [:]
                   result["livenessOriginalImage"] = self?.convertImageToBase64UnderMB(
                       filePath: images.first ?? "")
-                  result["livenessImage"] = self?.convertImageToBase64UnderMB(
+                  result["livenessColorImage"] = self?.convertImageToBase64UnderMB(
                       filePath: images.last ?? "")
                   result["color"] = colorString
                 self?.pushEvent(data: result)
