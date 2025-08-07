@@ -3,7 +3,6 @@ package com.livenessrn
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -18,10 +17,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.ekycplugin.eykc.utils.FaceAuthenticationView
 import com.example.ekycplugin.eykc.utils.faceauth.FaceLiveness
 import com.facebook.react.bridge.Arguments
-import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.WritableMap
-import com.facebook.react.uimanager.ThemedReactContext
-import com.facebook.react.uimanager.events.RCTEventEmitter
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
