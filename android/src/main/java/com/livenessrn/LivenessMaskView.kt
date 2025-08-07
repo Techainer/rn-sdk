@@ -40,8 +40,10 @@ class LivenessMaskView @JvmOverloads constructor(
   var overlayColor: Int = Color.argb(102, 0, 0, 0) // Mặc định là đen mờ 40% (0.4 alpha)
     set(value) {
       field = value
-      overlayPaint.color = value
-      invalidate() // Yêu cầu vẽ lại view với màu mới
+      post {
+        overlayPaint.color = value
+        invalidate() // Yêu cầu vẽ lại view với màu mới
+      }
     }
 
   // MARK: - Initialization
@@ -54,7 +56,7 @@ class LivenessMaskView @JvmOverloads constructor(
     overlayPaint.style = Paint.Style.FILL
 
     // Cấu hình bút vẽ cho đường viền trắng của oval
-    strokePaint.color = Color.WHITE
+    strokePaint.color = Color.TRANSPARENT
     strokePaint.style = Paint.Style.STROKE
     strokePaint.strokeWidth = 2.0f * resources.displayMetrics.density // 2dp
 
@@ -91,7 +93,7 @@ class LivenessMaskView @JvmOverloads constructor(
     val width = w * 0.93f
     val height = width * 1.7f.coerceAtMost(h * 0.85f)
     val xPos = (w - width) / 2f
-    val yPos = h / 8f
+    val yPos = h / 12f
     areaViewFrame.set(xPos, yPos, xPos + width, yPos + height)
 
     // --- 2. Cập nhật path cho lớp overlay ---

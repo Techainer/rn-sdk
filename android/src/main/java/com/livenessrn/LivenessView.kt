@@ -3,6 +3,7 @@ package com.livenessrn
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.ekycplugin.eykc.utils.FaceAuthenticationView
 import com.example.ekycplugin.eykc.utils.faceauth.FaceLiveness
 import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
 import com.facebook.react.bridge.WritableMap
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -36,6 +38,7 @@ class LivenessView @JvmOverloads constructor(
 class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   private lateinit var faceAuthView: FaceAuthenticationView
+  private lateinit var maskView: LivenessMaskView
   var listener: LivenessFragmentListener? = null
 
   override fun onCreateView(
@@ -49,6 +52,13 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
       startCamera()
       setStartStreamImage(true)
       setFaceAuthenticationCallback(this@LivenessFragment)
+      maskView = LivenessMaskView(requireActivity())
+      maskView.layoutParams = FrameLayout.LayoutParams(
+        FrameLayout.LayoutParams.MATCH_PARENT,
+        FrameLayout.LayoutParams.MATCH_PARENT
+      )
+      maskView.instructionText = "Hãy đưa mặt vào trong khung hình"
+      addView(maskView)
     }
     return faceAuthView
   }
@@ -72,28 +82,41 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   }
 
   override fun onResultsLiveness(livenessResult: FaceLiveness.FaceLivenessResult?) {
+    val resultMessage = livenessResult?.let { getResultMessage(it) }
     val map = Arguments.createMap()
-    map.putString("result", livenessResult?.let { getResultMessage(it) })
-    listener?.onLivenessEvent(map)
+    map.putString("result", resultMessage)
+    println("onResultsLiveness: $map")
+    println("Liveness result received: ${resultMessage ?: "null"}")
+
+    runOnUiThread {
+      maskView.let { mask ->
+        if (resultMessage != "Hide mark view.") {
+          mask.instructionText = resultMessage
+          mask.overlayColor = Color.argb(102, 0, 0, 0)
+        } else {
+          mask.overlayColor = Color.TRANSPARENT
+        }
+      }
+    }
   }
 
   private fun getResultMessage(livenessResult: FaceLiveness.FaceLivenessResult): String {
     return when (livenessResult.value) {
-      0 -> "Valid"
-      1 -> "A hand is detected."
-      2 -> "A mask is detected."
-      3 -> "Sunglasses are detected."
-      4 -> "The face is covered."
-      5 -> "The face is skew, please set face straight."
-      6 -> "The face is small, please move face closer."
-      7 -> "No face."
-      8 -> "Glare."
-      9 -> "Dark."
-      10 -> "Hold face."
-      11 -> "Done."
-      12 -> "The face is big, please move face closer."
-      13 -> "Hide mark view."
-      else -> "Valid"
+      0 -> "Hợp lệ"
+      1 -> "Phát hiện bàn tay, vui lòng không che mặt"
+      2 -> "Phát hiện khẩu trang, vui lòng tháo ra"
+      3 -> "Phát hiện kính, vui lòng tháo ra"
+      4 -> "Khuôn mặt bị che khuất"
+      5 -> "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng"
+      6 -> "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn"
+      7 -> "Hãy đưa mặt vào trong khung hình"
+      8 -> "Khuôn mặt bị lóa sáng"
+      9 -> "Môi trường thiếu sáng"
+      10 -> "Vui lòng giữ yên khuôn mặt"
+      11 -> "Hoàn thành"
+      12 -> "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn"
+      13 -> "Hide mark view." // Giữ nguyên theo ví dụ của bạn
+      else -> "Hợp lệ"
     }
   }
 

@@ -263,7 +263,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                 let newText = result["result"] as? String
 
                 print("Liveness result received: \(newText ?? "nil")")
-                
+
                 if newText != "Hide mark view." {
                   DispatchQueue.main.async {
                       // Hiển thị text hướng dẫn
