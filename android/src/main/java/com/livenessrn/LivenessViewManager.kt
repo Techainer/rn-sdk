@@ -11,22 +11,22 @@ import android.widget.FrameLayout
 import android.widget.FrameLayout.LayoutParams
 import android.app.Activity
 import androidx.fragment.app.FragmentActivity
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.WritableMap
 import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.ViewGroupManager
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.uimanager.annotations.ReactPropGroup
-import com.liveness.sdk.corev4.LiveNessSDK
-import com.liveness.sdk.corev4.model.DataConfig
-import com.liveness.sdk.corev4.model.LivenessRequest
-import com.liveness.sdk.corev4.model.VerifyLevel
+import com.facebook.react.uimanager.events.RCTEventEmitter
 import java.util.Random
 
 class LivenessViewManager(
   private val reactContext: ReactApplicationContext
-) : ViewGroupManager<LivenessView>() {
+) : ViewGroupManager<LivenessView>(), LivenessFragmentListener {
 
   private var requestId: String = ""
   private var appId: String = "com.qts.test"
@@ -68,7 +68,7 @@ class LivenessViewManager(
     } catch (_: Exception) {}
   }
 
-  fun setBrightness(value: Float) {
+  private fun setBrightness(value: Float) {
     val window = (reactContext.currentActivity as FragmentActivity).window
     val handler = Handler(Looper.getMainLooper())
     handler.post {
@@ -153,9 +153,17 @@ class LivenessViewManager(
     this.isFlashCamera = isFlashCamera
   }
 
-  /**
-   * Replace your React Native view with a custom fragment
-   */
+  private fun callNativeEvent(map: WritableMap) {
+    val reactContext = reactContext as ReactContext
+    val event = Arguments.createMap()
+    event.putMap("data", map)
+    reactContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
+      id,
+      "nativeClick",  //name has to be same as getExportedCustomDirectEventTypeConstants in MyCustomReactViewManager
+      event
+    )
+  }
+
   private fun createFragment(root: FrameLayout, reactNativeViewId: Int) {
     val parentView = root.findViewById<ViewGroup>(reactNativeViewId)
     setupLayout(parentView)
@@ -177,14 +185,13 @@ class LivenessViewManager(
     Log.d("createFragment", "Start liveness: $reactNativeViewId")
     getBrightness()
     setBrightness(1f)
-    LiveNessSDK.startLiveNess(
-      activity,
-      getLivenessRequest(),
-      fragmentManager,
-      reactNativeViewId,
-      null,
-      false
-    )
+
+    val livenessFragment = LivenessFragment()
+    livenessFragment.listener = this
+
+    fragmentManager.beginTransaction()
+      .replace(reactNativeViewId, livenessFragment, "LIVENESS_FRAGMENT_TAG")
+      .commit()
   }
 
   private fun setupLayout(view: View) {
@@ -222,39 +229,7 @@ class LivenessViewManager(
     var originalBrightness: Float? = null
   }
 
-  private fun getLivenessRequest(): LivenessRequest {
-    val activity = reactContext.currentActivity as FragmentActivity;
-    if (LiveNessSDK.getDeviceId(activity)?.isNotEmpty() == true) {
-      deviceId = LiveNessSDK.getDeviceId(activity)!!
-    }
-
-    val optionRequest: HashMap<String, String> = HashMap()
-//    optionRequest["requestId"] = this.requestId
-//    optionRequest["clientTransactionId"] = this.requestId
-    val request = LivenessRequest(
-      duration = 600,
-      privateKey = privateKey,
-      appId = this.appId,
-      deviceId = deviceId,
-//      clientTransactionId = this.requestId,
-//      secret = secret,
-      baseURL = baseURL,
-      publicKey = publicKey,
-      isDebug = debugging,
-      offlineMode = true,
-      isSaveImage = false,
-      verifyLevel = VerifyLevel.LOW,
-    )
-//    request.colorConfig = listOf(0xFFFFFF00L, 0xFF800080L, 0xFFFFA500L)
-     if (request.offlineMode) {
-        val random = Random()
-        request.dataConfig = DataConfig(
-          random.nextInt(4),
-          random.nextInt(4) + 1,
-          quality = 70,
-          maxWidth = 480,
-        )
-     }
-    return request
+  override fun onLivenessEvent(event: WritableMap) {
+    callNativeEvent(event)
   }
 }

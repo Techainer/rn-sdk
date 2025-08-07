@@ -2,37 +2,107 @@ package com.livenessrn
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.BitmapFactory
-import android.util.AttributeSet
-import android.util.Base64
-import android.util.Log
-import android.widget.FrameLayout
+import android.graphics.Color
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.AttributeSet
+import android.util.Base64
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.example.ekycplugin.eykc.utils.FaceAuthenticationView
+import com.example.ekycplugin.eykc.utils.faceauth.FaceLiveness
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.events.RCTEventEmitter
-import com.liveness.sdk.corev4.LiveNessSDK
-import com.liveness.sdk.corev4.model.LivenessModel
-import com.liveness.sdk.corev4.utils.CallbackLivenessListener
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 
+interface LivenessFragmentListener {
+  fun onLivenessEvent(event: WritableMap)
+}
 
 class LivenessView @JvmOverloads constructor(
   context: Context,
   attrs: AttributeSet? = null
-) : FrameLayout(context, attrs) {
+) : FrameLayout(context, attrs)
 
-  init {
-    this.setBackgroundColor(Color.TRANSPARENT)
+class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
+
+  private lateinit var faceAuthView: FaceAuthenticationView
+  var listener: LivenessFragmentListener? = null
+
+  override fun onCreateView(
+    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+  ): View {
+    faceAuthView = FaceAuthenticationView(requireActivity()).apply {
+      layoutParams = FrameLayout.LayoutParams(
+        FrameLayout.LayoutParams.MATCH_PARENT,
+        FrameLayout.LayoutParams.MATCH_PARENT
+      )
+      startCamera()
+      setStartStreamImage(true)
+      setFaceAuthenticationCallback(this@LivenessFragment)
+    }
+    return faceAuthView
+  }
+
+  override fun onDestroyView() {
+    if (::faceAuthView.isInitialized) {
+      faceAuthView.stop()
+    }
+    super.onDestroyView()
+  }
+
+  override fun onResultsExtracted(images: MutableList<String>?, colorString: String?) {
+    if (images.isNullOrEmpty()) return
+    val originalImage = convertPathToBase64WithLimitKB(path = images[0])
+    val colorImage = convertPathToBase64WithLimitKB(path = images[1])
+    val map = Arguments.createMap()
+    map.putString("livenessColorImage", colorImage)
+    map.putString("livenessOriginalImage", originalImage)
+    map.putString("color", colorString)
+    listener?.onLivenessEvent(map)
+  }
+
+  override fun onResultsLiveness(livenessResult: FaceLiveness.FaceLivenessResult?) {
+    val map = Arguments.createMap()
+    map.putString("result", livenessResult?.let { getResultMessage(it) })
+    listener?.onLivenessEvent(map)
+  }
+
+  private fun getResultMessage(livenessResult: FaceLiveness.FaceLivenessResult): String {
+    return when (livenessResult.value) {
+      0 -> "Valid"
+      1 -> "A hand is detected."
+      2 -> "A mask is detected."
+      3 -> "Sunglasses are detected."
+      4 -> "The face is covered."
+      5 -> "The face is skew, please set face straight."
+      6 -> "The face is small, please move face closer."
+      7 -> "No face."
+      8 -> "Glare."
+      9 -> "Dark."
+      10 -> "Hold face."
+      11 -> "Done."
+      12 -> "The face is big, please move face closer."
+      13 -> "Hide mark view."
+      else -> "Valid"
+    }
+  }
+
+  override fun onCheckHack(p0: Boolean, p1: String?) {
+    TODO("Not yet implemented")
   }
 
   fun setBrightness(value: Float, activity: FragmentActivity) {
@@ -40,87 +110,14 @@ class LivenessView @JvmOverloads constructor(
     val handler = Handler(Looper.getMainLooper())
     handler.post {
       if (window != null) {
-          window.attributes = window.attributes.apply {
-              screenBrightness = value
-          }
-      }
-    }
-  }
-
-  private val callBack = object : CallbackLivenessListener {
-    override fun onCallbackLiveness(data: LivenessModel?) {
-      if (data?.status != null && data.status == 6666) {
-        Log.d("CallBack back1", "CallBack back1")
-        val activity = (context as ThemedReactContext).currentActivity as FragmentActivity
-        setBrightness((LivenessViewManager.originalBrightness ?: 0.3f), activity)
-        activity.finish()
-        return
-      }
-
-      if (data?.status != null && data.status == 200) {
-        val map = Arguments.createMap()
-        map.putInt("status", data.status ?: -1)
-        map.putString("message", data.message ?: "")
-        map.putString("request_id", data.requestId ?: "")
-        map.putInt("code", 200)
-        map.putBoolean("success", data.success ?: false)
-        map.putString("pathVideo", data.pathVideo ?: "")
-        map.putString("faceImage", data.faceImage ?: "")
-        map.putString("livenessImage", data.livenessImage ?: "")
-        map.putString("transactionID", data.transactionID ?: "")
-        map.putString("livenesScore", "${data.data?.livenesScore}")
-        map.putString("faceMatchingScore", "${data.data?.faceMatchingScore}")
-
-        val mapData = Arguments.createMap()
-        map.putString("faceMatchingScore", data.data?.faceMatchingScore ?: "")
-        map.putString("livenessType", data.data?.livenessType ?: "")
-        map.putDouble("livenesScore", (data.data?.livenesScore ?: 0).toDouble())
-        map.putMap("data", mapData)
-        callNativeEvent(map)
-      } else {
-        if (data?.imageResult.isNullOrEmpty() ) {
-          val map = Arguments.createMap()
-//        if (livenessModel?.action != null) {
-//          map.putInt("action", livenessModel?.action ?: -1)
-//          map.putString("message", livenessModel?.message ?: "")
-//        } else {
-//          map.putBoolean("status", false)
-//          map.putString("message", livenessModel?.message ?: "")
-//          map.putInt("code", 101)
-//        }
-          map.putBoolean("status", false)
-          map.putString("message", data?.message ?: "")
-          map.putInt("code", 101)
-          callNativeEvent(map)
-        }else {
-          data?.imageResult?.apply {
-            if(this.size>=2){
-              // val originalImage = this[0].imagePath
-              // val colorImage = this[1].imagePath
-//               val originalImage = this[0].imagePath?.let { convertPathToBase64WithLimitKB(path = it) }
-//               val colorImage = this[1].imagePath?.let { convertPathToBase64WithLimitKB(path = it) }
-              val originalImage = this[0].image
-              val colorImage = this[1].image
-              val map = Arguments.createMap()
-              map.putString("livenessColorImage", colorImage)
-              map.putString("livenessOriginalImage", originalImage)
-              map.putString("color", this[1].colorString)
-              callNativeEvent(map)
-            }else{
-              val map = Arguments.createMap()
-              map.putBoolean("status", false)
-              map.putString("message", data?.message ?: "")
-              map.putInt("code", 101)
-              callNativeEvent(map)
-            }
-          }
+        window.attributes = window.attributes.apply {
+          screenBrightness = value
         }
-
       }
     }
   }
 
-  fun convertPathToBase64WithLimitKB(path: String, maxSizeInKB: Int = 400): String? {
+  private fun convertPathToBase64WithLimitKB(path: String, maxSizeInKB: Int = 400): String? {
     try {
       val file = File(path)
       if (!file.exists()) {
@@ -188,20 +185,5 @@ class LivenessView @JvmOverloads constructor(
       e.printStackTrace()
       null
     }
-  }
-
-  init {
-    LiveNessSDK.setCallbackListener(callBack)
-  }
-
-  fun callNativeEvent(map: WritableMap) {
-    val reactContext = context as ReactContext
-    val event = Arguments.createMap()
-    event.putMap("data", map)
-    reactContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
-      id,
-      "nativeClick",  //name has to be same as getExportedCustomDirectEventTypeConstants in MyCustomReactViewManager
-      event
-    )
   }
 }
