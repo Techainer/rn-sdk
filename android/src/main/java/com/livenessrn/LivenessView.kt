@@ -74,31 +74,8 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   }
 
   override fun onResultsLiveness(livenessResult: FaceLiveness.FaceLivenessResult?) {
-    val resultMessage = livenessResult?.let { getResultMessage(it) }
     val map = Arguments.createMap()
-    map.putString("result", resultMessage)
     println("onResultsLiveness: $map")
-    println("Liveness result received: ${resultMessage ?: "null"}")
-  }
-
-  private fun getResultMessage(livenessResult: FaceLiveness.FaceLivenessResult): String {
-    return when (livenessResult.value) {
-      0 -> "Hợp lệ"
-      1 -> "Phát hiện bàn tay, vui lòng không che mặt"
-      2 -> "Phát hiện khẩu trang, vui lòng tháo ra"
-      3 -> "Phát hiện kính, vui lòng tháo ra"
-      4 -> "Khuôn mặt bị che khuất"
-      5 -> "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng"
-      6 -> "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn"
-      7 -> "Hãy đưa mặt vào trong khung hình"
-      8 -> "Khuôn mặt bị lóa sáng"
-      9 -> "Môi trường thiếu sáng"
-      10 -> "Vui lòng giữ yên khuôn mặt"
-      11 -> "Hoàn thành"
-      12 -> "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn"
-      13 -> "Hide mark view." // Giữ nguyên theo ví dụ của bạn
-      else -> "Hợp lệ"
-    }
   }
 
   override fun onCheckHack(p0: Boolean, p1: String?) {
