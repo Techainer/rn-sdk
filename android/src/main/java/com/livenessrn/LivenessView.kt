@@ -38,7 +38,6 @@ class LivenessView @JvmOverloads constructor(
 class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   private lateinit var faceAuthView: FaceAuthenticationView
-  private lateinit var maskView: LivenessMaskView
   var listener: LivenessFragmentListener? = null
 
   override fun onCreateView(
@@ -52,13 +51,6 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
       startCamera()
       setStartStreamImage(true)
       setFaceAuthenticationCallback(this@LivenessFragment)
-      maskView = LivenessMaskView(requireActivity())
-      maskView.layoutParams = FrameLayout.LayoutParams(
-        FrameLayout.LayoutParams.MATCH_PARENT,
-        FrameLayout.LayoutParams.MATCH_PARENT
-      )
-      maskView.instructionText = "Hãy đưa mặt vào trong khung hình"
-      addView(maskView)
     }
     return faceAuthView
   }
@@ -87,17 +79,6 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     map.putString("result", resultMessage)
     println("onResultsLiveness: $map")
     println("Liveness result received: ${resultMessage ?: "null"}")
-
-    runOnUiThread {
-      maskView.let { mask ->
-        if (resultMessage != "Hide mark view.") {
-          mask.instructionText = resultMessage
-          mask.overlayColor = Color.argb(102, 0, 0, 0)
-        } else {
-          mask.overlayColor = Color.TRANSPARENT
-        }
-      }
-    }
   }
 
   private fun getResultMessage(livenessResult: FaceLiveness.FaceLivenessResult): String {
