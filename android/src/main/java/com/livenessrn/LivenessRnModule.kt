@@ -52,7 +52,7 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun getDeviceId(callback: Callback? = null) {
-    currentActivity!!.runOnUiThread {
+//    currentActivity!!.runOnUiThread {
       // val mDeviceId = LiveNessSDK.getDeviceId(reactApplicationContext.currentActivity as FragmentActivity)
       // val resultData: WritableMap = WritableNativeMap()
       // if (mDeviceId?.isNotEmpty() == true) {
@@ -63,7 +63,7 @@ class LivenessRnModule(reactContext: ReactApplicationContext) :
       //   resultData.putString("deviceId", "empty")
       //   callback?.invoke(resultData)
       // }
-    }
+//    }
   }
 
   @ReactMethod
