@@ -11,6 +11,7 @@
     "src",
     "lib",
     "android",
+    "android/libs",
     "ios",
     "cpp",
     "*.podspec",
