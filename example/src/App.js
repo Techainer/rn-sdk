@@ -326,6 +326,7 @@ export default function App() {
     if (isIphoneX) {
       setIsFlashCamera(false);
       timeoutRef.current = setTimeout(() => {
+        console.log('changed timeout');
         if (!isFlashCamera) {
           setIsFlashCamera(true);
           // setStatus(false);

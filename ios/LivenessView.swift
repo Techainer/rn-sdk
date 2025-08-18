@@ -419,7 +419,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
 
   @objc func setIsFlashCamera(_ val: Bool) {
         print("9999")
-        // if currentIsFlash == val && mainView != nil {
+        // if currentIsFlash == val && (mainView != nil || livenessDetector != nil) {
         //     return
         // }
         self.isFlashCamera = val as Bool
