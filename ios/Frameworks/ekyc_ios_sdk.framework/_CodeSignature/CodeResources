@@ -106,7 +106,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		8Pne+fMmhxwpyfmMUms9Xwknq5w=
+		MWFSJJzyvlTOV2gvKukbR4ZoHlI=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -118,7 +118,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		RcAoksfZVt0uTaVO+KM+5cDxyWs=
+		k/EBhysGJBzUHT25P6g2n5+AEgE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -423,7 +423,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wUclxmsllkh0Ymp+5byBlX++xBRopvKvZXGY/gs+UzI=
+			/syRAWM8Kjhdqk8XM+L/VsKBs13DSTGIbzDDggC0J0w=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -444,7 +444,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z6HgnWmr/0J/9LNt6GVWlF6cDSfM8iTx16pwSXBrVnE=
+			11gSf3j9ao/FnP26i6YcCJXrb6bycUi+Tv8xa2CW+7A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
