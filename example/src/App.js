@@ -328,10 +328,10 @@ export default function App() {
       timeoutRef.current = setTimeout(() => {
         if (!isFlashCamera) {
           setIsFlashCamera(true);
-          // setStatus(false);
-          // innerTimeoutRef.current = setTimeout(() => {
-          //   setStatus(true);
-          // }, 2);
+          setStatus(false);
+          innerTimeoutRef.current = setTimeout(() => {
+            setStatus(true);
+          }, 2);
         }
       }, 5000);
     } else {
