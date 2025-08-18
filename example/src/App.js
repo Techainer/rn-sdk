@@ -415,11 +415,11 @@ export default function App() {
               } else {
                 if (data.nativeEvent?.data?.isFlash) {
                   // Clear hết timeout
-                  clear();
+                  // clear();
                   setIsFlashCamera(true);
                 } else {
                   // Clear hết timeout
-                  clear();
+                  // clear();
                   setIsFlashCamera(false);
                 }
               }
