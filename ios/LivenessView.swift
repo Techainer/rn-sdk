@@ -22,14 +22,14 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   var isFlashCamera = false
   var isDoneSmile = false
     private var originalBrightness: CGFloat?
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         if let viewMask = viewMask {
             viewMask.frame = self.bounds // Ensure viewMask covers the entire view
         } // Ensure viewMask covers the entire view
     }
-  
+
   override init(frame: CGRect) {
     super.init(frame: frame)
 //   setupView()
@@ -43,7 +43,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
       configution()
       registerForNotifications()
   }
-    
+
     func configution() {
         self.backgroundColor = .clear
         if UIScreen.main.brightness == 1 {
@@ -52,14 +52,14 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
             self.originalBrightness = UIScreen.main.brightness
         }
     }
-    
+
     deinit {
         revertLightScreen()
         print("Dispose Liveness")
         resetLivenessDetector()
         unregisterFromNotifications()
     }
-    
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
@@ -72,7 +72,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
             resetLivenessDetector()
         }
     }
-    
+
 //    override func didMoveToWindow() {
 //        super.didMoveToWindow()
 //        if window != nil {
@@ -107,10 +107,10 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         print("App entered foreground")
        upLightScreen()
     }
-    
+
     func upLightScreen() {
         revertLightScreen()
-        
+
         // Lưu độ sáng ban đầu nếu chưa lưu
 //        if self.originalBrightness == nil {
 //            self.originalBrightness = UIScreen.main.brightness
@@ -121,18 +121,18 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
             UIScreen.main.brightness = 1.0
         }
     }
-    
+
     func revertLightScreen() {
         // Khôi phục độ sáng ban đầu nếu đã được lưu
         if let brightness = self.originalBrightness {
             UIScreen.main.brightness = brightness
 //            self.originalBrightness = nil
         }
-        
+
 //        UIScreen.main.brightness = 0.35
         print("Brightness revert to")
     }
-    
+
     func checkfaceID() -> Bool {
       let authType = LocalAuthManager.shared.biometricType
       switch authType {
@@ -142,13 +142,13 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         return false
       }
     }
-    
+
       private func setupConfig() {
           upLightScreen()
           resetLivenessDetector()
           setupView()
       }
-    
+
     private func resetLivenessDetector() {
         if !isFlashCamera && checkfaceID(), #available(iOS 15.0, *) {
           (livenessDetector as? QTSLiveness.QTSLivenessDetector)?.stopLiveness() // Stop the session for QTSLiveness
@@ -156,7 +156,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         } else {
           mainView?.stopCamera()
         }
-        
+
         livenessDetector = nil
         mainView?.removeFromSuperview()
         mainView = nil
@@ -198,13 +198,13 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               addSubview(mainView!)
               dataRes = [ "isFlash": true ]
               pushEvent(data: dataRes)
-          
+
                viewMask = LivenessMaskView(frame: bounds)
                viewMask.backgroundColor = UIColor.clear
                viewMask.layer.zPosition = 1
                viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
                addSubview(viewMask)
-            
+
               handleResultsLiveness()
               handleResultsExtracted()
           }
@@ -212,7 +212,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
             pushEvent(data: ["error": error.localizedDescription])
         }
   }
-  
+
   func handleResultsLiveness() {
           guard let mainView = self.mainView else {
               print("Error: mainView is nil")
@@ -367,74 +367,71 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
       guard let detector = livenessDetector else {
           throw NSError(domain: "LivenessError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Liveness Detector could not be initialized"])
       }
-  
+
       if #available(iOS 15.0, *), let qtDetector = detector as? QTSLiveness.QTSLivenessDetector {
           try qtDetector.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
       }
   }
-  
+
   private func pushEvent(data: Any) -> Void {
     if (self.onEvent != nil) {
       let event = ["data": data]
       self.onEvent!(event)
     }
   }
-  
+
   @objc var onEvent: RCTBubblingEventBlock?
-  
+
   @objc func setRequestid(_ val: NSString) {
       print("9999")
     self.requestid = val as String
 //    self.setupConfig()
   }
-    
+
   @objc func setAppId(_ val: NSString) {
       print("9999")
     self.appId = val as String
 //    self.setupConfig()
   }
-    
+
   @objc func setBaseUrl(_ val: NSString) {
       print("9999")
     self.baseUrl = val as String
 //    self.setupConfig()
   }
-    
+
   @objc func setPrivateKey(_ val: NSString) {
       print("9999")
     self.privateKey = val as String
 //    self.setupConfig()
   }
-    
+
   @objc func setPublicKey(_ val: NSString) {
       print("9999")
     self.publicKey = val as String
 //    self.setupConfig()
   }
-  
+
   @objc func setDebugging(_ val: Bool) {
       print("9999")
     self.debugging = val as Bool
   }
-    
+
   @objc func setIsFlashCamera(_ val: Bool) {
         print("9999")
-    
-        if currentIsFlash == val && mainView != nil {
-            return
-        }
-
-        // Cập nhật trạng thái mới
+        // if currentIsFlash == val && mainView != nil {
+        //     return
+        // }
         self.isFlashCamera = val as Bool
         currentIsFlash = isFlashCamera
         self.setupConfig()
   }
-    
+
     @available(iOS 15.0, *)
     func liveness(liveness: QTSLivenessDetector, didFail withError: QTSLivenessError) {
       print(withError)
     }
-    
+
     @available(iOS 15.0, *)
     func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinishLocalLiveness score: Float, maxtrix: [Float], image: UIImage, thermal_image: UIImage, videoURL: URL?){
 //        let livenessImage = saveImageToFile(image: image, isOriginal: false) ?? ""
@@ -449,7 +446,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         print(dataRes)
         liveness.stopLiveness()
     }
-    
+
     func saveImageToFile(image: UIImage, isOriginal: Bool) -> String? {
         // Chuyển đổi UIImage thành Data (PNG format)
         guard let imageData = image.pngData() else {
@@ -463,7 +460,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         let fileName = "face_authentications\(isOriginal ? "_original" : "")" + ".png"
         // Tạo đường dẫn đầy đủ cho file
         let fileURL = tempDirectory.appendingPathComponent(fileName)
-        
+
         do {
             // Lưu dữ liệu PNG vào file
             try imageData.write(to: fileURL)
@@ -479,23 +476,23 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
     func convertImageToBase64(_ image: UIImage) -> String? {
         // Convert UIImage to Data in JPEG format with optional compression quality
         guard let imageData = image.jpegData(compressionQuality: 1.0) else { return nil }
-        
+
         // Convert the Data to a Base64 encoded string
         let base64String = imageData.base64EncodedString(options: .lineLength64Characters)
         print("convert done")
         return base64String
     }
-  
+
   func resizeUIImageToBase64(image: UIImage, limitSizeInKB: Int = 500) -> String? {
       var compressionQuality: CGFloat = 1.0
       var compressedData: Data? = image.jpegData(compressionQuality: compressionQuality)
-      
+
       // Reduce quality gradually until below limit
       while let data = compressedData, data.count > limitSizeInKB * 1024, compressionQuality > 0.1 {
           compressionQuality -= 0.05
           compressedData = image.jpegData(compressionQuality: compressionQuality)
       }
-      
+
       // Resize only if still above limit
       var resizedImage = image
       while let data = compressedData, data.count > limitSizeInKB * 1024 {
@@ -509,30 +506,30 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               break
           }
       }
-      
+
       guard let finalData = compressedData else { return nil }
       return finalData.base64EncodedString()
   }
-  
+
   func resizeBase64Image(base64String: String, limitSizeInKB: Int = 500) -> String? {
       guard let imageData = Data(base64Encoded: base64String), let image = UIImage(data: imageData) else {
           print("Invalid Base64 string")
           return nil
       }
-      
+
       if imageData.count <= limitSizeInKB * 1024 {
           return base64String // Return original if within limit
       }
-      
+
       var compressionQuality: CGFloat = 1.0
       var compressedData: Data? = image.jpegData(compressionQuality: compressionQuality)
-      
+
       // Reduce quality gradually until below limit
       while let data = compressedData, data.count > limitSizeInKB * 1024, compressionQuality > 0.1 {
           compressionQuality -= 0.05
           compressedData = image.jpegData(compressionQuality: compressionQuality)
       }
-      
+
       // Resize only if still above limit
       var resizedImage = image
       while let data = compressedData, data.count > limitSizeInKB * 1024 {
@@ -546,7 +543,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               break
           }
       }
-      
+
       guard let finalData = compressedData else { return nil }
       return finalData.base64EncodedString()
   }
@@ -564,7 +561,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   func stopLiveness() {
       (livenessDetector as AnyObject).stopLiveness()
   }
-    
+
   var faceIDAvailable: Bool {
     if #available(iOS 11.0, *) {
       let context = LAContext()
