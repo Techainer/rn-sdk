@@ -89,7 +89,7 @@ class LivenessMaskView: UIView {
         instructionLabel.font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
         instructionLabel.textColor = .white
         instructionLabel.textAlignment = .center
-        instructionLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        // instructionLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
 
         // Thiết lập padding cho label
         instructionLabel.textInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
