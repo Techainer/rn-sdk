@@ -440,11 +440,16 @@ export default function App() {
         value={text}
         onChangeText={(newText) => setText(newText)}
       />}
-      <View style={{ position: 'absolute', width: '40%', zIndex: 1000, bottom: 20, left: (windowWidth / 3) }}>
+      {!status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, bottom: 20, left: (windowWidth / 3) }}>
         <TouchableOpacity onPress={onStartLiveNess} style={styles.btn_liveness}>
           <Text>Start LiveNess</Text>
         </TouchableOpacity>
-      </View>
+      </View>)}
+      {status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 20, left: 30 }}>
+        <TouchableOpacity onPress={onStartLiveNess}>
+          <Text style={{ fontSize: 35, color: 'white'}}> ← </Text>
+        </TouchableOpacity>
+      </View>)}
       <SimpleModal
         isOpen={loginError}
         setIsOpen={setLoginError}
