@@ -188,6 +188,7 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   // } : "");
   if (livenessPath) {
     data.append("sdk_liveness_image", livenessPath);
+    data.append("sdk_version", 3);
   }
   // data.append("user_id", "thuthuy");
   data.append("user_id", userId);
