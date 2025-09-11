@@ -154,7 +154,9 @@ class LivenessView: UIView {
         } else {
           (mainView as? FaceAuthenticationView)?.stopCamera()
         }
-        viewMask.removeFromSuperview()
+        if viewMask != nil {
+          viewMask.removeFromSuperview()
+        }
         mainView?.removeFromSuperview()
         mainView = nil
         removeFromSuperview()
