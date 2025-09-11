@@ -14,7 +14,33 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => '13.4' }
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   # s.vendored_frameworks = "ios/FlashLiveness.framework"
-  s.source_files = "ios/*.{h,m,mm,swift}"
+  s.source_files = [
+    'ios/*.{h,m,mm,swift}',
+    'ios/Shaders/*.{h,m,mm,swift,metal}'
+  ]
+  s.resources = ['ios/Shaders/default.metal', 'ios/Shaders/default.metallib']
+
+  # Compile metal -> metallib
+  s.script_phase = {
+    :name => 'Compile Metal Shaders',
+    :execution_position => :before_compile,
+    :script => <<-SCRIPT
+      set -e
+      SHADERS_DIR="${PODS_TARGET_SRCROOT}/ios/Shaders"
+      OUTPUT_DIR="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+
+      mkdir -p "$OUTPUT_DIR"
+
+      for file in "$SHADERS_DIR"/*.metal; do
+        if [ -f "$file" ]; then
+          filename=$(basename "$file" .metal)
+          xcrun metal -c "$file" -o "$OUTPUT_DIR/$filename.air"
+        fi
+      done
+
+      xcrun metallib "$OUTPUT_DIR"/*.air -o "$OUTPUT_DIR/default.metallib"
+    SCRIPT
+  }
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   s.dependency "QTSLiveness"
@@ -38,8 +64,6 @@ Pod::Spec.new do |s|
                           'ios/Frameworks/Promises.framework',
                           'ios/Frameworks/Protobuf.framework'
                           # 'ios/Frameworks/TensorFlowLite.framework'
-
-  s.resources = 'ios/Shaders/*.metal'
   s.swift_version = "5.0"
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
