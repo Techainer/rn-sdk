@@ -2,15 +2,13 @@ import Foundation
 import React
 import UIKit
 import LocalAuthentication
-import QTSLiveness
 import ekyc_ios_sdk
 
-@available(iOS 13.4, *)
-class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
-  var mainView: FaceAuthenticationView?
+@available(iOS 11.1, *)
+class LivenessView: UIView {
+  var mainView: UIView?
   private var currentIsFlash: Bool = false
   var transactionId = ""
-  var livenessDetector: Any?
   private var viewMask: LivenessMaskView!
   var requestid = ""
   var appId = ""
@@ -56,7 +54,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
     deinit {
         revertLightScreen()
         print("Dispose Liveness")
-        resetLivenessDetector()
+        resetliveness()
         unregisterFromNotifications()
     }
 
@@ -69,7 +67,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
         } else {
             revertLightScreen()
             print("LivenessView đã bị xoá khỏi màn hình.")
-            resetLivenessDetector()
+            resetliveness()
         }
     }
 
@@ -82,7 +80,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
 //        } else {
 //            revertLightScreen()
 //            print("LivenessView đã bị xóa khỏi window.")
-//            resetLivenessDetector()
+//            resetliveness3D()
 //        }
 //    }
 
@@ -145,19 +143,18 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
 
       private func setupConfig() {
           upLightScreen()
-          resetLivenessDetector()
+          resetliveness()
           setupView()
       }
 
-    private func resetLivenessDetector() {
-        if !isFlashCamera && checkfaceID(), #available(iOS 15.0, *) {
-          (livenessDetector as? QTSLiveness.QTSLivenessDetector)?.stopLiveness() // Stop the session for QTSLiveness
+    private func resetliveness() {
+        if !isFlashCamera && checkfaceID(), #available(iOS 11.1, *) {
+          (mainView as? FaceAuthentication3DView)?.stopCamera() // Stop the session for QTSLiveness
           print("QTSLiveness detector stopped and reset.")
         } else {
-          mainView?.stopCamera()
+          (mainView as? FaceAuthenticationView)?.stopCamera()
         }
-
-        livenessDetector = nil
+        viewMask.removeFromSuperview()
         mainView?.removeFromSuperview()
         mainView = nil
         removeFromSuperview()
@@ -167,47 +164,26 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
   private func setupView() {
       do {
           let dataRes: [String: Any]
-          if !isFlashCamera && checkfaceID(), #available(iOS 15.0, *) {
-              self.livenessDetector = QTSLiveness.QTSLivenessDetector.createLivenessDetector(
-                  previewView: self,
-                  threshold: .low,
-                  smallFaceThreshold: 0.25,
-                  debugging: debugging,
-                  delegate: self,
-                  livenessMode: .local,
-                  localLivenessThreshold: {
-                    if #available(iOS 18.0, *) {
-                         return 0.97
-                    } else {
-                        return 0.97
-                    }
-                }(),
-                  calculationMode: .combine,
-                  additionHeader: ["header": "header"]
-              )
-            //   viewMask = LivenessMaskView(frame: bounds)
-            //   viewMask.backgroundColor = UIColor.clear
-            //   viewMask.layer.zPosition = 1 // Bring viewMask to the top layer
-            //   addSubview(viewMask)
+          if !isFlashCamera && checkfaceID(), #available(iOS 11.1, *) {
+            mainView = FaceAuthentication3DView(frame: bounds)
+            mainView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            addSubview(mainView!)
             dataRes = [ "isFlash": false ]
             pushEvent(data: dataRes)
-            try startSession()
           } else {
-              mainView = FaceAuthenticationView(frame: bounds)
-              mainView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-              addSubview(mainView!)
-              dataRes = [ "isFlash": true ]
-              pushEvent(data: dataRes)
-
-               viewMask = LivenessMaskView(frame: bounds)
-               viewMask.backgroundColor = UIColor.clear
-               viewMask.layer.zPosition = 1
-               viewMask.instructionText = "Bạn vui lòng đưa khuôn mặt ra xa hoặc gần, khớp vào khung hình"
-               addSubview(viewMask)
-
-              handleResultsLiveness()
-              handleResultsExtracted()
+            mainView = FaceAuthenticationView(frame: bounds)
+            mainView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            addSubview(mainView!)
+            dataRes = [ "isFlash": true ]
+            pushEvent(data: dataRes)
           }
+            viewMask = LivenessMaskView(frame: bounds)
+            viewMask.backgroundColor = UIColor.clear
+            viewMask.layer.zPosition = 1
+            viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
+            addSubview(viewMask)
+            handleResultsLiveness()
+            handleResultsExtracted()
         } catch {
             pushEvent(data: ["error": error.localizedDescription])
         }
@@ -219,52 +195,78 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
               return
           }
           print("mainView type: \(type(of: mainView))")
-          let handleLivenessResult: (Int) -> [String: Any] = { rawValue in
-                let messages: [Int: String] = [
-                    0: "Bạn vui lòng giữ yên",
-                    1: "Bạn vui lòng không dùng tay che mặt",
-                    2: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
-                    3: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
-                    4: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
-                    5: "Bạn vui lòng nhìn thẳng",
-                    6: "Bạn vui lòng tiến lại gần hơn",
-                    7: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
-                    8: "Môi trường ánh sáng quá mạnh, bạn vui lòng vào nơi ánh sáng phù hợp",
-                    9: "Môi trường thiếu ánh sáng, bạn vui lòng vào nơi ánh sáng phù hợp",
-                    10: "Bạn vui lòng giữ yên",
-                    11: "Bạn vui lòng chờ trong giây lát",
-                    12: "Bạn vui lòng đưa khuôn mặt xa hơn",
-                    13: "Hide mark view."
-                ]
-              var result: [String: Any] = [:]
-                result["result"] = messages[rawValue] ?? "Bạn vui lòng giữ yên"
-              return result
-          }
+          
 
           if let faceAuthView = mainView as? FaceAuthenticationView {
               print("IsFlash: FaceAuthenticationView")
               faceAuthView.onResultsLiveness = { [weak self] livenessResult in
-                let result = handleLivenessResult(livenessResult.rawValue)
-                let newText = result["result"] as? String
-
-                print("Liveness result received: \(newText ?? "nil")")
-
-                if newText != "Hide mark view." {
-                  DispatchQueue.main.async {
-                      // Hiển thị text hướng dẫn
-                      self?.viewMask.instructionText = newText
-                      // Khôi phục lại màu đen mờ mặc định cho overlay
-                      self?.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
-                  }
-                } else {
-                  DispatchQueue.main.async {
-                      // Làm cho overlay hoàn toàn trong suốt
-                      // Dùng UIColor.clear.cgColor sẽ rõ ràng hơn
-                      self?.viewMask.overlayColor = UIColor.clear.cgColor
-                  }
-                }
+                self?.handleLiveness(value: livenessResult.rawValue)
               }
+          } else if let faceAuth3DView = mainView as? FaceAuthentication3DView {
+            print("IsFlash: FaceAuthentication3DView")
+            faceAuth3DView.onResultsLiveness = { [weak self] livenessResult in
+              self?.handleLiveness(value: livenessResult.rawValue)
+            }
           }
+      }
+  
+      func handleLiveness(value: Int) {
+        let handleLivenessResult: (Int) -> [String: Any] = { rawValue in
+            var result: [String: Any] = [:]
+            switch rawValue {
+            case 0:
+                result["result"] = "Hợp lệ"
+            case 1:
+                result["result"] = "Phát hiện bàn tay, vui lòng không che mặt"
+            case 2:
+                result["result"] = "Phát hiện khẩu trang, vui lòng tháo ra"
+            case 3:
+                result["result"] = "Phát hiện kính, vui lòng tháo ra"
+            case 4:
+                result["result"] = "Khuôn mặt bị che khuất"
+            case 5:
+                result["result"] = "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng"
+            case 6:
+                result["result"] = "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn"
+            case 7:
+                result["result"] = "Hãy đưa mặt vào trong khung hình"
+            case 8:
+                result["result"] = "Khuôn mặt bị lóa sáng"
+            case 9:
+                result["result"] = "Môi trường thiếu sáng"
+            case 10:
+                result["result"] = "Vui lòng giữ yên khuôn mặt"
+            case 11:
+                result["result"] = "Hoàn thành"
+            case 12:
+                result["result"] = "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn"
+            case 13:
+                result["result"] = "Hide mark view."
+            default:
+                result["result"] = "Hợp lệ"
+            }
+            return result
+        }
+
+        let result = handleLivenessResult(value)
+        let newText = result["result"] as? String
+
+        print("Liveness result received: \(newText ?? "nil")")
+
+        if newText != "Hide mark view." {
+          DispatchQueue.main.async {
+              // Hiển thị text hướng dẫn
+            self.viewMask.instructionText = newText
+              // Khôi phục lại màu đen mờ mặc định cho overlay
+            self.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
+          }
+        } else {
+          DispatchQueue.main.async {
+              // Làm cho overlay hoàn toàn trong suốt
+              // Dùng UIColor.clear.cgColor sẽ rõ ràng hơn
+            self.viewMask.overlayColor = UIColor.clear.cgColor
+          }
+        }
       }
 
       func handleResultsExtracted() {
@@ -283,9 +285,17 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                   result["livenessColorImage"] = self?.convertImageToBase64UnderMB(
                       filePath: images.last ?? "")
                   result["color"] = colorString
-                self?.pushEvent(data: result)
+                  self?.pushEvent(data: result)
               }
-          }
+          } else if mainView is FaceAuthentication3DView {
+            print("IsFlash: FaceAuthentication3DView")
+            (mainView as! FaceAuthentication3DView).onResultsExtracted = { [weak self] images in
+                  var result: [String: Any] = [:]
+                  result["livenessOriginalImage"] = self?.convertImageToBase64UnderMB(filePath: images.first ?? "")
+                  result["livenessThermalImage"] = self?.convertImageToBase64UnderMB(filePath: images.last ?? "")
+                  self?.pushEvent(data: result)
+            }
+        }
       }
   
   func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 400) -> String? {
@@ -348,16 +358,6 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
       return resizedImage ?? image
   }
 
-  private func startSession() throws {
-      guard let detector = livenessDetector else {
-          throw NSError(domain: "LivenessError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Liveness Detector could not be initialized"])
-      }
-
-      if #available(iOS 15.0, *), let qtDetector = detector as? QTSLiveness.QTSLivenessDetector {
-          try qtDetector.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
-      }
-  }
-
   private func pushEvent(data: Any) -> Void {
     if (self.onEvent != nil) {
       let event = ["data": data]
@@ -404,33 +404,13 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
 
   @objc func setIsFlashCamera(_ val: Bool) {
         print("9999")
-        // if currentIsFlash == val && (mainView != nil || livenessDetector != nil) {
+        // if currentIsFlash == val && (mainView != nil || liveness3D != nil) {
         //     return
         // }
         self.isFlashCamera = val as Bool
         currentIsFlash = isFlashCamera
         self.setupConfig()
   }
-
-    @available(iOS 15.0, *)
-    func liveness(liveness: QTSLivenessDetector, didFail withError: QTSLivenessError) {
-      print(withError)
-    }
-
-    @available(iOS 15.0, *)
-    func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinishLocalLiveness score: Float, maxtrix: [Float], image: UIImage, thermal_image: UIImage, videoURL: URL?){
-//        let livenessImage = saveImageToFile(image: image, isOriginal: false) ?? ""
-      let livenessImage = resizeUIImageToBase64(image: thermal_image) ?? ""
-      let livenessOriginalImage = resizeUIImageToBase64(image: image) ?? ""
-       let dataRes: [String: Any] = [
-            "livenessThermalImage": livenessImage,
-             "livenessOriginalImage": livenessOriginalImage,
-             "vector": maxtrix,
-       ]
-        pushEvent(data: dataRes)
-        print(dataRes)
-        liveness.stopLiveness()
-    }
 
     func saveImageToFile(image: UIImage, isOriginal: Bool) -> String? {
         // Chuyển đổi UIImage thành Data (PNG format)
@@ -540,11 +520,6 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
       let newImage = UIGraphicsGetImageFromCurrentImageContext()
       UIGraphicsEndImageContext()
       return newImage
-  }
-
-
-  func stopLiveness() {
-      (livenessDetector as AnyObject).stopLiveness()
   }
 
   var faceIDAvailable: Bool {
