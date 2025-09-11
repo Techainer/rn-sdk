@@ -60,5 +60,3 @@ fragment float4 fragmentShaderPoints(RasterizerDataColor in [[stage_in]],
         return colorSample;
     }
 }
-
-

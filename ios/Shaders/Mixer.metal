@@ -7,12 +7,7 @@ Shader that blends two input textures.
 
 #include <metal_stdlib>
 using namespace metal;
-
-struct VertexIO
-{
-    float4 position [[position]];
-    float2 textureCoord [[user(texturecoord)]];
-};
+#include "Common.metal"
 
 struct mixerParameters
 {

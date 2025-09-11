@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* LivenessRnExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LivenessRnExampleTests.m */; };
 		04255F642CE5DF6D007B1DEC /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 04255F632CE5DF6D007B1DEC /* main.jsbundle */; };
+		043771342E72DD0C002CE89E /* DepthToJET.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0437712F2E72DD0C002CE89E /* DepthToJET.metal */; };
+		043771352E72DD0C002CE89E /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771302E72DD0C002CE89E /* Mixer.metal */; };
+		043771362E72DD0C002CE89E /* PointCloud.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771322E72DD0C002CE89E /* PointCloud.metal */; };
+		043771372E72DD0C002CE89E /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771312E72DD0C002CE89E /* PassThrough.metal */; };
 		0B755259E566332DBA920757 /* Pods_LivenessRnExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D396C755D56C00BE76EDB13 /* Pods_LivenessRnExample.framework */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -37,6 +41,10 @@
 		0404E7CF2CBFA3C2002B4B0F /* LivenessUtility.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LivenessUtility.xcframework; path = ../../ios_frameworks/LivenessUtility.xcframework; sourceTree = "<group>"; };
 		0404E7D22CBFA5EA002B4B0F /* FlashLiveness.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FlashLiveness.xcframework; path = Pods/FlashLiveness/FlashLiveness/FlashLiveness.xcframework; sourceTree = "<group>"; };
 		04255F632CE5DF6D007B1DEC /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		0437712F2E72DD0C002CE89E /* DepthToJET.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthToJET.metal; sourceTree = "<group>"; };
+		043771302E72DD0C002CE89E /* Mixer.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
+		043771312E72DD0C002CE89E /* PassThrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
+		043771322E72DD0C002CE89E /* PointCloud.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PointCloud.metal; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* LivenessRnExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivenessRnExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LivenessRnExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = LivenessRnExample/AppDelegate.mm; sourceTree = "<group>"; };
@@ -100,6 +108,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		043771332E72DD0C002CE89E /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0437712F2E72DD0C002CE89E /* DepthToJET.metal */,
+				043771302E72DD0C002CE89E /* Mixer.metal */,
+				043771312E72DD0C002CE89E /* PassThrough.metal */,
+				043771322E72DD0C002CE89E /* PointCloud.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* LivenessRnExample */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +151,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				1D396C755D56C00BE76EDB13 /* Pods_LivenessRnExample.framework */,
 				7C52BFD286AC7F905F1E6E76 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */,
+				043771332E72DD0C002CE89E /* Shaders */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -435,6 +455,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				043771342E72DD0C002CE89E /* DepthToJET.metal in Sources */,
+				043771352E72DD0C002CE89E /* Mixer.metal in Sources */,
+				043771362E72DD0C002CE89E /* PointCloud.metal in Sources */,
+				043771372E72DD0C002CE89E /* PassThrough.metal in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

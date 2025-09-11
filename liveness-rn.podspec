@@ -15,37 +15,38 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   # s.vendored_frameworks = "ios/FlashLiveness.framework"
   s.source_files = [
-    'ios/*.{h,m,mm,swift}',
-    'ios/Shaders/*.{h,m,mm,swift,metal}'
+    'ios/*.{h,m,mm,swift}'
   ]
-  s.resources = ['ios/Shaders/default.metal', 'ios/Shaders/default.metallib']
 
-  # Compile metal -> metallib
+  # KHÔNG đưa .metal vào source_files
+  # Chỉ đưa metallib vào resources (để copy vào bundle)
+  s.resources = ['ios/Shaders/default.metallib']
+
   s.script_phase = {
     :name => 'Compile Metal Shaders',
     :execution_position => :before_compile,
     :script => <<-SCRIPT
-      set -e
+      set -euo pipefail
+
       SHADERS_DIR="${PODS_TARGET_SRCROOT}/ios/Shaders"
       OUTPUT_DIR="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 
       mkdir -p "$OUTPUT_DIR"
 
-      for file in "$SHADERS_DIR"/*.metal; do
-        if [ -f "$file" ]; then
-          filename=$(basename "$file" .metal)
-          xcrun metal -c "$file" -o "$OUTPUT_DIR/$filename.air"
-        fi
-      done
+      echo "⚙️ Compiling default.metal"
+      xcrun metal -c "$SHADERS_DIR/default.metal" -o "$OUTPUT_DIR/default.air"
 
-      xcrun metallib "$OUTPUT_DIR"/*.air -o "$OUTPUT_DIR/default.metallib"
+      echo "📦 Linking into default.metallib"
+      xcrun metallib "$OUTPUT_DIR/default.air" -o "$OUTPUT_DIR/default.metallib"
+
+      echo "✅ Compile Metal Shaders done"
     SCRIPT
   }
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
-  s.dependency "QTSLiveness"
+  # s.dependency "QTSLiveness"
   # s.dependency "FlashLiveness"
-  s.dependency 'KeychainSwift', '~> 19.0'
+  # s.dependency 'KeychainSwift', '~> 19.0'
   s.dependency 'TensorFlowLiteSwift'
 
   s.vendored_frameworks = 'ios/Frameworks/ekyc_ios_sdk.framework',

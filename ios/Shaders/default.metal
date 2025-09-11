@@ -6,3 +6,4 @@ using namespace metal;
 #include "Mixer.metal"
 #include "PassThrough.metal"
 #include "PointCloud.metal"
+#include "Common.metal"
