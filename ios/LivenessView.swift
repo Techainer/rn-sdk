@@ -103,12 +103,6 @@ class LivenessView: UIView {
         addSubview(faceAuth3D)
         sendSubviewToBack(faceAuth3D)
         faceAuth3D.isHidden = true
-      
-      if self.checkFaceID() {
-        _isFlashCamera = false
-      } else {
-        _isFlashCamera = true
-      }
     }
 
     // MARK: - Layout / Start camera
@@ -124,6 +118,11 @@ class LivenessView: UIView {
 
     private func setupCameraImmediate() {
         stopAllCameras()
+        if self.checkFaceID() {
+          _isFlashCamera = false
+        } else {
+          _isFlashCamera = true
+        } 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
