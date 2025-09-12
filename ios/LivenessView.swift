@@ -63,7 +63,7 @@ class LivenessView: UIView {
     // MARK: - Configure
     private func configure() {
         backgroundColor = .clear
-        
+
         // Mask
         viewMask = LivenessMaskView(frame: bounds)
         viewMask.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -71,59 +71,59 @@ class LivenessView: UIView {
         viewMask.layer.zPosition = 1
         viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
         addSubview(viewMask)
-        
+
         // Brightness set ngay
         brightnessHelper.getBrightness()
         brightnessHelper.setBrightness(1.0)
-        
-        // Khởi tạo camera 2D
+
+        // Khởi tạo 2D camera
         faceAuth2D = FaceAuthenticationView(frame: bounds)
         faceAuth2D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        faceAuth2D.onResultsLiveness = { [weak self] result in
-            self?.handleLiveness(value: result.rawValue)
-        }
-        faceAuth2D.onResultsExtracted = { [weak self] images, color in
-            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
-        }
         addSubview(faceAuth2D)
         sendSubviewToBack(faceAuth2D)
         faceAuth2D.isHidden = true
-        
-        // Khởi tạo camera 3D
+
+        // Khởi tạo 3D camera
         faceAuth3D = FaceAuthentication3DView(frame: bounds)
         faceAuth3D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        faceAuth3D.onResultsLiveness = { [weak self] result in
-            self?.handleLiveness(value: result.rawValue)
-        }
-        faceAuth3D.onResultsExtracted = { [weak self] images in
-            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
-        }
         addSubview(faceAuth3D)
         sendSubviewToBack(faceAuth3D)
         faceAuth3D.isHidden = true
-        
+
         // Start camera ngay lập tức theo điều kiện
         setupCameraImmediate()
     }
-    
-    // MARK: - Camera setup
+
     private func setupCameraImmediate() {
         stopAllCameras()
-        
-        if !isFlashCamera && checkFaceID(), #available(iOS 11.1, *) {
-          // Dùng camera 3D
-          faceAuth3D.isHidden = false
-          faceAuth3D.startCamera()
-          faceAuth2D.isHidden = true
+
+        if !isFlashCamera && checkFaceID() {
+            // Dùng camera 3D
+            faceAuth2D.isHidden = true
+            faceAuth3D.isHidden = false
+            faceAuth3D.startCamera()
+            faceAuth3D.onResultsLiveness = { [weak self] result in
+                self?.handleLiveness(value: result.rawValue)
+            }
+            faceAuth3D.onResultsExtracted = { [weak self] images in
+                self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
+            }
         } else {
-          // Dùng camera 2D
-          faceAuth2D.isHidden = false
-          faceAuth2D.startCamera()
-          faceAuth3D.isHidden = true
+            faceAuth3D.isHidden = true
+            // Dùng camera 2D
+            faceAuth2D.isHidden = false
+            faceAuth2D.startCamera()
+            faceAuth2D.onResultsLiveness = { [weak self] result in
+                self?.handleLiveness(value: result.rawValue)
+            }
+            faceAuth2D.onResultsExtracted = { [weak self] images, color in
+                self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
+            }
         }
-        
+
         pushEvent(data: ["isFlash": isFlashCamera])
     }
+
     
     func checkFaceID() -> Bool {
         let authType = LocalAuthManager.shared.biometricType
@@ -131,8 +131,8 @@ class LivenessView: UIView {
     }
     
     private func stopAllCameras() {
-        faceAuth2D.stopCamera()
-        faceAuth3D.stopCamera()
+        faceAuth2D?.stopCamera()
+        faceAuth3D?.stopCamera()
     }
     
     // MARK: - Process images async
