@@ -37,10 +37,10 @@ class LivenessView: UIView {
     @objc func setPublicKey(_ val: NSString) { self.publicKey = val as String }
     @objc func setDebugging(_ val: Bool) { self.debugging = val }
     @objc func setIsFlashCamera(_ val: Bool) {
-        if _isFlashCamera == val { return }
+        if !cameraStarted ||  _isFlashCamera == val { return }
         _isFlashCamera = val
         currentIsFlash = val
-        setupCameraImmediate()
+        initSetupCamera()
     }
 
     // MARK: - Init
@@ -106,14 +106,17 @@ class LivenessView: UIView {
     }
 
     // MARK: - Layout / Start camera
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        // Start camera sau khi layout xong, chỉ 1 lần
-        if !cameraStarted {
-            setupCameraImmediate()
-            cameraStarted = true
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil {
+            initSetupCamera()
         }
+    }
+
+    func initSetupCamera() {
+      guard !cameraStarted else { return }
+      cameraStarted = true
+      setupCameraImmediate()
     }
 
     private func setupCameraImmediate() {
@@ -122,11 +125,12 @@ class LivenessView: UIView {
           _isFlashCamera = false
         } else {
           _isFlashCamera = true
-        } 
+        }
+        self.pushEvent(data: ["isFlash": _isFlashCamera])
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
-            if !self.isFlashCamera {
+            if !_isFlashCamera {
                 self.faceAuth2D.isHidden = true
                 self.faceAuth3D.isHidden = false
                 self.faceAuth3D.startCamera()
@@ -135,8 +139,6 @@ class LivenessView: UIView {
                 self.faceAuth2D.isHidden = false
                 self.faceAuth2D.startCamera()
             }
-            
-            self.pushEvent(data: ["isFlash": self.isFlashCamera])
         }
     }
 
@@ -181,7 +183,7 @@ class LivenessView: UIView {
     }
 
     @objc private func onEnterBackground() { stopAllCameras() }
-    @objc private func onEnterForeground() { setupCameraImmediate() }
+    @objc private func onEnterForeground() { initSetupCamera() }
 
     // MARK: - Liveness Result
     private func handleLiveness(value: Int) {
