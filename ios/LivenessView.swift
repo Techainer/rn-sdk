@@ -6,17 +6,18 @@ import ekyc_ios_sdk
 
 @available(iOS 11.1, *)
 class LivenessView: UIView {
-    
+
     // MARK: - Properties
     private var faceAuth2D: FaceAuthenticationView!
     private var faceAuth3D: FaceAuthentication3DView!
     private var viewMask: LivenessMaskView!
     
+    private var cameraStarted = false
     private var currentIsFlash: Bool = false
     var isFlashCamera = false {
         didSet { setupCameraImmediate() }
     }
-    
+
     var requestid = ""
     var appId = ""
     var baseUrl = ""
@@ -25,10 +26,10 @@ class LivenessView: UIView {
     var secret = "ABCDEFGHIJKLMNOP"
     var debugging = false
     var transactionId = ""
-    
+
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
-    
+
     // MARK: - Setters
     @objc func setRequestid(_ val: NSString) { self.requestid = val as String }
     @objc func setAppId(_ val: NSString) { self.appId = val as String }
@@ -40,26 +41,26 @@ class LivenessView: UIView {
         self.isFlashCamera = val
         currentIsFlash = isFlashCamera
     }
-    
+
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
         registerForNotifications()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
         registerForNotifications()
     }
-    
+
     deinit {
         stopAllCameras()
         unregisterFromNotifications()
         brightnessHelper.restoreBrightness()
     }
-    
+
     // MARK: - Configure
     private func configure() {
         backgroundColor = .clear
@@ -76,65 +77,73 @@ class LivenessView: UIView {
         brightnessHelper.getBrightness()
         brightnessHelper.setBrightness(1.0)
 
-        // Khởi tạo 2D camera
+        // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
         faceAuth2D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        faceAuth2D.onResultsLiveness = { [weak self] result in
+            self?.handleLiveness(value: result.rawValue)
+        }
+        faceAuth2D.onResultsExtracted = { [weak self] images, color in
+            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
+        }
         addSubview(faceAuth2D)
         sendSubviewToBack(faceAuth2D)
         faceAuth2D.isHidden = true
 
-        // Khởi tạo 3D camera
+        // Khởi tạo camera 3D
         faceAuth3D = FaceAuthentication3DView(frame: bounds)
         faceAuth3D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        faceAuth3D.onResultsLiveness = { [weak self] result in
+            self?.handleLiveness(value: result.rawValue)
+        }
+        faceAuth3D.onResultsExtracted = { [weak self] images in
+            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
+        }
         addSubview(faceAuth3D)
         sendSubviewToBack(faceAuth3D)
         faceAuth3D.isHidden = true
+    }
 
-        // Start camera ngay lập tức theo điều kiện
-        setupCameraImmediate()
+    // MARK: - Layout / Start camera
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // Start camera sau khi layout xong, chỉ 1 lần
+        if !cameraStarted {
+            setupCameraImmediate()
+            cameraStarted = true
+        }
     }
 
     private func setupCameraImmediate() {
         stopAllCameras()
-
-        if !isFlashCamera && checkFaceID() {
-            // Dùng camera 3D
-            faceAuth2D.isHidden = true
-            faceAuth3D.isHidden = false
-            faceAuth3D.startCamera()
-            faceAuth3D.onResultsLiveness = { [weak self] result in
-                self?.handleLiveness(value: result.rawValue)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            if !self.isFlashCamera && self.checkFaceID() {
+                self.faceAuth2D.isHidden = true
+                self.faceAuth3D.isHidden = false
+                self.faceAuth3D.startCamera()
+            } else {
+                self.faceAuth3D.isHidden = true
+                self.faceAuth2D.isHidden = false
+                self.faceAuth2D.startCamera()
             }
-            faceAuth3D.onResultsExtracted = { [weak self] images in
-                self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
-            }
-        } else {
-            faceAuth3D.isHidden = true
-            // Dùng camera 2D
-            faceAuth2D.isHidden = false
-            faceAuth2D.startCamera()
-            faceAuth2D.onResultsLiveness = { [weak self] result in
-                self?.handleLiveness(value: result.rawValue)
-            }
-            faceAuth2D.onResultsExtracted = { [weak self] images, color in
-                self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
-            }
+            
+            self.pushEvent(data: ["isFlash": self.isFlashCamera])
         }
-
-        pushEvent(data: ["isFlash": isFlashCamera])
     }
 
-    
     func checkFaceID() -> Bool {
         let authType = LocalAuthManager.shared.biometricType
         return authType == .faceID
     }
-    
+
     private func stopAllCameras() {
         faceAuth2D?.stopCamera()
         faceAuth3D?.stopCamera()
     }
-    
+
     // MARK: - Process images async
     private func processImagesAsync(original: String?, colorOrThermal: String?, color: String?, is3D: Bool) {
         DispatchQueue.global(qos: .utility).async {
@@ -154,20 +163,20 @@ class LivenessView: UIView {
             }
         }
     }
-    
+
     // MARK: - App Lifecycle
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(onEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    
+
     private func unregisterFromNotifications() {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     @objc private func onEnterBackground() { stopAllCameras() }
     @objc private func onEnterForeground() { setupCameraImmediate() }
-    
+
     // MARK: - Liveness Result
     private func handleLiveness(value: Int) {
         let messages: [Int: String] = [
@@ -198,12 +207,12 @@ class LivenessView: UIView {
             }
         }
     }
-    
+
     // MARK: - Helpers
     private func pushEvent(data: Any) {
         onEvent?(["data": data])
     }
-    
+
     func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 400) -> String? {
         guard var image = UIImage(contentsOfFile: filePath) else { return nil }
         var compression: CGFloat = 1.0
