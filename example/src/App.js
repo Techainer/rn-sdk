@@ -335,7 +335,7 @@ export default function App() {
           //   setStatus(true);
           // }, 2);
         }
-      }, 5000);
+      }, 10000);
     } else {
       setIsFlashCamera(true);
     }
@@ -447,7 +447,7 @@ export default function App() {
           <Text>Start LiveNess</Text>
         </TouchableOpacity>
       </View>)}
-      {status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 20, left: 30 }}>
+      {status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 32, left: 30 }}>
         <TouchableOpacity onPress={onStartLiveNess}>
           <Text style={{ fontSize: 35, color: 'white'}}> ← </Text>
         </TouchableOpacity>
