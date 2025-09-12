@@ -37,7 +37,7 @@ class LivenessView: UIView {
     @objc func setPublicKey(_ val: NSString) { self.publicKey = val as String }
     @objc func setDebugging(_ val: Bool) { self.debugging = val }
     @objc func setIsFlashCamera(_ val: Bool) {
-        if !cameraStarted ||  _isFlashCamera == val { return }
+        if _isFlashCamera == val { return }
         _isFlashCamera = val
         currentIsFlash = val
         initSetupCamera()
@@ -121,16 +121,11 @@ class LivenessView: UIView {
 
     private func setupCameraImmediate() {
         stopAllCameras()
-        if self.checkFaceID() {
-          _isFlashCamera = false
-        } else {
-          _isFlashCamera = true
-        }
         self.pushEvent(data: ["isFlash": _isFlashCamera])
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            
-            if !_isFlashCamera {
+
+            if !_isFlashCamera && self.checkFaceID() {
                 self.faceAuth2D.isHidden = true
                 self.faceAuth3D.isHidden = false
                 self.faceAuth3D.startCamera()
