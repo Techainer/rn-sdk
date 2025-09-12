@@ -38,7 +38,7 @@ class LivenessView: UIView {
     @objc func setPublicKey(_ val: NSString) { self.publicKey = val as String }
     @objc func setDebugging(_ val: Bool) { self.debugging = val }
     @objc func setIsFlashCamera(_ val: Bool) {
-        if val { return }
+        if self.isFlashCamera { return }
         self.isFlashCamera = val
         currentIsFlash = isFlashCamera
     }
