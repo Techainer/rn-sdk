@@ -335,7 +335,7 @@ export default function App() {
           //   setStatus(true);
           // }, 2);
         }
-      }, 5000);
+      }, 10000);
     } else {
       setIsFlashCamera(true);
     }
