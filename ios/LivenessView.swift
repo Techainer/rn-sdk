@@ -57,9 +57,25 @@ class LivenessView: UIView {
     }
 
     deinit {
-        stopAllCameras()
-        unregisterFromNotifications()
-        brightnessHelper.restoreBrightness()
+      dispose()
+    }
+    
+    private func dispose() {
+      stopAllCameras()
+      unregisterFromNotifications()
+      brightnessHelper.restoreBrightness()
+    }
+  
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview != nil {
+            print("FaceAuthenticationView đã được thêm vào màn hình.")
+            // Thực hiện các tác vụ cần thiết
+            
+        } else {
+            print("FaceAuthenticationView đã bị xoá khỏi màn hình.")
+            dispose()
+        }
     }
 
     // MARK: - Configure
@@ -76,7 +92,6 @@ class LivenessView: UIView {
 
         // Brightness set ngay
         brightnessHelper.getBrightness()
-        brightnessHelper.setBrightness(1.0)
 
         // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
@@ -120,6 +135,7 @@ class LivenessView: UIView {
     }
 
     private func setupCameraImmediate() {
+        brightnessHelper.setBrightness(1.0)
         stopAllCameras()
         self.pushEvent(data: ["isFlash": _isFlashCamera])
         DispatchQueue.main.async { [weak self] in
