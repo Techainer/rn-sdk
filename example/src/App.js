@@ -379,6 +379,8 @@ export default function App() {
       console.log(res);
       setErrorMessage(JSON.stringify(res));
       setLoginError(true);
+      clear();
+      setStatus(false);
     } catch (error) {
       console.log("🚀 ~ handleLoginFaceId ~ error:", error);
     }
