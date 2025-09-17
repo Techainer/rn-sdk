@@ -87,7 +87,7 @@ class LivenessView: UIView {
         viewMask.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewMask.backgroundColor = .clear
         viewMask.layer.zPosition = 1
-        viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
+        viewMask.instructionText = "Bạn vui lòng đưa khuôn mặt ra xa hoặc gần, khớp vào khung hình"
         addSubview(viewMask)
 
         // Brightness set ngay
@@ -200,23 +200,23 @@ class LivenessView: UIView {
     // MARK: - Liveness Result
     private func handleLiveness(value: Int) {
         let messages: [Int: String] = [
-            0: "Hợp lệ",
-            1: "Phát hiện bàn tay, vui lòng không che mặt",
-            2: "Phát hiện khẩu trang, vui lòng tháo ra",
-            3: "Phát hiện kính, vui lòng tháo ra",
-            4: "Khuôn mặt bị che khuất",
-            5: "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng",
-            6: "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn",
-            7: "Hãy đưa mặt vào trong khung hình",
-            8: "Khuôn mặt bị lóa sáng",
-            9: "Môi trường thiếu sáng",
-            10: "Vui lòng giữ yên khuôn mặt",
-            11: "Hoàn thành",
-            12: "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn",
+            0: "Bạn vui lòng giữ yên",
+            1: "Bạn vui lòng không dùng tay che mặt",
+            2: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
+            3: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
+            4: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
+            5: "Bạn vui lòng nhìn thẳng",
+            6: "Bạn vui lòng tiến lại gần hơn",
+            7: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
+            8: "Môi trường ánh sáng quá mạnh, bạn vui lòng vào nơi ánh sáng phù hợp",
+            9: "Môi trường thiếu ánh sáng, bạn vui lòng vào nơi ánh sáng phù hợp",
+            10: "Bạn vui lòng giữ yên",
+            11: "Bạn vui lòng chờ trong giây lát",
+            12: "Bạn vui lòng đưa khuôn mặt xa hơn",
             13: "Hide mark view."
         ]
         
-        let text = messages[value] ?? "Hợp lệ"
+        let text = messages[value] ?? "Bạn vui lòng giữ yên"
         
         DispatchQueue.main.async {
             if text == "Hide mark view." {
