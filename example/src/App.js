@@ -376,10 +376,10 @@ export default function App() {
         color: color,
         userId: text,
       });
+      setStatus(false);
       console.log(res);
       setErrorMessage(JSON.stringify(res));
       setLoginError(true);
-      setStatus(false);
     } catch (error) {
       console.log("🚀 ~ handleLoginFaceId ~ error:", error);
     }
