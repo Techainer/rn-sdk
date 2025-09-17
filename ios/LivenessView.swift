@@ -202,7 +202,7 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
                viewMask = LivenessMaskView(frame: bounds)
                viewMask.backgroundColor = UIColor.clear
                viewMask.layer.zPosition = 1
-               viewMask.instructionText = "Hãy đưa mặt vào trong khung hình"
+               viewMask.instructionText = "Bạn vui lòng đưa khuôn mặt ra xa hoặc gần, khớp vào khung hình"
                addSubview(viewMask)
 
               handleResultsLiveness()
@@ -220,39 +220,24 @@ class LivenessView: UIView, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
           }
           print("mainView type: \(type(of: mainView))")
           let handleLivenessResult: (Int) -> [String: Any] = { rawValue in
+                let messages: [Int: String] = [
+                    0: "Bạn vui lòng giữ yên",
+                    1: "Bạn vui lòng không dùng tay che mặt",
+                    2: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
+                    3: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
+                    4: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
+                    5: "Bạn vui lòng nhìn thẳng",
+                    6: "Bạn vui lòng tiến lại gần hơn",
+                    7: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
+                    8: "Môi trường ánh sáng quá mạnh, bạn vui lòng vào nơi ánh sáng phù hợp",
+                    9: "Môi trường thiếu ánh sáng, bạn vui lòng vào nơi ánh sáng phù hợp",
+                    10: "Bạn vui lòng giữ yên",
+                    11: "Bạn vui lòng chờ trong giây lát",
+                    12: "Bạn vui lòng đưa khuôn mặt xa hơn",
+                    13: "Hide mark view."
+                ]
               var result: [String: Any] = [:]
-              switch rawValue {
-              case 0:
-                  result["result"] = "Hợp lệ"
-              case 1:
-                  result["result"] = "Phát hiện bàn tay, vui lòng không che mặt"
-              case 2:
-                  result["result"] = "Phát hiện khẩu trang, vui lòng tháo ra"
-              case 3:
-                  result["result"] = "Phát hiện kính, vui lòng tháo ra"
-              case 4:
-                  result["result"] = "Khuôn mặt bị che khuất"
-              case 5:
-                  result["result"] = "Khuôn mặt bị nghiêng, vui lòng nhìn thẳng"
-              case 6:
-                  result["result"] = "Khuôn mặt quá nhỏ, vui lòng đưa lại gần hơn"
-              case 7:
-                  result["result"] = "Hãy đưa mặt vào trong khung hình"
-              case 8:
-                  result["result"] = "Khuôn mặt bị lóa sáng"
-              case 9:
-                  result["result"] = "Môi trường thiếu sáng"
-              case 10:
-                  result["result"] = "Vui lòng giữ yên khuôn mặt"
-              case 11:
-                  result["result"] = "Hoàn thành"
-              case 12:
-                  result["result"] = "Khuôn mặt quá lớn, vui lòng đưa ra xa hơn"
-              case 13:
-                  result["result"] = "Hide mark view."
-              default:
-                  result["result"] = "Hợp lệ"
-              }
+                result["result"] = messages[rawValue] ?? "Bạn vui lòng giữ yên"
               return result
           }
 
