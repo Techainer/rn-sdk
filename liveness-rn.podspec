@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
                           'ios/Frameworks/nanopb.framework',
                           'ios/Frameworks/Promises.framework',
                           'ios/Frameworks/Protobuf.framework'
-                          # 'ios/Frameworks/TensorFlowLite.framework'
+                          'ios/Frameworks/TensorFlowLite.framework'
 
   s.resources = 'ios/Shaders/*.metal'
   s.swift_version = "5.0"
