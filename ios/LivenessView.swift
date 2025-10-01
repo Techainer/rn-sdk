@@ -64,6 +64,7 @@ class LivenessView: UIView {
       stopAllCameras()
       unregisterFromNotifications()
       brightnessHelper.restoreBrightness()
+      
     }
   
     open override func didMoveToSuperview() {
@@ -136,7 +137,6 @@ class LivenessView: UIView {
 
     private func setupCameraImmediate() {
         brightnessHelper.setBrightness(1.0)
-        stopAllCameras()
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
@@ -146,7 +146,8 @@ class LivenessView: UIView {
                 self.faceAuth3D.startCamera()
                 self.pushEvent(data: ["isFlash": false])
             } else {
-                self.faceAuth3D.isHidden = true
+//                self.faceAuth3D.isHidden = true
+                self.faceAuth3D.removeFromSuperview()
                 self.faceAuth2D.isHidden = false
                 self.faceAuth2D.startCamera()
                 self.pushEvent(data: ["isFlash": true])
@@ -162,6 +163,8 @@ class LivenessView: UIView {
     private func stopAllCameras() {
         faceAuth2D?.stopCamera()
         faceAuth3D?.stopCamera()
+        faceAuth2D?.removeFromSuperview()
+        faceAuth3D?.removeFromSuperview()
     }
 
     // MARK: - Process images async
