@@ -29,6 +29,12 @@ class LivenessView: UIView {
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
 
+    // Queue riêng để stop camera
+    private let cameraQueue = DispatchQueue(label: "com.liveness.cameraQueue")
+
+    // Track async tasks để cancel khi dispose
+    private var pendingWorkItems: [DispatchWorkItem] = []
+
     // MARK: - Setters
     @objc func setRequestid(_ val: NSString) { self.requestid = val as String }
     @objc func setAppId(_ val: NSString) { self.appId = val as String }
@@ -57,21 +63,49 @@ class LivenessView: UIView {
     }
 
     deinit {
-      dispose()
+        print("🔥 LivenessView deinit")
+        // Gọi cleanup kiểu "sync", không async
+        dispose(isDeinit: true)
     }
-    
-    private func dispose() {
-      stopAllCameras()
-      unregisterFromNotifications()
-      brightnessHelper.restoreBrightness()
+
+    private func dispose(isDeinit: Bool = false) {
+        cancelPendingTasks()
+        stopAllCameras()
+
+        if isDeinit {
+            // cleanup trực tiếp, không còn dispatch
+            faceAuth2D?.isHidden = true
+            faceAuth3D?.isHidden = true
+            unregisterFromNotifications()
+            brightnessHelper.restoreBrightness()
+        } else {
+            // cho phép async khi còn sống
+            let hideTask = DispatchWorkItem { [weak self] in
+                self?.faceAuth2D?.isHidden = true
+                self?.faceAuth3D?.isHidden = true
+            }
+            DispatchQueue.main.async(execute: hideTask)
+
+            let stopTask = DispatchWorkItem { [weak self] in
+                self?.faceAuth2D?.stopCamera()
+                self?.faceAuth3D?.stopCamera()
+            }
+            cameraQueue.async(execute: stopTask)
+
+            unregisterFromNotifications()
+            brightnessHelper.restoreBrightness()
+        }
+    }
+
+    private func cancelPendingTasks() {
+        pendingWorkItems.forEach { $0.cancel() }
+        pendingWorkItems.removeAll()
     }
   
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
             print("FaceAuthenticationView đã được thêm vào màn hình.")
-            // Thực hiện các tác vụ cần thiết
-            
         } else {
             print("FaceAuthenticationView đã bị xoá khỏi màn hình.")
             dispose()
@@ -100,7 +134,10 @@ class LivenessView: UIView {
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth2D.onResultsExtracted = { [weak self] images, color in
-            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
+            self?.processImagesAsync(original: images.first,
+                                     colorOrThermal: images.last,
+                                     color: color,
+                                     is3D: false)
         }
         addSubview(faceAuth2D)
         sendSubviewToBack(faceAuth2D)
@@ -113,7 +150,10 @@ class LivenessView: UIView {
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth3D.onResultsExtracted = { [weak self] images in
-            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
+            self?.processImagesAsync(original: images.first,
+                                     colorOrThermal: images.last,
+                                     color: nil,
+                                     is3D: true)
         }
         addSubview(faceAuth3D)
         sendSubviewToBack(faceAuth3D)
@@ -129,9 +169,9 @@ class LivenessView: UIView {
     }
 
     func initSetupCamera() {
-      guard !cameraStarted else { return }
-      cameraStarted = true
-      setupCameraImmediate()
+        guard !cameraStarted else { return }
+        cameraStarted = true
+        setupCameraImmediate()
     }
 
     private func setupCameraImmediate() {
@@ -140,15 +180,15 @@ class LivenessView: UIView {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
-            if !_isFlashCamera && self.checkFaceID() {
-                self.faceAuth2D.isHidden = true
-                self.faceAuth3D.isHidden = false
-                self.faceAuth3D.startCamera()
+            if !self._isFlashCamera && self.checkFaceID() {
+                self.faceAuth2D?.isHidden = true
+                self.faceAuth3D?.isHidden = false
+                self.faceAuth3D?.startCamera()
                 self.pushEvent(data: ["isFlash": false])
             } else {
-                self.faceAuth3D.isHidden = true
-                self.faceAuth2D.isHidden = false
-                self.faceAuth2D.startCamera()
+                self.faceAuth3D?.isHidden = true
+                self.faceAuth2D?.isHidden = false
+                self.faceAuth2D?.startCamera()
                 self.pushEvent(data: ["isFlash": true])
             }
         }
@@ -166,7 +206,9 @@ class LivenessView: UIView {
 
     // MARK: - Process images async
     private func processImagesAsync(original: String?, colorOrThermal: String?, color: String?, is3D: Bool) {
-        DispatchQueue.global(qos: .utility).async {
+        let task = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+
             let base64Original = original.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
             let base64ColorOrThermal = colorOrThermal.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
             
@@ -178,16 +220,24 @@ class LivenessView: UIView {
                 data["color"] = color as Any
             }
             
-            DispatchQueue.main.async {
-                self.pushEvent(data: data)
+            DispatchQueue.main.async { [weak self] in
+                self?.pushEvent(data: data)
             }
         }
+        pendingWorkItems.append(task)
+        DispatchQueue.global(qos: .utility).async(execute: task)
     }
 
     // MARK: - App Lifecycle
     private func registerForNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onEnterBackground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onEnterForeground),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
     }
 
     private func unregisterFromNotifications() {
@@ -218,13 +268,13 @@ class LivenessView: UIView {
         
         let text = messages[value] ?? "Bạn vui lòng giữ yên"
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             if text == "Hide mark view." {
                 self.viewMask.overlayColor = UIColor.clear
             } else {
                 self.viewMask.instructionText = text
                 self.viewMask.overlayColor = UIColor.white
-//                self.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4)
             }
         }
     }
