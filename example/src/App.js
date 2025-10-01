@@ -449,7 +449,7 @@ export default function App() {
       </View>)}
       {status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 32, left: 30 }}>
         <TouchableOpacity onPress={onStartLiveNess}>
-          <Text style={{ fontSize: 35, color: 'white'}}> ← </Text>
+          <Text style={{ fontSize: 35, color: 'black'}}> ← </Text>
         </TouchableOpacity>
       </View>)}
       <SimpleModal

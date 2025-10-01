@@ -87,7 +87,7 @@ class LivenessView: UIView {
         viewMask.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewMask.backgroundColor = .clear
         viewMask.layer.zPosition = 1
-        viewMask.instructionText = "Bạn vui lòng đưa khuôn mặt ra xa hoặc gần, khớp vào khung hình"
+        viewMask.instructionText = "Đưa khuôn mặt nằm trọn trong khung hình"
         addSubview(viewMask)
 
         // Brightness set ngay
@@ -202,14 +202,14 @@ class LivenessView: UIView {
         let messages: [Int: String] = [
             0: "Bạn vui lòng giữ yên",
             1: "Bạn vui lòng không dùng tay che mặt",
-            2: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
-            3: "Bạn vui lòng không đeo kính râm, không đeo khẩu trang",
-            4: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
+            2: "Không đeo kính râm, không đeo khẩu trang",
+            3: "Không đeo kính râm, không đeo khẩu trang",
+            4: "Đưa khuôn mặt nằm trọn trong khung hình",
             5: "Bạn vui lòng nhìn thẳng",
             6: "Bạn vui lòng tiến lại gần hơn",
-            7: "Bạn vui lòng đưa khuôn mặt nằm trọn trong khung hình",
-            8: "Môi trường ánh sáng quá mạnh, bạn vui lòng vào nơi ánh sáng phù hợp",
-            9: "Môi trường thiếu ánh sáng, bạn vui lòng vào nơi ánh sáng phù hợp",
+            7: "Đưa khuôn mặt nằm trọn trong khung hình",
+            8: "Môi trường ánh sáng quá mạnh",
+            9: "Môi trường thiếu ánh sáng",
             10: "Bạn vui lòng giữ yên",
             11: "Bạn vui lòng chờ trong giây lát",
             12: "Bạn vui lòng đưa khuôn mặt xa hơn",
@@ -220,10 +220,11 @@ class LivenessView: UIView {
         
         DispatchQueue.main.async {
             if text == "Hide mark view." {
-                self.viewMask.overlayColor = UIColor.clear.cgColor
+                self.viewMask.overlayColor = UIColor.clear
             } else {
                 self.viewMask.instructionText = text
-                self.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4).cgColor
+                self.viewMask.overlayColor = UIColor.white
+//                self.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4)
             }
         }
     }
