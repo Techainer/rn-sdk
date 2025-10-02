@@ -369,6 +369,7 @@ export default function App() {
 
   const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
     try {
+      setStatus(false);
       setLoading(true);
       const res = await loginFaceId({
         filePath: filePath,
@@ -377,7 +378,6 @@ export default function App() {
         color: color,
         userId: text,
       });
-      setStatus(false);
       console.log(res);
       setErrorMessage(JSON.stringify(res));
       setLoginError(true);
