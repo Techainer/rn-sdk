@@ -266,7 +266,7 @@ export default function App() {
   const [isFlashCamera, setIsFlashCamera] = useState(false);
   const [layout, setLayout] = useState({ width: 0, height: 0 });
   const ref = useRef(null);
-
+  const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -369,6 +369,7 @@ export default function App() {
 
   const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
     try {
+      setLoading(true);
       const res = await loginFaceId({
         filePath: filePath,
         livenessPath: fileLiveness,
@@ -382,6 +383,8 @@ export default function App() {
       setLoginError(true);
     } catch (error) {
       console.log("🚀 ~ handleLoginFaceId ~ error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -461,6 +464,13 @@ export default function App() {
         }}
         errorMessage={errorMessage}
       />
+      {loading && (
+      <View style={styles.loadingOverlay}>
+        <View style={styles.loadingBox}>
+          <Text style={{ color: 'white', fontSize: 16 }}>Đang xử lý...</Text>
+        </View>
+      </View>
+    )}
     </View>
   );
 }
@@ -489,6 +499,22 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 24,
     zIndex: 1000,
+  },
+  loadingOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 2000,
+  },
+  loadingBox: {
+    padding: 20,
+    backgroundColor: 'black',
+    borderRadius: 10,
   },
   btn_register_face: {
     padding: 10,
