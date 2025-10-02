@@ -347,6 +347,7 @@ SWIFT_CLASS("_TtC12ekyc_ios_sdk24FaceAuthentication3DView") SWIFT_AVAILABILITY(i
 @end
 
 
+
 SWIFT_CLASS("_TtC12ekyc_ios_sdk22FaceAuthenticationView")
 @interface FaceAuthenticationView : UIView <AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 - (void)didMoveToSuperview;
