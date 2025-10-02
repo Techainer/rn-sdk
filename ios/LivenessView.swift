@@ -147,8 +147,10 @@ class LivenessView: UIView {
                 self.pushEvent(data: ["isFlash": false])
             } else {
                 self.faceAuth3D.isHidden = true
-                self.faceAuth3D.stopCamera()   // <-- cleanup ngay
-                self.faceAuth3D.removeFromSuperview()
+                if self.checkFaceID() {
+                  self.faceAuth3D.stopCamera()   // <-- cleanup ngay
+                  self.faceAuth3D.removeFromSuperview()
+                }
                 self.faceAuth2D.isHidden = false
                 self.brightnessHelper.setBrightness(1.0)
                 self.faceAuth2D.startCamera()
