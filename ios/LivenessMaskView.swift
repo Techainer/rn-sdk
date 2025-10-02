@@ -57,7 +57,9 @@ class LivenessMaskView: UIView {
         layer.addSublayer(ovalStrokeLayer)
         
         // instruction label
-        instructionLabel.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        let screenWidth = UIScreen.main.bounds.width
+        let fontSize = screenWidth * 0.036
+        instructionLabel.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
         instructionLabel.textColor = .black
         instructionLabel.textAlignment = .center
         instructionLabel.numberOfLines = 0
