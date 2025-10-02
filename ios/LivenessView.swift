@@ -63,7 +63,7 @@ class LivenessView: UIView {
     private func dispose() {
       stopAllCameras()
       unregisterFromNotifications()
-      brightnessHelper.restoreBrightness()
+      brightnessHelper.setBrightness(0.3)
       
     }
   
@@ -136,13 +136,13 @@ class LivenessView: UIView {
     }
 
     private func setupCameraImmediate() {
-        brightnessHelper.setBrightness(1.0)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
             if !_isFlashCamera && self.checkFaceID() {
                 self.faceAuth2D.isHidden = true
                 self.faceAuth3D.isHidden = false
+                self.brightnessHelper.setBrightness(1.0)
                 self.faceAuth3D.startCamera()
                 self.pushEvent(data: ["isFlash": false])
             } else {
@@ -150,6 +150,7 @@ class LivenessView: UIView {
                 self.faceAuth3D.stopCamera()   // <-- cleanup ngay
                 self.faceAuth3D.removeFromSuperview()
                 self.faceAuth2D.isHidden = false
+                self.brightnessHelper.setBrightness(1.0)
                 self.faceAuth2D.startCamera()
                 self.pushEvent(data: ["isFlash": true])
             }
