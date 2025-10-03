@@ -112,11 +112,8 @@ Add permissions in Info.plist
 
 add library
 ```
-  <!-- pod 'QTSCardReader' ,:git => 'https://github.com/trungnguyen1791/QTSCardReader.git'
-  pod 'SVProgressHUD'
+  pod 'ObjectMapper', '4.2'
   pod 'Alamofire', '5.8.1'
-  pod 'QTSLiveness'
-  pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
 ```
 
 ```
@@ -159,26 +156,29 @@ Trả về 2 ảnh:
   + Để khung hình camera vào giữa màn hình 
 
 ## Sdk 3D
-Trả về 2 ảnh:
+Trả về 2 ảnh: trước đó có trường trả về mảng vector nhưng bản này đã tối ưu không cần tới mảng đó nữa
   + Ảnh thường (base64): data.nativeEvent?.data?.livenessOriginalImage
   + Ảnh ảnh nhiệt (base64): data.nativeEvent?.data?.livenessThermalImage
-  + Vertor là mảng float (2 giá trị vector): data.nativeEvent?.data?.livenessImage?.vector
 
 Chỉ sử dụng cho Iphone x trở nên. Trường hợp nếu 10s sử dụng 3D không nhận được response trả về sẽ tự động chuyển sang Sdk flash
 ### Trường chuyển đổi giữa Flash và 3D là isFlashCamera
 isFlashCamera = true --> Sử dụng sdk flash
 isFlashCamera = false --> Sử dụng sdk 3D
-debugging = false --> bắt buộc, chuyển thành true nếu cần để test
-
 ```
 onEvent={(data) => {
   console.log('===sendEvent===', data.nativeEvent?.data);
-  if (data.nativeEvent?.data?.livenessImage != null || data.nativeEvent?.data?.livenessOriginalImage != null) {
-    if (isIphoneX && isFlashCamera) {
-      onCheckFaceId(data.nativeEvent?.data?.livenessOriginalImage, data.nativeEvent?.data?.livenessImage);
-      setIsFlashCamera(false)
+  if (data.nativeEvent?.data?.isFlash == null) {
+    clear();
+    if (isFlashCamera) {
+      onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessColorImage, color: data.nativeEvent?.data?.color });
     } else {
-      onCheckFaceId(data.nativeEvent?.data?.livenessImage);
+      onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage });
+    }
+  } else {
+    if (data.nativeEvent?.data?.isFlash) {
+      setIsFlashCamera(true);
+    } else {
+      setIsFlashCamera(false);
     }
   }
 }}
