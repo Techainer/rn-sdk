@@ -16,7 +16,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3B614B9C51A337B26FB8F17B /* Pods_LivenessRnExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D5EF3DEE42EB69D7E8F2BC /* Pods_LivenessRnExample.framework */; };
 		3B7CEF21B6B3B2B880147F12 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */; };
+		3BECFAA8B5B7C98FB0E43BD4 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1608775C17AA8FE4258BC278 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		DBE707262BF5073A00C27D20 /* com.qts.test.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707242BF5073A00C27D20 /* com.qts.test.txt */; };
 		DBE707272BF5073A00C27D20 /* eid.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707252BF5073A00C27D20 /* eid.txt */; };
@@ -48,7 +50,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LivenessRnExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LivenessRnExample/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = LivenessRnExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1608775C17AA8FE4258BC278 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample_LivenessRnExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7136B53B35CC377603DAEB3E /* Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample-LivenessRnExampleTests/Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		72D5EF3DEE42EB69D7E8F2BC /* Pods_LivenessRnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LivenessRnExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FDFBC19B7F6CEE5D08B584E /* Pods-LivenessRnExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D553264E1B982FECE75DCABC /* Pods-LivenessRnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BECFAA8B5B7C98FB0E43BD4 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B614B9C51A337B26FB8F17B /* Pods_LivenessRnExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +134,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				043771332E72DD0C002CE89E /* Shaders */,
+				72D5EF3DEE42EB69D7E8F2BC /* Pods_LivenessRnExample.framework */,
+				1608775C17AA8FE4258BC278 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
