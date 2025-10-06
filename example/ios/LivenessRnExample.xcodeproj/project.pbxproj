@@ -13,13 +13,11 @@
 		043771352E72DD0C002CE89E /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771302E72DD0C002CE89E /* Mixer.metal */; };
 		043771362E72DD0C002CE89E /* PointCloud.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771322E72DD0C002CE89E /* PointCloud.metal */; };
 		043771372E72DD0C002CE89E /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771312E72DD0C002CE89E /* PassThrough.metal */; };
-		0B755259E566332DBA920757 /* Pods_LivenessRnExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D396C755D56C00BE76EDB13 /* Pods_LivenessRnExample.framework */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3B7CEF21B6B3B2B880147F12 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BD717CD6858F1F8497952BED /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C52BFD286AC7F905F1E6E76 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */; };
 		DBE707262BF5073A00C27D20 /* com.qts.test.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707242BF5073A00C27D20 /* com.qts.test.txt */; };
 		DBE707272BF5073A00C27D20 /* eid.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707252BF5073A00C27D20 /* eid.txt */; };
 /* End PBXBuildFile section */
@@ -38,8 +36,6 @@
 		00E356EE1AD99517003FC87E /* LivenessRnExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LivenessRnExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* LivenessRnExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivenessRnExampleTests.m; sourceTree = "<group>"; };
-		0404E7CF2CBFA3C2002B4B0F /* LivenessUtility.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LivenessUtility.xcframework; path = ../../ios_frameworks/LivenessUtility.xcframework; sourceTree = "<group>"; };
-		0404E7D22CBFA5EA002B4B0F /* FlashLiveness.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FlashLiveness.xcframework; path = Pods/FlashLiveness/FlashLiveness/FlashLiveness.xcframework; sourceTree = "<group>"; };
 		04255F632CE5DF6D007B1DEC /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		0437712F2E72DD0C002CE89E /* DepthToJET.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DepthToJET.metal; sourceTree = "<group>"; };
 		043771302E72DD0C002CE89E /* Mixer.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
@@ -52,20 +48,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LivenessRnExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LivenessRnExample/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = LivenessRnExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		1D396C755D56C00BE76EDB13 /* Pods_LivenessRnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7136B53B35CC377603DAEB3E /* Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample-LivenessRnExampleTests/Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7C52BFD286AC7F905F1E6E76 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample_LivenessRnExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LivenessRnExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FDFBC19B7F6CEE5D08B584E /* Pods-LivenessRnExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D553264E1B982FECE75DCABC /* Pods-LivenessRnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.release.xcconfig"; sourceTree = "<group>"; };
-		DB30AC572BE9267F00204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC5E2BE927E300204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC632BE928E600204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB30AC652BE92C5800204ECF /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE707242BF5073A00C27D20 /* com.qts.test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = com.qts.test.txt; path = ../../ios/com.qts.test.txt; sourceTree = "<group>"; };
 		DBE707252BF5073A00C27D20 /* eid.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eid.txt; path = ../../ios/eid.txt; sourceTree = "<group>"; };
-		DBF48FD42BE8B0E800CED3BC /* CoreModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBF48FDA2BE8B10C00CED3BC /* LivenessUtility.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LivenessUtility.xcframework; path = Pods/LivenessCloud/LivenessUtility/LivenessUtility.xcframework; sourceTree = "<group>"; };
 		E30AF298519B099CE6BB4FA0 /* Pods-LivenessRnExample-LivenessRnExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample-LivenessRnExampleTests.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample-LivenessRnExampleTests/Pods-LivenessRnExample-LivenessRnExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = LivenessRnExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -76,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD717CD6858F1F8497952BED /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B755259E566332DBA920757 /* Pods_LivenessRnExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,17 +126,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0404E7D22CBFA5EA002B4B0F /* FlashLiveness.xcframework */,
-				0404E7CF2CBFA3C2002B4B0F /* LivenessUtility.xcframework */,
-				DB30AC652BE92C5800204ECF /* CoreModules.framework */,
-				DB30AC632BE928E600204ECF /* CoreModules.framework */,
-				DB30AC5E2BE927E300204ECF /* CoreModules.framework */,
-				DB30AC572BE9267F00204ECF /* CoreModules.framework */,
-				DBF48FDA2BE8B10C00CED3BC /* LivenessUtility.xcframework */,
-				DBF48FD42BE8B0E800CED3BC /* CoreModules.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				1D396C755D56C00BE76EDB13 /* Pods_LivenessRnExample.framework */,
-				7C52BFD286AC7F905F1E6E76 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */,
 				043771332E72DD0C002CE89E /* Shaders */,
 			);
 			name = Frameworks;
