@@ -1,0 +1,11 @@
+framework module ekyc_ios_sdk {
+  umbrella header "ekyc_ios_sdk.h"
+  export *
+
+  module * { export * }
+}
+
+module ekyc_ios_sdk.Swift {
+  header "ekyc_ios_sdk-Swift.h"
+  requires objc
+}
