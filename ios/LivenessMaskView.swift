@@ -79,8 +79,8 @@ class LivenessMaskView: UIView {
         let bounds = self.bounds
 
         // tính oval giống Android
-        let ovalWidth = bounds.width * 0.89
-        let ovalHeight = ovalWidth * 1.55
+        let ovalWidth = bounds.width * 0.83
+        let ovalHeight = ovalWidth * 1.5
         let xPos = (bounds.width - ovalWidth) / 2
         var yPos = (bounds.height - ovalHeight) / 2
 
