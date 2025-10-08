@@ -10,7 +10,6 @@ class LivenessView: UIView {
     // MARK: - Properties
     private var faceAuth2D: FaceAuthenticationView!
     private var faceAuth3D: FaceAuthentication3DView!
-    private var viewMask: LivenessMaskView!
     
     private var cameraStarted = false
     private var currentIsFlash: Bool = false
@@ -82,14 +81,6 @@ class LivenessView: UIView {
     // MARK: - Configure
     private func configure() {
         backgroundColor = .clear
-
-        // Mask
-        viewMask = LivenessMaskView(frame: bounds)
-        viewMask.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        viewMask.backgroundColor = .clear
-        viewMask.layer.zPosition = 1
-        viewMask.instructionText = "Đưa khuôn mặt nằm trọn trong khung hình"
-        addSubview(viewMask)
 
         // Brightness set ngay
         brightnessHelper.getBrightness()
@@ -205,36 +196,7 @@ class LivenessView: UIView {
     @objc private func onEnterForeground() { initSetupCamera() }
 
     // MARK: - Liveness Result
-    private func handleLiveness(value: Int) {
-        let messages: [Int: String] = [
-            0: "Bạn vui lòng giữ yên",
-            1: "Bạn vui lòng không dùng tay che mặt",
-            2: "Không đeo kính râm, không đeo khẩu trang",
-            3: "Không đeo kính râm, không đeo khẩu trang",
-            4: "Đưa khuôn mặt nằm trọn trong khung hình",
-            5: "Bạn vui lòng nhìn thẳng",
-            6: "Bạn vui lòng tiến lại gần hơn",
-            7: "Đưa khuôn mặt nằm trọn trong khung hình",
-            8: "Môi trường ánh sáng quá mạnh",
-            9: "Môi trường thiếu ánh sáng",
-            10: "Bạn vui lòng giữ yên",
-            11: "Bạn vui lòng chờ trong giây lát",
-            12: "Bạn vui lòng đưa khuôn mặt xa hơn",
-            13: "Hide mark view."
-        ]
-        
-        let text = messages[value] ?? "Bạn vui lòng giữ yên"
-        
-        DispatchQueue.main.async {
-            if text == "Hide mark view." {
-                self.viewMask.overlayColor = UIColor.clear
-            } else {
-                self.viewMask.instructionText = text
-                self.viewMask.overlayColor = UIColor.white
-//                self.viewMask.overlayColor = UIColor.black.withAlphaComponent(0.4)
-            }
-        }
-    }
+    private func handleLiveness(value: Int) {}
 
     // MARK: - Helpers
     private func pushEvent(data: Any) {
