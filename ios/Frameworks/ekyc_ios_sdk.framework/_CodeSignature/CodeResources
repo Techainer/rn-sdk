@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.DS_Store</key>
-		<data>
-		J3KZk533y8SfWbWtysQAvuTyvAQ=
-		</data>
 		<key>Assets.car</key>
 		<data>
 		hM287W35aIY4b4n+8hfuBSx4KO4=
@@ -102,7 +98,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		iRcTVZobPAEPJ8pPwKqN67lLWsc=
+		M/BmQV9/1k5YOQ6tVpQjiS9BJCc=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -114,7 +110,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		e1F2UrbX7YWubo2WQWezSqgr7tQ=
+		2T6Tx4SaLZ9r4N9Cf7APOCTJjlM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -293,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X9NBoeD5efmzZklhwd4eUqfho8sok9FEE0a0OC4W8HQ=
+			DQNyDb1M/uYAHW5SNJoz+NaZyxneZWK4L7BAZkjPtNU=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -314,7 +310,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kigbk3tXYM6qFVx6LDycWokASO99PcmNnQE5Y7qUMKg=
+			wn9QPl4h3c18N0TS4AP+BaToRFcB9aoB7IW6ucZI3FM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
