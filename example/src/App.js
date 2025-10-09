@@ -394,7 +394,7 @@ export default function App() {
         <View style={[styles.view_camera, { width: isFlashCamera ? '100%' : '100%' }]} onLayout={handleLayout}>
           <LivenessView
             ref={ref}
-            key={isFlashCamera == true ? 'flash' : '3d'}
+            // key={isFlashCamera == true ? 'flash' : '3d'}
             style={
               Platform.OS === 'ios' ? styles.view_liveness :
                 {

@@ -37,7 +37,8 @@ class LivenessView: UIView {
     @objc func setIsFlashCamera(_ val: Bool) {
         if _isFlashCamera == val { return }
         _isFlashCamera = val
-        initSetupCamera()
+//        initSetupCamera()
+        setupCameraImmediate()
     }
 
     // MARK: - Init
