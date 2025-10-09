@@ -37,8 +37,7 @@ class LivenessView: UIView {
     @objc func setIsFlashCamera(_ val: Bool) {
         if _isFlashCamera == val { return }
         _isFlashCamera = val
-//        initSetupCamera()
-        setupCameraImmediate()
+        initSetupCamera()
     }
 
     // MARK: - Init
@@ -120,8 +119,8 @@ class LivenessView: UIView {
     }
 
     func initSetupCamera() {
-      guard !cameraStarted else { return }
-      cameraStarted = true
+//      guard !cameraStarted else { return }
+//      cameraStarted = true
       setupCameraImmediate()
     }
 
@@ -142,9 +141,10 @@ class LivenessView: UIView {
                   self.faceAuth3D.removeFromSuperview()
                 }
                 self.faceAuth2D.isHidden = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    self.brightnessHelper.setBrightness(1.0)
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+//                    self.brightnessHelper.setBrightness(1.0)
+//                }
+                self.brightnessHelper.setBrightness(1.0)
                 self.faceAuth2D.startCamera()
                 self.pushEvent(data: ["isFlash": true])
             }
