@@ -68,8 +68,6 @@ class LivenessView: UIView {
         super.didMoveToSuperview()
         if superview != nil {
             print("FaceAuthenticationView đã được thêm vào màn hình.")
-            // Thực hiện các tác vụ cần thiết
-            
         } else {
             print("FaceAuthenticationView đã bị xoá khỏi màn hình.")
             dispose()
@@ -139,7 +137,7 @@ class LivenessView: UIView {
             } else {
                 if self.checkFaceID() {
                   self.faceAuth3D.isHidden = true
-                  self.faceAuth3D.stopCamera()   // <-- cleanup ngay
+                  self.faceAuth3D.stopCamera()
                   self.faceAuth3D.removeFromSuperview()
                 }
                 self.faceAuth2D.isHidden = false
