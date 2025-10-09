@@ -82,6 +82,7 @@ class LivenessView: UIView {
 
         // Brightness set ngay
         brightnessHelper.getBrightness()
+        brightnessHelper.setBrightness(1.0)
 
         // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
@@ -97,17 +98,19 @@ class LivenessView: UIView {
         faceAuth2D.isHidden = true
 
         // Khởi tạo camera 3D
-        faceAuth3D = FaceAuthentication3DView(frame: bounds)
-        faceAuth3D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        faceAuth3D.onResultsLiveness = { [weak self] result in
-            self?.handleLiveness(value: result.rawValue)
+        if self.checkFaceID() {
+          faceAuth3D = FaceAuthentication3DView(frame: bounds)
+          faceAuth3D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+          faceAuth3D.onResultsLiveness = { [weak self] result in
+              self?.handleLiveness(value: result.rawValue)
+          }
+          faceAuth3D.onResultsExtracted = { [weak self] images in
+              self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
+          }
+          addSubview(faceAuth3D)
+          sendSubviewToBack(faceAuth3D)
+          faceAuth3D.isHidden = true
         }
-        faceAuth3D.onResultsExtracted = { [weak self] images in
-            self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
-        }
-        addSubview(faceAuth3D)
-        sendSubviewToBack(faceAuth3D)
-        faceAuth3D.isHidden = true
     }
 
     // MARK: - Layout / Start camera
