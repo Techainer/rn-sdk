@@ -82,7 +82,6 @@ class LivenessView: UIView {
 
         // Brightness set ngay
         brightnessHelper.getBrightness()
-        brightnessHelper.setBrightness(1.0)
 
         // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
