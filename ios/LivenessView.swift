@@ -12,7 +12,6 @@ class LivenessView: UIView {
     private var faceAuth3D: FaceAuthentication3DView!
     
     private var cameraStarted = false
-    private var currentIsFlash: Bool = false
     private var _isFlashCamera = false
     var isFlashCamera: Bool { _isFlashCamera }
 
@@ -38,7 +37,6 @@ class LivenessView: UIView {
     @objc func setIsFlashCamera(_ val: Bool) {
         if _isFlashCamera == val { return }
         _isFlashCamera = val
-        currentIsFlash = val
         initSetupCamera()
     }
 
