@@ -204,7 +204,7 @@ class LivenessView: UIView {
         onEvent?(["data": data])
     }
 
-    func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 400) -> String? {
+    func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 300) -> String? {
         guard var image = UIImage(contentsOfFile: filePath) else { return nil }
         var compression: CGFloat = 1.0
         var data = image.jpegData(compressionQuality: compression)

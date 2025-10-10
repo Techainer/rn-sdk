@@ -94,7 +94,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     }
   }
 
-  private fun convertPathToBase64WithLimitKB(path: String, maxSizeInKB: Int = 400): String? {
+  private fun convertPathToBase64WithLimitKB(path: String, maxSizeInKB: Int = 300): String? {
     try {
       val file = File(path)
       if (!file.exists()) {
