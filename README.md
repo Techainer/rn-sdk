@@ -146,6 +146,12 @@ path example/src/App.js
 ## Call back check isFlash
 Khởi tạo đang là loại camera nào: data.nativeEvent?.data?.isFlash
 
+## Xóa key bên trong components đi không dùng key
+<LivenessView
+  ref={ref}
+  // key={isFlashCamera == true ? 'flash' : '3d'}
+</>
+
 ## Sdk flash
 Trả về 2 ảnh:
  + Ảnh ám màu liveness (base64): data.nativeEvent?.data?.livenessColorImage
