@@ -20,8 +20,6 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>iPhoneOS</string>
@@ -38,7 +36,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Use to scan QR code and take photos of user&apos;s certificate and uses the camera to read passports</string>
+	<string>Use to scan QR code and take photos of user's certificate and uses the camera to read passports</string>
+	<key>NSDocumentsDirectory</key>
+	<string>The application does not use this feature</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -46,8 +46,6 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>The application does not use this feature</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The application does not use this feature</string>
-	<key>NSDocumentsDirectory</key>
 	<string>The application does not use this feature</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -61,6 +59,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>

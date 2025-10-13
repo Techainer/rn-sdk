@@ -402,6 +402,7 @@ SWIFT_CLASS("_TtC12ekyc_ios_sdk16FaceValidateView")
 
 
 
+
 #endif
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

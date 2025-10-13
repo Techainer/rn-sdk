@@ -86,7 +86,7 @@
 		</data>
 		<key>Headers/ekyc_ios_sdk-Swift.h</key>
 		<data>
-		TFCe2Get1ubT4OzUedXm/Z6mqmw=
+		/OuKg3sogbenelomkw6xVjOaX5w=
 		</data>
 		<key>Headers/ekyc_ios_sdk.h</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		jr3kNu2gBU/nPPEdARsNsCTzF9w=
+		aE0GYGAIULcGCsOUUx1azAiHILY=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -106,11 +106,11 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		kZAM0T9FObxZjTGFwQXRY37p2NU=
+		DDw0X1zKM7tXKGOlVLzyvaITWHo=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		toAYuUtkOAqr4uQaHcgfuZVvXHE=
+		K6Kd8HergJV+uhOi3K8fddbGVm0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -275,7 +275,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4DslL1VFQ05rQhPnvf9tgBW0dP22pUWFK6yU+HqcwUI=
+			8nuz3gWeNof4ZdxUD3QLCXHty6YFfbLfL8Q5Dv6jBrY=
 			</data>
 		</dict>
 		<key>Headers/ekyc_ios_sdk.h</key>
@@ -289,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			auTx8R8v5IP6Xc1TvDjWYpbJ3tGxRH47f5149GHLfbk=
+			PAM5U7SwHIthgnM8MmwegJ1mE/qKQKW8R5rnU/f73fk=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -303,14 +303,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			s7FiyIvWvbYH//MRBf3ZTz3ReWDjKJHw/Es5Y3s7oUo=
+			ziov0yJ1tB84zOEUEihXWfDNrcoSiLMWpAqoYHKIbTw=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nQyhTcnQDPL9R1KLJ9JFQAkC9lBaSDN9CjUan19g+W8=
+			Y2h28LZCKP5jKYUfKAkCu8+sv1zPHeMOz5w6Bpiu6lI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
