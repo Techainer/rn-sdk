@@ -146,10 +146,11 @@ path example/src/App.js
 ## Call back check isFlash
 Khởi tạo đang là loại camera nào: data.nativeEvent?.data?.isFlash
 
-## Xóa key bên trong components đi không dùng key
+## Xóa key bên trong components đi không dùng key chỉ cần thay đổi isFlashCamera bởi vì sdk đã xử lý chuyển giao mượt hơn rất nhiều
 <LivenessView
   ref={ref}
   // key={isFlashCamera == true ? 'flash' : '3d'}
+  isFlashCamera={isFlashCamera}
 </>
 
 ## Sdk flash
