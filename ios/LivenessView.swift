@@ -61,7 +61,6 @@ class LivenessView: UIView {
       stopAllCameras()
       unregisterFromNotifications()
       brightnessHelper.setBrightness(0.3)
-      
     }
   
     open override func didMoveToSuperview() {
