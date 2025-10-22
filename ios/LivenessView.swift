@@ -15,25 +15,12 @@ class LivenessView: UIView {
     private var _isFlashCamera = false
     var isFlashCamera: Bool { _isFlashCamera }
 
-    var requestid = ""
-    var appId = ""
-    var baseUrl = ""
-    var privateKey = ""
-    var publicKey = ""
-    var secret = "ABCDEFGHIJKLMNOP"
-    var debugging = false
     var transactionId = ""
 
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
 
     // MARK: - Setters
-    @objc func setRequestid(_ val: NSString) { self.requestid = val as String }
-    @objc func setAppId(_ val: NSString) { self.appId = val as String }
-    @objc func setBaseUrl(_ val: NSString) { self.baseUrl = val as String }
-    @objc func setPrivateKey(_ val: NSString) { self.privateKey = val as String }
-    @objc func setPublicKey(_ val: NSString) { self.publicKey = val as String }
-    @objc func setDebugging(_ val: Bool) { self.debugging = val }
     @objc func setIsFlashCamera(_ val: Bool) {
         if _isFlashCamera == val { return }
         _isFlashCamera = val

@@ -429,12 +429,6 @@ export default function App() {
                 }
               }
             }}
-            requestid={'sdfsdfsdfsdf'}
-            appId={'com.pvcb'}
-            baseUrl={'https://ekyc-sandbox.eidas.vn/face-matching'}
-            privateKey={privateKey}
-            publicKey={publicKey}
-            debugging={false}
             isFlashCamera={isFlashCamera}
           />
         </View>

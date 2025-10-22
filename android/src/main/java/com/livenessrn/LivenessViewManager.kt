@@ -28,14 +28,6 @@ class LivenessViewManager(
   private val reactContext: ReactApplicationContext
 ) : ViewGroupManager<LivenessView>(), LivenessFragmentListener {
 
-  private var requestId: String = ""
-  private var appId: String = "com.qts.test"
-  private var deviceId = ""
-  private var secret = "ABCDEFGHIJKLMNOP"
-  private var baseURL = ""
-  private var privateKey = ""
-  private var publicKey = ""
-  private var debugging: Boolean = false
   private var isFlashCamera: Boolean = false
 
   private var propWidth: Int? = null
@@ -116,36 +108,6 @@ class LivenessViewManager(
   fun setStyle(view: FrameLayout, index: Int, value: Int) {
     if (index == 0) propWidth = value
     if (index == 1) propHeight = value
-  }
-
-  @ReactProp(name = "requestid")
-  fun setRequestid(view: FrameLayout, requestid: String) {
-    this.requestId = requestid
-  }
-
-  @ReactProp(name = "appId")
-  fun setAppId(view: FrameLayout, appId: String) {
-    this.appId = appId
-  }
-
-  @ReactProp(name = "baseUrl")
-  fun setBaseUrl(view: FrameLayout, baseUrl: String) {
-    this.baseURL = baseUrl
-  }
-
-  @ReactProp(name = "privateKey")
-  fun setPrivateKey(view: FrameLayout, privateKey: String) {
-    this.privateKey = privateKey
-  }
-
-  @ReactProp(name = "publicKey")
-  fun setPublicKey(view: FrameLayout, publicKey: String) {
-    this.publicKey = publicKey
-  }
-
-  @ReactProp(name = "debugging")
-  fun setDebugging(view: FrameLayout, debugging: Boolean) {
-    this.debugging = debugging
   }
 
   @ReactProp(name = "isFlashCamera")
