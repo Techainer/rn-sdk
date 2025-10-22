@@ -147,7 +147,7 @@ path example/src/App.js
 Khởi tạo đang là loại camera nào: data.nativeEvent?.data?.isFlash
 
 ## Xóa key bên trong components đi không dùng key chỉ cần thay đổi isFlashCamera bởi vì sdk đã xử lý chuyển giao mượt hơn rất nhiều
-## Xóa đi các params không dùng tới 
+## Xóa đi các params không dùng tới
 requestid={'sdfsdfsdfsdf'}
 appId={'com.pvcb'}
 baseUrl={'https://ekyc-sandbox.eidas.vn/face-matching'}
