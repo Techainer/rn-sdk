@@ -70,7 +70,7 @@ class LivenessView: UIView {
         // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
         faceAuth2D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        faceAuth2D.setLogin(false)
+//        faceAuth2D.setLogin(false)
         faceAuth2D.onResultsLiveness = { [weak self] result in
             self?.handleLiveness(value: result.rawValue)
         }
