@@ -75,6 +75,11 @@ class LivenessView: UIView {
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth2D.onResultsExtracted = { [weak self] images, color in
+          for image in images {
+            if let img = UIImage(contentsOfFile: image) {
+              UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+            }
+          }
             self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
         }
         addSubview(faceAuth2D)
