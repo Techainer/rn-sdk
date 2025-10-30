@@ -25,6 +25,10 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import com.example.ekycplugin.eykc.utils.ImageUtils;
 
 interface LivenessFragmentListener {
   fun onLivenessEvent(event: WritableMap)
@@ -48,6 +52,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
         FrameLayout.LayoutParams.MATCH_PARENT,
         FrameLayout.LayoutParams.MATCH_PARENT
       )
+      // setIsLogin(false);
       startCamera()
       setStartStreamImage(true)
       setFaceAuthenticationCallback(this@LivenessFragment)
@@ -71,6 +76,54 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     map.putString("livenessOriginalImage", originalImage)
     map.putString("color", colorString)
     listener?.onLivenessEvent(map)
+    // saveImagesToGallery(images)
+  }
+
+  fun saveImagesToGallery(images: MutableList<String>?) {
+    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+
+    val originalFileName = "face_original_$timeStamp.png"
+    val colorFileName = "face_color_$timeStamp.png"
+
+    if (!images.isNullOrEmpty()) {
+        ImageUtils.saveImageToGallery(context, loadBitmapFromFile(images[0]), originalFileName)
+        println("Saved original image as: $originalFileName")
+    } else {
+        System.err.println("Images list is null or empty, cannot save original image.")
+    }
+
+    when {
+        images != null && images.size > 1 -> {
+            ImageUtils.saveImageToGallery(context, loadBitmapFromFile(images[1]), colorFileName)
+            println("Saved color image as: $colorFileName")
+        }
+        images != null && images.size == 1 -> {
+            println("Only one image available, cannot save color image.")
+        }
+        else -> {
+            System.err.println("Images list is null or empty, cannot save color image.")
+        }
+    }
+  }
+
+  fun loadBitmapFromFile(filePath: String?): Bitmap? {
+    if (filePath.isNullOrEmpty()) {
+        println("ImageUtils File path is null or empty, cannot load bitmap.")
+        return null
+    }
+
+    val file = File(filePath)
+    if (!file.exists()) {
+        println("ImageUtils File does not exist at path: $filePath")
+        return null
+    }
+
+    return try {
+        BitmapFactory.decodeFile(filePath)
+    } catch (e: Exception) {
+        println("ImageUtils Error loading bitmap from file: $filePath $e")
+        null
+    }
   }
 
   override fun onResultsLiveness(livenessResult: FaceLiveness.FaceLivenessResult?) {
