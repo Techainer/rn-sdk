@@ -70,16 +70,16 @@ class LivenessView: UIView {
         // Khởi tạo camera 2D
         faceAuth2D = FaceAuthenticationView(frame: bounds)
         faceAuth2D.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        // faceAuth2D.setLogin(false)
+        //  faceAuth2D.setLogin(false)
         faceAuth2D.onResultsLiveness = { [weak self] result in
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth2D.onResultsExtracted = { [weak self] images, color in
-        //   for image in images {
-        //     if let img = UIImage(contentsOfFile: image) {
-        //       UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
-        //     }
-        //   }
+        //    for image in images {
+        //      if let img = UIImage(contentsOfFile: image) {
+        //        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+        //      }
+        //    }
             self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
         }
         addSubview(faceAuth2D)
