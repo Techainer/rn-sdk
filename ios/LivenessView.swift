@@ -166,9 +166,9 @@ class LivenessView: UIView {
                 data["livenessThermalImage"] = base64ColorOrThermal as Any
             } else {
                 data["livenessColorImage"] = base64ColorOrThermal as Any
-                data["color"] = color as Any
+              data["color"] = "\(color ?? "")3"
             }
-            
+
             DispatchQueue.main.async {
                 self.pushEvent(data: data)
             }
