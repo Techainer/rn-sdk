@@ -110,6 +110,9 @@ Add permissions in Info.plist
 
 ### add Podfile
 
+Tải thư mục này và mở XCode lên kéo vào thư mục ios của dự án
+https://drive.google.com/file/d/1c6eE8M5KP4MGEhoroREixskUhqmnjFQY/view?usp=share_link
+
 add library
 ```
   pod 'ObjectMapper', '4.2'
