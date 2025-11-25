@@ -170,7 +170,7 @@ debugging={false}
 Trả về 2 ảnh:
  + Ảnh ám màu liveness (base64): data.nativeEvent?.data?.livenessColorImage
  + Ảnh thường (base64): data.nativeEvent?.data?.livenessOriginalImage
- + color kiểu string ngẫu nhiểu trong các ký tự (r, g, b): data.nativeEvent?.data?.color
+ + color kiểu string ngẫu nhiểu trong các ký tự (r3, g3, b3): data.nativeEvent?.data?.color
 
 => + Lưu ý màn livenesss style nên để widht: 100%, height: Platform.OS == 'android' ? windowWidth * 1.7 : '100%'
   + Để khung hình camera vào giữa màn hình 
