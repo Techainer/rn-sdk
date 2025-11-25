@@ -172,7 +172,7 @@ Trả về 2 ảnh:
  + Ảnh thường (base64): data.nativeEvent?.data?.livenessOriginalImage
  + color kiểu string ngẫu nhiểu trong các ký tự (r3, g3, b3): data.nativeEvent?.data?.color
 
-=> + Lưu ý màn livenesss style nên để widht: 100%, height: Platform.OS == 'android' ? windowWidth * 1.7 : '100%'
+=> + Lưu ý màn livenesss style nên để widht: 100%, height: '100%'
   + Để khung hình camera vào giữa màn hình 
 
 ## Sdk 3D
