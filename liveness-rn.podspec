@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
       set -euo pipefail
 
       SHADERS_DIR="${PODS_TARGET_SRCROOT}/ios/Shaders"
-      OUTPUT_DIR="${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+      OUTPUT_DIR="${PODS_TARGET_SRCROOT}/ios/Shaders"
 
       mkdir -p "$OUTPUT_DIR"
 
