@@ -15,7 +15,7 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.10)
   - hermes-engine/Pre-built (0.72.10)
   - libevent (2.1.12)
-  - liveness-rn (1.0.36):
+  - liveness-rn (1.0.38):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - TensorFlowLiteSwift
@@ -600,7 +600,7 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: 9c70b99b77050cc775bd2b75c0e8dcd0b88540c5
+  liveness-rn: 5e022d9e6e1c578798a79ffc7034babdbfad8d4e
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
@@ -642,6 +642,6 @@ SPEC CHECKSUMS:
   TensorFlowLiteSwift: 723fe42222815e72490c79feeff05305530de393
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: 7e054bf77b6327c4f83134d6b605c79c8f90c7ab
+PODFILE CHECKSUM: e4357c56757bd294d7e056dcbca01d3fdc4f0a5f
 
 COCOAPODS: 1.16.2
