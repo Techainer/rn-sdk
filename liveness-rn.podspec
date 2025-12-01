@@ -47,7 +47,8 @@ Pod::Spec.new do |s|
   # s.dependency "QTSLiveness"
   # s.dependency "FlashLiveness"
   # s.dependency 'KeychainSwift', '~> 19.0'
-  s.dependency 'TensorFlowLiteSwift', '2.10.0'
+  #, '2.10.0'
+  s.dependency 'TensorFlowLiteSwift'
   s.dependency 'GoogleMLKit/FaceDetection', '6.0.0'
 
   s.vendored_frameworks = 'ios/Frameworks/*.framework'
