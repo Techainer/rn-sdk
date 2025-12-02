@@ -17,6 +17,7 @@ PODS:
   - hermes-engine/Pre-built (0.72.10)
   - libevent (2.1.12)
   - liveness-rn (1.0.57):
+    - ekyc_ios_sdk
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - TensorFlowLiteSwift (= 2.10.0)
@@ -449,7 +450,6 @@ PODS:
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
-  - ekyc_ios_sdk (from `https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -497,6 +497,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ekyc_ios_sdk
     - fmt
     - libevent
     - ObjectMapper
@@ -510,8 +511,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
-  ekyc_ios_sdk:
-    :git: https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -593,11 +592,6 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
-CHECKOUT OPTIONS:
-  ekyc_ios_sdk:
-    :commit: 012b68756e87509593b70f4509b027dda7355e4f
-    :git: https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git
-
 SPEC CHECKSUMS:
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -608,7 +602,7 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: ab4e40cba77515e7fcd76b8d308ea766b57d7938
+  liveness-rn: fc15e17509320e2f25d0a513149ad3e1a01838be
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
@@ -650,6 +644,6 @@ SPEC CHECKSUMS:
   TensorFlowLiteSwift: fc26e0e9d63c8a98ff61187457635e660d787561
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: 1eea60e7abb393fb5d7ffa7aa1511850bde4546b
+PODFILE CHECKSUM: b63738b02510dbeacb137f396e0d94227ef192f4
 
 COCOAPODS: 1.16.2

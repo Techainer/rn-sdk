@@ -27,7 +27,7 @@ target 'LivenessRnExample' do
   pod 'ObjectMapper', '4.2'
   # pod 'QTSLiveness'
   pod 'SignManager', '1.0.6'
-  pod 'ekyc_ios_sdk', :git => 'https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git'
+  # pod 'ekyc_ios_sdk', :git => 'https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git'
   # pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
   # -------- Framework --------
   # pod 'QTSLiveness', '1.0.2'
