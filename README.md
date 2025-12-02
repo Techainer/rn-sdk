@@ -136,13 +136,13 @@ After downloading, drag the frameworks folder into your `ios/` directory in Xcod
 Add the following to your `ios/Podfile`:
 
 ```ruby
-use_frameworks!
-
 target 'YourApp' do
   # ... other pods
+  use_frameworks! :linkage => :static
+
 
   pod 'ObjectMapper', '4.2'
-  pod 'Alamofire', '5.8.1'
+  pod 'SignManager', '1.0.6'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
