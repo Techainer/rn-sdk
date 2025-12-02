@@ -51,9 +51,9 @@ Pod::Spec.new do |s|
   s.dependency 'TensorFlowLiteSwift', '2.10.0'
   # s.dependency 'GoogleMLKit/FaceDetection', '6.0.0'
 
-  s.dependency "ekyc_ios_sdk"
+  # s.dependency "ekyc_ios_sdk"
 
-  # s.vendored_frameworks = 'ios/Frameworks/*.framework'
+  s.vendored_frameworks = 'ios/Frameworks/*.framework'
 
   s.resources = 'ios/Shaders/*.metal'
   s.swift_version = "5.0"
