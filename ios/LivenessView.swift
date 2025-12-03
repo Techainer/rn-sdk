@@ -2,7 +2,7 @@ import Foundation
 import React
 import UIKit
 import LocalAuthentication
-import ekyc_ios_sdk
+internal import ekyc_ios_sdk
 
 @available(iOS 11.1, *)
 class LivenessView: UIView {
