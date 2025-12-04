@@ -8,6 +8,14 @@
 		<data>
 		AE7A4XV7IH3OiSpLX4iICycYOk0=
 		</data>
+		<key>FBLPromises_Privacy.bundle/Info.plist</key>
+		<data>
+		l12P69ekD3w/Rvv7WmC3zmTBaCg=
+		</data>
+		<key>FBLPromises_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		ZajnvEs/MYRS3X4TPLAhBWi8mc4=
+		</data>
 		<key>Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022.tflite</key>
 		<data>
 		JsCs1ftQp6oNfOZJW7zw9735qGI=
@@ -15,6 +23,22 @@
 		<key>Faceliveness_mobilenetv2_model6_20211006.tflite</key>
 		<data>
 		3uFCDiKUsvSQ9QSF0uHENAa/Ijw=
+		</data>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
+		<data>
+		aTgIrgkXRvmeeozvMl2wReWNIek=
+		</data>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		GqeAMkwbcNQeG0K4qQhQh2vHhHo=
+		</data>
+		<key>GoogleDataTransport_Privacy.bundle/Info.plist</key>
+		<data>
+		3GDqUdrce8GMZmKO8mdplajBlR4=
+		</data>
+		<key>GoogleDataTransport_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		WXQUJr75eMRgiVnLGyf8Gr3uLUU=
 		</data>
 		<key>GoogleMVFaceDetectorResources.bundle/BCLjoy_200.emd</key>
 		<data>
@@ -68,6 +92,30 @@
 		<data>
 		RxtbTN3LjpFChp3tmniX3KD+dsE=
 		</data>
+		<key>GoogleToolboxForMac_Logger_Privacy.bundle/Info.plist</key>
+		<data>
+		vjBUZB58uAN+oTzj4QHItsfbvkM=
+		</data>
+		<key>GoogleToolboxForMac_Logger_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		GqeAMkwbcNQeG0K4qQhQh2vHhHo=
+		</data>
+		<key>GoogleToolboxForMac_Privacy.bundle/Info.plist</key>
+		<data>
+		PuL+7Ji4fR4RLbx4Zlw7Im8rdsA=
+		</data>
+		<key>GoogleToolboxForMac_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		ZajnvEs/MYRS3X4TPLAhBWi8mc4=
+		</data>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<data>
+		cPAz6KJe2sWWVf/CJMufCQfgeeA=
+		</data>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		TrRzpkxcmDwPf9xXhrQKnuRceyI=
+		</data>
 		<key>Headers/AAPLTransforms.h</key>
 		<data>
 		6AUmPT7jxO4pkmZmLNy3RUaYPas=
@@ -98,7 +146,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		X6TrSJNs/RLy5o0fyjhBGImuEa8=
+		dyjYBGy4HoeU1lHEqSmWtJhiJbI=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -110,7 +158,7 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ORu5Hcu4M4EbC/28z4o5ZWvP5Qc=
+		cgyTKzXPoNfifjTqE2QC2mZDIr8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -128,6 +176,14 @@
 		<data>
 		6PdJ+vwju4jarIW8n34GmENvKaA=
 		</data>
+		<key>nanopb_Privacy.bundle/Info.plist</key>
+		<data>
+		6adkJjQj9sR9iicAFlad9Csz1kc=
+		</data>
+		<key>nanopb_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		KY5lfwC2TvsgFj4wt7hkMmainbs=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -136,6 +192,20 @@
 			<key>hash2</key>
 			<data>
 			LcyQ5EfCujxVwGK5mAG970jQ0IBQmAfzwh9t6OxgmpM=
+			</data>
+		</dict>
+		<key>FBLPromises_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vJIaCTuXV8YHFtOBEjDPqchkNEhlgnqbwj1jFt0WYCM=
+			</data>
+		</dict>
+		<key>FBLPromises_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dLDNcvwjwe8wLyLuJ1P2GBfNxa8P96fy0GMrUk+4rOo=
 			</data>
 		</dict>
 		<key>Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022.tflite</key>
@@ -150,6 +220,34 @@
 			<key>hash2</key>
 			<data>
 			7by7au7q/2cKk3WHat+Iu6KZfGVeBIlY7CuvNDlcEnY=
+			</data>
+		</dict>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZR0LCJcsmN6l00IcTUw20HYGrrAZ4/EAQZ/NjnvPo8M=
+			</data>
+		</dict>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PkqTy+hqzvfdfgY6KMhJmS9Vbn9SytxfN8HosOG1RoY=
+			</data>
+		</dict>
+		<key>GoogleDataTransport_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4ueWGZhaSyO9ZOmOJFT/3Gq4HIylbNy2Iq/OhFsKkrk=
+			</data>
+		</dict>
+		<key>GoogleDataTransport_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			z7s8T3ambVNpi66R9xEMAPIUjm5vE619MlkpCbwBDlE=
 			</data>
 		</dict>
 		<key>GoogleMVFaceDetectorResources.bundle/BCLjoy_200.emd</key>
@@ -243,6 +341,48 @@
 			2pAlL0mzu5QuX4gBgKFFYfZpKW5/s+3s3quqi2u3gio=
 			</data>
 		</dict>
+		<key>GoogleToolboxForMac_Logger_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			O8bxQC7ywldECggIed2BqgJH2+bQtqeWZrdQGODIefU=
+			</data>
+		</dict>
+		<key>GoogleToolboxForMac_Logger_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PkqTy+hqzvfdfgY6KMhJmS9Vbn9SytxfN8HosOG1RoY=
+			</data>
+		</dict>
+		<key>GoogleToolboxForMac_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VsPJ1jSZPvnYlaHeA33l49f9uIgXFJl8aJjC5mvpeRg=
+			</data>
+		</dict>
+		<key>GoogleToolboxForMac_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dLDNcvwjwe8wLyLuJ1P2GBfNxa8P96fy0GMrUk+4rOo=
+			</data>
+		</dict>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0L/duWtMUCcAxVQAf/yfw4+kDiGpaDk90Oy4TzmgMAY=
+			</data>
+		</dict>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jxZCM8XSFfsGzrh4STQCHd3X05qJ15Xla6XIMqsPs/c=
+			</data>
+		</dict>
 		<key>Headers/AAPLTransforms.h</key>
 		<dict>
 			<key>hash2</key>
@@ -289,7 +429,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/Ct1Oz/8WG6lk62tr9MfvY+/xCQOMQ+i1xaz6EcJ6r0=
+			3KHj1aBGz761vy9YmqmTDC088p5+VTpxOA3Eh9iHdTs=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -310,7 +450,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			A06vZXDorClEaBDK3Jal09tBLxNX+W89pD99IE80RR4=
+			voffEs9iBtvtQL1ZgquPMlCXRZ7qKyILlXORDjKK7mE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -339,6 +479,20 @@
 			<key>hash2</key>
 			<data>
 			O8GC658zkl2eWLXI1ZMIp2D0reqPKCNw5CjFEhLCZjM=
+			</data>
+		</dict>
+		<key>nanopb_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			T9H8+RMAAjP32EW2hZ9aEQva5XwIExh8fYsd5QZbh9s=
+			</data>
+		</dict>
+		<key>nanopb_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cpujy9D0WMeM1h7fFzUO2v4ONMqG4xTsZMjLIszSG1Q=
 			</data>
 		</dict>
 	</dict>
