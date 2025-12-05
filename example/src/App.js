@@ -193,7 +193,7 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   // data.append("user_id", "thuthuy");
   data.append("user_id", userId);
   if (color) {
-    data.append("sdk_color", color);
+    data.append("color", color);
   }
   // data.append("user_id", '68');
   data.append("threshold", 0.8);
