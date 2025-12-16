@@ -11,9 +11,6 @@ import CoreMedia
 import CoreVideo
 import DeveloperToolsSupport
 import Foundation
-import MLImage
-import MLKitFaceDetection
-import MLKitVision
 import Metal
 import MetalKit
 import MobileCoreServices
@@ -21,7 +18,6 @@ import Photos
 import Swift
 import SwiftUI
 import SystemConfiguration
-import TensorFlowLite
 import UIKit
 import VideoToolbox
 import Vision

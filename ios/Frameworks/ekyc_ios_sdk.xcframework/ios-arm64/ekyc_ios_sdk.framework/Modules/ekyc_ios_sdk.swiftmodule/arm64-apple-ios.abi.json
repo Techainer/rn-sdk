@@ -19,21 +19,30 @@
         "name": "MLKitFaceDetection",
         "printedName": "MLKitFaceDetection",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
         "name": "MLKitVision",
         "printedName": "MLKitVision",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
         "name": "MLImage",
         "printedName": "MLImage",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -71,7 +80,10 @@
         "name": "TensorFlowLite",
         "printedName": "TensorFlowLite",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -94,6 +106,7 @@
         "declKind": "Import",
         "moduleName": "ekyc_ios_sdk",
         "declAttributes": [
+          "ImplementationOnly",
           "RawDocComment"
         ]
       },
@@ -102,7 +115,10 @@
         "name": "MLKitVision",
         "printedName": "MLKitVision",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -4305,7 +4321,10 @@
         "name": "MLKitFaceDetection",
         "printedName": "MLKitFaceDetection",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -6615,21 +6634,30 @@
         "name": "MLKitFaceDetection",
         "printedName": "MLKitFaceDetection",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
         "name": "MLKitVision",
         "printedName": "MLKitVision",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
         "name": "MLImage",
         "printedName": "MLImage",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -6684,14 +6712,20 @@
         "name": "MLKitFaceDetection",
         "printedName": "MLKitFaceDetection",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
         "name": "MLKitVision",
         "printedName": "MLKitVision",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -9592,7 +9626,10 @@
         "name": "TensorFlowLite",
         "printedName": "TensorFlowLite",
         "declKind": "Import",
-        "moduleName": "ekyc_ios_sdk"
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -11002,56 +11039,56 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 725,
+      "offset": 746,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "FloatLiteral",
-      "offset": 754,
+      "offset": 775,
       "length": 5,
       "value": "127.5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 780,
+      "offset": 801,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 806,
+      "offset": 827,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 829,
+      "offset": 850,
       "length": 3,
       "value": "256"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 855,
+      "offset": 876,
       "length": 3,
       "value": "256"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "Array",
-      "offset": 894,
+      "offset": 915,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/ModelDataHandler\/SBKModelDataHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 1061,
+      "offset": 1082,
       "length": 1,
       "value": "1"
     },
@@ -11471,168 +11508,168 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 342,
+      "offset": 363,
       "length": 24,
       "value": "\"FaceAuthenticationView\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 747,
+      "offset": 768,
       "length": 10,
       "value": "\"vertical\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 806,
+      "offset": 827,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 836,
+      "offset": 857,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 920,
+      "offset": 941,
       "length": 72,
       "value": "\"Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1008,
+      "offset": 1029,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1018,
+      "offset": 1039,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1036,
+      "offset": 1057,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1190,
+      "offset": 1211,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 1535,
+      "offset": 1556,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1574,
+      "offset": 1595,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1755,
+      "offset": 1776,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1799,
+      "offset": 1820,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1943,
+      "offset": 1964,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2030,
+      "offset": 2051,
       "length": 5,
       "value": "350.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2131,
+      "offset": 2152,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2182,
+      "offset": 2203,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2314,
+      "offset": 2335,
       "length": 4,
       "value": "0.12"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2445,
+      "offset": 2466,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2476,
+      "offset": 2497,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2511,
+      "offset": 2532,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2556,
+      "offset": 2577,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 21923,
+      "offset": 21944,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 24061,
+      "offset": 24082,
       "length": 3,
       "value": "0.8"
     },
@@ -11744,399 +11781,399 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 286,
+      "offset": 328,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 325,
+      "offset": 367,
       "length": 2,
       "value": "-5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 362,
+      "offset": 404,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 400,
+      "offset": 442,
       "length": 2,
       "value": "-5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 545,
+      "offset": 587,
       "length": 18,
       "value": "\"FaceValidateView\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 679,
+      "offset": 721,
       "length": 12,
       "value": "\"videoQueue\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 714,
+      "offset": 756,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 736,
+      "offset": 778,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 759,
+      "offset": 801,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 782,
+      "offset": 824,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 805,
+      "offset": 847,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 828,
+      "offset": 870,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 951,
+      "offset": 993,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 1596,
+      "offset": 1638,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1939,
+      "offset": 1981,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2174,
+      "offset": 2216,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2230,
+      "offset": 2272,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2339,
+      "offset": 2381,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4178,
+      "offset": 4220,
       "length": 89,
       "value": "\"timeStamp updated: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4210,
+      "offset": 4252,
       "length": 1,
       "value": "\", detectStatus: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4241,
+      "offset": 4283,
       "length": 1,
       "value": "\", checkStep: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4266,
+      "offset": 4308,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "FloatLiteral",
-      "offset": 4317,
+      "offset": 4359,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5132,
+      "offset": 5174,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4139,
+      "offset": 4181,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 5313,
+      "offset": 5355,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5339,
+      "offset": 5381,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "FloatLiteral",
-      "offset": 6221,
+      "offset": 6263,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6286,
+      "offset": 6328,
       "length": 15,
       "value": "\"Nhìn thẳng\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6313,
+      "offset": 6355,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6329,
+      "offset": 6371,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6343,
+      "offset": 6385,
       "length": 6,
       "value": "\"Face\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6375,
+      "offset": 6417,
       "length": 13,
       "value": "\"Quay phải\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6400,
+      "offset": 6442,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6416,
+      "offset": 6458,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6430,
+      "offset": 6472,
       "length": 11,
       "value": "\"faceRight\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6467,
+      "offset": 6509,
       "length": 12,
       "value": "\"Quay trái\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6491,
+      "offset": 6533,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6507,
+      "offset": 6549,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6521,
+      "offset": 6563,
       "length": 10,
       "value": "\"faceLeft\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6557,
+      "offset": 6599,
       "length": 12,
       "value": "\"Nhìn lên\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6581,
+      "offset": 6623,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6597,
+      "offset": 6639,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6611,
+      "offset": 6653,
       "length": 8,
       "value": "\"faceUp\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6645,
+      "offset": 6687,
       "length": 15,
       "value": "\"Nhìn xuống\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6672,
+      "offset": 6714,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6688,
+      "offset": 6730,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6702,
+      "offset": 6744,
       "length": 10,
       "value": "\"faceDown\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6758,
+      "offset": 6800,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6786,
+      "offset": 6828,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6817,
+      "offset": 6859,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6842,
+      "offset": 6884,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6871,
+      "offset": 6913,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 41933,
+      "offset": 41975,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 41955,
+      "offset": 41997,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 41979,
+      "offset": 42021,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 42001,
+      "offset": 42043,
       "length": 2,
       "value": "\"\""
     },
