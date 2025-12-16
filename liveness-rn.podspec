@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
 
   # s.dependency "ekyc_ios_sdk"
 
-  s.vendored_frameworks = 'ios/Frameworks/*.framework'
+  s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
 
   s.resources = 'ios/Shaders/*.metal'
   s.swift_version = "5.0"
