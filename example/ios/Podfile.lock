@@ -11,15 +11,65 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.72.10)
   - fmt (6.2.1)
   - glog (0.3.5)
+  - GoogleDataTransport (9.4.1):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30911.0, >= 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleMLKit/FaceDetection (6.0.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitFaceDetection (~> 5.0.0)
+  - GoogleMLKit/MLKitCore (6.0.0):
+    - MLKitCommon (~> 11.0.0)
+  - GoogleToolboxForMac/Defines (4.2.1)
+  - GoogleToolboxForMac/Logger (4.2.1):
+    - GoogleToolboxForMac/Defines (= 4.2.1)
+  - "GoogleToolboxForMac/NSData+zlib (4.2.1)":
+    - GoogleToolboxForMac/Defines (= 4.2.1)
+  - GoogleUtilities/Environment (7.13.3):
+    - GoogleUtilities/Privacy
+    - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUtilities/Logger (7.13.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Privacy (7.13.3)
+  - GoogleUtilities/UserDefaults (7.13.3):
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Privacy
+  - GoogleUtilitiesComponents (1.1.0):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (3.5.0)
   - hermes-engine (0.72.10):
     - hermes-engine/Pre-built (= 0.72.10)
   - hermes-engine/Pre-built (0.72.10)
   - libevent (2.1.12)
-  - liveness-rn (1.0.62):
+  - liveness-rn (1.0.63):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - TensorFlowLiteSwift (= 2.10.0)
+  - MLImage (1.0.0-beta5)
+  - MLKitCommon (11.0.0):
+    - GoogleDataTransport (< 10.0, >= 9.4.1)
+    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
+    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
+    - GoogleUtilities/UserDefaults (< 8.0, >= 7.13.0)
+    - GoogleUtilitiesComponents (~> 1.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
+  - MLKitFaceDetection (5.0.0):
+    - MLKitCommon (~> 11.0)
+    - MLKitVision (~> 7.0)
+  - MLKitVision (7.0.0):
+    - GoogleToolboxForMac/Logger (< 5.0, >= 4.2.1)
+    - "GoogleToolboxForMac/NSData+zlib (< 5.0, >= 4.2.1)"
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3.2)
+    - MLImage (= 1.0.0-beta5)
+    - MLKitCommon (~> 11.0)
+  - nanopb (2.30910.0):
+    - nanopb/decode (= 2.30910.0)
+    - nanopb/encode (= 2.30910.0)
+  - nanopb/decode (2.30910.0)
+  - nanopb/encode (2.30910.0)
   - ObjectMapper (4.2.0)
+  - PromisesObjC (2.4.0)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -451,6 +501,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleMLKit/FaceDetection (= 6.0.0)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
   - liveness-rn (from `../..`)
@@ -491,13 +542,26 @@ DEPENDENCIES:
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFS (from `../node_modules/react-native-fs`)
   - SignManager (= 1.0.6)
+  - TensorFlowLiteSwift (= 2.10.0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - fmt
+    - GoogleDataTransport
+    - GoogleMLKit
+    - GoogleToolboxForMac
+    - GoogleUtilities
+    - GoogleUtilitiesComponents
+    - GTMSessionFetcher
     - libevent
+    - MLImage
+    - MLKitCommon
+    - MLKitFaceDetection
+    - MLKitVision
+    - nanopb
     - ObjectMapper
+    - PromisesObjC
     - SignManager
     - SocketRocket
     - TensorFlowLiteC
@@ -596,10 +660,22 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: b13d1c23d6ed82d6b66aad7a253edf8ba76c4a4c
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
+  GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
+  GoogleMLKit: 97ac7af399057e99182ee8edfa8249e3226a4065
+  GoogleToolboxForMac: d1a2cbf009c453f4d6ded37c105e2f67a32206d8
+  GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
+  GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
+  GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: e83b2f8de6deafad3f45cd48fb933a3ed5db2530
+  liveness-rn: 26f71b07ccf69a3d6897b82f5e8928adf4b755fd
+  MLImage: 1824212150da33ef225fbd3dc49f184cf611046c
+  MLKitCommon: afec63980417d29ffbb4790529a1b0a2291699e1
+  MLKitFaceDetection: 7c0e8bf09ddd27105da32d088fca978a99fc30cc
+  MLKitVision: e858c5f125ecc288e4a31127928301eaba9ae0c1
+  nanopb: 438bc412db1928dac798aa6fd75726007be04262
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
@@ -640,6 +716,6 @@ SPEC CHECKSUMS:
   TensorFlowLiteSwift: fc26e0e9d63c8a98ff61187457635e660d787561
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: b63738b02510dbeacb137f396e0d94227ef192f4
+PODFILE CHECKSUM: c4800b468542f019eb0b087ee2949894d3fd2167
 
 COCOAPODS: 1.16.2
