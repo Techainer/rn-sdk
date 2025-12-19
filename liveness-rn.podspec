@@ -43,9 +43,11 @@ Pod::Spec.new do |s|
   }
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
-  s.static_framework = true
+  # s.static_framework = true
   s.dependency 'TensorFlowLiteSwift', '2.10.0'
   # s.dependency 'GoogleMLKit/FaceDetection', '6.0.0'
+  s.dependency "GoogleDataTransport"
+
 
   # s.dependency "ekyc_ios_sdk"
 
