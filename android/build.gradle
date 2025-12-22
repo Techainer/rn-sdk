@@ -93,8 +93,10 @@ repositories {
   maven {
     setUrl("./repository")
   }
+
+  // Thêm để Gradle tìm .aar trong thư mục android/libs
   // flatDir {
-  //   dirs "libs" // Thư mục chứa file .aar
+  //   dirs "$projectDir/libs"
   // }
 }
 
@@ -109,7 +111,6 @@ dependencies {
   // } else {
   //     compileOnly fileTree(dir: "libs", include: ["*.aar"])
   // }
-  // api(name: "ekycplugin-release", ext: "aar")
   implementation('com.facebook.react:react-android:0.75.4')
   implementation "com.facebook.react:react-native:0.20.1"
   implementation('androidx.appcompat:appcompat:1.4.1')
@@ -141,5 +142,13 @@ dependencies {
   // implementation ("io.liveness.flash:sdk-android:v1.1.9@aar") {
   //   transitive = true
   // }
+
+  // Thêm AAR local bằng tên (sử dụng implementation hoặc api tuỳ cần)
+  // implementation(name: "ekycplugin-release", ext: "aar")
+  // Nếu muốn tham chiếu trực tiếp file thay vì flatDir:
+  // implementation files('libs/ekycplugin-release.aar')
+
+  // Nếu AAR có dependencies nội tại:
+  // implementation(name: "ekycplugin-release", ext: "aar") { transitive = true }
 }
 
