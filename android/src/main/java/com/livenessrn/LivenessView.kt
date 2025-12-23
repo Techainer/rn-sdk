@@ -76,7 +76,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     map.putString("livenessOriginalImage", originalImage)
     map.putString("color", "${colorString}3")
     listener?.onLivenessEvent(map)
-    // saveImagesToGallery(images)
+    saveImagesToGallery(images)
   }
 
   fun saveImagesToGallery(images: MutableList<String>?) {
