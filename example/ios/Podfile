@@ -47,17 +47,17 @@ target 'LivenessRnExample' do
     # Pods for testing
   end
 
-  # dynamic_frameworks = ['LivenessCloud', 'KeychainSwift', 'CryptoSwift', 'SignManager']
-  # pre_install do |installer|
-  #   installer.pod_targets.each do |pod|
-  #     if dynamic_frameworks.include?(pod.name)
-  #       puts "Overriding the build_type to dynamic_framework for #{pod.name}"
-  #       def pod.build_type;
-  #         Pod::BuildType.dynamic_framework
-  #       end
-  #     end
-  #   end
-  # end
+  dynamic_frameworks = ['GoogleToolboxForMac', 'GoogleUtilities', 'GoogleDataTransport', 'PromisesObjC', 'nanopb', 'MLKitCommon', 'MLKitFaceDetection', 'MLKitVision', 'MLImage']
+  pre_install do |installer|
+    installer.pod_targets.each do |pod|
+      if dynamic_frameworks.include?(pod.name)
+        puts "Overriding the build_type to dynamic_framework for #{pod.name}"
+        def pod.build_type;
+          Pod::BuildType.dynamic_framework
+        end
+      end
+    end
+  end
 
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
