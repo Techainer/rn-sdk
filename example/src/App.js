@@ -430,6 +430,7 @@ export default function App() {
               }
             }}
             isFlashCamera={isFlashCamera}
+            isDebug={true}
           />
         </View>
       )}
@@ -439,14 +440,14 @@ export default function App() {
         value={text}
         onChangeText={(newText) => setText(newText)}
       />}
-      {!status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, bottom: 20, left: (windowWidth / 3) }}>
+      {!status && (<View style={{ position: 'absolute', width: '40%', zIndex: 1000, bottom: 20, left: (windowWidth / 3) }}>
         <TouchableOpacity onPress={onStartLiveNess} style={styles.btn_liveness}>
           <Text>Start LiveNess</Text>
         </TouchableOpacity>
       </View>)}
-      {status &&(<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 32, left: 30 }}>
+      {status && (<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 32, left: 30 }}>
         <TouchableOpacity onPress={onStartLiveNess}>
-          <Text style={{ fontSize: 35, color: 'black'}}> ← </Text>
+          <Text style={{ fontSize: 35, color: 'black' }}> ← </Text>
         </TouchableOpacity>
       </View>)}
       <SimpleModal
@@ -459,12 +460,12 @@ export default function App() {
         errorMessage={errorMessage}
       />
       {loading && (
-      <View style={styles.loadingOverlay}>
-        <View style={styles.loadingBox}>
-          <Text style={{ color: 'white', fontSize: 16 }}>Đang xử lý...</Text>
+        <View style={styles.loadingOverlay}>
+          <View style={styles.loadingBox}>
+            <Text style={{ color: 'white', fontSize: 16 }}>Đang xử lý...</Text>
+          </View>
         </View>
-      </View>
-    )}
+      )}
     </View>
   );
 }

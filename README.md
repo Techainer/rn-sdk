@@ -288,6 +288,7 @@ isFlashCamera={false}
 | `style` | StyleProp | No | Component styles (recommended: `width: '100%', height: '100%'`) |
 | `onEvent` | Function | Yes | Event callback handler |
 | `isFlashCamera` | Boolean | Yes | Detection mode: `true` for Flash, `false` for 3D |
+| `isDebug` | Boolean | No | If `true`, saves captured images to the device gallery (default: `false`) |
 
 ### Event Handling
 
@@ -332,7 +333,7 @@ onEvent={(data) => {
    - `baseUrl`
    - `privateKey`
    - `publicKey`
-   - `debugging`
+   - `debugging` (Use `isDebug` instead)
    - `key` prop (the SDK handles smooth transitions internally)
 
 ## Troubleshooting

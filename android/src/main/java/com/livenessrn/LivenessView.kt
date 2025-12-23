@@ -43,6 +43,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   private lateinit var faceAuthView: FaceAuthenticationView
   var listener: LivenessFragmentListener? = null
+  var isDebug: Boolean = false
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -76,7 +77,9 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     map.putString("livenessOriginalImage", originalImage)
     map.putString("color", "${colorString}3")
     listener?.onLivenessEvent(map)
-    // saveImagesToGallery(images)
+    if (isDebug) {
+        saveImagesToGallery(images)
+    }
   }
 
   fun saveImagesToGallery(images: MutableList<String>?) {

@@ -29,6 +29,7 @@ class LivenessViewManager(
 ) : ViewGroupManager<LivenessView>(), LivenessFragmentListener {
 
   private var isFlashCamera: Boolean = false
+  private var isDebug: Boolean = false
 
   private var propWidth: Int? = null
   private var propHeight: Int? = null
@@ -115,6 +116,11 @@ class LivenessViewManager(
     this.isFlashCamera = isFlashCamera
   }
 
+  @ReactProp(name = "isDebug")
+  fun setIsDebug(view: FrameLayout, isDebug: Boolean) {
+    this.isDebug = isDebug
+  }
+
   private fun callNativeEvent(map: WritableMap) {
     val reactContext = reactContext as ReactContext
     val event = Arguments.createMap()
@@ -150,6 +156,7 @@ class LivenessViewManager(
 
     val livenessFragment = LivenessFragment()
     livenessFragment.listener = this
+    livenessFragment.isDebug = this.isDebug
 
     fragmentManager.beginTransaction()
       .replace(reactNativeViewId, livenessFragment, "LIVENESS_FRAGMENT_TAG")

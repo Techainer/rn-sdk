@@ -299,7 +299,7 @@ const Liveness = ({ route, navigation }) => {
     setLayout({ width, height });
   };
 
-  const onCheckFaceId = async ({filePath, fileLiveness, livenessThermalPath, color}) => {
+  const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
     try {
       const res = await loginFaceId({
         filePath: filePath,
@@ -336,9 +336,9 @@ const Liveness = ({ route, navigation }) => {
             // onCheckFaceId(data.nativeEvent?.data?.livenessOriginalImage, data.nativeEvent?.data?.livenessImage, data.nativeEvent?.data?.color);
             clear();
             if (isFlashCamera) {
-              onCheckFaceId({filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessImage, color: data.nativeEvent?.data?.color});
+              onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessImage, color: data.nativeEvent?.data?.color });
             } else {
-              onCheckFaceId({filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessImage});
+              onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessImage });
             }
           }}
           requestid={'sdfsdfsdfsdf'}
@@ -346,7 +346,7 @@ const Liveness = ({ route, navigation }) => {
           baseUrl={'https://ekyc-sandbox.eidas.vn/face-matching'}
           privateKey={privateKey}
           publicKey={publicKey}
-          debugging={false}
+          isDebug={false}
           isFlashCamera={isFlashCamera}
         />
       </View>

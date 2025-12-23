@@ -19,6 +19,7 @@ class LivenessView: UIView {
 
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
+    @objc var isDebug: Bool = false
 
     // MARK: - Setters
     @objc func setIsFlashCamera(_ val: Bool) {
@@ -75,11 +76,13 @@ class LivenessView: UIView {
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth2D.onResultsExtracted = { [weak self] images, color in
-        //    for image in images {
-        //      if let img = UIImage(contentsOfFile: image) {
-        //        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
-        //      }
-        //    }
+            if self?.isDebug == true {
+                for image in images {
+                  if let img = UIImage(contentsOfFile: image) {
+                    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+                  }
+                }
+            }
             self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
         }
         addSubview(faceAuth2D)
@@ -94,6 +97,13 @@ class LivenessView: UIView {
               self?.handleLiveness(value: result.rawValue)
           }
           faceAuth3D.onResultsExtracted = { [weak self] images in
+              if self?.isDebug == true {
+                  for image in images {
+                      if let img = UIImage(contentsOfFile: image) {
+                          UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+                      }
+                  }
+              }
               self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
           }
           addSubview(faceAuth3D)
