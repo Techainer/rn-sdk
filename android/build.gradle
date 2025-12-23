@@ -95,9 +95,19 @@ repositories {
   }
 
   // Thêm để Gradle tìm .aar trong thư mục android/libs
-  // flatDir {
-  //   dirs "$projectDir/libs"
-  // }
+  flatDir {
+    dirs "$projectDir/libs"
+  }
+}
+
+// Tự động thêm repository cho project cha (ví dụ: app sử dụng thư viện này)
+// Để user không phải can thiệp vào build.gradle của example
+rootProject.allprojects {
+  repositories {
+    flatDir {
+      dirs project(':liveness-rn').file('libs')
+    }
+  }
 }
 
 //def kotlin_version = getExtOrDefault("kotlinVersion")
@@ -132,7 +142,7 @@ dependencies {
   implementation "androidx.camera:camera-core:1.3.2"
   implementation 'androidx.camera:camera-lifecycle:1.3.2'
   implementation 'androidx.camera:camera-view:1.3.2'
-  implementation 'com.github.sonuos1501.sdk-android:ekycplugin:1.1.22'
+  // implementation 'com.github.sonuos1501.sdk-android:ekycplugin:1.1.22'
 
   // implementation 'com.github.hieudt32:liveness-sdk:4.3.4'
 //  implementation 'com.github.hieudt32:liveness-sdk:4.2.1'
@@ -144,7 +154,7 @@ dependencies {
   // }
 
   // Thêm AAR local bằng tên (sử dụng implementation hoặc api tuỳ cần)
-  // implementation(name: "ekycplugin-release", ext: "aar")
+  implementation(name: "ekycplugin-release", ext: "aar")
   // Nếu muốn tham chiếu trực tiếp file thay vì flatDir:
   // implementation files('libs/ekycplugin-release.aar')
 
