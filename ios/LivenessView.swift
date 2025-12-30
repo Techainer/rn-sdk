@@ -174,6 +174,7 @@ class LivenessView: UIView {
             var data: [String: Any] = ["livenessOriginalImage": base64Original as Any]
             if is3D {
                 data["livenessThermalImage"] = base64ColorOrThermal as Any
+                data["color"] = "t3"
             } else {
                 data["livenessColorImage"] = base64ColorOrThermal as Any
               data["color"] = "\(color ?? "")3"

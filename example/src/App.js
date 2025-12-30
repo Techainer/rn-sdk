@@ -415,7 +415,7 @@ export default function App() {
                   onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessColorImage, color: data.nativeEvent?.data?.color });
                 } else {
                   // console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
-                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage });
+                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage, color: data.nativeEvent?.data?.color });
                 }
               } else {
                 if (data.nativeEvent?.data?.isFlash) {
