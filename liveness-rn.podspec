@@ -17,10 +17,6 @@ Pod::Spec.new do |s|
     'ios/*.{h,m,mm,swift}'
   ]
 
-  # KHÔNG đưa .metal vào source_files
-  # Chỉ đưa metallib vào resources (để copy vào bundle)
-  s.resources = ['ios/Shaders/default.metallib']
-
   s.script_phase = {
     :name => 'Compile Metal Shaders',
     :execution_position => :before_compile,
@@ -35,8 +31,8 @@ Pod::Spec.new do |s|
       echo "⚙️ Compiling default.metal"
       xcrun metal -c "$SHADERS_DIR/default.metal" -o "$OUTPUT_DIR/default.air"
 
-      echo "📦 Linking into default.metallib"
-      xcrun metallib "$OUTPUT_DIR/default.air" -o "$OUTPUT_DIR/default.metallib"
+      echo "📦 Linking into liveness.metallib"
+      xcrun metallib "$OUTPUT_DIR/default.air" -o "$OUTPUT_DIR/liveness.metallib"
 
       echo "✅ Compile Metal Shaders done"
     SCRIPT
@@ -53,7 +49,9 @@ Pod::Spec.new do |s|
 
   s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
 
-  s.resources = 'ios/Shaders/*.metal'
+  # KHÔNG đưa .metal vào source_files
+  # Chỉ đưa metallib vào resources (để copy vào bundle)
+  s.resources = ['ios/Shaders/liveness.metallib', 'ios/Shaders/*.metal']
   s.swift_version = "5.0"
 
   # Enable modular headers for better compatibility
