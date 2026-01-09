@@ -276,6 +276,7 @@ isFlashCamera={false}
 **Returns:**
 - `livenessOriginalImage`: Original photo (base64)
 - `livenessThermalImage`: Depth/thermal image (base64)
+- `color`: Thermal color code used ('t3')
 
 **Use case:** iPhone X or newer with depth camera support
 
