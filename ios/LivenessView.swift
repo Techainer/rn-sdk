@@ -10,7 +10,7 @@ class LivenessView: UIView {
     // MARK: - Properties
     private var faceAuth2D: FaceAuthenticationView!
     private var faceAuth3D: FaceAuthentication3DView!
-    
+
     private var cameraStarted = false
     private var _isFlashCamera = false
     var isFlashCamera: Bool { _isFlashCamera }
@@ -44,13 +44,13 @@ class LivenessView: UIView {
     deinit {
       dispose()
     }
-    
+
     private func dispose() {
       stopAllCameras()
       unregisterFromNotifications()
       brightnessHelper.setBrightness(0.3)
     }
-  
+
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
@@ -170,7 +170,7 @@ class LivenessView: UIView {
         DispatchQueue.global(qos: .utility).async {
             let base64Original = original.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
             let base64ColorOrThermal = colorOrThermal.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
-            
+
             var data: [String: Any] = ["livenessOriginalImage": base64Original as Any]
             if is3D {
                 data["livenessThermalImage"] = base64ColorOrThermal as Any
@@ -211,11 +211,11 @@ class LivenessView: UIView {
         guard var image = UIImage(contentsOfFile: filePath) else { return nil }
         var compression: CGFloat = 1.0
         var data = image.jpegData(compressionQuality: compression)
-        
+
         while let d = data, d.count > maxSizeInKB * 1024 {
             compression -= 0.1
             data = image.jpegData(compressionQuality: compression)
-            
+
             if compression < 0.1 {
                 let newSize = CGSize(width: image.size.width * 0.9, height: image.size.height * 0.9)
                 UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
