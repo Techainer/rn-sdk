@@ -1,1 +1,8 @@
-{}
+{
+  "ignore_dirs": [
+    "example/android",
+    "example/ios",
+    "example/build",
+    ".git"
+  ]
+}

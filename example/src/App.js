@@ -430,7 +430,7 @@ export default function App() {
               }
             }}
             isFlashCamera={isFlashCamera}
-            isDebug={false}
+            isDebug={true}
           />
         </View>
       )}
