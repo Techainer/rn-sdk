@@ -127,9 +127,8 @@ class LivenessViewManager(
     val event = Arguments.createMap()
     event.putMap("data", map)
     reactContext
-    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-    .emit("nativeClick", event)
-
+      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+      .emit("nativeClick", event)
   }
 
   private fun createFragment(root: FrameLayout, reactNativeViewId: Int) {
