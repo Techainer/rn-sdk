@@ -23,7 +23,6 @@ import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.uimanager.annotations.ReactPropGroup
 import com.facebook.react.uimanager.events.RCTEventEmitter
 import java.util.Random
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 class LivenessViewManager(
   private val reactContext: ReactApplicationContext
@@ -101,8 +100,12 @@ class LivenessViewManager(
     super.receiveCommand(root, commandId, args)
     val reactNativeViewId = requireNotNull(args).getInt(0)
     id = reactNativeViewId
+    Log.d("LivenessViewManager", "receiveCommand - View ID assigned: $id")
     when (commandId.toInt()) {
-      COMMAND_CREATE -> createFragment(root, reactNativeViewId)
+      COMMAND_CREATE -> {
+        Log.d("LivenessViewManager", "Creating fragment for view ID: $id")
+        createFragment(root, reactNativeViewId)
+      }
     }
   }
 
@@ -122,13 +125,34 @@ class LivenessViewManager(
     this.isDebug = isDebug
   }
 
-  private fun callNativeEvent(map: WritableMap) {
-    val reactContext = reactContext as ReactContext
-    val event = Arguments.createMap()
-    event.putMap("data", map)
-    reactContext
-      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-      .emit("nativeClick", event)
+  private fun callNativeEvent(viewId: Int, map: WritableMap) {
+    try {
+      // Validate ID trước khi gửi event
+      if (viewId == -1) {
+        Log.e("LivenessViewManager", "Cannot send event: Invalid view ID (-1)")
+        return
+      }
+      Log.d("LivenessViewManager", "Sending event to view ID: $viewId")
+      val reactContext = reactContext as ReactContext
+      val event = Arguments.createMap()
+      event.putMap("data", map)
+      Handler(Looper.getMainLooper()).post {
+        try {
+          reactContext
+            .getJSModule(RCTEventEmitter::class.java)
+            ?.receiveEvent(
+              viewId,
+              "nativeClick",
+              event
+            )
+          Log.d("LivenessViewManager", "Event sent successfully to view ID: $viewId")
+        } catch (e: Exception) {
+          Log.e("LivenessViewManager", "Error in receiveEvent: ${e.message}", e)
+        }
+      }
+    } catch (e: Exception) {
+      Log.e("LivenessViewManager", "Error preparing event: ${e.message}", e)
+    }
   }
 
   private fun createFragment(root: FrameLayout, reactNativeViewId: Int) {
@@ -156,6 +180,7 @@ class LivenessViewManager(
     val livenessFragment = LivenessFragment()
     livenessFragment.listener = this
     livenessFragment.isDebug = this.isDebug
+    livenessFragment.viewId = reactNativeViewId
 
     fragmentManager.beginTransaction()
       .replace(reactNativeViewId, livenessFragment, "LIVENESS_FRAGMENT_TAG")
@@ -197,7 +222,8 @@ class LivenessViewManager(
     var originalBrightness: Float? = null
   }
 
-  override fun onLivenessEvent(event: WritableMap) {
-    callNativeEvent(event)
+  override fun onLivenessEvent(viewId: Int, event: WritableMap) {
+    Log.d("LivenessViewManager", "onLivenessEvent received for view ID: $viewId")
+    callNativeEvent(viewId, event)
   }
 }

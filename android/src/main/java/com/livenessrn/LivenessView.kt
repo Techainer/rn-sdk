@@ -31,7 +31,7 @@ import java.util.Date;
 import com.example.ekycplugin.eykc.utils.ImageUtils;
 
 interface LivenessFragmentListener {
-  fun onLivenessEvent(event: WritableMap)
+  fun onLivenessEvent(viewId: Int, event: WritableMap)
 }
 
 class LivenessView @JvmOverloads constructor(
@@ -44,6 +44,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   private lateinit var faceAuthView: FaceAuthenticationView
   var listener: LivenessFragmentListener? = null
   var isDebug: Boolean = false
+  var viewId: Int = -1
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -76,7 +77,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     map.putString("livenessColorImage", colorImage)
     map.putString("livenessOriginalImage", originalImage)
     map.putString("color", "${colorString}3")
-    listener?.onLivenessEvent(map)
+    listener?.onLivenessEvent(viewId, map)
     if (isDebug) {
         saveImagesToGallery(images)
     }
