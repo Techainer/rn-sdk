@@ -418,7 +418,7 @@ export default function App() {
                   setIsFlashCamera(true);
                 } else {
                   // Clear hết timeout
-                  clear();
+                  // clear();
                   setIsFlashCamera(false);
                 }
               }
