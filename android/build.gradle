@@ -92,9 +92,9 @@ repositories {
   gradlePluginPortal()
   maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
   maven { url 'https://www.jitpack.io'}
-  maven {
-    setUrl("./repository")
-  }
+  // maven {
+  //   setUrl("./repository")
+  // }
 
   // Thêm để Gradle tìm .aar trong thư mục android/libs
   flatDir {
