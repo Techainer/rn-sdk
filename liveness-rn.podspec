@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.platforms    = { :ios => '12.4' }
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
-  # s.vendored_frameworks = "ios/FlashLiveness.framework"
+  # s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
   s.source_files = "ios/**/*.{h,m,mm,swift}"
   
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
