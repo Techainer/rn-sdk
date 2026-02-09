@@ -27,7 +27,7 @@ target 'LivenessRnExample' do
   pod 'QTSLiveness'
   pod 'SignManager', '1.0.6'
   # pod 'QTSLiveness', '1.0.2'
-  pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
+  # pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
 
   # Pods for LivenessCloudSample
 
