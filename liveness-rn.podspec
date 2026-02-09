@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
 
   s.platforms    = { :ios => '12.4' }
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
-  # s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
+  s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   # s.dependency "QTSLiveness", '~> 1.0.2'
   s.dependency "QTSLiveness"
-  s.dependency "FlashLiveness"
+  # s.dependency "FlashLiveness"
   s.dependency 'KeychainSwift', '~> 19.0'
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
