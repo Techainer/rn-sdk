@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.exclude_files = "ios/Frameworks/**/*.{h,m,mm,swift}"
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   # s.dependency "QTSLiveness", '~> 1.0.2'

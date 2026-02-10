@@ -1,0 +1,4 @@
+framework module FlashLiveness {
+  header "FlashLiveness-Swift.h"
+  requires objc
+}
