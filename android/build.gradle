@@ -92,6 +92,20 @@ repositories {
   maven {
     setUrl("$rootDir/repository")
   }
+
+  // Thêm để Gradle tìm .aar trong thư mục android/libs
+  flatDir {
+    dirs "$projectDir/libs"
+  }
+}
+
+// Tự động thêm repository cho project cha (app sử dụng thư viện này)
+rootProject.allprojects {
+  repositories {
+    flatDir {
+      dirs project(':liveness-rn').file('libs')
+    }
+  }
 }
 
 //def kotlin_version = getExtOrDefault("kotlinVersion")
@@ -111,8 +125,11 @@ dependencies {
   implementation('org.bouncycastle:bcpkix-jdk18on:1.73')
   implementation('com.nimbusds:nimbus-jose-jwt:9.31')
   implementation('commons-codec:commons-codec:1.16.0')
-  implementation 'com.github.hieudt32:liveness-sdk:4.3.4'
+  // implementation 'com.github.hieudt32:liveness-sdk:4.3.4'
 //  implementation 'com.github.hieudt32:liveness-sdk:4.2.1'
+
+  // Dùng AAR local từ thư mục android/libs
+  implementation(name: "ekycplugin-release", ext: "aar")
 
   // implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   // implementation 'com.github.ThuyTruongVan:liveness_sdk_android:1.1.8'
