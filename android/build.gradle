@@ -129,7 +129,7 @@ dependencies {
 //  implementation 'com.github.hieudt32:liveness-sdk:4.2.1'
 
   // Dùng AAR local từ thư mục android/libs
-  implementation(name: "ekycplugin-release", ext: "aar")
+  implementation(name: "sdkliveness-release", ext: "aar")
 
   // implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   // implementation 'com.github.ThuyTruongVan:liveness_sdk_android:1.1.8'
