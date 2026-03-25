@@ -3,11 +3,11 @@ import React
 import UIKit
 import LocalAuthentication
 import FlashLiveness
-import QTSLiveness
+import ThermalLivenessCloud
 import LocalAuthentication
 
 @available(iOS 13.0, *)
-class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLiveness.QTSLivenessUtilityDetectorDelegate {
+class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, ThermalLivenessCloud.LivenessUtilityDetectorDelegate {
   var transactionId = ""
   var livenessDetector: Any?
   private var viewMask: LivenessMaskView!
@@ -154,10 +154,10 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
                 // Reset specific configurations or data for FlashLiveness if needed
                 detector.stopLiveness() // Stop the session for FlashLiveness
                 print("FlashLiveness detector stopped and reset.")
-            } else if let detector = livenessDetector as? QTSLiveness.QTSLivenessDetector {
-                // Reset specific configurations or data for QTSLiveness if needed
-                detector.stopLiveness() // Stop the session for QTSLiveness
-                print("QTSLiveness detector stopped and reset.")
+            } else if let detector = livenessDetector as? ThermalLivenessCloud.LivenessUtilityDetector {
+                // Reset specific configurations or data for ThermalLivenessCloud if needed
+                detector.stopLiveness() // Stop the session for ThermalLivenessCloud
+                print("ThermalLivenessCloud detector stopped and reset.")
             }
         } else {
             // Fallback on earlier versions
@@ -172,22 +172,11 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
       do {
           let dataRes: [String: Any]
           if !isFlashCamera && checkfaceID(), #available(iOS 15.0, *) {
-              self.livenessDetector = QTSLiveness.QTSLivenessDetector.createLivenessDetector(
+              self.livenessDetector = ThermalLivenessCloud.LivenessUtil.createLivenessDetector(
                   previewView: self,
-                  threshold: .low,
-                  smallFaceThreshold: 0.25,
                   debugging: debugging,
                   delegate: self,
-                  livenessMode: .local,
-                  localLivenessThreshold: {
-                    if #available(iOS 18.0, *) {
-                         return 0.97
-                    } else {
-                        return 0.97
-                    }
-                }(),
-                  calculationMode: .combine,
-                  additionHeader: ["header": "header"]
+                  livenessMode: .threeDimension
               )
             //   viewMask = LivenessMaskView(frame: bounds)
             //   viewMask.backgroundColor = UIColor.clear
@@ -229,7 +218,7 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
         
             if let flashDetector = detector as? FlashLiveness.LivenessUtilityDetector {
                 try flashDetector.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
-            } else if #available(iOS 15.0, *), let qtDetector = detector as? QTSLiveness.QTSLivenessDetector {
+            } else if #available(iOS 15.0, *), let qtDetector = detector as? ThermalLivenessCloud.LivenessUtilityDetector {
                 try qtDetector.getVerificationRequiresAndStartSession(transactionId: self.transactionId)
             }
         }
@@ -304,15 +293,15 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
             "color": images.images?.first?.colorString ?? "",
         ]
           pushEvent(data: dataRes)
-        (livenessDetector as! LivenessUtilityDetector).stopLiveness()
+        (livenessDetector as! FlashLiveness.LivenessUtilityDetector).stopLiveness()
     }
     
     @available(iOS 15.0, *)
-    func liveness(liveness: QTSLivenessDetector, didFail withError: QTSLivenessError) {
+    func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, didFail withError: ThermalLivenessCloud.LivenessError) {
         //        liveness.stopLiveness()
         //        pushEvent(data: withError)
         print(withError)
-//        if withError == QTSLiveness.QTSLivenessError.notSupported || withError == QTSLiveness.QTSLivenessError.arSessionFailed {
+//        if withError == ThermalLivenessCloud.QTSLivenessError.notSupported || withError == ThermalLivenessCloud.QTSLivenessError.arSessionFailed {
 //            do {
 //                upLightScreen()
 //                resetLivenessDetector()
@@ -347,14 +336,15 @@ class LivenessView: UIView, FlashLiveness.LivenessUtilityDetectorDelegate, QTSLi
 //    }
     
     @available(iOS 15.0, *)
-    func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinishLocalLiveness score: Float, maxtrix: [Float], image: UIImage, thermal_image: UIImage, videoURL: URL?){
-//        let livenessImage = saveImageToFile(image: image, isOriginal: false) ?? ""
-      let livenessImage = resizeUIImageToBase64(image: thermal_image) ?? ""
-      let livenessOriginalImage = resizeUIImageToBase64(image: image) ?? ""
+    func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, didFinish verificationImage: UIImage, livenesScore: Float, faceMatchingScore: Float, result: Bool, message: String, videoURL: URL?, response: ThermalLivenessCloud.LivenessResult?) {
+      let livenessImage = resizeUIImageToBase64(image: verificationImage) ?? ""
        let dataRes: [String: Any] = [
             "livenessThermalImage": livenessImage,
-           "livenessOriginalImage": livenessOriginalImage,
-           "vector": maxtrix,
+           "livenessOriginalImage": livenessImage,
+           "livenesScore": livenesScore,
+           "faceMatchingScore": faceMatchingScore,
+           "result": result,
+           "message": message,
        ]
         pushEvent(data: dataRes)
         print(dataRes)

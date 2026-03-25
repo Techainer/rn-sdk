@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios15.5 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name LivenessCloud
+// swift-module-flags: -target x86_64-apple-ios15.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name ThermalLivenessCloud
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import ARKit
 import AVFoundation
@@ -10,13 +10,13 @@ import CoreVideo
 import CryptoSwift
 import Foundation
 import KeychainSwift
-@_exported import LivenessCloud
 import Metal
 import MetalKit
 import MobileCoreServices
 import ObjectMapper
 import SignManager
 import Swift
+@_exported import ThermalLivenessCloud
 import UIKit
 import Vision
 import _Concurrency
@@ -24,21 +24,21 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class Networking : ObjectiveC.NSObject {
-  @objc public static let shared: LivenessCloud.Networking
-  @objc public func setup(appId: Swift.String, logLevel: LivenessCloud.LogLevel = .debug, url: Swift.String, publicKey: Swift.String, privateKey: Swift.String)
-  @objc public func generateDeviceInfor(deviceId: Swift.String = "", additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], ownerId: Swift.String = "") -> LivenessCloud.LivenessResponse
+  @objc public static let shared: ThermalLivenessCloud.Networking
+  @objc public func setup(appId: Swift.String, logLevel: ThermalLivenessCloud.LogLevel = .debug, url: Swift.String, publicKey: Swift.String, privateKey: Swift.String)
+  @objc public func generateDeviceInfor(deviceId: Swift.String = "", additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], ownerId: Swift.String = "") -> ThermalLivenessCloud.LivenessResponse
   @objc public func resetDeviceInfo()
   @objc override dynamic public init()
   @objc deinit
 }
 @available(iOS 13.0, *)
-extension LivenessCloud.Networking {
+extension ThermalLivenessCloud.Networking {
   public func uploadImage(normalImage: [UIKit.UIImage], color: Swift.Int, sessionId: Swift.String = "") async throws -> [Swift.String : Any]
   public func doThermalFaceAntiSpoofingCheck(normalImage: UIKit.UIImage, thermalImage: UIKit.UIImage) async throws -> [Swift.String : Any]
   public func doFaceAntiSpoofingCheck(image: UIKit.UIImage) async throws -> [Swift.String : Any]
   public func doFlashFaceAntiSpoofingCheck(image: UIKit.UIImage, color: Swift.Int) async throws -> [Swift.String : Any]
-  @objc dynamic public func initTransaction(duration: Swift.Int = 30, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], clientTransactionId: Swift.String = "") async throws -> LivenessCloud.LivenessResponse
-  @objc dynamic public func registerFace(faceImage: UIKit.UIImage, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:]) async throws -> LivenessCloud.LivenessResponse
+  @objc dynamic public func initTransaction(duration: Swift.Int = 30, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], clientTransactionId: Swift.String = "") async throws -> ThermalLivenessCloud.LivenessResponse
+  @objc dynamic public func registerFace(faceImage: UIKit.UIImage, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:]) async throws -> ThermalLivenessCloud.LivenessResponse
 }
 public struct MultipartRequest {
   public let boundary: Swift.String
@@ -57,7 +57,7 @@ public struct MultipartRequest {
   public var isValidating: Swift.Bool
   public var additionHeader: [Swift.String : Swift.String]
   public var additionParam: [Swift.String : Any]
-  @objc public func calculateLiveness(transactionId: Swift.String = "", frame: ARKit.ARFrame, isOnlyLiveness: Swift.Bool = false, onDone: ((Swift.Bool, Swift.Float, Swift.Float, Swift.Bool, Swift.String, UIKit.UIImage, LivenessCloud.LivenessResult?) -> Swift.Void)?)
+  @objc public func calculateLiveness(transactionId: Swift.String = "", frame: ARKit.ARFrame, isOnlyLiveness: Swift.Bool = false, onDone: ((Swift.Bool, Swift.Float, Swift.Float, Swift.Bool, Swift.String, UIKit.UIImage, ThermalLivenessCloud.LivenessResult?) -> Swift.Void)?)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -69,9 +69,9 @@ public struct MultipartRequest {
   case error = 4
   case none = 5
   public init?(rawValue: Swift.Int)
-  public typealias AllCases = [LivenessCloud.LogLevel]
+  public typealias AllCases = [ThermalLivenessCloud.LogLevel]
   public typealias RawValue = Swift.Int
-  nonisolated public static var allCases: [LivenessCloud.LogLevel] {
+  nonisolated public static var allCases: [ThermalLivenessCloud.LogLevel] {
     get
   }
   public var rawValue: Swift.Int {
@@ -79,7 +79,7 @@ public struct MultipartRequest {
   }
 }
 @_hasMissingDesignatedInitializers public class Log {
-  public static var logLevel: LivenessCloud.LogLevel
+  public static var logLevel: ThermalLivenessCloud.LogLevel
   public static var storeLogs: Swift.Bool
   public static var logData: [Swift.String]
   public class func verbose(_ msg: @autoclosure () -> Swift.String)
@@ -92,8 +92,8 @@ public struct MultipartRequest {
 }
 public struct TOTP {
   public init()
-  public func generateRange(degree: Swift.Int, digits: LivenessCloud.OTPDigits = .six, secret: Foundation.Data, at date: Foundation.Date = .init()) throws -> [Swift.String]
-  public func generate(digits: LivenessCloud.OTPDigits = .six, secret: Foundation.Data, offset: Swift.Int = 0, at date: Foundation.Date = .init()) throws -> Swift.String
+  public func generateRange(degree: Swift.Int, digits: ThermalLivenessCloud.OTPDigits = .six, secret: Foundation.Data, at date: Foundation.Date = .init()) throws -> [Swift.String]
+  public func generate(digits: ThermalLivenessCloud.OTPDigits = .six, secret: Foundation.Data, offset: Swift.Int = 0, at date: Foundation.Date = .init()) throws -> Swift.String
 }
 public enum OTPDigits : Swift.Int {
   case six
@@ -111,20 +111,20 @@ public struct ConfigData {
 }
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessUtil : ObjectiveC.NSObject {
-  @objc public class func createLivenessDetector(previewView: UIKit.UIView, threshold: LivenessCloud.LivenessUtilitySensitivityThreshold = .medium, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = false, delegate: (any LivenessCloud.LivenessUtilityDetectorDelegate)?, livenessMode: LivenessCloud.LivenessMode = .threeDimension, isWink: Swift.Bool = false, isSmile: Swift.Bool = false, frameTime: Swift.Double = 0.008, isOnlyLiveness: Swift.Bool = false, additionParam: [Swift.String : Any] = [:], additionHeader: [Swift.String : Swift.String] = [:]) -> LivenessCloud.LivenessUtilityDetector
+  @objc public class func createLivenessDetector(previewView: UIKit.UIView, threshold: ThermalLivenessCloud.LivenessUtilitySensitivityThreshold = .medium, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = false, delegate: (any ThermalLivenessCloud.LivenessUtilityDetectorDelegate)?, livenessMode: ThermalLivenessCloud.LivenessMode = .threeDimension, isWink: Swift.Bool = false, isSmile: Swift.Bool = false, frameTime: Swift.Double = 0.008, isOnlyLiveness: Swift.Bool = false, additionParam: [Swift.String : Any] = [:], additionHeader: [Swift.String : Swift.String] = [:]) -> ThermalLivenessCloud.LivenessUtilityDetector
   @objc override dynamic public init()
   @objc deinit
 }
 @available(iOS 13.0, *)
 @objc public protocol LivenessUtilityDetectorDelegate {
-  @objc optional func liveness(liveness: LivenessCloud.LivenessUtilityDetector, startLivenessAction action: LivenessCloud.LivenessAction)
-  @objc optional func liveness(liveness: LivenessCloud.LivenessUtilityDetector, didFail withError: LivenessCloud.LivenessError)
-  @objc optional func liveness(liveness: LivenessCloud.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, livenesScore: Swift.Float, faceMatchingScore: Swift.Float, result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?, response: LivenessCloud.LivenessResult?)
-  @objc optional func liveness(liveness: LivenessCloud.LivenessUtilityDetector, didFinish result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?, response: LivenessCloud.LivenessResult?)
+  @objc optional func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, startLivenessAction action: ThermalLivenessCloud.LivenessAction)
+  @objc optional func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, didFail withError: ThermalLivenessCloud.LivenessError)
+  @objc optional func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, didFinish verificationImage: UIKit.UIImage, livenesScore: Swift.Float, faceMatchingScore: Swift.Float, result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?, response: ThermalLivenessCloud.LivenessResult?)
+  @objc optional func liveness(liveness: ThermalLivenessCloud.LivenessUtilityDetector, didFinish result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?, response: ThermalLivenessCloud.LivenessResult?)
 }
 @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @objc public class LivenessUtilityDetector : ObjectiveC.NSObject {
-  weak public var delegate: (any LivenessCloud.LivenessUtilityDetectorDelegate)?
+  weak public var delegate: (any ThermalLivenessCloud.LivenessUtilityDetectorDelegate)?
   public var cardId: Swift.String
   @objc public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
   @objc public func stopLiveness()
@@ -220,7 +220,7 @@ extension Foundation.Data {
   }
 }
 @_hasMissingDesignatedInitializers @objc public class ImageAction : ObjectiveC.NSObject {
-  public var action: LivenessCloud.LivenessAction?
+  public var action: ThermalLivenessCloud.LivenessAction?
   public var image: Swift.String?
   @objc deinit
 }
@@ -235,20 +235,20 @@ extension Foundation.Data {
   }
 }
 @available(iOS 13.0, *)
-@objc public class DepthLivenessDetector : LivenessCloud.LivenessUtilityDetector {
-  @objc public init(previewView: UIKit.UIView, threshold: LivenessCloud.LivenessUtilitySensitivityThreshold = .high, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = true, isWink: Swift.Bool = false, isSmile: Swift.Bool = false, transactionId: Swift.String = "", frameTime: Swift.Double = 0.008, isOnlyLiveness: Swift.Bool = false)
+@objc public class DepthLivenessDetector : ThermalLivenessCloud.LivenessUtilityDetector {
+  @objc public init(previewView: UIKit.UIView, threshold: ThermalLivenessCloud.LivenessUtilitySensitivityThreshold = .high, delay: Swift.Double = 0, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = true, isWink: Swift.Bool = false, isSmile: Swift.Bool = false, transactionId: Swift.String = "", frameTime: Swift.Double = 0.008, isOnlyLiveness: Swift.Bool = false)
   @objc public func startLivenessDetection()
   @objc override public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
   @objc override public func stopLiveness()
   @objc deinit
 }
 @available(iOS 13.0, *)
-extension LivenessCloud.DepthLivenessDetector : ARKit.ARSessionDelegate {
+extension ThermalLivenessCloud.DepthLivenessDetector : ARKit.ARSessionDelegate {
   @objc dynamic public func session(_ session: ARKit.ARSession, didUpdate frame: ARKit.ARFrame)
   @objc dynamic public func session(_ session: ARKit.ARSession, didUpdate anchors: [ARKit.ARAnchor])
 }
 @available(iOS 13.0, *)
-extension LivenessCloud.DepthLivenessDetector : ARKit.ARSCNViewDelegate {
+extension ThermalLivenessCloud.DepthLivenessDetector : ARKit.ARSCNViewDelegate {
   @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didRemove node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
   @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didAdd node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
   @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didUpdate node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
@@ -277,21 +277,21 @@ extension LivenessCloud.DepthLivenessDetector : ARKit.ARSCNViewDelegate {
   public func mapping(map: ObjectMapper.Map)
   @objc deinit
 }
-extension LivenessCloud.LogLevel : Swift.Equatable {}
-extension LivenessCloud.LogLevel : Swift.Hashable {}
-extension LivenessCloud.LogLevel : Swift.RawRepresentable {}
-extension LivenessCloud.OTPDigits : Swift.Equatable {}
-extension LivenessCloud.OTPDigits : Swift.Hashable {}
-extension LivenessCloud.OTPDigits : Swift.RawRepresentable {}
-extension LivenessCloud.LivenessMode : Swift.Equatable {}
-extension LivenessCloud.LivenessMode : Swift.Hashable {}
-extension LivenessCloud.LivenessMode : Swift.RawRepresentable {}
-extension LivenessCloud.LivenessError : Swift.Equatable {}
-extension LivenessCloud.LivenessError : Swift.Hashable {}
-extension LivenessCloud.LivenessError : Swift.RawRepresentable {}
-extension LivenessCloud.LivenessAction : Swift.Equatable {}
-extension LivenessCloud.LivenessAction : Swift.Hashable {}
-extension LivenessCloud.LivenessAction : Swift.RawRepresentable {}
-extension LivenessCloud.LivenessUtilitySensitivityThreshold : Swift.Equatable {}
-extension LivenessCloud.LivenessUtilitySensitivityThreshold : Swift.Hashable {}
-extension LivenessCloud.LivenessUtilitySensitivityThreshold : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.LogLevel : Swift.Equatable {}
+extension ThermalLivenessCloud.LogLevel : Swift.Hashable {}
+extension ThermalLivenessCloud.LogLevel : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.OTPDigits : Swift.Equatable {}
+extension ThermalLivenessCloud.OTPDigits : Swift.Hashable {}
+extension ThermalLivenessCloud.OTPDigits : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.LivenessMode : Swift.Equatable {}
+extension ThermalLivenessCloud.LivenessMode : Swift.Hashable {}
+extension ThermalLivenessCloud.LivenessMode : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.LivenessError : Swift.Equatable {}
+extension ThermalLivenessCloud.LivenessError : Swift.Hashable {}
+extension ThermalLivenessCloud.LivenessError : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.LivenessAction : Swift.Equatable {}
+extension ThermalLivenessCloud.LivenessAction : Swift.Hashable {}
+extension ThermalLivenessCloud.LivenessAction : Swift.RawRepresentable {}
+extension ThermalLivenessCloud.LivenessUtilitySensitivityThreshold : Swift.Equatable {}
+extension ThermalLivenessCloud.LivenessUtilitySensitivityThreshold : Swift.Hashable {}
+extension ThermalLivenessCloud.LivenessUtilitySensitivityThreshold : Swift.RawRepresentable {}

@@ -1,0 +1,11 @@
+framework module ThermalLivenessCloud {
+  umbrella header "ThermalLivenessCloud.h"
+  export *
+
+  module * { export * }
+}
+
+module ThermalLivenessCloud.Swift {
+  header "ThermalLivenessCloud-Swift.h"
+  requires objc
+}

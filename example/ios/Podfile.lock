@@ -17,17 +17,14 @@ PODS:
   - hermes-engine/Pre-built (0.72.10)
   - KeychainSwift (19.0.0)
   - libevent (2.1.12)
-  - liveness-rn (1.0.32):
-    - KeychainSwift (~> 19.0)
-    - QTSLiveness
-    - RCT-Folly (= 2021.07.22.00)
-    - React-Core
-  - ObjectMapper (4.2.0)
-  - QTSLiveness (1.2.9):
-    - CryptoSwift (~> 1.8.2)
+  - liveness-rn (1.1.0):
+    - CryptoSwift (~> 1.8)
     - KeychainSwift (~> 19.0)
     - ObjectMapper (~> 4.2)
-    - SignManager (~> 1.0.5)
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - SignManager
+  - ObjectMapper (4.2.0)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -456,7 +453,6 @@ DEPENDENCIES:
   - libevent (~> 2.1.12)
   - liveness-rn (from `../..`)
   - ObjectMapper (= 4.2)
-  - QTSLiveness
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -502,7 +498,6 @@ SPEC REPOS:
     - KeychainSwift
     - libevent
     - ObjectMapper
-    - QTSLiveness
     - SignManager
     - SocketRocket
 
@@ -603,9 +598,8 @@ SPEC CHECKSUMS:
   hermes-engine: 90e4033deb00bee33330a9f15eff0f874bd82f6d
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  liveness-rn: 2f6f6d14a33f000217c8b4fc244af79e8ed097f9
+  liveness-rn: 09dc58b9bae92b2b785a1403ad9ca5bae0f1e04b
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  QTSLiveness: 67ce723c281d0f57b578c6f3c6b423ef933a9641
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
@@ -644,6 +638,6 @@ SPEC CHECKSUMS:
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: d0003f849d2b5224c072cef6568b540d8bb15cd3
 
-PODFILE CHECKSUM: 85bc298ee91a1bccce1ab233f1389cdecf697787
+PODFILE CHECKSUM: 8e9c525f28e539a57811343678f7b748bbd671eb
 
 COCOAPODS: 1.16.2
