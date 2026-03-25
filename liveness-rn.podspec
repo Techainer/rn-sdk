@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => '12.4' }
+  s.platforms    = { :ios => '15.5' }
   s.source       = { :git => "https://github.com/Techainer/rn-sdk.git", :tag => "#{s.version}" }
   s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
   s.source_files = "ios/**/*.{h,m,mm,swift}"
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   # s.dependency "QTSLiveness", '~> 1.0.2'
-  s.dependency "QTSLiveness"
+  # s.dependency "QTSLiveness"
   # s.dependency "FlashLiveness"
   s.dependency 'KeychainSwift', '~> 19.0'
 
