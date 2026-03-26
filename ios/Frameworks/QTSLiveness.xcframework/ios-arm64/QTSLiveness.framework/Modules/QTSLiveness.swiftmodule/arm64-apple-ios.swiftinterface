@@ -1,0 +1,438 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios15.5 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name QTSLiveness
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import ARKit
+import AVFoundation
+import Accelerate
+import Combine
+import CoreGraphics
+import CoreImage
+import CoreML
+import CoreMedia
+import CoreVideo
+import CryptoSwift
+import Foundation
+import KeychainSwift
+import Metal
+import MetalKit
+import ObjectMapper
+@_exported import QTSLiveness
+import SignManager
+import Swift
+import UIKit
+import VideoToolbox
+import Vision
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public func argmax(_ array: [Swift.Float], count: Swift.Int? = nil) -> (Swift.Int, Swift.Float)
+public func argmax(_ ptr: Swift.UnsafePointer<Swift.Float>, count: Swift.Int, stride: Swift.Int = 1) -> (Swift.Int, Swift.Float)
+public func argmax(_ array: [Swift.Double], count: Swift.Int? = nil) -> (Swift.Int, Swift.Double)
+public func argmax(_ ptr: Swift.UnsafePointer<Swift.Double>, count: Swift.Int, stride: Swift.Int = 1) -> (Swift.Int, Swift.Double)
+public func clamp<T>(_ x: T, min: T, max: T) -> T where T : Swift.Comparable
+public func sigmoid(_ x: Swift.Float) -> Swift.Float
+public func sigmoid(_ x: Swift.Double) -> Swift.Double
+public func sigmoid(_ x: Swift.UnsafeMutablePointer<Swift.Float>, count: Swift.Int)
+public func sigmoid(_ x: Swift.UnsafeMutablePointer<Swift.Double>, count: Swift.Int)
+public func softmax(_ x: [Swift.Float]) -> [Swift.Float]
+extension UIKit.UIImage {
+  @nonobjc public func toByteArrayRGBA() -> [Swift.UInt8]?
+  @nonobjc public class func fromByteArrayRGBA(_ bytes: [Swift.UInt8], width: Swift.Int, height: Swift.Int, scale: CoreFoundation.CGFloat = 0, orientation: UIKit.UIImage.Orientation = .up) -> UIKit.UIImage?
+  @nonobjc public class func fromByteArrayGray(_ bytes: [Swift.UInt8], width: Swift.Int, height: Swift.Int, scale: CoreFoundation.CGFloat = 0, orientation: UIKit.UIImage.Orientation = .up) -> UIKit.UIImage?
+}
+public func rotate90PixelBuffer(from srcPixelBuffer: CoreVideo.CVPixelBuffer, to dstPixelBuffer: CoreVideo.CVPixelBuffer, factor: Swift.UInt8)
+public func rotate90PixelBuffer(_ srcPixelBuffer: CoreVideo.CVPixelBuffer, factor: Swift.UInt8) -> CoreVideo.CVPixelBuffer?
+extension CoreGraphics.CGImage {
+  public func pixelBuffer() -> CoreVideo.CVPixelBuffer?
+  public func pixelBuffer(width: Swift.Int, height: Swift.Int, orientation: ImageIO.CGImagePropertyOrientation) -> CoreVideo.CVPixelBuffer?
+  public func pixelBufferGray() -> CoreVideo.CVPixelBuffer?
+  public func pixelBufferGray(width: Swift.Int, height: Swift.Int, orientation: ImageIO.CGImagePropertyOrientation) -> CoreVideo.CVPixelBuffer?
+  public func pixelBuffer(width: Swift.Int, height: Swift.Int, pixelFormatType: Darwin.OSType, colorSpace: CoreGraphics.CGColorSpace, alphaInfo: CoreGraphics.CGImageAlphaInfo, orientation: ImageIO.CGImagePropertyOrientation) -> CoreVideo.CVPixelBuffer?
+}
+extension CoreGraphics.CGImage {
+  public static func create(pixelBuffer: CoreVideo.CVPixelBuffer) -> CoreGraphics.CGImage?
+  public static func create(pixelBuffer: CoreVideo.CVPixelBuffer, context: CoreImage.CIContext) -> CoreGraphics.CGImage?
+}
+extension CoreML.MLModel {
+  public func imageConstraint(forInput inputName: Swift.String) -> CoreML.MLImageConstraint?
+}
+@available(iOS 13.0, tvOS 13.0, *)
+extension CoreML.MLModel {
+  public func featureValue(fromUIImage image: UIKit.UIImage, forInput inputName: Swift.String, orientation: ImageIO.CGImagePropertyOrientation = .up, options: [CoreML.MLFeatureValue.ImageOption : Any]? = nil) -> CoreML.MLFeatureValue?
+}
+@available(iOS 13.0, tvOS 13.0, macOS 10.15, *)
+extension CoreML.MLModel {
+  public func featureValue(fromCGImage image: CoreGraphics.CGImage, forInput inputName: Swift.String, orientation: ImageIO.CGImagePropertyOrientation = .up, options: [CoreML.MLFeatureValue.ImageOption : Any]? = nil) -> CoreML.MLFeatureValue?
+  public func featureValue(fromImageAt url: Foundation.URL, forInput inputName: Swift.String, orientation: ImageIO.CGImagePropertyOrientation = .up, options: [CoreML.MLFeatureValue.ImageOption : Any]? = nil) -> CoreML.MLFeatureValue?
+}
+@_inheritsConvenienceInitializers @available(iOS 13.0, *)
+@objc public class QTSNetworking : ObjectiveC.NSObject {
+  @objc public static let shared: QTSLiveness.QTSNetworking
+  @objc public func setup(appId: Swift.String, logLevel: QTSLiveness.QTSLogLevel = .debug, url: Swift.String, publicKey: Swift.String, privateKey: Swift.String, deviceId: Swift.String = "")
+  @objc public func generateDeviceInfor(deviceId: Swift.String = "", additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], ownerId: Swift.String = "") -> QTSLiveness.QTSLivenessResponse
+  @objc public func resetDeviceInfo()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(iOS 13.0, *)
+extension QTSLiveness.QTSNetworking {
+  public func doThermalFaceAntiSpoofingCheck(normalImage: UIKit.UIImage, thermalImage: UIKit.UIImage) async throws -> [Swift.String : Any]
+  public func doFaceAntiSpoofingCheck(image: UIKit.UIImage) async throws -> [Swift.String : Any]
+  public func doFlashFaceAntiSpoofingCheck(image: UIKit.UIImage, color: Swift.Int) async throws -> [Swift.String : Any]
+  @objc dynamic public func initTransaction(duration: Swift.Int = 30, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:], clientTransactionId: Swift.String = "") async throws -> QTSLiveness.QTSLivenessResponse
+  @objc dynamic public func registerFace(faceImage: UIKit.UIImage, additionParam: [Swift.String : Any] = [:], paramHeader: [Swift.String : Swift.String] = [:]) async throws -> QTSLiveness.QTSLivenessResponse
+}
+public struct BoundingBox {
+  public let classIndex: Swift.Int
+  public let score: Swift.Float
+  public let rect: CoreFoundation.CGRect
+  public init(classIndex: Swift.Int, score: Swift.Float, rect: CoreFoundation.CGRect)
+}
+public func IOU(_ a: CoreFoundation.CGRect, _ b: CoreFoundation.CGRect) -> Swift.Float
+public func nonMaxSuppression(boundingBoxes: [QTSLiveness.BoundingBox], iouThreshold: Swift.Float, maxBoxes: Swift.Int) -> [Swift.Int]
+public func nonMaxSuppression(boundingBoxes: [QTSLiveness.BoundingBox], indices: [Swift.Int], iouThreshold: Swift.Float, maxBoxes: Swift.Int) -> [Swift.Int]
+public func nonMaxSuppressionMultiClass(numClasses: Swift.Int, boundingBoxes: [QTSLiveness.BoundingBox], scoreThreshold: Swift.Float, iouThreshold: Swift.Float, maxPerClass: Swift.Int, maxTotal: Swift.Int) -> [Swift.Int]
+@_inheritsConvenienceInitializers @objc public class QTSLivenessImage : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(iOS 13.0, *)
+@objc public class QTSLivenessCalculator : ObjectiveC.NSObject {
+  public var isValidating: Swift.Bool
+  public var additionHeader: [Swift.String : Swift.String]
+  public var additionParam: [Swift.String : Any]
+  @objc public func convertImageToThermalImage(frame: ARKit.ARFrame, faceBoundingbox: CoreFoundation.CGRect, sceneSize: CoreFoundation.CGSize) -> QTSLiveness.QTSLivenessImage?
+  @objc public func calculateLiveness(transactionId: Swift.String = "", frame: ARKit.ARFrame, livenessMode: QTSLiveness.QTSLivenessMode, onDone: ((Swift.Bool, Swift.Float, Swift.Float, Swift.Bool, Swift.String, UIKit.UIImage, QTSLiveness.QTSLivenessResult?) -> Swift.Void)?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum QTSLogLevel : Swift.Int, Swift.CaseIterable {
+  case verbose = 0
+  case debug = 1
+  case info = 2
+  case warning = 3
+  case error = 4
+  case none = 5
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [QTSLiveness.QTSLogLevel]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [QTSLiveness.QTSLogLevel] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class QTSLog {
+  public static var logLevel: QTSLiveness.QTSLogLevel
+  public static var storeLogs: Swift.Bool
+  public static var logData: [Swift.String]
+  public class func verbose(_ msg: @autoclosure () -> Swift.String)
+  public class func debug(_ msg: @autoclosure () -> Swift.String)
+  public class func info(_ msg: @autoclosure () -> Swift.String)
+  public class func warning(_ msg: @autoclosure () -> Swift.String)
+  public class func error(_ msg: @autoclosure () -> Swift.String)
+  public class func clearStoredLogs()
+  @objc deinit
+}
+extension Swift.Array where Element : Swift.Comparable {
+  public func argmax() -> (Swift.Int, Element)
+  public func argsort(by areInIncreasingOrder: (Element, Element) -> Swift.Bool) -> [Swift.Array<Element>.Index]
+  public func gather(indices: [Swift.Array<Element>.Index]) -> [Element]
+}
+public struct QTSTOTP {
+  public init()
+  public func generateRange(degree: Swift.Int, digits: QTSLiveness.QTSOTPDigits = .six, secret: Foundation.Data, at date: Foundation.Date = .init()) throws -> [Swift.String]
+  public func generate(digits: QTSLiveness.QTSOTPDigits = .six, secret: Foundation.Data, offset: Swift.Int = 0, at date: Foundation.Date = .init()) throws -> Swift.String
+}
+public enum QTSOTPDigits : Swift.Int {
+  case six
+  case seven
+  case eight
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QTSLivenessError : Swift.Int, Swift.Error {
+  case noFaceDetected
+  case notCenter
+  case smallFace
+  case badImage
+  case noVerificationInstruction
+  case badResponse
+  case twoFace
+  case hangError
+  case notSupported
+  case arSessionFailed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QTSLivenessAction : Swift.Int {
+  case detectingFace
+  case eyesLookIn = 1
+  case smile
+  case wink
+  case headPoseUp
+  case headPoseDown
+  case headPoseLeft
+  case headPoseRight
+  case startVerification
+  case fetchConfig
+  case checkAction
+  case processing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QTSLivenessMode : Swift.Int {
+  case local
+  case livenessCheck
+  case livenessAndVerifyFace
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @available(iOS 15.0, *)
+@objc public class QTSLivenessDetector : ObjectiveC.NSObject {
+  weak public var delegate: (any QTSLiveness.QTSLivenessUtilityDetectorDelegate)?
+  public var cardId: Swift.String
+  @objc public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
+  @objc public func stopLiveness()
+  @objc override dynamic public init()
+  @objc deinit
+  @objc public class func createLivenessDetector(previewView: UIKit.UIView, threshold: QTSLiveness.QTSLivenessUtilitySensitivityThreshold = .medium, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = false, delegate: (any QTSLiveness.QTSLivenessUtilityDetectorDelegate)?, frameTime: Swift.Double = 0.008, livenessMode: QTSLiveness.QTSLivenessMode = .local, localLivenessThreshold: Swift.Double = 0.5, calculationMode: QTSLiveness.QTSCalculationMode = .single, additionParam: [Swift.String : Any] = [:], additionHeader: [Swift.String : Swift.String] = [:]) -> QTSLiveness.QTSLivenessDetector?
+}
+@available(iOS 15.0, *)
+@objc public protocol QTSLivenessUtilityDetectorDelegate {
+  @objc optional func liveness(liveness: QTSLiveness.QTSLivenessDetector, startLivenessAction action: QTSLiveness.QTSLivenessAction)
+  @objc optional func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFail withError: QTSLiveness.QTSLivenessError)
+  @objc optional func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinish verificationImage: UIKit.UIImage, livenesScore: Swift.Float, faceMatchingScore: Swift.Float, result: Swift.Bool, message: Swift.String, videoURL: Foundation.URL?, response: QTSLiveness.QTSLivenessResult?)
+  @objc optional func liveness(liveness: QTSLiveness.QTSLivenessDetector, didFinishLocalLiveness score: Swift.Float, maxtrix: [Swift.Float], image: UIKit.UIImage, thermal_image: UIKit.UIImage, videoURL: Foundation.URL?)
+}
+public func qtsBase32DecodeToData(_ string: Swift.String) -> Foundation.Data?
+extension Swift.String {
+  public var base32DecodedData: Foundation.Data? {
+    get
+  }
+  public var base32EncodedString: Swift.String {
+    get
+  }
+  public func base32DecodedString(_ encoding: Swift.String.Encoding = .utf8) -> Swift.String?
+  public var base32HexDecodedData: Foundation.Data? {
+    get
+  }
+  public var base32HexEncodedString: Swift.String {
+    get
+  }
+  public func base32HexDecodedString(_ encoding: Swift.String.Encoding = .utf8) -> Swift.String?
+}
+extension Foundation.Data {
+  public var base32EncodedString: Swift.String {
+    get
+  }
+  public var base32EncodedData: Foundation.Data {
+    get
+  }
+  public var base32DecodedData: Foundation.Data? {
+    get
+  }
+  public var base32HexEncodedString: Swift.String {
+    get
+  }
+  public var base32HexEncodedData: Foundation.Data {
+    get
+  }
+  public var base32HexDecodedData: Foundation.Data? {
+    get
+  }
+}
+@available(iOS 13.0, tvOS 13.0, macOS 10.15, *)
+extension Combine.Publisher where Self.Output : CoreML.MLFeatureProvider {
+  public func prediction(model: CoreML.MLModel) -> Combine.Publishers.Map<Self, Swift.Result<any CoreML.MLFeatureProvider, any Swift.Error>>
+  public func prediction(model: CoreML.MLModel) -> Combine.Publishers.CompactMap<Self, any CoreML.MLFeatureProvider>
+  public func prediction(model: CoreML.MLModel) -> Combine.Publishers.TryMap<Self, (any CoreML.MLFeatureProvider)?>
+}
+extension ImageIO.CGImagePropertyOrientation {
+  public init(_ orientation: UIKit.UIImage.Orientation)
+}
+extension ImageIO.CGImagePropertyOrientation {
+  public init(_ orientation: UIKit.UIDeviceOrientation)
+}
+public func createPixelBuffer(width: Swift.Int, height: Swift.Int, pixelFormat: Darwin.OSType) -> CoreVideo.CVPixelBuffer?
+public func createPixelBuffer(width: Swift.Int, height: Swift.Int) -> CoreVideo.CVPixelBuffer?
+public func _createPixelBuffer(width: Swift.Int, height: Swift.Int, pixelFormat: Darwin.OSType) -> CoreVideo.CVPixelBuffer?
+extension CoreVideo.CVBuffer {
+  public func copyToMetalCompatible() -> CoreVideo.CVPixelBuffer?
+  public func deepCopy(withAttributes attributes: [Swift.String : Any] = [:]) -> CoreVideo.CVPixelBuffer?
+}
+public func resizePixelBuffer(from srcPixelBuffer: CoreVideo.CVPixelBuffer, to dstPixelBuffer: CoreVideo.CVPixelBuffer, cropX: Swift.Int, cropY: Swift.Int, cropWidth: Swift.Int, cropHeight: Swift.Int, scaleWidth: Swift.Int, scaleHeight: Swift.Int)
+public func resizePixelBuffer(_ srcPixelBuffer: CoreVideo.CVPixelBuffer, cropX: Swift.Int, cropY: Swift.Int, cropWidth: Swift.Int, cropHeight: Swift.Int, scaleWidth: Swift.Int, scaleHeight: Swift.Int) -> CoreVideo.CVPixelBuffer?
+public func resizePixelBuffer(from srcPixelBuffer: CoreVideo.CVPixelBuffer, to dstPixelBuffer: CoreVideo.CVPixelBuffer, width: Swift.Int, height: Swift.Int)
+public func resizePixelBuffer(_ pixelBuffer: CoreVideo.CVPixelBuffer, width: Swift.Int, height: Swift.Int) -> CoreVideo.CVPixelBuffer?
+public func resizePixelBuffer(_ pixelBuffer: CoreVideo.CVPixelBuffer, width: Swift.Int, height: Swift.Int, output: CoreVideo.CVPixelBuffer, context: CoreImage.CIContext)
+public func top(_ k: Swift.Int, _ prob: [Swift.String : Swift.Double]) -> [(Swift.String, Swift.Double)]
+public func top(_ k: Swift.Int, _ observations: [Vision.VNClassificationObservation]) -> [(Swift.String, Swift.Double)]
+extension UIKit.UIImage {
+  public func pixelBuffer() -> CoreVideo.CVPixelBuffer?
+  public func pixelBuffer(width: Swift.Int, height: Swift.Int) -> CoreVideo.CVPixelBuffer?
+  public func pixelBufferGray() -> CoreVideo.CVPixelBuffer?
+  public func pixelBufferGray(width: Swift.Int, height: Swift.Int) -> CoreVideo.CVPixelBuffer?
+  public func pixelBuffer(width: Swift.Int, height: Swift.Int, pixelFormatType: Darwin.OSType, colorSpace: CoreGraphics.CGColorSpace, alphaInfo: CoreGraphics.CGImageAlphaInfo) -> CoreVideo.CVPixelBuffer?
+}
+extension UIKit.UIImage {
+  convenience public init?(pixelBuffer: CoreVideo.CVPixelBuffer)
+  convenience public init?(pixelBuffer: CoreVideo.CVPixelBuffer, context: CoreImage.CIContext)
+}
+extension CoreML.MLMultiArray {
+  @nonobjc public func reshaped(to dimensions: [Swift.Int]) throws -> CoreML.MLMultiArray
+  @nonobjc public func transposed(to order: [Swift.Int]) throws -> CoreML.MLMultiArray
+}
+extension CoreGraphics.CGImage {
+  @nonobjc public func toByteArrayRGBA() -> [Swift.UInt8]
+  @nonobjc public class func fromByteArrayRGBA(_ bytes: [Swift.UInt8], width: Swift.Int, height: Swift.Int) -> CoreGraphics.CGImage?
+  @nonobjc public class func fromByteArrayGray(_ bytes: [Swift.UInt8], width: Swift.Int, height: Swift.Int) -> CoreGraphics.CGImage?
+}
+public protocol MultiArrayType : Swift.Comparable {
+  static var multiArrayDataType: CoreML.MLMultiArrayDataType { get }
+  static func + (lhs: Self, rhs: Self) -> Self
+  static func - (lhs: Self, rhs: Self) -> Self
+  static func * (lhs: Self, rhs: Self) -> Self
+  static func / (lhs: Self, rhs: Self) -> Self
+  init(_: Swift.Int)
+  var toUInt8: Swift.UInt8 { get }
+}
+extension Swift.Double : QTSLiveness.MultiArrayType {
+  public static var multiArrayDataType: CoreML.MLMultiArrayDataType {
+    get
+  }
+  public var toUInt8: Swift.UInt8 {
+    get
+  }
+}
+extension Swift.Float : QTSLiveness.MultiArrayType {
+  public static var multiArrayDataType: CoreML.MLMultiArrayDataType {
+    get
+  }
+  public var toUInt8: Swift.UInt8 {
+    get
+  }
+}
+extension Swift.Int32 : QTSLiveness.MultiArrayType {
+  public static var multiArrayDataType: CoreML.MLMultiArrayDataType {
+    get
+  }
+  public var toUInt8: Swift.UInt8 {
+    get
+  }
+}
+extension CoreML.MLMultiArray {
+  public func cgImage(min: Swift.Double = 0, max: Swift.Double = 255, channel: Swift.Int? = nil, axes: (Swift.Int, Swift.Int, Swift.Int)? = nil) -> CoreGraphics.CGImage?
+  public func toRawBytes<T>(min: T, max: T, channel: Swift.Int? = nil, axes: (Swift.Int, Swift.Int, Swift.Int)? = nil) -> (bytes: [Swift.UInt8], width: Swift.Int, height: Swift.Int, channels: Swift.Int)? where T : QTSLiveness.MultiArrayType
+}
+public func createCGImage(fromFloatArray features: CoreML.MLMultiArray, min: Swift.Float = 0, max: Swift.Float = 255) -> CoreGraphics.CGImage?
+extension CoreML.MLMultiArray {
+  public func image(min: Swift.Double = 0, max: Swift.Double = 255, channel: Swift.Int? = nil, axes: (Swift.Int, Swift.Int, Swift.Int)? = nil) -> UIKit.UIImage?
+}
+public func createUIImage(fromFloatArray features: CoreML.MLMultiArray, min: Swift.Float = 0, max: Swift.Float = 255) -> UIKit.UIImage?
+@objc public enum QTSLivenessUtilitySensitivityThreshold : Swift.Int {
+  case low = 1
+  case medium
+  case high
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum QTSCalculationMode : Swift.Int {
+  case single = 1
+  case multiple
+  case combine
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 15.0, *)
+@objc public class QTSDepthLivenessDetector : QTSLiveness.QTSLivenessDetector {
+  @objc public init(previewView: UIKit.UIView, threshold: QTSLiveness.QTSLivenessUtilitySensitivityThreshold = .high, smallFaceThreshold: Swift.Double = 0.35, debugging: Swift.Bool = true, transactionId: Swift.String = "", frameTime: Swift.Double = 0.008, opacityOval: Swift.Double = 0.4, livenessMode: QTSLiveness.QTSLivenessMode = .local, localLivenessThreshold: Swift.Double = 0.9, calculationMode: QTSLiveness.QTSCalculationMode = .single)
+  @objc public func startLivenessDetection()
+  @objc override public func getVerificationRequiresAndStartSession(transactionId: Swift.String = "") throws
+  @objc override public func stopLiveness()
+  @objc deinit
+}
+@available(iOS 15.0, *)
+extension QTSLiveness.QTSDepthLivenessDetector : ARKit.ARSessionDelegate {
+  @objc dynamic public func session(_ session: ARKit.ARSession, didFailWithError error: any Swift.Error)
+  @objc dynamic public func session(_ session: ARKit.ARSession, didUpdate frame: ARKit.ARFrame)
+  @objc dynamic public func session(_ session: ARKit.ARSession, didUpdate anchors: [ARKit.ARAnchor])
+}
+@available(iOS 15.0, *)
+extension QTSLiveness.QTSDepthLivenessDetector : ARKit.ARSCNViewDelegate {
+  @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didRemove node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
+  @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didAdd node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
+  @objc dynamic public func renderer(_ renderer: any SceneKit.SCNSceneRenderer, didUpdate node: SceneKit.SCNNode, for anchor: ARKit.ARAnchor)
+}
+@objc @objcMembers public class QTSLivenessResponse : ObjectiveC.NSObject, ObjectMapper.Mappable {
+  @objc public var status: Swift.Int
+  @objc public var data: Swift.String
+  @objc public var signature: Swift.String
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+@objc @objcMembers public class QTSLivenessResult : ObjectiveC.NSObject, ObjectMapper.Mappable {
+  @objc public var status: Swift.Int
+  @objc public var data: [Swift.String : Any]
+  @objc public var signature: Swift.String
+  @objc public var livenesScore: Swift.Float
+  @objc public var faceMatchingScore: Swift.Float
+  @objc public var succes: Swift.Bool
+  @objc public var sim: Swift.Float
+  @objc public var livenessType: Swift.String
+  @objc public var mess: Swift.String
+  @objc public var code: Swift.String
+  @objc public var request_id: Swift.String
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+extension UIKit.UIImage {
+  @nonobjc public func resized(to newSize: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat = 1) -> UIKit.UIImage
+  @nonobjc public func rotated(by degrees: CoreFoundation.CGFloat, keepSize: Swift.Bool = true) -> UIKit.UIImage
+}
+extension QTSLiveness.QTSLogLevel : Swift.Equatable {}
+extension QTSLiveness.QTSLogLevel : Swift.Hashable {}
+extension QTSLiveness.QTSLogLevel : Swift.RawRepresentable {}
+extension QTSLiveness.QTSOTPDigits : Swift.Equatable {}
+extension QTSLiveness.QTSOTPDigits : Swift.Hashable {}
+extension QTSLiveness.QTSOTPDigits : Swift.RawRepresentable {}
+extension QTSLiveness.QTSLivenessError : Swift.Equatable {}
+extension QTSLiveness.QTSLivenessError : Swift.Hashable {}
+extension QTSLiveness.QTSLivenessError : Swift.RawRepresentable {}
+extension QTSLiveness.QTSLivenessAction : Swift.Equatable {}
+extension QTSLiveness.QTSLivenessAction : Swift.Hashable {}
+extension QTSLiveness.QTSLivenessAction : Swift.RawRepresentable {}
+extension QTSLiveness.QTSLivenessMode : Swift.Equatable {}
+extension QTSLiveness.QTSLivenessMode : Swift.Hashable {}
+extension QTSLiveness.QTSLivenessMode : Swift.RawRepresentable {}
+extension QTSLiveness.QTSLivenessUtilitySensitivityThreshold : Swift.Equatable {}
+extension QTSLiveness.QTSLivenessUtilitySensitivityThreshold : Swift.Hashable {}
+extension QTSLiveness.QTSLivenessUtilitySensitivityThreshold : Swift.RawRepresentable {}
+extension QTSLiveness.QTSCalculationMode : Swift.Equatable {}
+extension QTSLiveness.QTSCalculationMode : Swift.Hashable {}
+extension QTSLiveness.QTSCalculationMode : Swift.RawRepresentable {}

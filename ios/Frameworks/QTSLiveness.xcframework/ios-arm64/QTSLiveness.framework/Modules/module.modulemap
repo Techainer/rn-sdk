@@ -1,0 +1,11 @@
+framework module QTSLiveness {
+  umbrella header "QTSLiveness.h"
+  export *
+
+  module * { export * }
+}
+
+module QTSLiveness.Swift {
+  header "QTSLiveness-Swift.h"
+  requires objc
+}
