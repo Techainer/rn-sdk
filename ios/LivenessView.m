@@ -9,4 +9,5 @@
   RCT_EXPORT_VIEW_PROPERTY(onEvent, RCTBubblingEventBlock)
   RCT_EXPORT_VIEW_PROPERTY(isFlashCamera, BOOL)
   RCT_EXPORT_VIEW_PROPERTY(isDebug, BOOL)
+  RCT_EXPORT_VIEW_PROPERTY(maskStyle, NSDictionary)
 @end

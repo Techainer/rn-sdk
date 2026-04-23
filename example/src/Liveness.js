@@ -13,20 +13,17 @@ import DeviceInfo from 'react-native-device-info';
 
 import SimpleModal from './SimpleModal';
 
-import RNFS from "react-native-fs";
+import RNFS from 'react-native-fs';
 import { Buffer } from 'buffer';
 
+import { LivenessView } from 'liveness-rn';
 
-import {
-  LivenessView,
-} from 'liveness-rn';
-
-const createFragment = viewId =>
+const createFragment = (viewId) =>
   UIManager.dispatchViewManagerCommand(
     viewId,
     // we are calling the 'create' command
     UIManager?.LivenessViewManager?.Commands?.create.toString(),
-    [viewId],
+    [viewId]
   );
 const privateKey = `-----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiOMdedNfAhAdI
@@ -56,7 +53,7 @@ bIHdoMXCx2QWdUYge7weOXA/rr0MyFFf9dnJZGECgYEAuhJrRoxLdyouTd6X9+R1
 MjEQ61dTFRfiTW2ZDqhMTtZH4R4T5NLWf+3ItjkAkOdStszplhHy0bUQIYgptYXd
 5Sw/UvMv83CmlztVC5tGG9o=
 -----END PRIVATE KEY-----
-`
+`;
 
 const publicKey = `
 -----BEGIN CERTIFICATE-----
@@ -88,14 +85,36 @@ Y0T848QTx6QN0rubEW36Mk6/npaGU6qw6yF7UMvQO7mPeqdufVX9duUJav+WBJ/I
 Y/EdqKp20cAT9vgNap7Bfgv5XN9PrE+Yt0C1BkxXnfJHA7L9hcoYrknsae/Fa2IP
 99RyIXaHLJyzSTKLRUhEVqrycM0UXg==
 -----END CERTIFICATE-----
-`
+`;
 
+const maskStyle = {
+  maskBackgroundColorHex: '#ffffff',
+  ovalStrokeColorHex: '#00A7FF',
+  textBackgroundColorHex: '#00A7FF',
+  textColorHex: '#FFFFFFFF',
+  instructionMessageMap: {
+    0: 'Valid',
+    1: 'A hand is detected.',
+    2: 'A mask is detected.',
+    3: 'Sunglasses are detected.',
+    4: 'The face is covered.',
+    5: 'The face is skew, please set face straight.',
+    6: 'The face is small, please move face closer.',
+    7: 'No face.',
+    8: 'Glare.',
+    9: 'Dark.',
+    10: 'Hold face.',
+    11: 'Done.',
+    12: 'The face is big, please move face closer.',
+    14: 'Many face.',
+  },
+};
 
 // Function to calculate the size of a Base64 string in MB
 function getBase64SizeInMB(base64String) {
   // Ensure the input is not empty or invalid
   if (!base64String || typeof base64String !== 'string') {
-    console.error("Invalid Base64 string");
+    console.error('Invalid Base64 string');
     return 0;
   }
 
@@ -110,9 +129,9 @@ function getBase64SizeInMB(base64String) {
     const sizeInMB = sizeInBytes / (1024 * 1024);
 
     // Return the size in MB with 2 decimal places
-    return sizeInMB.toFixed(2);  // Rounds the result to 2 decimal places
+    return sizeInMB.toFixed(2); // Rounds the result to 2 decimal places
   } catch (error) {
-    console.error("Error decoding Base64 string:", error);
+    console.error('Error decoding Base64 string:', error);
     return 0;
   }
 }
@@ -129,11 +148,16 @@ const saveBase64ToFile = async (base64Data, fileName) => {
   }
 };
 
-
-const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userId }) => {
+const loginFaceId = ({
+  filePath,
+  livenessPath,
+  livenessThermalPath,
+  color,
+  userId,
+}) => {
   // console.log(filePath)
   const data = new FormData();
-  data.append("image", filePath);
+  data.append('image', filePath);
   // data.append("image", {
   //   uri: `file://${filePath}`,
   //   type: "image/png",
@@ -145,7 +169,7 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   //   name: "image.png",
   // } : "");
   if (livenessThermalPath) {
-    data.append("sdk_thermal_image", livenessThermalPath ?? "");
+    data.append('sdk_thermal_image', livenessThermalPath ?? '');
   }
   // data.append("sdk_liveness_image", livenessPath ? {
   //   uri: `file://${livenessPath}`,
@@ -153,25 +177,26 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   //   name: "image.png",
   // } : "");
   if (livenessPath) {
-    data.append("sdk_liveness_image", livenessPath);
+    data.append('sdk_liveness_image', livenessPath);
   }
   // data.append("user_id", "thuthuy");
-  data.append("user_id", userId);
+  data.append('user_id', userId);
   if (color) {
-    data.append("sdk_color", color);
+    data.append('sdk_color', color);
   }
   // data.append("user_id", '68');
-  data.append("threshold", 0.8);
-  data.append("check_liveness", "True");
-  data.append("source", "test_search");
-  const url = "https://ekyc-pvcombank-dev.tunnel.techainer.com/api/v1/verify/verify_user_face_liveness_match/";
+  data.append('threshold', 0.8);
+  data.append('check_liveness', 'True');
+  data.append('source', 'test_search');
+  const url =
+    'https://ekyc-pvcombank-dev.tunnel.techainer.com/api/v1/verify/verify_user_face_liveness_match/';
   return new Promise(async function (resolve, reject) {
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: "Token 92fdcde95745b7efeee9345dcff9a02ee5a549fc",
-        Accept: "application/json",
+        'Content-Type': 'multipart/form-data',
+        'Authorization': 'Token 92fdcde95745b7efeee9345dcff9a02ee5a549fc',
+        'Accept': 'application/json',
       },
       body: data,
     })
@@ -213,13 +238,13 @@ const isIphoneXOrLater = (model) => {
     'iPhone 16',
     'iPhone 16 Plus',
     'iPhone 16 Pro',
-    'iPhone 16 Pro Max'
+    'iPhone 16 Pro Max',
   ];
 
   return iPhoneXModels.includes(model);
 };
 
-var isIphoneX = false
+var isIphoneX = false;
 
 const checkDevice = async () => {
   const model = DeviceInfo.getModel();
@@ -234,7 +259,7 @@ const Liveness = ({ route, navigation }) => {
   const ref = useRef(null);
 
   const [loginError, setLoginError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (Platform.OS !== 'ios') {
@@ -291,7 +316,7 @@ const Liveness = ({ route, navigation }) => {
     }
   }
 
-  const handleLayout = e => {
+  const handleLayout = (e) => {
     const { height, width } = e.nativeEvent.layout;
     if (layout.width === width && layout.height === height) {
       return;
@@ -299,7 +324,12 @@ const Liveness = ({ route, navigation }) => {
     setLayout({ width, height });
   };
 
-  const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
+  const onCheckFaceId = async ({
+    filePath,
+    fileLiveness,
+    livenessThermalPath,
+    color,
+  }) => {
     try {
       const res = await loginFaceId({
         filePath: filePath,
@@ -312,33 +342,56 @@ const Liveness = ({ route, navigation }) => {
       setErrorMessage(JSON.stringify(res));
       setLoginError(true);
     } catch (error) {
-      console.log("🚀 ~ handleLoginFaceId ~ error:", error);
+      console.log('🚀 ~ handleLoginFaceId ~ error:', error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <View style={[styles.view_camera, { width: isFlashCamera ? '100%' : '100%' }]} onLayout={handleLayout}>
+      <View
+        style={[styles.view_camera, { width: isFlashCamera ? '100%' : '100%' }]}
+        onLayout={handleLayout}
+      >
         <LivenessView
           ref={ref}
-          key={isFlashCamera == null ? 'null' : isFlashCamera == false ? 'flash' : 'normal'}
+          key={
+            isFlashCamera == null
+              ? 'null'
+              : isFlashCamera == false
+                ? 'flash'
+                : 'normal'
+          }
           style={
-            Platform.OS === 'ios' ? styles.view_liveness :
-              {
-                height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
-                width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
-              }
+            Platform.OS === 'ios'
+              ? styles.view_liveness
+              : {
+                  height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
+                  width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
+                }
           }
           onEvent={(data) => {
             // console.log('===sendEvent===', data.nativeEvent?.data);
-            console.log("Original: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessOriginalImage))
-            console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessImage))
+            console.log(
+              'Original: ',
+              getBase64SizeInMB(data.nativeEvent?.data?.livenessOriginalImage)
+            );
+            console.log(
+              'liveness: ',
+              getBase64SizeInMB(data.nativeEvent?.data?.livenessImage)
+            );
             // onCheckFaceId(data.nativeEvent?.data?.livenessOriginalImage, data.nativeEvent?.data?.livenessImage, data.nativeEvent?.data?.color);
             clear();
             if (isFlashCamera) {
-              onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessImage, color: data.nativeEvent?.data?.color });
+              onCheckFaceId({
+                filePath: data.nativeEvent?.data?.livenessOriginalImage,
+                fileLiveness: data.nativeEvent?.data?.livenessImage,
+                color: data.nativeEvent?.data?.color,
+              });
             } else {
-              onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessImage });
+              onCheckFaceId({
+                filePath: data.nativeEvent?.data?.livenessOriginalImage,
+                livenessThermalPath: data.nativeEvent?.data?.livenessImage,
+              });
             }
           }}
           requestid={'sdfsdfsdfsdf'}
@@ -348,6 +401,7 @@ const Liveness = ({ route, navigation }) => {
           publicKey={publicKey}
           isDebug={false}
           isFlashCamera={isFlashCamera}
+          maskStyle={maskStyle}
         />
       </View>
       <SimpleModal
@@ -361,8 +415,7 @@ const Liveness = ({ route, navigation }) => {
       />
     </View>
   );
-}
-
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -407,4 +460,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Liveness
+export default Liveness;

@@ -42,9 +42,15 @@ class LivenessView @JvmOverloads constructor(
 class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   private lateinit var faceAuthView: FaceAuthenticationView
+  private var maskStyle: FaceAuthenticationView.MaskStyle? = null
   var listener: LivenessFragmentListener? = null
   var isDebug: Boolean = false
   var viewId: Int = -1
+
+  fun setMaskStyle(maskStyle: FaceAuthenticationView.MaskStyle?) {
+    this.maskStyle = maskStyle
+    applyMaskStyleIfNeeded()
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -59,6 +65,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
       setStartStreamImage(true)
       setFaceAuthenticationCallback(this@LivenessFragment)
     }
+    applyMaskStyleIfNeeded()
     return faceAuthView
   }
 
@@ -137,6 +144,12 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   override fun onCheckHack(p0: Boolean, p1: String?) {
     TODO("Not yet implemented")
+  }
+
+  private fun applyMaskStyleIfNeeded() {
+    val style = maskStyle ?: return
+    if (!::faceAuthView.isInitialized) return
+    faceAuthView.setMaskStyle(style)
   }
 
   fun setBrightness(value: Float, activity: FragmentActivity) {

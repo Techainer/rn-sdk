@@ -16,15 +16,12 @@
 //   );
 // }
 
-
 // "@react-navigation/native": "^7.0.0",
 // "@react-navigation/stack": "^7.0.0",
 // "react-native-gesture-handler": "^2.20.2",
 // "react-native-safe-area-context": "^4.14.0",
 // "react-native-screens": "^4.0.0",
 // "react-native-skia": "^0.0.1"
-
-
 
 import React, { useEffect, useState, useRef } from 'react';
 
@@ -43,24 +40,21 @@ import {
 } from 'react-native';
 
 import DeviceInfo from 'react-native-device-info';
-const { width: windowWidth } = Dimensions.get("window");
+const { width: windowWidth } = Dimensions.get('window');
 
 import SimpleModal from './SimpleModal';
 
-import RNFS from "react-native-fs";
+import RNFS from 'react-native-fs';
 import { Buffer } from 'buffer';
 
+import { LivenessView } from 'liveness-rn';
 
-import {
-  LivenessView,
-} from 'liveness-rn';
-
-const createFragment = viewId =>
+const createFragment = (viewId) =>
   UIManager.dispatchViewManagerCommand(
     viewId,
     // we are calling the 'create' command
     UIManager?.LivenessViewManager?.Commands?.create.toString(),
-    [viewId],
+    [viewId]
   );
 const privateKey = `-----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiOMdedNfAhAdI
@@ -90,7 +84,7 @@ bIHdoMXCx2QWdUYge7weOXA/rr0MyFFf9dnJZGECgYEAuhJrRoxLdyouTd6X9+R1
 MjEQ61dTFRfiTW2ZDqhMTtZH4R4T5NLWf+3ItjkAkOdStszplhHy0bUQIYgptYXd
 5Sw/UvMv83CmlztVC5tGG9o=
 -----END PRIVATE KEY-----
-`
+`;
 
 const publicKey = `
 -----BEGIN CERTIFICATE-----
@@ -122,14 +116,36 @@ Y0T848QTx6QN0rubEW36Mk6/npaGU6qw6yF7UMvQO7mPeqdufVX9duUJav+WBJ/I
 Y/EdqKp20cAT9vgNap7Bfgv5XN9PrE+Yt0C1BkxXnfJHA7L9hcoYrknsae/Fa2IP
 99RyIXaHLJyzSTKLRUhEVqrycM0UXg==
 -----END CERTIFICATE-----
-`
+`;
 
+const maskStyle = {
+  maskBackgroundColorHex: '#ffffff',
+  ovalStrokeColorHex: '#00A7FF',
+  textBackgroundColorHex: '#00A7FF',
+  textColorHex: '#FFFFFFFF',
+  instructionMessageMap: {
+    0: 'Valid',
+    1: 'A hand is detected.',
+    2: 'A mask is detected.',
+    3: 'Sunglasses are detected.',
+    4: 'The face is covered.',
+    5: 'The face is skew, please set face straight.',
+    6: 'The face is small, please move face closer.',
+    7: 'No face.',
+    8: 'Glare.',
+    9: 'Dark.',
+    10: 'Hold face.',
+    11: 'Done.',
+    12: 'The face is big, please move face closer.',
+    14: 'Many face.',
+  },
+};
 
 // Function to calculate the size of a Base64 string in MB
 function getBase64SizeInMB(base64String) {
   // Ensure the input is not empty or invalid
   if (!base64String || typeof base64String !== 'string') {
-    console.error("Invalid Base64 string");
+    console.error('Invalid Base64 string');
     return 0;
   }
 
@@ -144,9 +160,9 @@ function getBase64SizeInMB(base64String) {
     const sizeInMB = sizeInBytes / (1024 * 1024);
 
     // Return the size in MB with 2 decimal places
-    return sizeInMB.toFixed(2);  // Rounds the result to 2 decimal places
+    return sizeInMB.toFixed(2); // Rounds the result to 2 decimal places
   } catch (error) {
-    console.error("Error decoding Base64 string:", error);
+    console.error('Error decoding Base64 string:', error);
     return 0;
   }
 }
@@ -163,11 +179,16 @@ const saveBase64ToFile = async (base64Data, fileName) => {
   }
 };
 
-
-const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userId }) => {
+const loginFaceId = ({
+  filePath,
+  livenessPath,
+  livenessThermalPath,
+  color,
+  userId,
+}) => {
   // console.log(filePath)
   const data = new FormData();
-  data.append("image", filePath);
+  data.append('image', filePath);
   // data.append("image", {
   //   uri: `file://${filePath}`,
   //   type: "image/png",
@@ -179,7 +200,7 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   //   name: "image.png",
   // } : "");
   if (livenessThermalPath) {
-    data.append("sdk_thermal_image", livenessThermalPath ?? "");
+    data.append('sdk_thermal_image', livenessThermalPath ?? '');
   }
   // data.append("sdk_liveness_image", livenessPath ? {
   //   uri: `file://${livenessPath}`,
@@ -187,26 +208,27 @@ const loginFaceId = ({ filePath, livenessPath, livenessThermalPath, color, userI
   //   name: "image.png",
   // } : "");
   if (livenessPath) {
-    data.append("sdk_liveness_image", livenessPath);
+    data.append('sdk_liveness_image', livenessPath);
     // data.append("sdk_version", 3);
   }
   // data.append("user_id", "thuthuy");
-  data.append("user_id", userId);
+  data.append('user_id', userId);
   if (color) {
-    data.append("color", color);
+    data.append('color', color);
   }
   // data.append("user_id", '68');
-  data.append("threshold", 0.8);
-  data.append("check_liveness", "True");
-  data.append("source", "test_search");
-  const url = "https://ekyc-pvcombank-dev.tunnel.techainer.com/api/v1/verify/verify_user_face_liveness_match/";
+  data.append('threshold', 0.8);
+  data.append('check_liveness', 'True');
+  data.append('source', 'test_search');
+  const url =
+    'https://ekyc-pvcombank-dev.tunnel.techainer.com/api/v1/verify/verify_user_face_liveness_match/';
   return new Promise(async function (resolve, reject) {
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: "Token 92fdcde95745b7efeee9345dcff9a02ee5a549fc",
-        Accept: "application/json",
+        'Content-Type': 'multipart/form-data',
+        'Authorization': 'Token 92fdcde95745b7efeee9345dcff9a02ee5a549fc',
+        'Accept': 'application/json',
       },
       body: data,
     })
@@ -248,13 +270,13 @@ const isIphoneXOrLater = (model) => {
     'iPhone 16',
     'iPhone 16 Plus',
     'iPhone 16 Pro',
-    'iPhone 16 Pro Max'
+    'iPhone 16 Pro Max',
   ];
 
   return iPhoneXModels.includes(model);
 };
 
-var isIphoneX = false
+var isIphoneX = false;
 
 const checkDevice = async () => {
   const model = DeviceInfo.getModel();
@@ -268,25 +290,29 @@ export default function App() {
   const ref = useRef(null);
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [appStateVisible, setAppStateVisible] = useState(AppState.currentState);
   const appState = useRef(AppState.currentState);
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
       if (Platform.OS === 'ios') {
         // iOS handling
-        if (appState.current === 'active' &&
-          nextAppState.match(/inactive|background/)) {
+        if (
+          appState.current === 'active' &&
+          nextAppState.match(/inactive|background/)
+        ) {
           console.log('App has gone to background');
           setStatus(false);
           clear();
         }
 
-        if (appState.current.match(/inactive|background/) &&
-          nextAppState === 'active') {
+        if (
+          appState.current.match(/inactive|background/) &&
+          nextAppState === 'active'
+        ) {
           console.log('App has come to foreground');
         }
       }
@@ -322,7 +348,7 @@ export default function App() {
     setIsFlashCamera(null);
     clear();
 
-    setStatus(prev => !prev);
+    setStatus((prev) => !prev);
 
     if (isIphoneX) {
       setIsFlashCamera(false);
@@ -359,7 +385,7 @@ export default function App() {
     }
   }
 
-  const handleLayout = e => {
+  const handleLayout = (e) => {
     const { height, width } = e.nativeEvent.layout;
     if (layout.width === width && layout.height === height) {
       return;
@@ -367,7 +393,12 @@ export default function App() {
     setLayout({ width, height });
   };
 
-  const onCheckFaceId = async ({ filePath, fileLiveness, livenessThermalPath, color }) => {
+  const onCheckFaceId = async ({
+    filePath,
+    fileLiveness,
+    livenessThermalPath,
+    color,
+  }) => {
     try {
       setStatus(false);
       setLoading(true);
@@ -382,7 +413,7 @@ export default function App() {
       setErrorMessage(JSON.stringify(res));
       setLoginError(true);
     } catch (error) {
-      console.log("🚀 ~ handleLoginFaceId ~ error:", error);
+      console.log('🚀 ~ handleLoginFaceId ~ error:', error);
     } finally {
       setLoading(false);
     }
@@ -391,31 +422,60 @@ export default function App() {
   return (
     <View style={styles.container}>
       {status && (
-        <View style={[styles.view_camera, { width: isFlashCamera ? '100%' : '100%' }]} onLayout={handleLayout}>
+        <View
+          style={[
+            styles.view_camera,
+            { width: isFlashCamera ? '100%' : '100%' },
+          ]}
+          onLayout={handleLayout}
+        >
           <LivenessView
             ref={ref}
             // key={isFlashCamera == true ? 'flash' : '3d'}
             style={
-              Platform.OS === 'ios' ? styles.view_liveness :
-                {
-                  height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
-                  width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
-                }
+              Platform.OS === 'ios'
+                ? styles.view_liveness
+                : {
+                    height: PixelRatio.getPixelSizeForLayoutSize(layout.height),
+                    width: PixelRatio.getPixelSizeForLayoutSize(layout.width),
+                  }
             }
             onEvent={(data) => {
               console.log('===sendEvent===', data.nativeEvent?.data);
               if (data.nativeEvent?.data?.isFlash == null) {
-                console.log("Original: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessOriginalImage))
-                console.log("liveness 2D: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage))
-                console.log("liveness 3D: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
+                console.log(
+                  'Original: ',
+                  getBase64SizeInMB(
+                    data.nativeEvent?.data?.livenessOriginalImage
+                  )
+                );
+                console.log(
+                  'liveness 2D: ',
+                  getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage)
+                );
+                console.log(
+                  'liveness 3D: ',
+                  getBase64SizeInMB(
+                    data.nativeEvent?.data?.livenessThermalImage
+                  )
+                );
                 // onCheckFaceId(data.nativeEvent?.data?.livenessOriginalImage, data.nativeEvent?.data?.livenessImage, data.nativeEvent?.data?.color);
                 clear();
                 if (isFlashCamera) {
                   // console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessColorImage))
-                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, fileLiveness: data.nativeEvent?.data?.livenessColorImage, color: data.nativeEvent?.data?.color });
+                  onCheckFaceId({
+                    filePath: data.nativeEvent?.data?.livenessOriginalImage,
+                    fileLiveness: data.nativeEvent?.data?.livenessColorImage,
+                    color: data.nativeEvent?.data?.color,
+                  });
                 } else {
                   // console.log("liveness: ", getBase64SizeInMB(data.nativeEvent?.data?.livenessThermalImage))
-                  onCheckFaceId({ filePath: data.nativeEvent?.data?.livenessOriginalImage, livenessThermalPath: data.nativeEvent?.data?.livenessThermalImage, color: data.nativeEvent?.data?.color });
+                  onCheckFaceId({
+                    filePath: data.nativeEvent?.data?.livenessOriginalImage,
+                    livenessThermalPath:
+                      data.nativeEvent?.data?.livenessThermalImage,
+                    color: data.nativeEvent?.data?.color,
+                  });
                 }
               } else {
                 if (data.nativeEvent?.data?.isFlash) {
@@ -431,25 +491,51 @@ export default function App() {
             }}
             isFlashCamera={isFlashCamera}
             isDebug={true}
+            maskStyle={maskStyle}
           />
         </View>
       )}
-      {!status && <TextInput
-        style={styles.input}
-        placeholder="User Id"
-        value={text}
-        onChangeText={(newText) => setText(newText)}
-      />}
-      {!status && (<View style={{ position: 'absolute', width: '40%', zIndex: 1000, bottom: 20, left: (windowWidth / 3) }}>
-        <TouchableOpacity onPress={onStartLiveNess} style={styles.btn_liveness}>
-          <Text>Start LiveNess</Text>
-        </TouchableOpacity>
-      </View>)}
-      {status && (<View style={{ position: 'absolute', width: '40%', zIndex: 1000, top: 32, left: 30 }}>
-        <TouchableOpacity onPress={onStartLiveNess}>
-          <Text style={{ fontSize: 35, color: 'black' }}> ← </Text>
-        </TouchableOpacity>
-      </View>)}
+      {!status && (
+        <TextInput
+          style={styles.input}
+          placeholder="User Id"
+          value={text}
+          onChangeText={(newText) => setText(newText)}
+        />
+      )}
+      {!status && (
+        <View
+          style={{
+            position: 'absolute',
+            width: '40%',
+            zIndex: 1000,
+            bottom: 20,
+            left: windowWidth / 3,
+          }}
+        >
+          <TouchableOpacity
+            onPress={onStartLiveNess}
+            style={styles.btn_liveness}
+          >
+            <Text>Start LiveNess</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+      {status && (
+        <View
+          style={{
+            position: 'absolute',
+            width: '40%',
+            zIndex: 1000,
+            top: 32,
+            left: 30,
+          }}
+        >
+          <TouchableOpacity onPress={onStartLiveNess}>
+            <Text style={{ fontSize: 35, color: 'black' }}> ← </Text>
+          </TouchableOpacity>
+        </View>
+      )}
       <SimpleModal
         isOpen={loginError}
         setIsOpen={setLoginError}
@@ -469,7 +555,6 @@ export default function App() {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

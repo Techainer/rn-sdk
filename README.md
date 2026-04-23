@@ -5,17 +5,20 @@ A comprehensive React Native SDK for face liveness detection supporting both Fla
 ## Requirements
 
 ### iOS
+
 - iOS Deployment Target: 13.0 or higher
 - Xcode 14 or newer
 - Swift 5
 - iPhone X or newer (for 3D depth detection)
 
 ### Android
+
 - minSdkVersion: 24
 - compileSdkVersion: 33
 - targetSdkVersion: 33
 
 ### React Native
+
 - React Native version < 0.73
 
 ## Installation
@@ -25,6 +28,7 @@ A comprehensive React Native SDK for face liveness detection supporting both Fla
 Add to your `package.json`:
 
 **From GitHub:**
+
 ```json
 {
   "dependencies": {
@@ -34,6 +38,7 @@ Add to your `package.json`:
 ```
 
 **From local path:**
+
 ```json
 {
   "dependencies": {
@@ -43,6 +48,7 @@ Add to your `package.json`:
 ```
 
 Then run:
+
 ```bash
 npm install
 # or
@@ -243,6 +249,7 @@ function App() {
       style={{ width: '100%', height: '100%' }}
       onEvent={handleEvent}
       isFlashCamera={isFlashCamera}
+      maskStyle={maskStyle}
     />
   );
 }
@@ -255,11 +262,13 @@ The SDK supports two detection modes:
 #### 1. Flash Camera Mode (All Devices)
 
 **Configuration:**
+
 ```javascript
 isFlashCamera={true}
 ```
 
 **Returns:**
+
 - `livenessOriginalImage`: Original photo (base64)
 - `livenessColorImage`: Color-tinted liveness photo (base64)
 - `color`: Random color code used ('r3', 'g3', or 'b3')
@@ -269,11 +278,13 @@ isFlashCamera={true}
 #### 2. 3D Depth Camera Mode (iPhone X and newer)
 
 **Configuration:**
+
 ```javascript
 isFlashCamera={false}
 ```
 
 **Returns:**
+
 - `livenessOriginalImage`: Original photo (base64)
 - `livenessThermalImage`: Depth/thermal image (base64)
 - `color`: Thermal color code used ('t3')
@@ -284,12 +295,30 @@ isFlashCamera={false}
 
 ### Component Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `style` | StyleProp | No | Component styles (recommended: `width: '100%', height: '100%'`) |
-| `onEvent` | Function | Yes | Event callback handler |
-| `isFlashCamera` | Boolean | Yes | Detection mode: `true` for Flash, `false` for 3D |
-| `isDebug` | Boolean | No | If `true`, saves captured images to the device gallery (default: `false`) |
+| Prop            | Type      | Required | Description                                                               |
+| --------------- | --------- | -------- | ------------------------------------------------------------------------- |
+| `style`         | StyleProp | No       | Component styles (recommended: `width: '100%', height: '100%'`)           |
+| `onEvent`       | Function  | Yes      | Event callback handler                                                    |
+| `isFlashCamera` | Boolean   | Yes      | Detection mode: `true` for Flash, `false` for 3D                          |
+| `isDebug`       | Boolean   | No       | If `true`, saves captured images to the device gallery (default: `false`) |
+| `maskStyle`     | Object    | No       | Mask UI config, including colors and `instructionMessageMap`              |
+
+#### Mask Style Config
+
+```javascript
+const maskStyle = {
+  maskBackgroundColorHex: '#ffffff',
+  ovalStrokeColorHex: '#00A7FF',
+  textBackgroundColorHex: '#00A7FF',
+  textColorHex: '#FFFFFFFF',
+  instructionMessageMap: {
+    0: 'Valid',
+    1: 'A hand is detected.',
+    2: 'A mask is detected.',
+    3: 'Sunglasses are detected.',
+  },
+};
+```
 
 ### Event Handling
 
@@ -317,6 +346,7 @@ onEvent={(data) => {
 ### Best Practices
 
 1. **Layout:** Set `LivenessView` to full screen for best user experience:
+
    ```javascript
    style={{ width: '100%', height: '100%' }}
    ```
@@ -324,6 +354,7 @@ onEvent={(data) => {
 2. **Camera Mode:** The SDK handles smooth transitions between Flash and 3D modes automatically. You only need to update the `isFlashCamera` prop.
 
 3. **Device Compatibility:**
+
    - Use 3D mode (`isFlashCamera={false}`) only on iPhone X or newer
    - Android devices automatically use Flash mode
    - The SDK includes auto-fallback for incompatible devices
@@ -340,16 +371,19 @@ onEvent={(data) => {
 ## Troubleshooting
 
 ### iOS Build Issues
+
 - Ensure frameworks are properly linked in Xcode
 - Verify `use_frameworks!` is in your Podfile
 - Check deployment target is set to iOS 12.0 or higher
 
 ### Android Build Issues
+
 - Verify all Maven repositories are accessible
 - Check Java compatibility settings
 - Ensure minSdkVersion is 24 or higher
 
 ### Camera Detection Issues
+
 - Verify camera permissions are granted
 - Check Info.plist has correct permission descriptions
 - For 3D mode, ensure device is iPhone X or newer

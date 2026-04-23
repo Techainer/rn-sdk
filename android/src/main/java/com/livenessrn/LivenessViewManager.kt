@@ -30,10 +30,12 @@ class LivenessViewManager(
 
   private var isFlashCamera: Boolean = false
   private var isDebug: Boolean = false
+  private var maskStyle: FaceAuthenticationView.MaskStyle? = null
 
   private var propWidth: Int? = null
   private var propHeight: Int? = null
   private var id: Int = -1;
+  private var currentFragment: LivenessFragment? = null
 
   override fun getName() = REACT_CLASS
 
@@ -54,6 +56,7 @@ class LivenessViewManager(
           Log.d("remove fragment liveness", "${fragment.id}")
           if (id == fragment.id) {
             fragmentManager.beginTransaction().remove(fragment).commitAllowingStateLoss()
+            currentFragment = null
             setBrightness(originalBrightness ?: 0.3f)
           }
         }
@@ -125,6 +128,12 @@ class LivenessViewManager(
     this.isDebug = isDebug
   }
 
+  @ReactProp(name = "maskStyle")
+  fun setMaskStyle(view: FrameLayout, maskStyle: ReadableMap?) {
+    this.maskStyle = maskStyle?.toMaskStyle()
+    currentFragment?.setMaskStyle(this.maskStyle)
+  }
+
   private fun callNativeEvent(viewId: Int, map: WritableMap) {
     try {
       // Validate ID trước khi gửi event
@@ -181,6 +190,8 @@ class LivenessViewManager(
     livenessFragment.listener = this
     livenessFragment.isDebug = this.isDebug
     livenessFragment.viewId = reactNativeViewId
+    livenessFragment.setMaskStyle(maskStyle)
+    currentFragment = livenessFragment
 
     fragmentManager.beginTransaction()
       .replace(reactNativeViewId, livenessFragment, "LIVENESS_FRAGMENT_TAG")
@@ -220,6 +231,30 @@ class LivenessViewManager(
     private const val REACT_CLASS = "LivenessViewManager"
     private const val COMMAND_CREATE = 1
     var originalBrightness: Float? = null
+  }
+
+  private fun ReadableMap.toMaskStyle(): FaceAuthenticationView.MaskStyle {
+    return FaceAuthenticationView.MaskStyle.of(
+      getString("maskBackgroundColorHex") ?: "#ffffff",
+      getString("ovalStrokeColorHex") ?: "#00A7FF",
+      getString("textBackgroundColorHex") ?: "#00A7FF",
+      getString("textColorHex") ?: "#FFFFFFFF",
+      getMap("instructionMessageMap")?.toInstructionMessageMap()
+    )
+  }
+
+  private fun ReadableMap.toInstructionMessageMap(): Map<Int, String> {
+    val messages = mutableMapOf<Int, String>()
+    val iterator = keySetIterator()
+
+    while (iterator.hasNextKey()) {
+      val key = iterator.nextKey()
+      val intKey = key.toIntOrNull() ?: continue
+      val value = getString(key) ?: continue
+      messages[intKey] = value
+    }
+
+    return if (messages.isEmpty()) emptyMap() else messages
   }
 
   override fun onLivenessEvent(viewId: Int, event: WritableMap) {

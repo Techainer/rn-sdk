@@ -10,6 +10,7 @@ class LivenessView: UIView {
     // MARK: - Properties
     private var faceAuth2D: FaceAuthenticationView!
     private var faceAuth3D: FaceAuthentication3DView!
+    private var maskStyleValue: FaceAuthenticationView.MaskStyle?
 
     private var cameraStarted = false
     private var _isFlashCamera = false
@@ -20,6 +21,12 @@ class LivenessView: UIView {
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
     @objc var isDebug: Bool = false
+    @objc var maskStyle: NSDictionary? {
+        didSet {
+            maskStyleValue = Self.parseMaskStyle(maskStyle)
+            applyMaskStyleIfNeeded()
+        }
+    }
 
     // MARK: - Setters
     @objc func setIsFlashCamera(_ val: Bool) {
@@ -88,6 +95,7 @@ class LivenessView: UIView {
         addSubview(faceAuth2D)
         sendSubviewToBack(faceAuth2D)
         faceAuth2D.isHidden = true
+        applyMaskStyleIfNeeded()
 
         // Khởi tạo camera 3D
         if self.checkFaceID() {
@@ -203,6 +211,53 @@ class LivenessView: UIView {
     private func handleLiveness(value: Int) {}
 
     // MARK: - Helpers
+    private func applyMaskStyleIfNeeded() {
+        guard let maskStyleValue, let faceAuth2D else { return }
+        faceAuth2D.setMaskStyle(maskStyleValue)
+    }
+
+    private static func parseMaskStyle(_ value: NSDictionary?) -> FaceAuthenticationView.MaskStyle? {
+        guard let value else { return nil }
+
+        guard
+            let maskBackgroundColorHex = value["maskBackgroundColorHex"] as? String,
+            let ovalStrokeColorHex = value["ovalStrokeColorHex"] as? String,
+            let textBackgroundColorHex = value["textBackgroundColorHex"] as? String,
+            let textColorHex = value["textColorHex"] as? String
+        else {
+            return nil
+        }
+
+        return FaceAuthenticationView.MaskStyle.of(
+            maskBackgroundColorHex,
+            ovalStrokeColorHex,
+            textBackgroundColorHex,
+            textColorHex,
+            parseInstructionMessageMap(value["instructionMessageMap"])
+        )
+    }
+
+    private static func parseInstructionMessageMap(_ value: Any?) -> [Int: String]? {
+        guard let rawMap = value as? [AnyHashable: Any] else { return nil }
+
+        var result: [Int: String] = [:]
+        for (key, message) in rawMap {
+            let intKey: Int?
+            if let numberKey = key as? NSNumber {
+                intKey = numberKey.intValue
+            } else if let stringKey = key as? String {
+                intKey = Int(stringKey)
+            } else {
+                intKey = nil
+            }
+
+            guard let intKey, let stringMessage = message as? String else { continue }
+            result[intKey] = stringMessage
+        }
+
+        return result.isEmpty ? nil : result
+    }
+
     private func pushEvent(data: Any) {
         onEvent?(["data": data])
     }
