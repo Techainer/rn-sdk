@@ -4332,6 +4332,469 @@
         "printedName": "FaceAuthenticationView",
         "children": [
           {
+            "kind": "TypeDecl",
+            "name": "MaskStyle",
+            "printedName": "MaskStyle",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "maskBackgroundColorHex",
+                "printedName": "maskBackgroundColorHex",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHexSSvp",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHexSSvp",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "Final",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHexSSvg",
+                    "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHexSSvg",
+                    "moduleName": "ekyc_ios_sdk",
+                    "implicit": true,
+                    "declAttributes": [
+                      "Final"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "ovalStrokeColorHex",
+                "printedName": "ovalStrokeColorHex",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC18ovalStrokeColorHexSSvp",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC18ovalStrokeColorHexSSvp",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "Final",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC18ovalStrokeColorHexSSvg",
+                    "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC18ovalStrokeColorHexSSvg",
+                    "moduleName": "ekyc_ios_sdk",
+                    "implicit": true,
+                    "declAttributes": [
+                      "Final"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "textBackgroundColorHex",
+                "printedName": "textBackgroundColorHex",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22textBackgroundColorHexSSvp",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22textBackgroundColorHexSSvp",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "Final",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22textBackgroundColorHexSSvg",
+                    "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22textBackgroundColorHexSSvg",
+                    "moduleName": "ekyc_ios_sdk",
+                    "implicit": true,
+                    "declAttributes": [
+                      "Final"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "textColorHex",
+                "printedName": "textColorHex",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC12textColorHexSSvp",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC12textColorHexSSvp",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "Final",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC12textColorHexSSvg",
+                    "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC12textColorHexSSvg",
+                    "moduleName": "ekyc_ios_sdk",
+                    "implicit": true,
+                    "declAttributes": [
+                      "Final"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "instructionMessageMap",
+                "printedName": "instructionMessageMap",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.Int : Swift.String]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.Int : Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC21instructionMessageMapSDySiSSGSgvp",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC21instructionMessageMapSDySiSSGSgvp",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "Final",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "[Swift.Int : Swift.String]?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Dictionary",
+                            "printedName": "[Swift.Int : Swift.String]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Int",
+                                "printedName": "Swift.Int",
+                                "usr": "s:Si"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:SD"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC21instructionMessageMapSDySiSSGSgvg",
+                    "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC21instructionMessageMapSDySiSSGSgvg",
+                    "moduleName": "ekyc_ios_sdk",
+                    "implicit": true,
+                    "declAttributes": [
+                      "Final"
+                    ],
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(maskBackgroundColorHex:ovalStrokeColorHex:textBackgroundColorHex:textColorHex:instructionMessageMap:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MaskStyle",
+                    "printedName": "ekyc_ios_sdk.FaceAuthenticationView.MaskStyle",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.Int : Swift.String]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.Int : Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHex010ovalStrokekL004textjkL00okL021instructionMessageMapAESS_S3SSDySiSSGSgtcfc",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC22maskBackgroundColorHex010ovalStrokekL004textjkL00okL021instructionMessageMapAESS_S3SSDySiSSGSgtcfc",
+                "moduleName": "ekyc_ios_sdk",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Function",
+                "name": "of",
+                "printedName": "of(_:_:_:_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MaskStyle",
+                    "printedName": "ekyc_ios_sdk.FaceAuthenticationView.MaskStyle",
+                    "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.Int : Swift.String]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.Int : Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC2ofyAESS_S3SSDySiSSGSgtFZ",
+                "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC2ofyAESS_S3SSDySiSSGSgtFZ",
+                "moduleName": "ekyc_ios_sdk",
+                "static": true,
+                "declAttributes": [
+                  "Final",
+                  "AccessControl"
+                ],
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Class",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          },
+          {
             "kind": "Var",
             "name": "captureSession",
             "printedName": "captureSession",
@@ -5014,6 +5477,254 @@
             "declKind": "Func",
             "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC8setLoginyySbF",
             "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC8setLoginyySbF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMaskBackgroundColor",
+            "printedName": "setMaskBackgroundColor(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC22setMaskBackgroundColoryySo7UIColorCF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC22setMaskBackgroundColoryySo7UIColorCF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setOvalStrokeColor",
+            "printedName": "setOvalStrokeColor(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC18setOvalStrokeColoryySo7UIColorCF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC18setOvalStrokeColoryySo7UIColorCF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTextBackgroundColor",
+            "printedName": "setTextBackgroundColor(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC22setTextBackgroundColoryySo7UIColorCF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC22setTextBackgroundColoryySo7UIColorCF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTextColor",
+            "printedName": "setTextColor(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC12setTextColoryySo7UIColorCF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC12setTextColoryySo7UIColorCF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMessageMap",
+            "printedName": "setMessageMap(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.Int : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC13setMessageMapyySDySiSSGF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC13setMessageMapyySDySiSSGF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMaskStyle",
+            "printedName": "setMaskStyle(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MaskStyle",
+                "printedName": "ekyc_ios_sdk.FaceAuthenticationView.MaskStyle",
+                "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC9MaskStyleC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC12setMaskStyleyyAC0hI0CF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC12setMaskStyleyyAC0hI0CF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMaskStyle",
+            "printedName": "setMaskStyle(backgroundColor:ovalStrokeColor:textBackgroundColor:textColor:messageMap:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.Int : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC12setMaskStyle15backgroundColor010ovalStrokeK0014textBackgroundK00nK010messageMapySo7UIColorC_A3KSDySiSSGtF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC12setMaskStyle15backgroundColor010ovalStrokeK0014textBackgroundK00nK010messageMapySo7UIColorC_A3KSDySiSSGtF",
             "moduleName": "ekyc_ios_sdk",
             "declAttributes": [
               "Preconcurrency",
@@ -11340,336 +12051,357 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 818,
+      "offset": 877,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 846,
+      "offset": 905,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "StringLiteral",
-      "offset": 919,
+      "offset": 978,
       "length": 72,
       "value": "\"Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "FloatLiteral",
-      "offset": 999,
+      "offset": 1058,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "FloatLiteral",
-      "offset": 1009,
+      "offset": 1068,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1027,
+      "offset": 1086,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1814,
+      "offset": 1873,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "StringLiteral",
-      "offset": 1954,
+      "offset": 2013,
       "length": 15,
       "value": "\"session queue\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "Array",
-      "offset": 1983,
+      "offset": 2042,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "StringLiteral",
-      "offset": 2136,
+      "offset": 2195,
       "length": 18,
       "value": "\"video data queue\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "Array",
-      "offset": 2189,
+      "offset": 2248,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2581,
+      "offset": 2640,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3020,
+      "offset": 3079,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3077,
+      "offset": 3136,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3083,
+      "offset": 3142,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "FloatLiteral",
-      "offset": 3341,
+      "offset": 3400,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "FloatLiteral",
-      "offset": 3389,
+      "offset": 3448,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "FloatLiteral",
-      "offset": 3432,
+      "offset": 3491,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3478,
+      "offset": 3537,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3484,
+      "offset": 3543,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3521,
+      "offset": 3580,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 3617,
+      "offset": 3676,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 15933,
+      "offset": 16512,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 53125,
+      "offset": 53704,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 363,
+      "offset": 2466,
       "length": 24,
       "value": "\"FaceAuthenticationView\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 768,
+      "offset": 2871,
       "length": 10,
       "value": "\"vertical\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 827,
+      "offset": 2930,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 857,
+      "offset": 2960,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 941,
+      "offset": 3044,
       "length": 72,
       "value": "\"Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1029,
+      "offset": 3132,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1039,
+      "offset": 3142,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1057,
+      "offset": 3160,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 1211,
+      "offset": 3314,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "StringLiteral",
-      "offset": 1556,
+      "offset": 3659,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1595,
+      "offset": 3698,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1776,
+      "offset": 3879,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1820,
+      "offset": 3923,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1964,
+      "offset": 4067,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2051,
+      "offset": 4154,
       "length": 5,
       "value": "350.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2152,
+      "offset": 4255,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2203,
+      "offset": 4306,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 2335,
+      "offset": 4438,
       "length": 4,
       "value": "0.12"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2466,
+      "offset": 4569,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2497,
+      "offset": 4600,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2532,
+      "offset": 4635,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2577,
+      "offset": 4680,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "StringLiteral",
+      "offset": 4801,
+      "length": 9,
+      "value": "\"#F4C42A\""
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "StringLiteral",
+      "offset": 4881,
+      "length": 9,
+      "value": "\"#F4C42A\""
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "Dictionary",
+      "offset": 4993,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 21944,
+      "offset": 27414,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 24082,
+      "offset": 29552,
       "length": 3,
       "value": "0.8"
     },
@@ -12347,106 +13079,120 @@
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
-      "kind": "BooleanLiteral",
-      "offset": 329,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
-      "kind": "BooleanLiteral",
-      "offset": 350,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
-      "kind": "BooleanLiteral",
-      "offset": 372,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "StringLiteral",
-      "offset": 406,
+      "offset": 173,
       "length": 9,
       "value": "\"#F4C42A\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "StringLiteral",
+      "offset": 256,
+      "length": 9,
+      "value": "\"#F4C42A\""
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "Dictionary",
+      "offset": 378,
+      "length": 804,
+      "value": "[(0, \"Bạn vui lòng giữ yên\"), (1, \"Bạn vui lòng không dùng tay che mặt\"), (2, \"Không đeo kính râm, không đeo khẩu trang\"), (3, \"Không đeo kính râm, không đeo khẩu trang\"), (4, \"Đưa khuôn mặt nằm trọn trong khung hình\"), (5, \"Bạn vui lòng nhìn thẳng\"), (6, \"Bạn vui lòng tiến lại gần hơn\"), (7, \"Đưa khuôn mặt nằm trọn trong khung hình\"), (8, \"Môi trường ánh sáng quá mạnh\"), (9, \"Môi trường thiếu ánh sáng\"), (10, \"Bạn vui lòng giữ yên\"), (11, \"Bạn vui lòng chờ trong giây lát\"), (12, \"Bạn vui lòng đưa khuôn mặt xa hơn\"), (13, \"Hide mark view.\"), (14, \"Chỉ đưa một khuôn mặt vào khung hình\")]"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 442,
+      "offset": 1463,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1484,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1506,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2175,
+      "offset": 1538,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3329,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 6085,
+      "offset": 6993,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 6134,
+      "offset": 7042,
       "length": 4,
       "value": "1.12"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 6511,
+      "offset": 7419,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 6734,
+      "offset": 7642,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 11493,
+      "offset": 12401,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 11517,
+      "offset": 12425,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 12656,
+      "offset": 13564,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 12694,
+      "offset": 13602,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 12731,
+      "offset": 13639,
       "length": 4,
       "value": "0.88"
     },

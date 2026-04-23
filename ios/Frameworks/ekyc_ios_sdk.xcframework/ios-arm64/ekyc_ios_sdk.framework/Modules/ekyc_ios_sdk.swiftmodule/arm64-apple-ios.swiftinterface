@@ -157,6 +157,16 @@ public class BrightnessHelper {
   @_Concurrency.MainActor @preconcurrency @objc public func dataOutputSynchronizer(_ synchronizer: AVFoundation.AVCaptureDataOutputSynchronizer, didOutput synchronizedDataCollection: AVFoundation.AVCaptureSynchronizedDataCollection)
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class FaceAuthenticationView : UIKit.UIView, AVFoundation.AVCapturePhotoCaptureDelegate, AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  final public class MaskStyle {
+    final public let maskBackgroundColorHex: Swift.String
+    final public let ovalStrokeColorHex: Swift.String
+    final public let textBackgroundColorHex: Swift.String
+    final public let textColorHex: Swift.String
+    final public let instructionMessageMap: [Swift.Int : Swift.String]?
+    public init(maskBackgroundColorHex: Swift.String, ovalStrokeColorHex: Swift.String, textBackgroundColorHex: Swift.String, textColorHex: Swift.String, instructionMessageMap: [Swift.Int : Swift.String]?)
+    public static func of(_ maskBackgroundColorHex: Swift.String, _ ovalStrokeColorHex: Swift.String, _ textBackgroundColorHex: Swift.String, _ textColorHex: Swift.String, _ instructionMessageMap: [Swift.Int : Swift.String]?) -> ekyc_ios_sdk.FaceAuthenticationView.MaskStyle
+    @objc deinit
+  }
   @_Concurrency.MainActor @preconcurrency public var captureSession: AVFoundation.AVCaptureSession
   @_Concurrency.MainActor @preconcurrency public var videoDataOutput: AVFoundation.AVCaptureVideoDataOutput
   @_Concurrency.MainActor @preconcurrency public var stillImageOutput: AVFoundation.AVCapturePhotoOutput
@@ -164,6 +174,13 @@ public class BrightnessHelper {
   @_Concurrency.MainActor @preconcurrency public var onResultsLiveness: (ekyc_ios_sdk.FaceLivenessClass) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public var onResultsExtracted: ([Swift.String], Swift.String) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public func setLogin(_ value: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setMaskBackgroundColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setOvalStrokeColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setTextBackgroundColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setTextColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setMessageMap(_ messages: [Swift.Int : Swift.String])
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(_ style: ekyc_ios_sdk.FaceAuthenticationView.MaskStyle)
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(backgroundColor: UIKit.UIColor, ovalStrokeColor: UIKit.UIColor, textBackgroundColor: UIKit.UIColor, textColor: UIKit.UIColor, messageMap: [Swift.Int : Swift.String])
   @objc deinit
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
