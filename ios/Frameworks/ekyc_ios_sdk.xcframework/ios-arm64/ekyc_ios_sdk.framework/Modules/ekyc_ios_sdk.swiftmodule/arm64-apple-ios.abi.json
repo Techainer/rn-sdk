@@ -783,17 +783,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -1033,17 +1033,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -2269,17 +2269,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -2527,17 +2527,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -2777,17 +2777,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -2990,17 +2990,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -3203,17 +3203,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -3450,6 +3450,250 @@
         "printedName": "UIKit",
         "declKind": "Import",
         "moduleName": "ekyc_ios_sdk"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AppUtils",
+        "printedName": "AppUtils",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isLoggingEnabled",
+            "printedName": "isLoggingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvpZ",
+            "mangledName": "$s12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvpZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvgZ",
+                "mangledName": "$s12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvgZ",
+                "moduleName": "ekyc_ios_sdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvsZ",
+                "mangledName": "$s12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvsZ",
+                "moduleName": "ekyc_ios_sdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvMZ",
+                "mangledName": "$s12ekyc_ios_sdk8AppUtilsC16isLoggingEnabledSbvMZ",
+                "moduleName": "ekyc_ios_sdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setLoggingEnabled",
+            "printedName": "setLoggingEnabled(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk8AppUtilsC17setLoggingEnabledyySbFZ",
+            "mangledName": "$s12ekyc_ios_sdk8AppUtilsC17setLoggingEnabledyySbFZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "Log",
+            "printedName": "Log(_:separator:terminator:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk8AppUtilsC3Log_9separator10terminatoryypd_S2StFZ",
+            "mangledName": "$s12ekyc_ios_sdk8AppUtilsC3Log_9separator10terminatoryypd_S2StFZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "Log",
+            "printedName": "Log(log:terminator:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk8AppUtilsC3Log3log10terminatorySS_SStFZ",
+            "mangledName": "$s12ekyc_ios_sdk8AppUtilsC3Log3log10terminatorySS_SStFZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:12ekyc_ios_sdk8AppUtilsC",
+        "mangledName": "$s12ekyc_ios_sdk8AppUtilsC",
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -4215,38 +4459,10 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
           },
           {
             "kind": "Conformance",
@@ -4257,17 +4473,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -4278,10 +4494,45 @@
           },
           {
             "kind": "Conformance",
-            "name": "UITraitChangeObservable",
-            "printedName": "UITraitChangeObservable",
-            "usr": "s:5UIKit23UITraitChangeObservableP",
-            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -4292,10 +4543,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
           }
         ]
       },
@@ -5641,6 +5892,151 @@
           },
           {
             "kind": "Function",
+            "name": "setInstructionTopInset",
+            "printedName": "setInstructionTopInset(topInsetPx:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC22setInstructionTopInset03topJ2Pxy14CoreFoundation7CGFloatV_tF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC22setInstructionTopInset03topJ2Pxy12CoreGraphics7CGFloatV_tF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setShowInstructionShadow",
+            "printedName": "setShowInstructionShadow(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ekyc_ios_sdk@objc(cs)FaceAuthenticationView(im)setShowInstructionShadow:",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC24setShowInstructionShadowyySbF",
+            "moduleName": "ekyc_ios_sdk",
+            "objc_name": "setShowInstructionShadow:",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setShowInstructionShadow",
+            "printedName": "setShowInstructionShadow(enabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC24setShowInstructionShadow7enabledySb_tF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC24setShowInstructionShadow7enabledySb_tF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setPlaceInstructionBelow",
+            "printedName": "setPlaceInstructionBelow(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ekyc_ios_sdk@objc(cs)FaceAuthenticationView(im)setPlaceInstructionBelow:",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC24setPlaceInstructionBelowyySbF",
+            "moduleName": "ekyc_ios_sdk",
+            "objc_name": "setPlaceInstructionBelow:",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setPlaceInstructionBelow",
+            "printedName": "setPlaceInstructionBelow(enabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk22FaceAuthenticationViewC24setPlaceInstructionBelow7enabledySb_tF",
+            "mangledName": "$s12ekyc_ios_sdk22FaceAuthenticationViewC24setPlaceInstructionBelow7enabledySb_tF",
+            "moduleName": "ekyc_ios_sdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setMaskStyle",
             "printedName": "setMaskStyle(_:)",
             "children": [
@@ -6049,38 +6445,10 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
           },
           {
             "kind": "Conformance",
@@ -6091,17 +6459,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -6112,10 +6480,45 @@
           },
           {
             "kind": "Conformance",
-            "name": "UITraitChangeObservable",
-            "printedName": "UITraitChangeObservable",
-            "usr": "s:5UIKit23UITraitChangeObservableP",
-            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -6126,10 +6529,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
           }
         ]
       },
@@ -7180,17 +7583,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -8735,38 +9138,10 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
           },
           {
             "kind": "Conformance",
@@ -8777,17 +9152,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -8798,10 +9173,45 @@
           },
           {
             "kind": "Conformance",
-            "name": "UITraitChangeObservable",
-            "printedName": "UITraitChangeObservable",
-            "usr": "s:5UIKit23UITraitChangeObservableP",
-            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -8812,10 +9222,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
           }
         ]
       },
@@ -10128,38 +10538,10 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
           },
           {
             "kind": "Conformance",
@@ -10170,17 +10552,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -10191,10 +10573,45 @@
           },
           {
             "kind": "Conformance",
-            "name": "UITraitChangeObservable",
-            "printedName": "UITraitChangeObservable",
-            "usr": "s:5UIKit23UITraitChangeObservableP",
-            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -10205,10 +10622,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
           }
         ]
       },
@@ -11067,17 +11484,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
             "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -11211,20 +11628,6 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "_CFObject",
             "printedName": "_CFObject",
             "usr": "s:14CoreFoundation9_CFObjectP",
@@ -11232,10 +11635,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -11246,10 +11649,31 @@
           },
           {
             "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
             "name": "Sendable",
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -11596,45 +12020,10 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
           },
           {
             "kind": "Conformance",
@@ -11645,17 +12034,17 @@
           },
           {
             "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           },
           {
             "kind": "Conformance",
@@ -11666,10 +12055,52 @@
           },
           {
             "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ExpressibleByImageLiteral",
             "printedName": "_ExpressibleByImageLiteral",
             "usr": "s:s26_ExpressibleByImageLiteralP",
             "mangledName": "$ss26_ExpressibleByImageLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       }
@@ -12000,6 +12431,34 @@
       "value": "0.5"
     },
     {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/AppUtils.swift",
+      "kind": "BooleanLiteral",
+      "offset": 194,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/AppUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 367,
+      "length": 3,
+      "value": "\" \""
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/AppUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 393,
+      "length": 4,
+      "value": "\"\n\""
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/AppUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 607,
+      "length": 4,
+      "value": "\"\n\""
+    },
+    {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/ExtUIImage.swift",
       "kind": "BooleanLiteral",
       "offset": 1969,
@@ -12205,14 +12664,14 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "IntegerLiteral",
-      "offset": 16512,
+      "offset": 16554,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthentication3DView.swift",
       "kind": "BooleanLiteral",
-      "offset": 53704,
+      "offset": 53893,
       "length": 5,
       "value": "false"
     },
@@ -12387,21 +12846,56 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "Dictionary",
-      "offset": 4993,
+      "offset": 5041,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "BooleanLiteral",
-      "offset": 27414,
+      "offset": 5085,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5136,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5239,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5284,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5325,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 34682,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceAuthenticationView.swift",
       "kind": "FloatLiteral",
-      "offset": 29552,
+      "offset": 36820,
       "length": 3,
       "value": "0.8"
     },
@@ -12639,273 +13133,273 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4220,
+      "offset": 4269,
       "length": 89,
       "value": "\"timeStamp updated: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4252,
+      "offset": 4301,
       "length": 1,
       "value": "\", detectStatus: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4283,
+      "offset": 4332,
       "length": 1,
       "value": "\", checkStep: \""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 4308,
+      "offset": 4357,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "FloatLiteral",
-      "offset": 4359,
+      "offset": 4408,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5174,
+      "offset": 5223,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 4181,
+      "offset": 4223,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 5355,
+      "offset": 5404,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 5381,
+      "offset": 5430,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "FloatLiteral",
-      "offset": 6263,
+      "offset": 6312,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6328,
+      "offset": 6377,
       "length": 15,
       "value": "\"Nhìn thẳng\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6355,
+      "offset": 6404,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6371,
+      "offset": 6420,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6385,
+      "offset": 6434,
       "length": 6,
       "value": "\"Face\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6417,
+      "offset": 6466,
       "length": 13,
       "value": "\"Quay phải\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6442,
+      "offset": 6491,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6458,
+      "offset": 6507,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6472,
+      "offset": 6521,
       "length": 11,
       "value": "\"faceRight\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6509,
+      "offset": 6558,
       "length": 12,
       "value": "\"Quay trái\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6533,
+      "offset": 6582,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6549,
+      "offset": 6598,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6563,
+      "offset": 6612,
       "length": 10,
       "value": "\"faceLeft\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6599,
+      "offset": 6648,
       "length": 12,
       "value": "\"Nhìn lên\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6623,
+      "offset": 6672,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6639,
+      "offset": 6688,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6653,
+      "offset": 6702,
       "length": 8,
       "value": "\"faceUp\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6687,
+      "offset": 6736,
       "length": 15,
       "value": "\"Nhìn xuống\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6714,
+      "offset": 6763,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 6730,
+      "offset": 6779,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 6744,
+      "offset": 6793,
       "length": 10,
       "value": "\"faceDown\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6800,
+      "offset": 6849,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6828,
+      "offset": 6877,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6859,
+      "offset": 6908,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6884,
+      "offset": 6933,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "BooleanLiteral",
-      "offset": 6913,
+      "offset": 6962,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 41975,
+      "offset": 42136,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 41997,
+      "offset": 42158,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "IntegerLiteral",
-      "offset": 42021,
+      "offset": 42182,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/FaceValidateView.swift",
       "kind": "StringLiteral",
-      "offset": 42043,
+      "offset": 42204,
       "length": 2,
       "value": "\"\""
     },
@@ -12996,7 +13490,7 @@
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/View\/ValidateCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 4979,
+      "offset": 5028,
       "length": 5,
       "value": "false"
     },
@@ -13093,106 +13587,176 @@
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 383,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 443,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 503,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "FloatLiteral",
+      "offset": 563,
+      "length": 4,
+      "value": "0.22"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 626,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 691,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 702,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 766,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "Dictionary",
-      "offset": 378,
+      "offset": 825,
       "length": 804,
       "value": "[(0, \"Bạn vui lòng giữ yên\"), (1, \"Bạn vui lòng không dùng tay che mặt\"), (2, \"Không đeo kính râm, không đeo khẩu trang\"), (3, \"Không đeo kính râm, không đeo khẩu trang\"), (4, \"Đưa khuôn mặt nằm trọn trong khung hình\"), (5, \"Bạn vui lòng nhìn thẳng\"), (6, \"Bạn vui lòng tiến lại gần hơn\"), (7, \"Đưa khuôn mặt nằm trọn trong khung hình\"), (8, \"Môi trường ánh sáng quá mạnh\"), (9, \"Môi trường thiếu ánh sáng\"), (10, \"Bạn vui lòng giữ yên\"), (11, \"Bạn vui lòng chờ trong giây lát\"), (12, \"Bạn vui lòng đưa khuôn mặt xa hơn\"), (13, \"Hide mark view.\"), (14, \"Chỉ đưa một khuôn mặt vào khung hình\")]"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1463,
+      "offset": 1910,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1484,
+      "offset": 1931,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1506,
+      "offset": 1953,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1538,
+      "offset": 1985,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3329,
+      "offset": 2780,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2882,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4080,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 6993,
+      "offset": 10438,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 7042,
+      "offset": 10487,
       "length": 4,
       "value": "1.12"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 7419,
+      "offset": 10864,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 7642,
+      "offset": 11087,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 12401,
+      "offset": 15846,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 12425,
+      "offset": 15870,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 13564,
+      "offset": 17009,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 13602,
+      "offset": 17047,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/LivenessMaskView.swift",
       "kind": "FloatLiteral",
-      "offset": 13639,
+      "offset": 17084,
       "length": 4,
       "value": "0.88"
     },

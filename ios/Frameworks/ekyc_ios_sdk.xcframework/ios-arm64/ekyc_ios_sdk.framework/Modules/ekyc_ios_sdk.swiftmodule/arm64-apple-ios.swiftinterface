@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name ekyc_ios_sdk
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.3.1 effective-5.10 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+// swift-module-flags: -target arm64-apple-ios13 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ekyc_ios_sdk
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.1
 import AVFoundation
 import Accelerate
 import CoreGraphics
@@ -86,11 +86,11 @@ public enum ValidateCard : Swift.CaseIterable {
   case validPassport
   case invalidSide
   public static func == (a: ekyc_ios_sdk.ValidateCard, b: ekyc_ios_sdk.ValidateCard) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public typealias AllCases = [ekyc_ios_sdk.ValidateCard]
   nonisolated public static var allCases: [ekyc_ios_sdk.ValidateCard] {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
@@ -140,6 +140,13 @@ public class BrightnessHelper {
   public func restoreBrightness()
   @objc deinit
 }
+@_hasMissingDesignatedInitializers final public class AppUtils {
+  public static var isLoggingEnabled: Swift.Bool
+  public static func setLoggingEnabled(_ enabled: Swift.Bool)
+  public static func Log(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func Log(log: Swift.String, terminator: Swift.String = "\n")
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @available(iOS 11.1, *)
 @_Concurrency.MainActor @preconcurrency public class FaceAuthentication3DView : UIKit.UIView, AVFoundation.AVCaptureDataOutputSynchronizerDelegate {
   @_Concurrency.MainActor @preconcurrency public var onResultsLiveness: (ekyc_ios_sdk.FaceLivenessClass) -> Swift.Void
@@ -179,6 +186,11 @@ public class BrightnessHelper {
   @_Concurrency.MainActor @preconcurrency public func setTextBackgroundColor(_ color: UIKit.UIColor)
   @_Concurrency.MainActor @preconcurrency public func setTextColor(_ color: UIKit.UIColor)
   @_Concurrency.MainActor @preconcurrency public func setMessageMap(_ messages: [Swift.Int : Swift.String])
+  @_Concurrency.MainActor @preconcurrency public func setInstructionTopInset(topInsetPx: CoreFoundation.CGFloat)
+  @objc(setShowInstructionShadow:) @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(enabled: Swift.Bool)
+  @objc(setPlaceInstructionBelow:) @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(enabled: Swift.Bool)
   @_Concurrency.MainActor @preconcurrency public func setMaskStyle(_ style: ekyc_ios_sdk.FaceAuthenticationView.MaskStyle)
   @_Concurrency.MainActor @preconcurrency public func setMaskStyle(backgroundColor: UIKit.UIColor, ovalStrokeColor: UIKit.UIColor, textBackgroundColor: UIKit.UIColor, textColor: UIKit.UIColor, messageMap: [Swift.Int : Swift.String])
   @objc deinit
