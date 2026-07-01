@@ -262,25 +262,35 @@ class LivenessView: UIView {
         onEvent?(["data": data])
     }
 
-    func convertImageToBase64UnderMB(filePath: String, maxSizeInKB: Int = 300) -> String? {
-        guard var image = UIImage(contentsOfFile: filePath) else { return nil }
-        var compression: CGFloat = 1.0
-        var data = image.jpegData(compressionQuality: compression)
+    func resizeAndCompressImageToBase64(filePath: String, maxSize: CGFloat = 1024, compression: Int = 95) -> String? {
+        guard let image = UIImage(contentsOfFile: filePath) else { return nil }
 
-        while let d = data, d.count > maxSizeInKB * 1024 {
-            compression -= 0.1
-            data = image.jpegData(compressionQuality: compression)
+        let currentSize = image.size
+        let longestSide = max(currentSize.width, currentSize.height)
 
-            if compression < 0.1 {
-                let newSize = CGSize(width: image.size.width * 0.9, height: image.size.height * 0.9)
-                UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        let finalImage: UIImage
+        // 1. Resize ảnh giữ đúng tỷ lệ (xử lý triệt để vụ lẻ pixel và scale Retina)
+        if longestSide > maxSize {
+            let scale = maxSize / longestSide
+            let newSize = CGSize(width: (currentSize.width * scale).rounded(),
+                                height: (currentSize.height * scale).rounded())
+
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = 1.0 
+
+            let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+            finalImage = renderer.image { _ in
                 image.draw(in: CGRect(origin: .zero, size: newSize))
-                image = UIGraphicsGetImageFromCurrentImageContext() ?? image
-                UIGraphicsEndImageContext()
-                compression = 1.0
-                data = image.jpegData(compressionQuality: compression)
             }
+        } else {
+            finalImage = image
         }
-        return data?.base64EncodedString(options: .lineLength64Characters)
+
+        // 2. Nén đúng 1 lần duy nhất theo chất lượng truyền vào
+        let compressQuality = CGFloat(compression) / 100.0
+        let imageData = finalImage.jpegData(compressionQuality: compressQuality)
+
+        // 3. Trả về chuỗi Base64 liền mạch, an toàn cho API
+        return imageData?.base64EncodedString(options: [])
     }
 }

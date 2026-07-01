@@ -78,8 +78,8 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   override fun onResultsExtracted(images: MutableList<String>?, colorString: String?) {
     if (images.isNullOrEmpty()) return
-    val originalImage = convertPathToBase64WithLimitKB(path = images[0])
-    val colorImage = convertPathToBase64WithLimitKB(path = images[1])
+    val originalImage = resizeAndCompressImageToBase64(path = images[0])
+    val colorImage = resizeAndCompressImageToBase64(path = images[1])
     val map = Arguments.createMap()
     map.putString("livenessColorImage", colorImage)
     map.putString("livenessOriginalImage", originalImage)
@@ -164,40 +164,36 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     }
   }
 
-  private fun convertPathToBase64WithLimitKB(path: String, maxSizeInKB: Int = 300): String? {
+  private fun resizeAndCompressImageToBase64(path: String, maxSize: Int = 1024, compression: Int = 95): String? {
     try {
       val file = File(path)
       if (!file.exists()) {
         throw IllegalArgumentException("File not found at path: $path")
       }
 
-      // 1. Decode the image from the file path
-      var bitmap = BitmapFactory.decodeFile(path)
+      // 1. Decode ảnh từ file
+      val bitmap = BitmapFactory.decodeFile(path)
         ?: throw IllegalArgumentException("Failed to decode image at path: $path")
 
-      // 2. Compress and resize the image to reduce size
-      var quality = 100 // Start with max quality
-      var byteArray: ByteArray
-      do {
-        val outputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream) // Compress as JPEG
-        byteArray = outputStream.toByteArray()
-        outputStream.close()
+      // 2. Resize 1 lần nếu cạnh dài nhất > maxSize, giữ đúng tỷ lệ. Ngược lại giữ nguyên.
+      val longestSide = maxOf(bitmap.width, bitmap.height)
+      val finalBitmap = if (longestSide > maxSize) {
+        val scale = maxSize.toFloat() / longestSide.toFloat()
+        val newWidth = Math.round(bitmap.width * scale)
+        val newHeight = Math.round(bitmap.height * scale)
+        Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
+      } else {
+        bitmap
+      }
 
-        // Reduce quality if size is still too large
-        quality -= 5
+      // 3. Nén JPEG đúng 1 lần theo chất lượng truyền vào
+      val outputStream = ByteArrayOutputStream()
+      finalBitmap.compress(Bitmap.CompressFormat.JPEG, compression, outputStream)
+      val byteArray = outputStream.toByteArray()
+      outputStream.close()
 
-        // Resize bitmap if needed
-        if (byteArray.size > maxSizeInKB * 1024 && quality <= 5) {
-          val newWidth = (bitmap.width * 0.9).toInt() // Reduce width by 10%
-          val newHeight = (bitmap.height * 0.9).toInt() // Reduce height by 10%
-          bitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
-          quality = 100 // Reset quality for resized image
-        }
-      } while (byteArray.size > maxSizeInKB * 1024 && quality > 0)
-
-      // 3. Convert the byte array to Base64 string
-      return Base64.encodeToString(byteArray, Base64.DEFAULT)
+      // 4. Base64 liền mạch (NO_WRAP), an toàn cho API
+      return Base64.encodeToString(byteArray, Base64.NO_WRAP)
 
     } catch (e: Exception) {
       e.printStackTrace()
