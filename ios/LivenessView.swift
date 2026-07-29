@@ -168,8 +168,8 @@ class LivenessView: UIView {
     // MARK: - Process images async
     private func processImagesAsync(original: String?, colorOrThermal: String?, color: String?, is3D: Bool) {
         DispatchQueue.global(qos: .utility).async {
-            let base64Original = original.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
-            let base64ColorOrThermal = colorOrThermal.flatMap { self.convertImageToBase64UnderMB(filePath: $0) }
+            let base64Original = original.flatMap { self.resizeAndCompressImageToBase64(filePath: $0) }
+            let base64ColorOrThermal = colorOrThermal.flatMap { self.resizeAndCompressImageToBase64(filePath: $0) }
 
             var data: [String: Any] = ["livenessOriginalImage": base64Original as Any]
             if is3D {
