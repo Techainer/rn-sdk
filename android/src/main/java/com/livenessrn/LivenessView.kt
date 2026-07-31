@@ -132,7 +132,13 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   }
 
   override fun onCheckHack(p0: Boolean, p1: String?) {
-    TODO("Not yet implemented")
+    android.util.Log.d("LivenessFragment", "onCheckHack - isHack: $p0, message: $p1")
+    if (p0) {
+      val map = Arguments.createMap()
+      map.putBoolean("isHack", p0)
+      map.putString("message", p1)
+      listener?.onLivenessEvent(viewId, map)
+    }
   }
 
   fun setBrightness(value: Float, activity: FragmentActivity) {
