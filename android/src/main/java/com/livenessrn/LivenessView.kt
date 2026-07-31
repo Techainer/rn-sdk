@@ -47,6 +47,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   var isDebug: Boolean = false
   var viewId: Int = -1
   var sessionKey: ByteArray? = null
+  var timestamp: Long = System.currentTimeMillis()
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -75,9 +76,9 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
     if (images.isNullOrEmpty()) return
     val ctx = requireContext()
     // 1. Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy ANDROID_ID trong SDK).
-    val originalImage = ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[0], 1024, 95, sessionKey)
+    val originalImage = ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[0], 1024, 95, sessionKey, timestamp)
     val colorImage = if (images.size > 1)
-      ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[1], 1024, 95, sessionKey) else null
+      ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[1], 1024, 95, sessionKey, timestamp) else null
     val map = Arguments.createMap()
     map.putString("livenessColorImage", colorImage)
     map.putString("livenessOriginalImage", originalImage)

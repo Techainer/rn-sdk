@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/ekyc_ios_sdk.h</key>
 		<data>
-		ojo84Vvovv3esxON7irsANvwdM0=
+		TPw1gvdW0DJhIQAUYtn0uVC6PcI=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -46,23 +46,23 @@
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		whBf+KX+P4rlnFUwR0zS1ocPH5s=
+		n70tUyiOi4dXl52q8VY4ir5XuY0=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		YT58ghBqdNrjkKCsBLTUTDnTPzk=
+		w08Wwm+kRojMGKNVNFP2FLitWx0=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		u0BIoTbqXzZZ53jKSiv8TZ4+mIw=
+		FNs5iHzVHu03I1UNeVUPUTdNFOM=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		YT58ghBqdNrjkKCsBLTUTDnTPzk=
+		w08Wwm+kRojMGKNVNFP2FLitWx0=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		uUNkzOdwcgFBOLowiey5+hOe2DU=
+		RHi5x7Oibu+F8gh3INYMt7I2OgI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -143,42 +143,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Q5QnPJk/pajcVbG2/b4BEOa51QDgF0WUuyG3LFwJdQk=
+			xEtJO6GzP3C3OiqJhcGg7UhJxg9N1ExWD50OhE4W+Jo=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gAnXQFXCbbLGfmCJLwbKV+zmxaVKob9rMRWeQIfTXCo=
+			WvRBHklZ6si7gzKsJcEP7gvUNLxvmlYQOAWT891FS/Y=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TnhZfFvZpCikIOB6b3RPTZD05b1QRFCVfhBy3NTU0rE=
+			7tsuFrSzrmIkEw1zq5jYXc9muCr7SfUy7OdWeLunqK4=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			43jk4OW/q3pTEWObLDVfp3lgLACW6u4rUbbhBXPuD6I=
+			EXLpVlyuyfS8I7MLLiVXk3dUt5XhyctBx8ztunSxyXo=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TnhZfFvZpCikIOB6b3RPTZD05b1QRFCVfhBy3NTU0rE=
+			7tsuFrSzrmIkEw1zq5jYXc9muCr7SfUy7OdWeLunqK4=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0Mntn3KLf5sFWC52FX0iwMxR/ptGHaKxBVHN6gOJvck=
+			1Qx4C9ZZwINcvy5Ea8NzvFHYs161n+4nv6znvyr6alI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

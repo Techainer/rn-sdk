@@ -6516,6 +6516,196 @@
       },
       {
         "kind": "Import",
+        "name": "CryptoKit",
+        "printedName": "CryptoKit",
+        "declKind": "Import",
+        "moduleName": "ekyc_ios_sdk"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ekyc_ios_sdk"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ProvenanceImage",
+        "printedName": "ProvenanceImage",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "resizeCompressWatermarkToBase64",
+            "printedName": "resizeCompressWatermarkToBase64(filePath:maxSize:compression:sessionKey:timestamp:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "hasDefaultArg": true,
+                "usr": "s:14CoreFoundation7CGFloatV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Data?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Data",
+                    "printedName": "Foundation.Data",
+                    "usr": "s:10Foundation4DataV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int64?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk15ProvenanceImageO31resizeCompressWatermarkToBase648filePath7maxSize11compression10sessionKey9timestampSSSgSS_14CoreFoundation7CGFloatVSi0T04DataVSgs5Int64VSgtFZ",
+            "mangledName": "$s12ekyc_ios_sdk15ProvenanceImageO31resizeCompressWatermarkToBase648filePath7maxSize11compression10sessionKey9timestampSSSgSS_12CoreGraphics7CGFloatVSi10Foundation4DataVSgs5Int64VSgtFZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "verifyWatermark",
+            "printedName": "verifyWatermark(jpeg:sessionKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12ekyc_ios_sdk15ProvenanceImageO15verifyWatermark4jpeg10sessionKeySS10Foundation4DataV_AItFZ",
+            "mangledName": "$s12ekyc_ios_sdk15ProvenanceImageO15verifyWatermark4jpeg10sessionKeySS10Foundation4DataV_AItFZ",
+            "moduleName": "ekyc_ios_sdk",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:12ekyc_ios_sdk15ProvenanceImageO",
+        "mangledName": "$s12ekyc_ios_sdk15ProvenanceImageO",
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ekyc_ios_sdk",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -11798,6 +11988,20 @@
       "offset": 411,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Provenance\/ProvenanceImage.swift",
+      "kind": "IntegerLiteral",
+      "offset": 977,
+      "length": 4,
+      "value": "1024"
+    },
+    {
+      "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Provenance\/ProvenanceImage.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1057,
+      "length": 2,
+      "value": "95"
     },
     {
       "filePath": "\/Volumes\/DocsExtenal\/mooc\/ios-ekyc-to-integrate-to-rn\/ekyc_ios_sdk\/Utils\/3D\/UIImage+CVPixelBuffer.swift",

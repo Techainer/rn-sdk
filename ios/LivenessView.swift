@@ -23,6 +23,7 @@ class LivenessView: UIView {
     @objc var isDebug: Bool = false
     @objc var sessionKey: String?
     private var sessionKeyData: Data? { sessionKey.flatMap { Data(base64Encoded: $0) } }
+    private var timestamp: Int64 { Int64(Date().timeIntervalSince1970 * 1000.0) }
 
     // MARK: - Setters
     @objc func setIsFlashCamera(_ val: Bool) {
@@ -162,10 +163,10 @@ class LivenessView: UIView {
             let key = self.sessionKeyData
             // Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy IDFV trong SDK).
             let base64Original = original.flatMap {
-                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key)
+                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestamp)
             }
             let base64ColorOrThermal = colorOrThermal.flatMap {
-                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key)
+                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestamp)
             }
 
             // Sau khi watermark MỚI lưu ảnh ĐÃ watermark vào thư viện (giữ nguyên bytes để verify được).

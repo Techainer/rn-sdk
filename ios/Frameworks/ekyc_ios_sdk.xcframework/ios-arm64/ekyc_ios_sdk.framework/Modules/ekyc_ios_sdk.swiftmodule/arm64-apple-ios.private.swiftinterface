@@ -9,6 +9,7 @@ import CoreImage
 import CoreML
 import CoreMedia
 import CoreVideo
+import CryptoKit
 import DeveloperToolsSupport
 import Foundation
 import Metal
@@ -211,6 +212,10 @@ public enum FaceValidationClass {
   public var hashValue: Swift.Int {
     get
   }
+}
+public enum ProvenanceImage {
+  public static func resizeCompressWatermarkToBase64(filePath: Swift.String, maxSize: CoreFoundation.CGFloat = 1024, compression: Swift.Int = 95, sessionKey: Foundation.Data? = nil, timestamp: Swift.Int64? = nil) -> Swift.String?
+  public static func verifyWatermark(jpeg: Foundation.Data, sessionKey: Foundation.Data) -> Swift.String
 }
 extension UIKit.UIImage {
   public func pixelBuffer(width: Swift.Int, height: Swift.Int) -> CoreVideo.CVPixelBuffer?

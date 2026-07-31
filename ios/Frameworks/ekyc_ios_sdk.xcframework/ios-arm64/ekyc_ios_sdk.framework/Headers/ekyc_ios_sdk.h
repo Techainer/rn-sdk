@@ -3,6 +3,7 @@
 #import "HistogramCalculator.h"
 #import "CVpixelBuffer2UIImage16bit.h"
 #import "AAPLTransforms.h"
+#import "WatermarkBridge.h"
 
 
 //! Project version number for ekyc_ios_sdk.
