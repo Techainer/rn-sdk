@@ -164,10 +164,10 @@ class LivenessView: UIView {
             let key = self.sessionKeyData
             // Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy IDFV trong SDK).
             let base64Original = original.flatMap {
-                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestamp)
+              ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestampValue)
             }
             let base64ColorOrThermal = colorOrThermal.flatMap {
-                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestamp)
+                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestampValue)
             }
 
             // Sau khi watermark MỚI lưu ảnh ĐÃ watermark vào thư viện (giữ nguyên bytes để verify được).
