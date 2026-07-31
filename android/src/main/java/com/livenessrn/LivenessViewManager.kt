@@ -30,6 +30,7 @@ class LivenessViewManager(
 
   private var isFlashCamera: Boolean = false
   private var isDebug: Boolean = false
+  private var sessionKey: ByteArray? = null
 
   private var propWidth: Int? = null
   private var propHeight: Int? = null
@@ -125,6 +126,13 @@ class LivenessViewManager(
     this.isDebug = isDebug
   }
 
+  @ReactProp(name = "sessionKey")
+  fun setSessionKey(view: FrameLayout, sessionKeyB64: String?) {
+    this.sessionKey = sessionKeyB64?.let {
+      runCatching { android.util.Base64.decode(it, android.util.Base64.NO_WRAP) }.getOrNull()
+    }
+  }
+
   private fun callNativeEvent(viewId: Int, map: WritableMap) {
     try {
       // Validate ID trước khi gửi event
@@ -180,6 +188,7 @@ class LivenessViewManager(
     val livenessFragment = LivenessFragment()
     livenessFragment.listener = this
     livenessFragment.isDebug = this.isDebug
+    livenessFragment.sessionKey = this.sessionKey
     livenessFragment.viewId = reactNativeViewId
 
     fragmentManager.beginTransaction()

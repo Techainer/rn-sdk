@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		AE7A4XV7IH3OiSpLX4iICycYOk0=
+		ktiGoMWs9/+ZudYln6EMpRemMzk=
 		</data>
 		<key>Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022.tflite</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/ekyc_ios_sdk-Swift.h</key>
 		<data>
-		/OuKg3sogbenelomkw6xVjOaX5w=
+		up5WcBJqvKpjR6fpZzEEd3HQWK8=
 		</data>
 		<key>Headers/ekyc_ios_sdk.h</key>
 		<data>
@@ -42,31 +42,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		CHoMKsirfyiuvHt37PgUhrI3kbY=
+		NEHnlnXsaPjdx+eZ0YT+ZCMpDe4=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		5ItBfpQdnq1FzbzoZtZJX4f0JTk=
+		whBf+KX+P4rlnFUwR0zS1ocPH5s=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		pjBkCvpJQ29FlXqDjnT0NFH113A=
+		YT58ghBqdNrjkKCsBLTUTDnTPzk=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		jWdrjVqpNdpnpbi0sYvRv21zaLk=
+		u0BIoTbqXzZZ53jKSiv8TZ4+mIw=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		pjBkCvpJQ29FlXqDjnT0NFH113A=
+		YT58ghBqdNrjkKCsBLTUTDnTPzk=
 		</data>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		mmJ4Odw8g5AP5Ge3/Li4+FzUsWg=
+		uUNkzOdwcgFBOLowiey5+hOe2DU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		YU5hEeykOUW7HYUVr37foJbT9Wg=
+		7Y/wNujcciFOlypvMHDlliFL5Uc=
 		</data>
 		<key>cardliveness_mymodel_12_mobilenetv2_26classes_finger_spotlight_04042022_1553.tflite</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>default.metallib</key>
 		<data>
-		dl3ySLsn4GYjsPLbE12fr3ic9as=
+		EH01OsxFzcPiKCUvHX58/1BoOOU=
 		</data>
 		<key>face_detection_front.tflite</key>
 		<data>
@@ -87,7 +87,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LcyQ5EfCujxVwGK5mAG970jQ0IBQmAfzwh9t6OxgmpM=
+			x9AKsx9PDdRH+876WL7iqPpXLAMp0Ny6SrZD3wOY/kM=
 			</data>
 		</dict>
 		<key>Faceliveness_mobilenetv2_0.25_mymodel_3_train_01042022_export_01042022.tflite</key>
@@ -136,7 +136,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8nuz3gWeNof4ZdxUD3QLCXHty6YFfbLfL8Q5Dv6jBrY=
+			+adTRYp4dhVar+8Wn65beB835l8qIyI1zMcakmyAHg0=
 			</data>
 		</dict>
 		<key>Headers/ekyc_ios_sdk.h</key>
@@ -150,42 +150,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YjkgRES5hVA+4IRkACMpad/YPr1Jf+Wr7o1aCpMYw1o=
+			gAnXQFXCbbLGfmCJLwbKV+zmxaVKob9rMRWeQIfTXCo=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/5/RzQfTTqTPYXQzsaj55v6sUMShV52PlNTw44fQQcA=
+			TnhZfFvZpCikIOB6b3RPTZD05b1QRFCVfhBy3NTU0rE=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iWLlK7iUzwNhte/CZQ6XzqzxUKN2F2QyudyEemyUbZU=
+			43jk4OW/q3pTEWObLDVfp3lgLACW6u4rUbbhBXPuD6I=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/5/RzQfTTqTPYXQzsaj55v6sUMShV52PlNTw44fQQcA=
+			TnhZfFvZpCikIOB6b3RPTZD05b1QRFCVfhBy3NTU0rE=
 			</data>
 		</dict>
 		<key>Modules/ekyc_ios_sdk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n6EaHqE6nLmS8H4GEgtJU8+KK8+U7XG1ii6iMOJoX58=
+			0Mntn3KLf5sFWC52FX0iwMxR/ptGHaKxBVHN6gOJvck=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZoNm7Dt7PTpC4+f911vUCjEIdLwNqZkHL56WWFWcs4s=
+			NVjte7+yRNACB+coSuov4CzfEQH/ydBdai7wcfGfPNs=
 			</data>
 		</dict>
 		<key>cardliveness_mymodel_12_mobilenetv2_26classes_finger_spotlight_04042022_1553.tflite</key>
@@ -199,7 +199,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S3yZ4Gr7Ugh48fZ2BfQlEOV2EXSWJuTMyP9DpVQfczI=
+			M0tOmBgeD1p/kxElUJk6LeisxbX/3VZDhOBUxF6u7sw=
 			</data>
 		</dict>
 		<key>face_detection_front.tflite</key>

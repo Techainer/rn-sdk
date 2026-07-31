@@ -7,5 +7,4 @@ framework module ekyc_ios_sdk {
 
 module ekyc_ios_sdk.Swift {
   header "ekyc_ios_sdk-Swift.h"
-  requires objc
 }

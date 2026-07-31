@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.example.ekycplugin.eykc.utils.ImageUtils;
+import com.example.ekycplugin.eykc.utils.faceauth.ProvenanceImage;
 
 interface LivenessFragmentListener {
   fun onLivenessEvent(viewId: Int, event: WritableMap)
@@ -45,6 +46,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   var listener: LivenessFragmentListener? = null
   var isDebug: Boolean = false
   var viewId: Int = -1
+  var sessionKey: ByteArray? = null
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -71,42 +73,35 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   override fun onResultsExtracted(images: MutableList<String>?, colorString: String?) {
     if (images.isNullOrEmpty()) return
-    val originalImage = resizeAndCompressImageToBase64(path = images[0])
-    val colorImage = resizeAndCompressImageToBase64(path = images[1])
+    val ctx = requireContext()
+    // 1. Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy ANDROID_ID trong SDK).
+    val originalImage = ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[0], 1024, 95, sessionKey)
+    val colorImage = if (images.size > 1)
+      ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[1], 1024, 95, sessionKey) else null
     val map = Arguments.createMap()
     map.putString("livenessColorImage", colorImage)
     map.putString("livenessOriginalImage", originalImage)
     map.putString("color", "${colorString}3")
     listener?.onLivenessEvent(viewId, map)
+    // 2. Sau khi watermark MỚI lưu ảnh ĐÃ watermark vào thư viện (giữ nguyên bytes để verify được).
     if (isDebug) {
-        saveImagesToGallery(images)
+        saveBase64ToGallery(originalImage, "face_original")
+        saveBase64ToGallery(colorImage, "face_color")
     }
   }
 
-  fun saveImagesToGallery(images: MutableList<String>?) {
-    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-
-    val originalFileName = "face_original_$timeStamp.png"
-    val colorFileName = "face_color_$timeStamp.png"
-
-    if (!images.isNullOrEmpty()) {
-        ImageUtils.saveImageToGallery(context, loadBitmapFromFile(images[0]), originalFileName)
-        println("Saved original image as: $originalFileName")
-    } else {
-        System.err.println("Images list is null or empty, cannot save original image.")
-    }
-
-    when {
-        images != null && images.size > 1 -> {
-            ImageUtils.saveImageToGallery(context, loadBitmapFromFile(images[1]), colorFileName)
-            println("Saved color image as: $colorFileName")
-        }
-        images != null && images.size == 1 -> {
-            println("Only one image available, cannot save color image.")
-        }
-        else -> {
-            System.err.println("Images list is null or empty, cannot save color image.")
-        }
+  // Lưu bytes base64 (ảnh đã watermark) NGUYÊN VẸN vào thư viện — KHÔNG decode/re-encode (giữ watermark).
+  private fun saveBase64ToGallery(b64: String?, prefix: String) {
+    val data = b64?.let { runCatching { Base64.decode(it, Base64.NO_WRAP) }.getOrNull() } ?: return
+    try {
+      val ts = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+      val name = "${prefix}_$ts.jpg"
+      val tmp = File(requireContext().cacheDir, name)
+      FileOutputStream(tmp).use { it.write(data) }
+      ImageUtils.saveImageToGalleryMediaStore(requireContext(), tmp.absolutePath, name)
+      println("Saved watermarked image: $name")
+    } catch (e: Exception) {
+      e.printStackTrace()
     }
   }
 

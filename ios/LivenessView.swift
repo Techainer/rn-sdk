@@ -3,6 +3,7 @@ import React
 import UIKit
 import LocalAuthentication
 import ekyc_ios_sdk
+import Photos
 
 @available(iOS 11.1, *)
 class LivenessView: UIView {
@@ -20,6 +21,8 @@ class LivenessView: UIView {
     private let brightnessHelper = BrightnessHelper()
     @objc var onEvent: RCTBubblingEventBlock?
     @objc var isDebug: Bool = false
+    @objc var sessionKey: String?
+    private var sessionKeyData: Data? { sessionKey.flatMap { Data(base64Encoded: $0) } }
 
     // MARK: - Setters
     @objc func setIsFlashCamera(_ val: Bool) {
@@ -76,13 +79,7 @@ class LivenessView: UIView {
             self?.handleLiveness(value: result.rawValue)
         }
         faceAuth2D.onResultsExtracted = { [weak self] images, color in
-            if self?.isDebug == true {
-                for image in images {
-                  if let img = UIImage(contentsOfFile: image) {
-                    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
-                  }
-                }
-            }
+            // Watermark trước, rồi mới lưu -> xử lý trong processImagesAsync.
             self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: color, is3D: false)
         }
         addSubview(faceAuth2D)
@@ -97,13 +94,7 @@ class LivenessView: UIView {
               self?.handleLiveness(value: result.rawValue)
           }
           faceAuth3D.onResultsExtracted = { [weak self] images in
-              if self?.isDebug == true {
-                  for image in images {
-                      if let img = UIImage(contentsOfFile: image) {
-                          UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
-                      }
-                  }
-              }
+              // Watermark trước, rồi mới lưu -> xử lý trong processImagesAsync.
               self?.processImagesAsync(original: images.first, colorOrThermal: images.last, color: nil, is3D: true)
           }
           addSubview(faceAuth3D)
@@ -168,8 +159,20 @@ class LivenessView: UIView {
     // MARK: - Process images async
     private func processImagesAsync(original: String?, colorOrThermal: String?, color: String?, is3D: Bool) {
         DispatchQueue.global(qos: .utility).async {
-            let base64Original = original.flatMap { self.resizeAndCompressImageToBase64(filePath: $0) }
-            let base64ColorOrThermal = colorOrThermal.flatMap { self.resizeAndCompressImageToBase64(filePath: $0) }
+            let key = self.sessionKeyData
+            // Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy IDFV trong SDK).
+            let base64Original = original.flatMap {
+                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key)
+            }
+            let base64ColorOrThermal = colorOrThermal.flatMap {
+                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key)
+            }
+
+            // Sau khi watermark MỚI lưu ảnh ĐÃ watermark vào thư viện (giữ nguyên bytes để verify được).
+            if self.isDebug {
+                self.saveBase64ToGallery(base64Original)
+                self.saveBase64ToGallery(base64ColorOrThermal)
+            }
 
             var data: [String: Any] = ["livenessOriginalImage": base64Original as Any]
             if is3D {
@@ -183,6 +186,17 @@ class LivenessView: UIView {
             DispatchQueue.main.async {
                 self.pushEvent(data: data)
             }
+        }
+    }
+
+    // Lưu bytes base64 (ảnh đã watermark) NGUYÊN VẸN vào thư viện — KHÔNG re-encode (giữ watermark).
+    private func saveBase64ToGallery(_ b64: String?) {
+        guard let b64 = b64, let data = Data(base64Encoded: b64) else { return }
+        PHPhotoLibrary.shared().performChanges {
+            let req = PHAssetCreationRequest.forAsset()
+            req.addResource(with: .photo, data: data, options: nil)
+        } completionHandler: { _, err in
+            if let err = err { print("save gallery err: \(err)") }
         }
     }
 
