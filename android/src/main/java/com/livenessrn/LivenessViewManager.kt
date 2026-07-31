@@ -135,8 +135,8 @@ class LivenessViewManager(
   }
 
   @ReactProp(name = "timestamp")
-  fun setTimestamp(view: FrameLayout, timestamp: Long) {
-    this.timestamp = timestamp
+  fun setTimestamp(view: FrameLayout, timestamp: Double) {
+    this.timestamp = timestamp.toLong()
   }
 
   private fun callNativeEvent(viewId: Int, map: WritableMap) {
