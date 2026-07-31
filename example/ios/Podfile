@@ -73,6 +73,13 @@ target 'LivenessRnExample' do
         config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
         config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION']
+        if target.respond_to?(:product_type) && (target.product_type == 'com.apple.product-type.framework' || target.product_type == 'com.apple.product-type.library.static')
+          config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'YES'
+        end
+        config.build_settings['LIBRARY_SEARCH_PATHS'] ||= ['$(inherited)']
+        config.build_settings['LIBRARY_SEARCH_PATHS'] << '$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)'
+        config.build_settings['LIBRARY_SEARCH_PATHS'] << '$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)'
+        config.build_settings['LIBRARY_SEARCH_PATHS'] << '$(SDKROOT)/usr/lib/swift'
       end
     end
   end

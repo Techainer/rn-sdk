@@ -137,7 +137,7 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
       val map = Arguments.createMap()
       map.putBoolean("isHack", p0)
       map.putString("message", p1)
-      listener?.onLivenessEvent(viewId, map)
+      // listener?.onLivenessEvent(viewId, map)
     }
   }
 

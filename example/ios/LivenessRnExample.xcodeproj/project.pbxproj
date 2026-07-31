@@ -13,6 +13,7 @@
 		043771352E72DD0C002CE89E /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771302E72DD0C002CE89E /* Mixer.metal */; };
 		043771362E72DD0C002CE89E /* PointCloud.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771322E72DD0C002CE89E /* PointCloud.metal */; };
 		043771372E72DD0C002CE89E /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 043771312E72DD0C002CE89E /* PassThrough.metal */; };
+		04EF3751301C5AD400971DF9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF3750301C5AD400971DF9 /* Dummy.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -43,6 +44,7 @@
 		043771302E72DD0C002CE89E /* Mixer.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
 		043771312E72DD0C002CE89E /* PassThrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		043771322E72DD0C002CE89E /* PointCloud.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PointCloud.metal; sourceTree = "<group>"; };
+		04EF3750301C5AD400971DF9 /* Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dummy.swift; path = LivenessRnExample/Dummy.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* LivenessRnExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivenessRnExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LivenessRnExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = LivenessRnExample/AppDelegate.mm; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		13B07FAE1A68108700A75B9A /* LivenessRnExample */ = {
 			isa = PBXGroup;
 			children = (
+				04EF3750301C5AD400971DF9 /* Dummy.swift */,
 				04255F632CE5DF6D007B1DEC /* main.jsbundle */,
 				DBE707242BF5073A00C27D20 /* com.qts.test.txt */,
 				DBE707252BF5073A00C27D20 /* eid.txt */,
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EF3751301C5AD400971DF9 /* Dummy.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				043771342E72DD0C002CE89E /* DepthToJET.metal in Sources */,
 				043771352E72DD0C002CE89E /* Mixer.metal in Sources */,
@@ -514,6 +518,7 @@
 			baseConfigurationReference = 8FDFBC19B7F6CEE5D08B584E /* Pods-LivenessRnExample.debug.xcconfig */;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -608,6 +613,7 @@
 			baseConfigurationReference = D553264E1B982FECE75DCABC /* Pods-LivenessRnExample.release.xcconfig */;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -766,9 +772,9 @@
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SDKROOT)/usr/lib/swift\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -855,9 +861,9 @@
 					"$(inherited)",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SDKROOT)/usr/lib/swift\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = "$(inherited)";

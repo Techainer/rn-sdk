@@ -31,6 +31,7 @@ class LivenessViewManager(
   private var isFlashCamera: Boolean = false
   private var isDebug: Boolean = false
   private var sessionKey: ByteArray? = null
+  private var timestamp: Long = System.currentTimeMillis()
 
   private var propWidth: Int? = null
   private var propHeight: Int? = null
@@ -133,6 +134,11 @@ class LivenessViewManager(
     }
   }
 
+  @ReactProp(name = "timestamp")
+  fun setTimestamp(view: FrameLayout, timestamp: Long) {
+    this.timestamp = timestamp
+  }
+
   private fun callNativeEvent(viewId: Int, map: WritableMap) {
     try {
       // Validate ID trước khi gửi event
@@ -189,6 +195,7 @@ class LivenessViewManager(
     livenessFragment.listener = this
     livenessFragment.isDebug = this.isDebug
     livenessFragment.sessionKey = this.sessionKey
+    livenessFragment.timestamp = this.timestamp
     livenessFragment.viewId = reactNativeViewId
 
     fragmentManager.beginTransaction()

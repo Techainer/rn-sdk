@@ -23,7 +23,8 @@ class LivenessView: UIView {
     @objc var isDebug: Bool = false
     @objc var sessionKey: String?
     private var sessionKeyData: Data? { sessionKey.flatMap { Data(base64Encoded: $0) } }
-    private var timestamp: Int64 { Int64(Date().timeIntervalSince1970 * 1000.0) }
+    @objc var timestamp: NSNumber?
+    private var timestampValue: Int64 { timestamp?.int64Value ?? Int64(Date().timeIntervalSince1970 * 1000.0) }
 
     // MARK: - Setters
     @objc func setIsFlashCamera(_ val: Bool) {

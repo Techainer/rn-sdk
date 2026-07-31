@@ -431,6 +431,8 @@ export default function App() {
             }}
             isFlashCamera={isFlashCamera}
             isDebug={true}
+            sessionKey={"LEdwU4Haly+3NqCfNm3IkMXrVafc2G05gWcZ53sASFo="}
+            timestamp={ Platform.OS === 'ios' ? Math.floor(Date.now()) : Date.now()}
           />
         </View>
       )}
