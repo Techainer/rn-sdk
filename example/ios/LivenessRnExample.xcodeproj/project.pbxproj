@@ -20,6 +20,7 @@
 		3B7CEF21B6B3B2B880147F12 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */; };
 		3BECFAA8B5B7C98FB0E43BD4 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1608775C17AA8FE4258BC278 /* Pods_LivenessRnExample_LivenessRnExampleTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AA11B0C02D01000100000002 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B0C02D01000100000001 /* File.swift */; };
 		DBE707262BF5073A00C27D20 /* com.qts.test.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707242BF5073A00C27D20 /* com.qts.test.txt */; };
 		DBE707272BF5073A00C27D20 /* eid.txt in Resources */ = {isa = PBXBuildFile; fileRef = DBE707252BF5073A00C27D20 /* eid.txt */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		7136B53B35CC377603DAEB3E /* Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample-LivenessRnExampleTests/Pods-LivenessRnExample-LivenessRnExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72D5EF3DEE42EB69D7E8F2BC /* Pods_LivenessRnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LivenessRnExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = LivenessRnExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA11B0C02D01000100000001 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = File.swift; sourceTree = "<group>"; };
 		8FDFBC19B7F6CEE5D08B584E /* Pods-LivenessRnExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.debug.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D553264E1B982FECE75DCABC /* Pods-LivenessRnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivenessRnExample.release.xcconfig"; path = "Target Support Files/Pods-LivenessRnExample/Pods-LivenessRnExample.release.xcconfig"; sourceTree = "<group>"; };
 		DBE707242BF5073A00C27D20 /* com.qts.test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = com.qts.test.txt; path = ../../ios/com.qts.test.txt; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				AA11B0C02D01000100000001 /* File.swift */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				EEE0C54B636DFC040E761E96 /* PrivacyInfo.xcprivacy */,
 			);
@@ -444,6 +447,7 @@
 				043771362E72DD0C002CE89E /* PointCloud.metal in Sources */,
 				043771372E72DD0C002CE89E /* PassThrough.metal in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				AA11B0C02D01000100000002 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +601,7 @@
 				PRODUCT_NAME = LivenessRnExample;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "LivenessRnExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -690,6 +695,7 @@
 				PRODUCT_NAME = LivenessRnExample;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "LivenessRnExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

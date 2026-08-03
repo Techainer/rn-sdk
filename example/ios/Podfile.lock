@@ -70,7 +70,7 @@ PODS:
   - nanopb/decode (2.30910.0)
   - nanopb/encode (2.30910.0)
   - ObjectMapper (4.2.0)
-  - PromisesObjC (2.4.0)
+  - PromisesObjC (2.4.1)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -676,7 +676,7 @@ SPEC CHECKSUMS:
   MLKitVision: e858c5f125ecc288e4a31127928301eaba9ae0c1
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
   RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b4d3068afa6f52ec5260a8417053b1f1b421483d
   RCTTypeSafety: a4551b3d338c96435f63bf06d564055c1d3cc0ac
@@ -719,4 +719,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 87ab498786b1b3aeb1e48bc8b0006d0cfcd487fd
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0
