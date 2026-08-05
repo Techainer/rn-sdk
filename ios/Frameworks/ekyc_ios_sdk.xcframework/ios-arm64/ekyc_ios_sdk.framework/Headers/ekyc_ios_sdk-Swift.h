@@ -412,6 +412,9 @@ SWIFT_CLASS("_TtC12ekyc_ios_sdk22FaceAuthenticationView")
 @interface FaceAuthenticationView : UIView <AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 - (void)didMoveToSuperview;
 - (void)layoutSubviews;
+/// Tương đương <code>onAttachedToWindow()</code> của Android — quét khi view đã vào cây hiển thị,
+/// tức là sau khi host kịp gán <code>onCheckHack</code>.
+- (void)didMoveToWindow;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (void)captureOutput:(AVCapturePhotoOutput * _Nonnull)output didFinishProcessingPhoto:(AVCapturePhoto * _Nonnull)photo error:(NSError * _Nullable)error SWIFT_AVAILABILITY(ios,introduced=11.0);
@@ -431,6 +434,15 @@ SWIFT_CLASS("_TtC12ekyc_ios_sdk16FaceValidateView")
 - (void)captureOutput:(AVCapturePhotoOutput * _Nonnull)output didFinishProcessingPhoto:(AVCapturePhoto * _Nonnull)photo error:(NSError * _Nullable)error SWIFT_AVAILABILITY(ios,introduced=11.0);
 - (IBAction)onCapturePhoto;
 - (void)captureOutput:(AVCaptureOutput * _Nonnull)output didOutputSampleBuffer:(CMSampleBufferRef _Nonnull)sampleBuffer fromConnection:(AVCaptureConnection * _Nonnull)connection;
+@end
+
+/// Probe chống camera-injection (Phase 4 — mạnh nhất với video quay sẵn):
+/// chiếu chuỗi màu NGẪU-NHIÊN-SEED-SERVER lên toàn màn hình, đo phản xạ ánh sáng trên vùng mặt.
+/// Video/deepfake quay sẵn không phản ứng theo chuỗi màu bất định. Port 1:1 Android <code>FlashChallengeView</code>.
+SWIFT_CLASS("_TtC12ekyc_ios_sdk18FlashChallengeView")
+@interface FlashChallengeView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 #endif // defined(__OBJC__)
