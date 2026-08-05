@@ -31,6 +31,7 @@ class LivenessViewManager(
   private var isFlashCamera: Boolean = false
   private var isDebug: Boolean = false
   private var sessionKey: ByteArray? = null
+  private var sessionId: String? = null
   private var timestamp: Long = System.currentTimeMillis()
 
   private var propWidth: Int? = null
@@ -134,6 +135,15 @@ class LivenessViewManager(
     }
   }
 
+  /**
+   * UUID phiên do server cấp. Truyền NGUYÊN chuỗi: lowercase, giữ dấu gạch nối.
+   * Strip gạch hoặc uppercase là HMAC fail phía server.
+   */
+  @ReactProp(name = "sessionId")
+  fun setSessionId(view: FrameLayout, sessionId: String?) {
+    this.sessionId = sessionId
+  }
+
   @ReactProp(name = "timestamp")
   fun setTimestamp(view: FrameLayout, timestamp: Double) {
     this.timestamp = timestamp.toLong()
@@ -195,6 +205,7 @@ class LivenessViewManager(
     livenessFragment.listener = this
     livenessFragment.isDebug = this.isDebug
     livenessFragment.sessionKey = this.sessionKey
+    livenessFragment.sessionId = this.sessionId
     livenessFragment.timestamp = this.timestamp
     livenessFragment.viewId = reactNativeViewId
 

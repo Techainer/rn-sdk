@@ -22,6 +22,9 @@ class LivenessView: UIView {
     @objc var onEvent: RCTBubblingEventBlock?
     @objc var isDebug: Bool = false
     @objc var sessionKey: String?
+    /// UUID phiên do server cấp. Giữ NGUYÊN chuỗi: lowercase, có dấu gạch nối.
+    /// Thiếu -> ảnh KHÔNG được ký (fail-open, xem ghi chú ở processImagesAsync).
+    @objc var sessionId: String?
     private var sessionKeyData: Data? { sessionKey.flatMap { Data(base64Encoded: $0) } }
     @objc var timestamp: NSNumber?
     private var timestampValue: Int64 { timestamp?.int64Value ?? Int64(Date().timeIntervalSince1970 * 1000.0) }
@@ -162,12 +165,24 @@ class LivenessView: UIView {
     private func processImagesAsync(original: String?, colorOrThermal: String?, color: String?, is3D: Bool) {
         DispatchQueue.global(qos: .utility).async {
             let key = self.sessionKeyData
-            // Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy IDFV trong SDK).
+            let sid = self.sessionId
+            // Resize -> JPEG -> ký HMAC + chèn COM segment -> base64.
+            //
+            // Thứ tự bắt buộc: resize/nén xong TRƯỚC rồi mới hash + ký, vì server tính
+            // SHA-256(strip_com_segment(bytes)) trên đúng bytes nhận được.
+            //
+            // ⚠️ sessionKey hoặc sessionId thiếu -> SDK trả ảnh CHƯA KÝ (fail-open) và
+            // server coi là request legacy, tức là mất session binding trong im lặng.
+            // Tầng nghiệp vụ phải fail-closed: không có session thì huỷ phiên.
             let base64Original = original.flatMap {
-              ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestampValue)
+              ProvenanceImage.resizeSignToBase64(filePath: $0, sessionKey: key, sessionId: sid,
+                                                 maxSize: 1024, compression: 95,
+                                                 tsMs: self.timestampValue)
             }
             let base64ColorOrThermal = colorOrThermal.flatMap {
-                ProvenanceImage.resizeCompressWatermarkToBase64(filePath: $0, maxSize: 1024, compression: 95, sessionKey: key, timestamp: self.timestampValue)
+                ProvenanceImage.resizeSignToBase64(filePath: $0, sessionKey: key, sessionId: sid,
+                                                   maxSize: 1024, compression: 95,
+                                                   tsMs: self.timestampValue)
             }
 
             // Sau khi watermark MỚI lưu ảnh ĐÃ watermark vào thư viện (giữ nguyên bytes để verify được).

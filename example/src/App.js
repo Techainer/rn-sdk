@@ -431,7 +431,15 @@ export default function App() {
             }}
             isFlashCamera={isFlashCamera}
             isDebug={true}
+            // ⚠️ sessionKey + sessionId CHỈ ĐỂ TEST. Bản thật phải lấy từ
+            // POST /biometric/session/new (kèm Play Integrity token), giữ trong RAM,
+            // refresh khi expires_at_ms - now < 60_000. Key cứng trong app thì ai đọc
+            // được app cũng ký được frame giả -> chữ ký mất hết giá trị chứng minh.
+            //
+            // THIẾU sessionId thì SDK trả ảnh CHƯA KÝ và server coi là request legacy:
+            // session binding tắt trong im lặng, không lỗi, không log.
             sessionKey={"LEdwU4Haly+3NqCfNm3IkMXrVafc2G05gWcZ53sASFo="}
+            sessionId={"6b2f8e34-1c47-4d15-9a06-8d5b1b1b1b1b"}
             timestamp={ Platform.OS === 'ios' ? Math.floor(Date.now()) : Date.now()}
           />
         </View>

@@ -29,7 +29,7 @@ import java.util.Locale;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.example.ekycplugin.eykc.utils.ImageUtils;
-import com.example.ekycplugin.eykc.utils.faceauth.ProvenanceImage;
+import com.example.ekycplugin.eykc.gaurd.provenance.ProvenanceImage;
 
 interface LivenessFragmentListener {
   fun onLivenessEvent(viewId: Int, event: WritableMap)
@@ -46,7 +46,11 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
   var listener: LivenessFragmentListener? = null
   var isDebug: Boolean = false
   var viewId: Int = -1
+  /** 32 raw bytes đã base64-decode từ `/biometric/session/new`. */
   var sessionKey: ByteArray? = null
+
+  /** UUID y như server cấp (lowercase, giữ dấu gạch nối). Thiếu -> ảnh KHÔNG được ký. */
+  var sessionId: String? = null
   var timestamp: Long = System.currentTimeMillis()
 
   override fun onCreateView(
@@ -74,11 +78,19 @@ class LivenessFragment : Fragment(), FaceAuthenticationView.OnFaceListener {
 
   override fun onResultsExtracted(images: MutableList<String>?, colorString: String?) {
     if (images.isNullOrEmpty()) return
-    val ctx = requireContext()
-    // 1. Resize -> JPEG -> DCT watermark -> base64 (deviceId tự lấy ANDROID_ID trong SDK).
-    val originalImage = ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[0], 1024, 95, sessionKey, timestamp)
+    // Resize -> JPEG -> ký HMAC + chèn COM segment -> base64.
+    //
+    // Thứ tự bắt buộc: resize/nén xong TRƯỚC rồi mới hash + ký, vì server tính
+    // SHA-256(strip_com_segment(bytes)) trên đúng bytes nhận được.
+    //
+    // ⚠️ sessionKey hoặc sessionId thiếu -> SDK trả ảnh CHƯA KÝ (fail-open) và server
+    // coi là request legacy, tức là mất session binding trong im lặng. Tầng nghiệp vụ
+    // phải fail-closed: không có session thì huỷ phiên, đừng upload ảnh không ký.
+    val originalImage = ProvenanceImage.resizeSignToBase64(
+      images[0], sessionKey, sessionId, 1024, 95, timestamp)
     val colorImage = if (images.size > 1)
-      ProvenanceImage.resizeCompressWatermarkToBase64(ctx, images[1], 1024, 95, sessionKey, timestamp) else null
+      ProvenanceImage.resizeSignToBase64(
+        images[1], sessionKey, sessionId, 1024, 95, timestamp) else null
     val map = Arguments.createMap()
     map.putString("livenessColorImage", colorImage)
     map.putString("livenessOriginalImage", originalImage)
