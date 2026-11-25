@@ -27,8 +27,8 @@ target 'LivenessRnExample' do
   pod 'ObjectMapper', '4.2'
   # pod 'QTSLiveness'
   pod 'SignManager', '1.0.6'
-  pod 'TensorFlowLiteSwift', '2.10.0'
-  pod 'GoogleMLKit/FaceDetection', '6.0.0'
+  # No TensorFlowLiteSwift / GoogleMLKit pods: ekyc_ios_sdk embeds both, and a second copy of
+  # ML Kit in the app crashes it ("Multiple instances of CCTClearcutUploader").
   # pod 'ekyc_ios_sdk', :git => 'https://github.com/sonuos1501/SDKFaceAuthenticationPodIOS.git'
   # pod 'FlashLiveness', :git => 'https://github.com/stevienguyen1988/FlashLivenessPod.git'
   # -------- Framework --------
@@ -47,7 +47,11 @@ target 'LivenessRnExample' do
     # Pods for testing
   end
 
-  dynamic_frameworks = ['GoogleToolboxForMac', 'GoogleUtilities', 'GoogleDataTransport', 'PromisesObjC', 'nanopb', 'MLKitCommon', 'MLKitFaceDetection', 'MLKitVision', 'MLImage', 'GTMSessionFetcher', 'GoogleUtilitiesComponents']
+  # ekyc_ios_sdk loads these as dynamic frameworks (@rpath/<Name>.framework). Under
+  # `use_frameworks! :linkage => :static` they would be static and the app would die at launch
+  # with "Library not loaded", so build exactly these pods as dynamic frameworks.
+  # Any host app embedding liveness-rn needs the same override.
+  dynamic_frameworks = ['GoogleToolboxForMac', 'GoogleUtilities', 'GoogleDataTransport', 'GTMSessionFetcher', 'PromisesObjC', 'nanopb']
   pre_install do |installer|
     installer.pod_targets.each do |pod|
       if dynamic_frameworks.include?(pod.name)

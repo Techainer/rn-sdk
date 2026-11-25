@@ -13,7 +13,11 @@
 typedef void(^TakePhotoSuccess)(void);
 
 @interface PhotoView : UIView
+/// CHỈ dùng trong app demo khi cần soi ảnh: YES = lưu ảnh màu + depth vào thư viện Photos.
+/// Mặc định NO — SDK không tự lưu ảnh camera ra ngoài bộ nhớ.
+@property (nonatomic, assign) BOOL saveToPhotoAlbum;
 
++ (UIImage*)depthBufferToImage:(CVPixelBufferRef) pixelBufffer;
 - (instancetype)initWithFrame:(CGRect)frame withPositionDevice:(BOOL)isBack withTakePhotoSuccess:(TakePhotoSuccess)takePhotoSuccess;
 
 - (void)startRunning;

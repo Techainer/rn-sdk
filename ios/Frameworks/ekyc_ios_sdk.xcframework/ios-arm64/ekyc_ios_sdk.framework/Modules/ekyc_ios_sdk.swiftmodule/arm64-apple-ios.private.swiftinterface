@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name ekyc_ios_sdk
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.3.1 effective-5.10 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+// swift-module-flags: -target arm64-apple-ios13 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ekyc_ios_sdk
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.1
 import AVFoundation
 import Accelerate
 import CoreGraphics
@@ -9,12 +9,18 @@ import CoreImage
 import CoreML
 import CoreMedia
 import CoreVideo
+import CryptoKit
+import Darwin
 import DeveloperToolsSupport
+import DeviceCheck
 import Foundation
+import MachO
 import Metal
 import MetalKit
 import MobileCoreServices
+import ObjectiveC
 import Photos
+import Security
 import Swift
 import SwiftUI
 import SystemConfiguration
@@ -25,6 +31,7 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 @_exported import ekyc_ios_sdk
+import ObjectiveC.runtime
 extension CoreGraphics.CGImage {
   public static func create(pixelBuffer: CoreVideo.CVPixelBuffer) -> CoreGraphics.CGImage?
 }
@@ -86,11 +93,11 @@ public enum ValidateCard : Swift.CaseIterable {
   case validPassport
   case invalidSide
   public static func == (a: ekyc_ios_sdk.ValidateCard, b: ekyc_ios_sdk.ValidateCard) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public typealias AllCases = [ekyc_ios_sdk.ValidateCard]
   nonisolated public static var allCases: [ekyc_ios_sdk.ValidateCard] {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
@@ -134,16 +141,85 @@ public enum TypeUpdate : Swift.String {
   }
 }
 public class BrightnessHelper {
+  public static let shared: ekyc_ios_sdk.BrightnessHelper
   public init()
+  public func beginCapture(targetBrightness: CoreFoundation.CGFloat)
+  public func endCapture()
   public func setBrightness(_ value: CoreFoundation.CGFloat)
   public func getBrightness()
   public func restoreBrightness()
   @objc deinit
 }
+@_hasMissingDesignatedInitializers final public class AppUtils {
+  public static var isLoggingEnabled: Swift.Bool
+  public static func setLoggingEnabled(_ enabled: Swift.Bool)
+  public static func Log(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func Log(log: Swift.String, terminator: Swift.String = "\n")
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc final public class EkycIntegrationDiagnostics : ObjectiveC.NSObject {
+  public enum ConflictGroup : Swift.String {
+    case mlkit
+    case googleInfra
+    case sdkItself
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public static var lastReport: Swift.String? {
+    get
+  }
+  public static var hasDuplicateDependencies: Swift.Bool {
+    get
+  }
+  public static var conflictGroups: Swift.Set<ekyc_ios_sdk.EkycIntegrationDiagnostics.ConflictGroup> {
+    get
+  }
+  public static var conflictSummary: Swift.String? {
+    get
+  }
+  @discardableResult
+  @objc public static func runOnce() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @available(iOS 11.1, *)
 @_Concurrency.MainActor @preconcurrency public class FaceAuthentication3DView : UIKit.UIView, AVFoundation.AVCaptureDataOutputSynchronizerDelegate {
+  final public class MaskStyle {
+    final public let maskBackgroundColorHex: Swift.String
+    final public let ovalStrokeColorHex: Swift.String
+    final public let textBackgroundColorHex: Swift.String
+    final public let textColorHex: Swift.String
+    final public let instructionMessageMap: [Swift.Int : Swift.String]?
+    public init(maskBackgroundColorHex: Swift.String, ovalStrokeColorHex: Swift.String, textBackgroundColorHex: Swift.String, textColorHex: Swift.String, instructionMessageMap: [Swift.Int : Swift.String]?)
+    public static func of(_ maskBackgroundColorHex: Swift.String, _ ovalStrokeColorHex: Swift.String, _ textBackgroundColorHex: Swift.String, _ textColorHex: Swift.String, _ instructionMessageMap: [Swift.Int : Swift.String]?) -> ekyc_ios_sdk.FaceAuthentication3DView.MaskStyle
+    @objc deinit
+  }
   @_Concurrency.MainActor @preconcurrency public var onResultsLiveness: (ekyc_ios_sdk.FaceLivenessClass) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public var onResultsExtracted: (Swift.Array<Swift.String>) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public var onCheckHack: (Swift.Bool, Swift.String) -> Swift.Void {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var flashChallengeSeed: Swift.UInt64? {
+    get
+    set
+  }
+  @objc(setMaskBackgroundColor:) @_Concurrency.MainActor @preconcurrency public func setMaskBackgroundColor(_ color: UIKit.UIColor)
+  @objc(setOvalStrokeColor:) @_Concurrency.MainActor @preconcurrency public func setOvalStrokeColor(_ color: UIKit.UIColor)
+  @objc(setTextBackgroundColor:) @_Concurrency.MainActor @preconcurrency public func setTextBackgroundColor(_ color: UIKit.UIColor)
+  @objc(setTextColor:) @_Concurrency.MainActor @preconcurrency public func setTextColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setMessageMap(_ messages: [Swift.Int : Swift.String])
+  @objc(setInstructionTopInset:) @_Concurrency.MainActor @preconcurrency public func setInstructionTopInset(topInsetPx: CoreFoundation.CGFloat)
+  @objc(setShowInstructionShadow:) @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(enabled: Swift.Bool)
+  @objc(setPlaceInstructionBelow:) @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(_ style: ekyc_ios_sdk.FaceAuthentication3DView.MaskStyle)
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(backgroundColor: UIKit.UIColor, ovalStrokeColor: UIKit.UIColor, textBackgroundColor: UIKit.UIColor, textColor: UIKit.UIColor, messageMap: [Swift.Int : Swift.String])
+  @_Concurrency.MainActor @preconcurrency public func getMaskStyle() -> ekyc_ios_sdk.FaceAuthentication3DView.MaskStyle
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -156,27 +232,262 @@ public class BrightnessHelper {
   @_Concurrency.MainActor @preconcurrency public func stopCamera()
   @_Concurrency.MainActor @preconcurrency @objc public func dataOutputSynchronizer(_ synchronizer: AVFoundation.AVCaptureDataOutputSynchronizer, didOutput synchronizedDataCollection: AVFoundation.AVCaptureSynchronizedDataCollection)
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class FaceAuthenticationView : UIKit.UIView, AVFoundation.AVCapturePhotoCaptureDelegate, AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class FaceAuthenticationView : UIKit.UIView {
+  final public class MaskStyle {
+    final public let maskBackgroundColorHex: Swift.String
+    final public let ovalStrokeColorHex: Swift.String
+    final public let textBackgroundColorHex: Swift.String
+    final public let textColorHex: Swift.String
+    final public let instructionMessageMap: [Swift.Int : Swift.String]?
+    public init(maskBackgroundColorHex: Swift.String, ovalStrokeColorHex: Swift.String, textBackgroundColorHex: Swift.String, textColorHex: Swift.String, instructionMessageMap: [Swift.Int : Swift.String]?)
+    public static func of(_ maskBackgroundColorHex: Swift.String, _ ovalStrokeColorHex: Swift.String, _ textBackgroundColorHex: Swift.String, _ textColorHex: Swift.String, _ instructionMessageMap: [Swift.Int : Swift.String]?) -> ekyc_ios_sdk.FaceAuthenticationView.MaskStyle
+    @objc deinit
+  }
   @_Concurrency.MainActor @preconcurrency public var captureSession: AVFoundation.AVCaptureSession
-  @_Concurrency.MainActor @preconcurrency public var videoDataOutput: AVFoundation.AVCaptureVideoDataOutput
-  @_Concurrency.MainActor @preconcurrency public var stillImageOutput: AVFoundation.AVCapturePhotoOutput
   @_Concurrency.MainActor @preconcurrency public var zoom: CoreFoundation.CGFloat
   @_Concurrency.MainActor @preconcurrency public var onResultsLiveness: (ekyc_ios_sdk.FaceLivenessClass) -> Swift.Void
+  @available(*, deprecated, message: "SDK không còn ghi ảnh ra file. Dùng onResultsSigned (base64 đã ký).")
   @_Concurrency.MainActor @preconcurrency public var onResultsExtracted: ([Swift.String], Swift.String) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public var onResultsSigned: ([Swift.String], Swift.String, Swift.String, Swift.Int64) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public var onCameraError: (Foundation.NSError) -> Swift.Void {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var onCheckHack: (Swift.Bool, Swift.String) -> Swift.Void {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var blackHoldSec: Swift.Double
+  @_Concurrency.MainActor @preconcurrency public var flashInstructionText: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var flashSuccessText: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var stopCameraOnThreat: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public func setImageQuality(maxSize: Swift.Int, quality: Swift.Int)
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency public func setSessionBinding(sessionKey: Foundation.Data?, sessionId: Swift.String?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public func setFlashColor(_ color: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public var flashChallengeSeed: Swift.UInt64? {
+    get
+    set
+  }
   @_Concurrency.MainActor @preconcurrency public func setLogin(_ value: Swift.Bool)
+  @objc(setMaskBackgroundColor:) @_Concurrency.MainActor @preconcurrency public func setMaskBackgroundColor(_ color: UIKit.UIColor)
+  @objc(setOvalStrokeColor:) @_Concurrency.MainActor @preconcurrency public func setOvalStrokeColor(_ color: UIKit.UIColor)
+  @objc(setTextBackgroundColor:) @_Concurrency.MainActor @preconcurrency public func setTextBackgroundColor(_ color: UIKit.UIColor)
+  @objc(setTextColor:) @_Concurrency.MainActor @preconcurrency public func setTextColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func setMessageMap(_ messages: [Swift.Int : Swift.String])
+  @objc(setInstructionTopInset:) @_Concurrency.MainActor @preconcurrency public func setInstructionTopInset(topInsetPx: CoreFoundation.CGFloat)
+  @objc(setShowInstructionShadow:) @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setShowInstructionShadow(enabled: Swift.Bool)
+  @objc(setPlaceInstructionBelow:) @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(_ enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setPlaceInstructionBelow(enabled: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(_ style: ekyc_ios_sdk.FaceAuthenticationView.MaskStyle)
+  @_Concurrency.MainActor @preconcurrency public func setMaskStyle(backgroundColor: UIKit.UIColor, ovalStrokeColor: UIKit.UIColor, textBackgroundColor: UIKit.UIColor, textColor: UIKit.UIColor, messageMap: [Swift.Int : Swift.String])
   @objc deinit
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func willMove(toWindow newWindow: UIKit.UIWindow?)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
-  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor @preconcurrency public func startCamera()
-  @_Concurrency.MainActor @preconcurrency public func stopCamera()
-  @available(iOS 11.0, *)
-  @_Concurrency.MainActor @preconcurrency @objc public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: (any Swift.Error)?)
-  @objc @IBAction @_Concurrency.MainActor @preconcurrency public func onCapturePhoto()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+}
+final public class AntiCameraInjectionGuard {
+  public init()
+  final public func begin()
+  final public func end()
+  final public func metadataProbe() -> ekyc_ios_sdk.CameraMetadataProbe
+  public static func aggregate(_ parts: ekyc_ios_sdk.AntiInjectionResult...) -> ekyc_ios_sdk.AntiInjectionResult
+  public struct Evidence {
+    public let appAttestBase64: Swift.String?
+    public let metadataSummary: Swift.String
+    public let sensorSummary: Swift.String
+    public let flashSummary: Swift.String
+    public init(appAttestBase64: Swift.String?, metadataSummary: Swift.String, sensorSummary: Swift.String, flashSummary: Swift.String)
+  }
+  @objc deinit
+}
+public struct AntiInjectionResult {
+  public enum Verdict : Swift.String {
+    case live
+    case inconclusive
+    case suspect
+    case injectionDetected
+    case unavailable
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public struct Signal {
+    public let name: Swift.String
+    public let passed: Swift.Bool
+    public let score: Swift.Double
+    public let detail: Swift.String
+    public init(name: Swift.String, passed: Swift.Bool, score: Swift.Double, detail: Swift.String)
+  }
+  public let probe: Swift.String
+  public let verdict: ekyc_ios_sdk.AntiInjectionResult.Verdict
+  public let confidence: Swift.Double
+  public let reason: Swift.String
+  public let signals: [ekyc_ios_sdk.AntiInjectionResult.Signal]
+  public init(probe: Swift.String, verdict: ekyc_ios_sdk.AntiInjectionResult.Verdict, confidence: Swift.Double, reason: Swift.String, signals: [ekyc_ios_sdk.AntiInjectionResult.Signal])
+  public var isThreat: Swift.Bool {
+    get
+  }
+  public static func unavailable(probe: Swift.String, reason: Swift.String) -> ekyc_ios_sdk.AntiInjectionResult
+  public static func inconclusive(probe: Swift.String, reason: Swift.String) -> ekyc_ios_sdk.AntiInjectionResult
+}
+final public class CameraMetadataProbe {
+  public init()
+  final public func recordSample(exposure: Swift.Double?, iso: Swift.Float?, lens: Swift.Float?, timestamp: Swift.Double?)
+  final public func record(_ sampleBuffer: CoreMedia.CMSampleBuffer)
+  final public func reset()
+  final public func sampleCount() -> Swift.Int
+  final public func evaluate() -> ekyc_ios_sdk.AntiInjectionResult
+  @objc deinit
+}
+public enum FlashChallengeSeed {
+  public static func colorIndex(seed: Swift.UInt64, attempt: Swift.Int, count: Swift.Int) -> Swift.Int
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency final public class FlashChallengeView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency final public var onColorChanged: ((_ index: Swift.Int, _ color: UIKit.UIColor, _ tsMs: Swift.Double) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency final public func startChallenge(steps: Swift.Int, stepMs: Swift.Double = 700, seed: Swift.UInt64)
+  @_Concurrency.MainActor @preconcurrency final public func submitFaceReflectance(index: Swift.Int, r: Swift.Float, g: Swift.Float, b: Swift.Float)
+  @_Concurrency.MainActor @preconcurrency final public func cancel()
+  @_Concurrency.MainActor @preconcurrency final public func evaluate() -> ekyc_ios_sdk.AntiInjectionResult
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum HardwareAttestation {
+  public struct Result {
+    public let available: Swift.Bool
+    public let securityLevel: Swift.String
+    public let attestationBase64: Swift.String?
+    public let error: Swift.String?
+    public init(available: Swift.Bool, securityLevel: Swift.String, attestationBase64: Swift.String?, error: Swift.String?)
+    public func toAntiInjection() -> ekyc_ios_sdk.AntiInjectionResult
+  }
+  public static func attest(challenge: Foundation.Data, completion: @escaping (ekyc_ios_sdk.HardwareAttestation.Result) -> Swift.Void)
+  public static func secureEnclaveReason() -> Swift.String?
+}
+public enum AppIntegrityChecker {
+  public static func check(expectedSigners: [Swift.String]) -> Swift.String?
+}
+final public class CameraMonitor {
+  public init(onThreat: @escaping (_ isHack: Swift.Bool, _ message: Swift.String) -> Swift.Void)
+  @objc deinit
+  final public func start()
+  final public func stop()
+}
+public enum DebuggerDetector {
+  public static func check() -> Swift.String?
+}
+public enum HookDetector {
+  public static func check() -> Swift.String?
+  public static func scanBundleDylibs(strict: Swift.Bool) -> Swift.String?
+}
+public enum JailbreakDetector {
+  public static func check() -> Swift.String?
+}
+public enum ScreenCaptureDetector {
+  public static func check() -> Swift.String?
+}
+public enum SimulatorDetector {
+  public static func check() -> Swift.String?
+}
+public enum VirtualCameraDetector {
+  public static func check() -> Swift.String?
+}
+public enum DeviceIntegrityGate {
+  public static func requestDeviceIntegrity(nonce: Foundation.Data, completion: @escaping (_ provider: ekyc_ios_sdk.AttestationProvider?, _ token: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+}
+public enum ProvenanceImage {
+  public static let defaultMaxSize: CoreFoundation.CGFloat
+  public static let defaultCompression: Swift.Int
+  @available(*, deprecated, message: "KHÔNG còn ký. Ảnh chụp mặt đã ký sẵn trong SDK — nhận qua FaceAuthenticationView.onResultsSigned.")
+  public static func resizeSignToBase64(filePath: Swift.String, sessionKey: Foundation.Data? = nil, sessionId: Swift.String? = nil, maxSize: CoreFoundation.CGFloat = defaultMaxSize, compression: Swift.Int = defaultCompression, tsMs: Swift.Int64? = nil) -> Swift.String?
+  public static func resizeCompressToBase64(filePath: Swift.String, maxSize: CoreFoundation.CGFloat = defaultMaxSize, compression: Swift.Int = defaultCompression) -> Swift.String?
+  public static func isParityOk() -> Swift.Bool
+  public static func paritySelfTestHex() -> Swift.String
+}
+public enum ProvenanceSession {
+  public static func reset()
+  public static func peek() -> Swift.String?
+  public static func next() -> Swift.String
+}
+@_hasMissingDesignatedInitializers final public class SecurityGuard {
+  public static func initialize(expectedSigners: [Swift.String])
+  public static var isIntegrityConfigured: Swift.Bool {
+    get
+  }
+  public static func setRequireSecureEnclaveKey(_ require: Swift.Bool)
+  public static func setStrictBundleDylibCheck(_ strict: Swift.Bool)
+  public static func checkSecurity(_ completion: @escaping (_ isHack: Swift.Bool, _ message: Swift.String) -> Swift.Void)
+  public static func killAppIfCompromised(_ completion: @escaping (_ isHack: Swift.Bool, _ message: Swift.String) -> Swift.Void)
+  public static func evaluate() -> ekyc_ios_sdk.SecurityResult
+  public static func isCompromisedSync() -> Swift.Bool
+  public static func getCompromiseReason() -> Swift.String
+  public static func diagnostics() -> [Swift.String : Swift.String]
+  public static func diagnosticsReport() -> Swift.String
+  @discardableResult
+  public static func startCameraMonitoring(_ onThreat: @escaping (_ isHack: Swift.Bool, _ message: Swift.String) -> Swift.Void) -> ekyc_ios_sdk.CameraMonitor
+  public static func requestDeviceIntegrity(nonce: Foundation.Data, completion: @escaping (_ provider: ekyc_ios_sdk.AttestationProvider?, _ token: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  public static func newAntiInjectionGuard() -> ekyc_ios_sdk.AntiCameraInjectionGuard
+  @objc deinit
+}
+public enum AttestationProvider : Swift.String {
+  case appAttest
+  case deviceCheck
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SecurityVerdict : Swift.String {
+  case passed
+  case failedAppTampered
+  case failedJailbreak
+  case failedHookFramework
+  case failedDebugger
+  case failedVirtualCamera
+  case failedScreenCapture
+  case failedSimulator
+  case failedVirtualEnvironment
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SecurityLabel {
+  public static let appTampered: Swift.String
+  public static let jailbreak: Swift.String
+  public static let hookFramework: Swift.String
+  public static let bundleDylib: Swift.String
+  public static let debugger: Swift.String
+  public static let virtualCamera: Swift.String
+  public static let screenCapture: Swift.String
+  public static let simulator: Swift.String
+  public static let noSecureEnclave: Swift.String
+}
+public struct SecurityResult {
+  public let verdict: ekyc_ios_sdk.SecurityVerdict
+  public let reason: Swift.String
+  public var isPassed: Swift.Bool {
+    get
+  }
+  public init(verdict: ekyc_ios_sdk.SecurityVerdict, reason: Swift.String)
+  public static let passed: ekyc_ios_sdk.SecurityResult
 }
 extension ekyc_ios_sdk.FaceAuthenticationView {
-  @_Concurrency.MainActor @preconcurrency @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+  @_Concurrency.MainActor @preconcurrency public func startCamera()
+  @_Concurrency.MainActor @preconcurrency public func stopCamera()
+}
+extension ekyc_ios_sdk.FaceAuthenticationView {
+  @objc @IBAction @_Concurrency.MainActor @preconcurrency dynamic public func onCapturePhoto()
 }
 public struct Detection {
 }
@@ -230,6 +541,12 @@ extension UIKit.UIImage {
   @_Concurrency.MainActor @preconcurrency public var faceLivenessCallBack: (Swift.Bool, Swift.String, Swift.String, Swift.Int) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public var processFinished: ([ekyc_ios_sdk.Detection], UIKit.UIImage, Swift.Bool, Swift.String, Swift.String, Swift.Double, Swift.Double) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public var finishVideoRecorded: (Swift.String, Swift.String) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public var onCheckHack: (Swift.Bool, Swift.String) -> Swift.Void {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var stopCameraOnThreat: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
   @objc deinit
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
   @_Concurrency.MainActor @preconcurrency public var zoom: CoreFoundation.CGFloat
@@ -264,6 +581,12 @@ extension ekyc_ios_sdk.FaceValidateView {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
   @_Concurrency.MainActor @preconcurrency public var onDetect: (Swift.String, Swift.String, Swift.Bool, Swift.Bool) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public var takePicture: (UIKit.UIImage) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public var onCheckHack: (Swift.Bool, Swift.String) -> Swift.Void {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var stopCameraOnThreat: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
   @objc deinit
   @_Concurrency.MainActor @preconcurrency @objc override dynamic open func didMoveToSuperview()
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -321,6 +644,18 @@ extension ekyc_ios_sdk.TypeValidate : Swift.RawRepresentable {}
 extension ekyc_ios_sdk.TypeUpdate : Swift.Equatable {}
 extension ekyc_ios_sdk.TypeUpdate : Swift.Hashable {}
 extension ekyc_ios_sdk.TypeUpdate : Swift.RawRepresentable {}
+extension ekyc_ios_sdk.EkycIntegrationDiagnostics.ConflictGroup : Swift.Equatable {}
+extension ekyc_ios_sdk.EkycIntegrationDiagnostics.ConflictGroup : Swift.Hashable {}
+extension ekyc_ios_sdk.EkycIntegrationDiagnostics.ConflictGroup : Swift.RawRepresentable {}
+extension ekyc_ios_sdk.AntiInjectionResult.Verdict : Swift.Equatable {}
+extension ekyc_ios_sdk.AntiInjectionResult.Verdict : Swift.Hashable {}
+extension ekyc_ios_sdk.AntiInjectionResult.Verdict : Swift.RawRepresentable {}
+extension ekyc_ios_sdk.AttestationProvider : Swift.Equatable {}
+extension ekyc_ios_sdk.AttestationProvider : Swift.Hashable {}
+extension ekyc_ios_sdk.AttestationProvider : Swift.RawRepresentable {}
+extension ekyc_ios_sdk.SecurityVerdict : Swift.Equatable {}
+extension ekyc_ios_sdk.SecurityVerdict : Swift.Hashable {}
+extension ekyc_ios_sdk.SecurityVerdict : Swift.RawRepresentable {}
 extension ekyc_ios_sdk.FaceValidationClass : Swift.Equatable {}
 extension ekyc_ios_sdk.FaceValidationClass : Swift.Hashable {}
 extension ekyc_ios_sdk.FaceLivenessClass : Swift.Equatable {}

@@ -40,12 +40,26 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   # s.static_framework = true
-  s.dependency 'TensorFlowLiteSwift', '2.10.0'
-  # s.dependency 'GoogleMLKit/FaceDetection', '6.0.0'
-  s.dependency "GoogleDataTransport"
 
-
-  # s.dependency "ekyc_ios_sdk"
+  # ekyc_ios_sdk.xcframework embeds ML Kit (GoogleMLKit/FaceDetection 6.0.0) and TensorFlow Lite
+  # 2.10 statically. Do NOT add those pods here or in the app: the app would carry two copies, and
+  # ML Kit then crashes with "Multiple instances of CCTClearcutUploader".
+  #
+  # The Google infrastructure ML Kit runs on is NOT embedded: the framework links it as dynamic
+  # frameworks (@rpath/<Name>.framework, two-level namespace), so every pod below must end up in
+  # the app AS A DYNAMIC FRAMEWORK. React Native builds pods static by default, so the app's
+  # Podfile has to override their build type (see example/ios/Podfile), or the app dies at launch
+  # with "Library not loaded". Ranges are MLKitCommon 11 / MLKitVision 7's own.
+  #
+  # Until 2026-11 the framework left these symbols undefined and was resolved through flat
+  # namespace lookup; App Store Connect rejects apps carrying such a binary (ITMS-90714).
+  s.dependency 'GoogleToolboxForMac/Logger', '>= 4.2.1', '< 5.0'
+  s.dependency 'GoogleToolboxForMac/NSData+zlib', '>= 4.2.1', '< 5.0'
+  s.dependency 'GoogleUtilities/UserDefaults', '>= 7.13.0', '< 8.0'
+  s.dependency 'GoogleDataTransport', '>= 9.4.1', '< 10.0'
+  s.dependency 'GTMSessionFetcher/Core', '>= 3.3.2', '< 4.0'
+  s.dependency 'PromisesObjC', '>= 1.2', '< 3.0'
+  s.dependency 'nanopb', '>= 2.30908.0', '< 2.30911.0'
 
   s.vendored_frameworks = 'ios/Frameworks/*.{framework,xcframework}'
 
