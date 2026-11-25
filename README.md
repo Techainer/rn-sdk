@@ -140,9 +140,24 @@ target 'YourApp' do
   # ... other pods
   use_frameworks! :linkage => :static
 
-
   pod 'ObjectMapper', '4.2'
   pod 'SignManager', '1.0.6'
+  # Do NOT add GoogleMLKit or TensorFlowLiteSwift: ekyc_ios_sdk already embeds both, and a
+  # second copy of ML Kit crashes the app ("Multiple instances of CCTClearcutUploader").
+
+  # ekyc_ios_sdk loads Google's infrastructure pods as dynamic frameworks
+  # (@rpath/<Name>.framework). Build exactly these pods dynamic, or the app crashes at
+  # launch with "Library not loaded".
+  dynamic_frameworks = ['GoogleToolboxForMac', 'GoogleUtilities', 'GoogleDataTransport',
+                        'GTMSessionFetcher', 'PromisesObjC', 'nanopb']
+  pre_install do |installer|
+    installer.pod_targets.each do |pod|
+      next unless dynamic_frameworks.include?(pod.name)
+      def pod.build_type
+        Pod::BuildType.dynamic_framework
+      end
+    end
+  end
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -159,6 +174,11 @@ target 'YourApp' do
   end
 end
 ```
+
+> **Firebase:** the infrastructure pods come from the ML Kit 6 line the SDK is built on, so
+> liveness-rn needs GoogleUtilities 7.x and GoogleDataTransport 9.x. An app whose Firebase needs
+> GoogleUtilities 8 / GoogleDataTransport 10 (Firebase iOS 11+, React Native Firebase 21+) will
+> not resolve in `pod install` until the SDK moves to a newer ML Kit.
 
 #### 4. Configure Info.plist Permissions
 
